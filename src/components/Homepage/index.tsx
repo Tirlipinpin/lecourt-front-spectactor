@@ -9,7 +9,7 @@ interface HomepageProps {
     homepage: homepageStore,
 };
 
-class Homepage extends Component<HomepageProps, {}> {
+export class Homepage extends Component<HomepageProps, {}> {
     render() {
         const { homepage } = this.props;
 
