@@ -101,14 +101,17 @@ export class Register extends Component<RegisterProps, RegisterState> {
                     >
                         <Input prefix={<Icon type="lock" />} value={passwordConfirm} onChange={this.handlePasswordConfirm} />
                     </Form.Item>
-                    <Button
-                        className="register-form-button"
-                        htmlType="submit"
-                        type="primary"
-                        disabled={register.loading}
-                    >
-                        Register
-                    </Button>
+                    <Form.Item>
+                        <Button
+                            className="register-form-button"
+                            htmlType="submit"
+                            type="primary"
+                            disabled={register.loading}
+                        >
+                            Register
+                        </Button>
+                        Or <a href="/login">login now!</a>
+                    </Form.Item>
                 </Form>
             </div>
         );

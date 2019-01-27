@@ -12,7 +12,7 @@ import Homepage from './components/Homepage';
 import Login from './components/Login';
 import Register from './components/Register';
 
-axios.defaults.baseURL = 'https://sso.stg.lecourt.tv/';
+axios.defaults.baseURL = 'http://sso.stg.lecourt.tv/';
 
 ReactDOM.render(
     <Provider store={ configureStore() }>
