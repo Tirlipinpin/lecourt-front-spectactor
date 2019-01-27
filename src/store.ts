@@ -6,7 +6,7 @@ import { routerMiddleware } from 'connected-react-router';
 
 import rootReducer from './reducers/rootReducer';
 
-import login from './sagas/login';
+import sagas from './sagas';
 
 export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
@@ -23,4 +23,4 @@ export default function configureStore() {
     );
 }
 
-setTimeout(() => sagaMiddleware.run(login), 0);
+setTimeout(() => sagaMiddleware.run(sagas), 0);

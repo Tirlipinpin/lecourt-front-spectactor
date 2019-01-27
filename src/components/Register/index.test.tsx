@@ -2,15 +2,15 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
 
-import { Login } from '.';
+import { Register } from '.';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('the Login component', () => {
+describe('The Register component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Login dispatch={() => {}} login={{ loading: false }} />);
+        wrapper = shallow(<Register dispatch={() => {}} />);
     });
 
     it('should render correctly', () => {
