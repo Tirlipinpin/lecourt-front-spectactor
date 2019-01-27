@@ -8,7 +8,7 @@ import axios from 'axios';
 import * as serviceWorker from './serviceWorker';
 import configureStore, { history } from './store';
 import './index.css';
-import Homepage from './components/Homepage';
+import App from './App';
 import Login from './components/Login';
 import Register from './components/Register';
 
@@ -18,7 +18,7 @@ ReactDOM.render(
     <Provider store={ configureStore() }>
         <ConnectedRouter history={ history}>
             <Switch>
-                <Route exact path="/" component={Homepage} />
+                <Route exact path="/app" component={App} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route render={() => (<div>Page not found</div>)} />
