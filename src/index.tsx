@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router'
 import { Provider } from 'react-redux';
+import axios from 'axios';
 
 import * as serviceWorker from './serviceWorker';
 import configureStore, { history } from './store';
 import './index.css';
 import Homepage from './components/Homepage';
+
+axios.defaults.baseURL = 'http://51.75.133.45:8080/';
 
 ReactDOM.render(
     <Provider store={ configureStore() }>
