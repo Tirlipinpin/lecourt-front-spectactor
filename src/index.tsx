@@ -10,6 +10,7 @@ import configureStore, { history } from './store';
 import './index.css';
 import Homepage from './components/Homepage';
 import Login from './components/Login';
+import Register from './components/Register';
 
 axios.defaults.baseURL = 'http://51.75.133.45:8080/';
 
@@ -19,6 +20,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path="/" render={ () => <Homepage /> } />
                 <Route path="/login" render={ () => <Login /> } />
+                <Route path="/register" render={ () => <Register /> } />
             </Switch>
         </ConnectedRouter>
     </Provider>
