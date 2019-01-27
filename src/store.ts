@@ -2,9 +2,9 @@ import { applyMiddleware, createStore } from 'redux';
 import { createBrowserHistory } from 'history';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { routerMiddleware } from 'connected-react-router';
 
 import rootReducer from './reducers/rootReducer';
-import { routerMiddleware } from 'connected-react-router';
 
 import login from './sagas/login';
 
