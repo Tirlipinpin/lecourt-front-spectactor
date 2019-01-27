@@ -1,5 +1,6 @@
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
+import { Form, Icon, Input, Button } from 'antd';
 
 interface LoginStore {
     loading: boolean,
@@ -37,9 +38,11 @@ export class Login extends Component<LoginProps, LoginState> {
         });
     }
 
-    fetchToken = () => {
+    fetchToken = (e: any) => {
         const { dispatch } = this.props;
         const { email, password } = this.state;
+
+        e.preventDefault();
 
         dispatch({
             type: 'FETCH_TOKEN',
@@ -52,28 +55,26 @@ export class Login extends Component<LoginProps, LoginState> {
 
     render() {
         const { login } = this.props;
+        const { email, password } = this.state;
 
         return (
-            <div>
-                <form>
-                    <label>Email</label>
-                    <input
-                        value={this.state.email}
-                        placeholder="Enter your email"
-                        onChange={this.handleEmail}
-                    />
-                    <input
-                        value={this.state.password}
-                        placeholder="Enter your password"
-                        onChange={this.handlePassword}
-                    />
-                    {
-                        login.loading
-                        ? 'Loading...'
-                        : <button onClick={this.fetchToken}>Login</button>
-                    }
-                </form>
-            </div>
+            <Form onSubmit={this.fetchToken} className="login-form">
+                <Form.Item
+                    help="Enter your email"
+                >
+                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" value={email} onChange={this.handleEmail} />
+                </Form.Item>
+                <Form.Item
+                    help="Enter your password"
+                >
+                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Password" value={password} type="password" onChange={this.handlePassword} />
+                </Form.Item>
+                <Form.Item>
+                    <Button disabled={login.loading} htmlType="submit">
+                        Log in
+                    </Button>
+                </Form.Item>
+            </Form>
         );
     }
 };

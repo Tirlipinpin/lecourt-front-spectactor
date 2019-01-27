@@ -9,6 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import configureStore, { history } from './store';
 import './index.css';
 import Homepage from './components/Homepage';
+import Login from './components/Login';
 
 axios.defaults.baseURL = 'http://51.75.133.45:8080/';
 
@@ -17,6 +18,7 @@ ReactDOM.render(
         <ConnectedRouter history={ history}>
             <Switch>
                 <Route exact path="/" render={ () => <Homepage /> } />
+                <Route path="/login" render={ () => <Login /> } />
             </Switch>
         </ConnectedRouter>
     </Provider>
