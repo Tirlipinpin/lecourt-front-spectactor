@@ -18,9 +18,10 @@ ReactDOM.render(
     <Provider store={ configureStore() }>
         <ConnectedRouter history={ history}>
             <Switch>
-                <Route exact path="/" render={ () => <Homepage /> } />
-                <Route path="/login" render={ () => <Login /> } />
-                <Route path="/register" render={ () => <Register /> } />
+                <Route exact path="/" component={Homepage} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+                <Route render={() => (<div>Page not found</div>)} />
             </Switch>
         </ConnectedRouter>
     </Provider>
