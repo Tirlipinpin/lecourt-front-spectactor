@@ -20,7 +20,6 @@ export default (state = defaultState, action: any) => {
             return {
                 ...state,
                 loading: false,
-                error: action.payload,
             }
         default:
             return state;

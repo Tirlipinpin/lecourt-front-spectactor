@@ -34,7 +34,6 @@ describe('register reducer', () => {
 
         expect(register(defaultState, action)).toEqual({
             loading: false,
-            error: 'error message',
         });
     });
 });

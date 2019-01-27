@@ -1,5 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import { notification } from 'antd';
 
 import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED } from '../reducers/login/constantes';
 
@@ -19,7 +20,10 @@ function* fetchToken(action: any): any {
     } catch (e) {
         yield put({
             type: FETCH_TOKEN_FAILED,
-            payload: e.message,
+        });
+        yield notification['error']({
+            message: 'An error occured',
+            description: e.message,
         });
     }
 }

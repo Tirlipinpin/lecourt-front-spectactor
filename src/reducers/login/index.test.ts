@@ -34,7 +34,6 @@ describe('login reducer', () => {
 
         expect(login(defaultState, action)).toEqual({
             loading: false,
-            error: 'error message',
         });
     });
 });
