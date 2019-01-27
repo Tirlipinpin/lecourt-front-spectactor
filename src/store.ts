@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers/rootReducer';
 import { routerMiddleware } from 'connected-react-router';
 
-import homepage from './sagas/homepage';
+import login from './sagas/login';
 
 export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
@@ -23,4 +23,4 @@ export default function configureStore() {
     );
 }
 
-setTimeout(() => sagaMiddleware.run(homepage), 0);
+setTimeout(() => sagaMiddleware.run(login), 0);
