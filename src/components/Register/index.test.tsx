@@ -10,7 +10,11 @@ describe('The Register component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Register dispatch={() => {}} />);
+        const store = {
+            loading: false,
+        };
+
+        wrapper = shallow(<Register register={store} dispatch={() => {}} />);
     });
 
     it('should render correctly', () => {
