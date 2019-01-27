@@ -1,0 +1,8 @@
+version: '3'
+services:
+  front:
+    image: $CONTAINER_STAGING_IMAGE
+    environment:
+      - VIRTUAL_HOST=front.stg.lecourt.tv
+      - VIRTUAL_PORT=80
+    restart: always
