@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router'
 import { Provider } from 'react-redux';
 import axios from 'axios';
@@ -20,6 +20,7 @@ ReactDOM.render(
     <Provider store={ configureStore() }>
         <ConnectedRouter history={ history}>
             <Switch>
+                <Redirect to="/app" from="/" exact />
                 <Route path="/app" component={requireAuth(App)} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
