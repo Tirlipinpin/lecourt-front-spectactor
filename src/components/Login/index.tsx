@@ -1,11 +1,13 @@
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { Form, Icon, Input, Button } from 'antd';
+import { Redirect } from 'react-router';
 
 import './index.css';
 
 interface LoginStore {
     loading: boolean,
+    logged: boolean,
 }
 
 interface LoginProps {
@@ -61,6 +63,7 @@ export class Login extends Component<LoginProps, LoginState> {
 
         return (
             <div className="login-form">
+            { login.logged && <Redirect to="/app" /> }
                 <h1>Log in to Lecourt</h1>
                 <Form onSubmit={this.fetchToken}>
                     <Form.Item

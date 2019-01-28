@@ -2,7 +2,7 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
 
-import Navbar from '.';
+import { Navbar } from '.';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -14,7 +14,7 @@ describe('The Profile component', () => {
             url: 'poney',
         };
 
-        wrapper = shallow(<Navbar match={match} />);
+        wrapper = shallow(<Navbar history={{ push: () => {} }} match={match} dispatch={() => {}} />);
     });
 
     it('should render correctly', () => {

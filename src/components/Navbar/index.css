@@ -1,0 +1,14 @@
+.navbar-container {
+    width: 10%;
+}
+
+.logo {
+    height: 48px;
+    float: left;
+    margin: 8px 8px 8px 0;
+    cursor: pointer;
+}
+
+.menu-items-container {
+    margin-left: 5%;
+}

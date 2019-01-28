@@ -1,5 +1,5 @@
 import login, { defaultState } from '.';
-import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED } from './constantes';
+import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED, LOGOUT } from './constantes';
 
 describe('login reducer', () => {
     it('should return initial state', () => {
@@ -13,6 +13,7 @@ describe('login reducer', () => {
 
         expect(login(defaultState, action)).toEqual({
             loading: true,
+            logged: false,
         });
     });
 
@@ -23,6 +24,7 @@ describe('login reducer', () => {
 
         expect(login(defaultState, action)).toEqual({
             loading: false,
+            logged: true,
         });
     });
 
@@ -33,7 +35,17 @@ describe('login reducer', () => {
         };
 
         expect(login(defaultState, action)).toEqual({
-            loading: false,
+            ...defaultState,
+        });
+    });
+
+    it('should logout when LOGOUT action is triggered', () => {
+        const action = {
+            type: LOGOUT,
+        };
+
+        expect(login(defaultState, action)).toEqual({
+            ...defaultState,
         });
     });
 });

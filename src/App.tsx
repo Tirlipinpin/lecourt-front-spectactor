@@ -7,12 +7,12 @@ import Profile from './components/Profile';
 
 import './App.css';
 
-const App = ({ match }: any) => (
+const App = ({ match, history }: any) => (
     <div className="app-wrapper">
-        <Navbar match={match} />
+        <Navbar match={match} history={history} />
         <div className="app-container">
-            <Route exact path={match.path} component={Homepage} />
-            <Route exact path={`${match.path}/profile`} component={Profile} />
+            <Route exact path={match.url} component={Homepage} />
+            <Route path={`${match.path}/profile`} component={Profile} />
         </div>
     </div>
 );
