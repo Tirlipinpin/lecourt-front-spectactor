@@ -13,6 +13,7 @@ before_script:
 
 stages:
   - build
+  - test
   - deploy
 
 #-------------------------------------------------------------------------------
@@ -69,7 +70,7 @@ build_staging:
   services:
     - docker:17-dind
   script:
-    - docker build --pull -t $CONTAINER_STAGING_IMAGE .
+    - docker build --pull -t $CONTAINER_STAGING_IMAGE -f development.Dockerfile .
     - docker push $CONTAINER_STAGING_IMAGE
 
 deploy_staging:
@@ -88,3 +89,14 @@ deploy_staging:
 #-------------------------------------------------------------------------------
 # Jobs Test
 #-------------------------------------------------------------------------------
+
+test_unit:
+  image:
+    name: $CONTAINER_STAGING_IMAGE
+    entrypoint: [""]
+  stage: test
+  <<: [ *branch-test, *runner-docker ]
+  before_script:
+    - npm i
+  script:
+    - npm test
