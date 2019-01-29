@@ -30,7 +30,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "cross-env CI=true react-scripts test --all --ci",
+    "test": "react-scripts test",
+    "testci": "cross-env CI=true react-scripts test --all --ci",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
