@@ -99,4 +99,4 @@ test_unit:
   before_script:
     - npm i
   script:
-    - npm testci
+    - npm run testci
