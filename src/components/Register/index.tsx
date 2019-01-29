@@ -116,6 +116,6 @@ export class Register extends Component<RegisterProps, RegisterState> {
     }
 }
 
-const mapStateToProps = ({register}: any) => ({ register });
-
-export default connect(mapStateToProps)(Register);
+export default connect(({ register }: any) => ({
+    register,
+}))(Register);
