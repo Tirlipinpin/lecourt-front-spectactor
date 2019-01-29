@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Homepage from './components/Homepage';
 import Profile from './components/Profile';
 
+import axiosInterceptor from './services/axiosInterceptor';
 import { LoginStore } from './reducers/login';
 
 import './App.css';
@@ -18,6 +19,15 @@ interface AppProps {
 }
 
 export class App extends Component<AppProps, {}>{
+    componentDidMount() {
+        const { history, dispatch } = this.props;
+
+        axiosInterceptor(() => {
+            dispatch({ type: 'LOGOUT' });
+            history.push('/login');
+        });
+    }
+
     render() {
         const { match, login, history } = this.props;
 
