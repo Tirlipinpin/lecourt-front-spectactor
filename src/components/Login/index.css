@@ -8,6 +8,18 @@
     flex-direction: column;
 }
 
+@media screen and (max-width: 400px) {
+    .login-form {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 640px) {
+    .login-form {
+        width: 60%;
+    }
+}
+
 .login-form .login-form-button {
     width: 100%;
 }

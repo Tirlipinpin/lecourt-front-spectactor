@@ -12,3 +12,9 @@
 .menu-items-container {
     margin-left: 5%;
 }
+
+@media screen and (min-width: 450px) {
+    .logout-button {
+        float: right;
+    }
+}

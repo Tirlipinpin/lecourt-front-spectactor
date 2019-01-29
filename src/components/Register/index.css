@@ -8,6 +8,18 @@
     flex-direction: column;
 }
 
+@media screen and (max-width: 400px) {
+    .register-form {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 640px) {
+    .register-form {
+        width: 60%;
+    }
+}
+
 .register-form .register-form-button {
     width: 100%;
 }

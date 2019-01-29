@@ -42,7 +42,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                     >
                         <Menu.Item key="1"><Link to={url}>Homepage</Link></Menu.Item>
                         <Menu.Item key="2"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
-                        <Menu.Item key="3" style={{ float: 'right' }} onClick={this.logout}>Logout</Menu.Item>
+                        <Menu.Item key="3" className="logout-button" onClick={this.logout}>Logout</Menu.Item>
                     </Menu>
                 </Header>
             </div>
