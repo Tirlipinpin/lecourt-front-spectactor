@@ -30,7 +30,7 @@ export class Navbar extends Component<NavbarProps, {}> {
         const { url } = this.props.match;
 
         return (
-            <Layout className="navbar-container">
+            <div className="navbar-container">
                 <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
                     <img src={logo} className="logo" onClick={() => history.push(url)} />
                     <Menu
@@ -45,7 +45,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                         <Menu.Item key="3" style={{ float: 'right' }} onClick={this.logout}>Logout</Menu.Item>
                     </Menu>
                 </Header>
-            </Layout>
+            </div>
         );
     }
 };
