@@ -1,5 +1,8 @@
 .navbar-container {
-    width: 10%;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    box-shadow: 0 2px 8px rgb(134, 134, 134);
 }
 
 .logo {
