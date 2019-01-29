@@ -5,6 +5,11 @@ export const defaultState = {
     logged: false,
 };
 
+export interface LoginStore {
+    loading: boolean,
+    logged: boolean,
+};
+
 export default (state = defaultState, action: any) => {
     switch(action.type) {
         case FETCH_TOKEN:

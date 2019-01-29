@@ -2,11 +2,9 @@ import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { Form, Icon, Input, Button } from 'antd';
 
-import './index.css';
+import { RegisterStore } from '../../reducers/register';
 
-interface RegisterStore {
-    loading: boolean,
-};
+import './index.css';
 
 interface RegisterState {
     displayName: string,

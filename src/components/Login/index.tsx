@@ -3,12 +3,9 @@ import { connect } from 'react-redux';
 import { Form, Icon, Input, Button } from 'antd';
 import { Redirect } from 'react-router';
 
-import './index.css';
+import { LoginStore } from '../../reducers/login';
 
-interface LoginStore {
-    loading: boolean,
-    logged: boolean,
-}
+import './index.css';
 
 interface LoginProps {
     dispatch: Dispatch<any>,

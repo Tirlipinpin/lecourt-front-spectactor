@@ -4,6 +4,10 @@ export const defaultState = {
     loading: false,
 };
 
+export interface RegisterStore {
+    loading: boolean,
+};
+
 export default (state = defaultState, action: any) => {
     switch(action.type) {
         case REGISTER_USER:

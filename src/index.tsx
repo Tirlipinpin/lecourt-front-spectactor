@@ -12,8 +12,6 @@ import App from './App';
 import Login from './components/Login';
 import Register from './components/Register';
 
-import requireAuth from './hoc/requireAuth';
-
 axios.defaults.baseURL = 'http://sso.stg.lecourt.tv/';
 
 ReactDOM.render(
@@ -21,7 +19,7 @@ ReactDOM.render(
         <ConnectedRouter history={ history}>
             <Switch>
                 <Redirect to="/app" from="/" exact />
-                <Route path="/app" component={requireAuth(App)} />
+                <Route path="/app" component={App} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route render={() => (<div>Page not found</div>)} />
