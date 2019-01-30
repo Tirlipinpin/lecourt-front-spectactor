@@ -22,6 +22,7 @@ export default (state = defaultState, action: any) => {
                 ...state,
                 loading: false,
                 logged: true,
+                token: action.payload.data,
             }
         case FETCH_TOKEN_FAILED:
             return {
