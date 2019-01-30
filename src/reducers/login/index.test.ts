@@ -20,11 +20,15 @@ describe('login reducer', () => {
     it('should stop loading when fetch is successful', () => {
         const action = {
             type: FETCH_TOKEN_SUCCEEDED,
+            payload: {
+                data: 'some token',
+            },
         };
 
         expect(login(defaultState, action)).toEqual({
             loading: false,
             logged: true,
+            token: 'some token',
         });
     });
 

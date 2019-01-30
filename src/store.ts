@@ -1,4 +1,5 @@
 import { applyMiddleware, createStore } from 'redux';
+import { persistStore } from 'redux-persist';
 import { createBrowserHistory } from 'history';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -12,7 +13,7 @@ export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore() {
-    return createStore(
+    const store = createStore(
         rootReducer(history),
         composeWithDevTools(
             applyMiddleware(
@@ -21,6 +22,10 @@ export default function configureStore() {
             ),
         ),
     );
+    return {
+        store,
+        persistor: persistStore(store),
+    };
 }
 
 setTimeout(() => sagaMiddleware.run(sagas), 0);
