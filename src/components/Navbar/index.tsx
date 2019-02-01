@@ -12,12 +12,12 @@ interface NavbarProps {
     match: any,
     history: any,
     dispatch: Dispatch<any>,
+    location: any,
 };
 
 export class Navbar extends Component<NavbarProps, {}> {
     logout = () => {
         const { dispatch, history } = this.props;
-        const { url } = this.props.match;
 
         dispatch({
             type: LOGOUT,
@@ -25,6 +25,15 @@ export class Navbar extends Component<NavbarProps, {}> {
 
         history.push('/login');
     }
+
+    isActive = (): Array<string> => {
+        const { location } = this.props;
+
+        return [
+            location.pathname.split('/')[2] || 'homepage',
+        ];
+    }
+
     render() {
         const { history } = this.props;
         const { url } = this.props.match;
@@ -35,12 +44,12 @@ export class Navbar extends Component<NavbarProps, {}> {
                 <Menu
                     theme="dark"
                     mode="horizontal"
-                    defaultSelectedKeys={['1']}
                     style={{ lineHeight: '64px' }}
                     className="menu-items-container"
+                    selectedKeys={this.isActive()}
                 >
-                    <Menu.Item key="1"><Link to={url}>Homepage</Link></Menu.Item>
-                    <Menu.Item key="2"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
+                    <Menu.Item key="homepage"><Link to={url}>Homepage</Link></Menu.Item>
+                    <Menu.Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
                     <Menu.Item key="3" className="logout-button" onClick={this.logout}>Logout</Menu.Item>
                 </Menu>
             </Header>

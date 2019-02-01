@@ -15,6 +15,7 @@ import './App.css';
 interface AppProps {
     match: any,
     history: any,
+    location: any,
     login: LoginStore,
     dispatch: Dispatch<any>,
 }
@@ -40,7 +41,7 @@ export class App extends Component<AppProps, {}>{
     )
 
     render() {
-        const { match, login, history } = this.props;
+        const { match, login, history, location } = this.props;
 
         if (!login.logged)
             return (
@@ -50,7 +51,7 @@ export class App extends Component<AppProps, {}>{
         return (
             <div className="app-wrapper">
                 <Layout>
-                    <Navbar match={match} history={history} />
+                    <Navbar match={match} history={history} location={location} />
                     <div className="app-container">
                         <Layout.Content className="content-container">
                             <Route exact path={match.url} render={() => this.lazyRender(Homepage)} />
