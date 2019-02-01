@@ -1,12 +1,12 @@
 import React from 'react';
-import axios from 'axios';
+import axios, { AxiosResponse, AxiosError } from 'axios';
 import { Modal } from 'antd';
 
 export default (logout: () => void) =>  {
-    axios.interceptors.response.use((response: any) => {
+    axios.interceptors.response.use((response: AxiosResponse) => {
         return response;
-    }, (error: any) => {
-        if (error.response.status === 401) {
+    }, (error: AxiosError) => {
+        if (error.response && error.response.status === 401) {
             Modal.error({
                 title: 'You have been disconnected',
                 content: (

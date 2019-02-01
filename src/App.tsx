@@ -47,7 +47,7 @@ export class App extends Component<AppProps, {}>{
     render() {
         const { match, login, history, location } = this.props;
 
-        if (!login.logged)
+        if (!login.token)
             return (
                 <Redirect to="/login" />
             );

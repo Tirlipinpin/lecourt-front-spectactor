@@ -12,7 +12,7 @@ describe('The App component', () => {
 
     it('should render correctly', () => {
         const store = {
-            logged: true,
+            token: 'something',
             loading: false,
         };
 
@@ -22,6 +22,7 @@ describe('The App component', () => {
                 history={{}}
                 login={store}
                 dispatch={() => {}}
+                location={{}}
             />
         );
 
@@ -30,7 +31,7 @@ describe('The App component', () => {
 
     it('should redirect when user is not logged', () => {
         const store = {
-            logged: false,
+            token: null,
             loading: false,
         };
 
@@ -40,6 +41,7 @@ describe('The App component', () => {
                 history={{}}
                 login={store}
                 dispatch={() => {}}
+                location={{}}
             />
         );
 
@@ -48,7 +50,7 @@ describe('The App component', () => {
 
     it('should display app when user is logged', () => {
         const store = {
-            logged: true,
+            token: 'something',
             loading: false,
         };
 
@@ -58,6 +60,7 @@ describe('The App component', () => {
                 history={{}}
                 login={store}
                 dispatch={() => {}}
+                location={{}}
             />
         );
 
