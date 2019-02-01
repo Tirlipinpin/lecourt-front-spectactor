@@ -14,7 +14,7 @@ describe('The Profile component', () => {
             url: 'poney',
         };
 
-        wrapper = shallow(<Navbar history={{ push: () => {} }} match={match} dispatch={() => {}} />);
+        wrapper = shallow(<Navbar location={{ pathname: '' }} history={{ push: () => {} }} match={match} dispatch={() => {}} />);
     });
 
     it('should render correctly', () => {
