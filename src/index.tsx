@@ -14,7 +14,7 @@ import App from './App';
 import Login from './components/Login';
 import Register from './components/Register';
 
-axios.defaults.baseURL = 'http://sso.stg.lecourt.tv/';
+axios.defaults.baseURL = 'https://sso.stg.lecourt.tv/';
 
 const { store, persistor } = configureStore();
 
@@ -24,7 +24,7 @@ ReactDOM.render(
             loading={<div>Loading...</div>}
             persistor={persistor}
         >
-            <ConnectedRouter history={ history}>
+            <ConnectedRouter history={history}>
                 <Switch>
                     <Redirect to="/app" from="/" exact />
                     <Route path="/app" component={App} />

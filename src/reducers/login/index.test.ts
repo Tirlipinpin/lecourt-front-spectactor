@@ -13,7 +13,7 @@ describe('login reducer', () => {
 
         expect(login(defaultState, action)).toEqual({
             loading: true,
-            logged: false,
+            token: null,
         });
     });
 
@@ -27,7 +27,6 @@ describe('login reducer', () => {
 
         expect(login(defaultState, action)).toEqual({
             loading: false,
-            logged: true,
             token: 'some token',
         });
     });

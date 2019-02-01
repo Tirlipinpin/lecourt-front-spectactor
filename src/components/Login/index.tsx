@@ -60,7 +60,7 @@ export class Login extends Component<LoginProps, LoginState> {
 
         return (
             <div className="login-form">
-            { login.logged && <Redirect to="/app" /> }
+            { login.token && <Redirect to="/app" /> }
                 <h1>Log in to Lecourt</h1>
                 <Form onSubmit={this.fetchToken}>
                     <Form.Item
