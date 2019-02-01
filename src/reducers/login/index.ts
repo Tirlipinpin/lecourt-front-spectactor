@@ -8,6 +8,7 @@ export const defaultState = {
 export interface LoginStore {
     loading: boolean,
     logged: boolean,
+    token: string,
 };
 
 export default (state = defaultState, action: any) => {

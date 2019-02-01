@@ -2,6 +2,7 @@ import React, { Component, Dispatch, Suspense, lazy } from 'react';
 import { Route, Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { Icon, Layout } from 'antd';
+import axios from 'axios';
 
 import Navbar from './components/Navbar';
 const Homepage = lazy(() => import('./components/Homepage'));
@@ -22,12 +23,15 @@ interface AppProps {
 
 export class App extends Component<AppProps, {}>{
     componentDidMount() {
-        const { history, dispatch } = this.props;
+        const { history, dispatch, login } = this.props;
+        const { token } = login;
 
         axiosInterceptor(() => {
             dispatch({ type: 'LOGOUT' });
             history.push('/login');
         });
+
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
 
     lazyRender = (Child: React.ComponentType) => (

@@ -6,11 +6,12 @@ import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED } from '../reduc
 
 function* fetchToken(action: any): any {
     try {
+        console.log(action.payload);
         const token = yield axios('tokens/create', {
             method: 'POST',
             auth: {
-                username: 'user',
-                password: 'password',
+                username: action.email,
+                password: action.password,
             },
             withCredentials: true,
         });

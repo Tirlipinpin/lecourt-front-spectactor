@@ -24,7 +24,7 @@ ReactDOM.render(
             loading={<div>Loading...</div>}
             persistor={persistor}
         >
-            <ConnectedRouter history={ history}>
+            <ConnectedRouter history={history}>
                 <Switch>
                     <Redirect to="/app" from="/" exact />
                     <Route path="/app" component={App} />
