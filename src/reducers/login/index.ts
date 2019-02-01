@@ -1,13 +1,12 @@
 import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED, LOGOUT } from './constantes';
 
-export const defaultState = {
-    loading: false,
-    token: null,
-};
-
 export interface LoginStore {
     loading: boolean,
-    token?: string,
+    token?: string | null,
+};
+
+export const defaultState: LoginStore = {
+    loading: false,
 };
 
 export default (state = defaultState, action: any) => {
