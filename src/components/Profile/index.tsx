@@ -3,17 +3,16 @@ import { connect } from 'react-redux';
 import { Layout, Menu, Card, Avatar } from 'antd';
 import MediaQuery from 'react-responsive';
 
-
 import './index.css';
 
 export class Profile extends Component<{}, {}> {
-    cardStyle = {
+    private cardStyle = {
         marginTop: 86,
         marginLeft: 36,
         marginRight: 36,
     };
 
-    cardBodyStyle = {
+    private cardBodyStyle = {
         minHeight: 300,
     };
 
@@ -24,10 +23,34 @@ export class Profile extends Component<{}, {}> {
                     <div className="profile-page-header">
                         <Avatar size={128} icon="user" className="user-profile-picture" />
                     </div>
-                    <Card className="card-parameters" id="profile-update" title="Profile update" style={this.cardStyle} bodyStyle={this.cardBodyStyle}></Card>
-                    <Card className="card-parameters" id="favorites" title="Favorites" style={this.cardStyle} bodyStyle={this.cardBodyStyle}></Card>
-                    <Card className="card-parameters" id="global-preferences" title="Global preferences" style={this.cardStyle} bodyStyle={this.cardBodyStyle}></Card>
-                    <Card className="card-parameters" id="privacy-settings" title="Privacy settings" style={this.cardStyle} bodyStyle={this.cardBodyStyle}></Card>
+                    <Card
+                        className="card-parameters"
+                        title="Profile update"
+                        style={this.cardStyle}
+                        bodyStyle={this.cardBodyStyle}
+                        id="profile-update"
+                    ></Card>
+                    <Card
+                        className="card-parameters"
+                        title="Favorites"
+                        style={this.cardStyle}
+                        bodyStyle={this.cardBodyStyle}
+                        id="favorites"
+                    ></Card>
+                    <Card
+                        className="card-parameters"
+                        title="Global preferences"
+                        style={this.cardStyle}
+                        bodyStyle={this.cardBodyStyle}
+                        id="global-preferences"
+                    ></Card>
+                    <Card
+                        className="card-parameters"
+                        title="Privacy settings"
+                        style={this.cardStyle}
+                        bodyStyle={this.cardBodyStyle}
+                        id="privacy-settings"
+                    ></Card>
                 </Layout.Content>
                 <MediaQuery minDeviceWidth={720}>
                     <Layout.Sider>

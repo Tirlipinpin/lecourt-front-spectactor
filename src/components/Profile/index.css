@@ -1,31 +1,30 @@
 .profile-page-container {
-    height: calc(100vh - 132px);
+    height: calc(100vh - 138px);
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(47, 51, 56, 0.35);
-    border-bottom: 4px solid rgba(47, 51, 56, 0.1);
+    box-shadow: 0 4px 20px 1px rgba(47, 51, 56, 0.35);
 }
 
 @media screen and (min-width: 900px) {
     .profile-page-container {
-        margin: 0 64px;
+        margin: 0 64px 4px 64px;
     }
 }
 
 @media screen and (max-width: 720px) {
     .profile-page-container {
-        margin: 0 56px;
+        margin: 0 56px 4px 56px;
     }
 }
 
 @media screen and (max-width: 480px) {
     .profile-page-container {
-        margin: 0 32px;
+        margin: 0 32px 4px 32px;
     }
 }
 
 @media screen and (max-width: 320px) {
     .profile-page-container {
-        margin: 0;
+        margin: 0 0 8px 0;
     }
 }
 
