@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Menu, Card, Avatar } from 'antd';
+import { Layout, Menu, Card, Avatar, Anchor } from 'antd';
 import MediaQuery from 'react-responsive';
 
 import './index.css';
@@ -53,18 +53,14 @@ export class Profile extends Component<{}, {}> {
                     ></Card>
                 </Layout.Content>
                 <MediaQuery minDeviceWidth={720}>
-                    <Layout.Sider>
-                        <Menu
-                            mode="inline"
-                            defaultSelectedKeys={['1']}
-                            defaultOpenKeys={['sub1']}
-                            style={{ height: '100%' }}
-                        >
-                            <Menu.Item key="1"><a href="#profile-update">Profile update</a></Menu.Item>
-                            <Menu.Item key="2"><a href="#favorites">Favorites</a></Menu.Item>
-                            <Menu.Item key="3"><a href="#global-preferences">Global preferences</a></Menu.Item>
-                            <Menu.Item key="4"><a href="#privacy-settings">Privacy settings</a></Menu.Item>
-                        </Menu>
+                    <Layout.Sider className="anchor-menu">
+                        <Anchor className="anchor" offsetTop={128}>
+                            <h2 className="anchor-title">Go to</h2>
+                            <Anchor.Link href="#profile-update" title="Profile update" />
+                            <Anchor.Link href="#favorites" title="Favorites" />
+                            <Anchor.Link href="#global-preferences" title="Global preferences" />
+                            <Anchor.Link href="#privacy-settings" title="Privacy settings" />
+                        </Anchor>
                     </Layout.Sider>
                 </MediaQuery>
             </Layout>
