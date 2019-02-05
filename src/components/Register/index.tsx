@@ -92,12 +92,12 @@ export class Register extends Component<RegisterProps, RegisterState> {
                     <Form.Item
                         help="Enter your password"
                     >
-                        <Input prefix={<Icon type="lock" />} value={password} onChange={this.handlePassword} />
+                        <Input prefix={<Icon type="lock" />} value={password} type="password" onChange={this.handlePassword} />
                     </Form.Item>
                     <Form.Item
                         help="Comfirm your password"
                     >
-                        <Input prefix={<Icon type="lock" />} value={passwordConfirm} onChange={this.handlePasswordConfirm} />
+                        <Input prefix={<Icon type="lock" />} value={passwordConfirm} type="password" onChange={this.handlePasswordConfirm} />
                     </Form.Item>
                     <Form.Item>
                         <Button
