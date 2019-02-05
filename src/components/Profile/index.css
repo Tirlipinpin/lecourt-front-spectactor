@@ -1,0 +1,56 @@
+.profile-page-container {
+    height: calc(100vh - 132px);
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(47, 51, 56, 0.35);
+    border-bottom: 4px solid rgba(47, 51, 56, 0.1);
+}
+
+@media screen and (min-width: 900px) {
+    .profile-page-container {
+        margin: 0 64px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .profile-page-container {
+        margin: 0 56px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile-page-container {
+        margin: 0 32px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile-page-container {
+        margin: 0;
+    }
+}
+
+.profile-page-content {
+    overflow: scroll;
+    padding-bottom: 32px;
+}
+
+.profile-page-header {
+    height: 300px;
+    background-image: url(http://cubmagazine.co.uk/wp-content/uploads/2018/01/27220577-cinema-wallpapers.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.user-profile-picture {
+    background-color: #262626;
+    margin-top: 236px;
+    margin-left: 36px;
+    z-index: 10;
+    color: #ffc53d;
+    box-shadow: 0 8px 20px rgba(47, 51, 56, 0.35);
+}
+
+.card-parameters {
+    box-shadow: 0 8px 20px rgba(47, 51, 56, 0.35);    
+}
