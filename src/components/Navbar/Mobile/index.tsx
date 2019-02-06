@@ -68,15 +68,15 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                 <Header
                     style={{
                         position: 'fixed',
-                        zIndex: 1,
+                        zIndex: 10,
                         width: '100%', 
-                        padding: '0'
+                        padding: '0',
                     }}
                 >
                     <Menu
                         theme="dark"
                         mode="horizontal"
-                        style={ {lineHeight: '64px'} }
+                        style={{ lineHeight: '64px' }}
                         selectedKeys={this.isActive()}
                     >
                         <Menu.Item style={{ marginLeft: 'auto' }}><img src={logo} className="logo" onClick={() => history.push(url)} /></Menu.Item>
