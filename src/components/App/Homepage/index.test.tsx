@@ -10,7 +10,7 @@ describe('the Homepage component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Homepage homepage={{ page: 'poney' }} />);
+        wrapper = shallow(<Homepage />);
     });
 
     it('should render correctly', () => {

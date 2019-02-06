@@ -13,3 +13,12 @@
     min-height: 1500px;
     background: pink;
 }
+
+.movies-carousel {
+    height: 500px;
+    overflow: hidden;
+}
+
+.movie-poster {
+    height: 600px;
+}
