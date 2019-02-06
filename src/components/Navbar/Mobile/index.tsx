@@ -66,11 +66,9 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                     </Menu>
                 </Drawer>
                 <Header
+                    className="navbar-container"
                     style={{
-                        position: 'fixed',
-                        zIndex: 10,
-                        width: '100%', 
-                        padding: '0',
+                        padding: 0,
                     }}
                 >
                     <Menu
