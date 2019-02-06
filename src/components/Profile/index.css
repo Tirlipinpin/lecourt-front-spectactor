@@ -6,30 +6,29 @@
 
 @media screen and (min-width: 900px) {
     .profile-page-container {
-        margin: 0 64px;
+        margin: 32px 64px;
     }
 }
 
 @media screen and (max-width: 720px) {
     .profile-page-container {
-        margin: 0 56px;
+        margin: 32px 56px;
     }
 }
 
 @media screen and (max-width: 480px) {
     .profile-page-container {
-        margin: 0 32px;
+        margin: 32px 32px;
     }
 }
 
 @media screen and (max-width: 320px) {
     .profile-page-container {
-        margin: 0;
+        margin: 32px 0;
     }
 }
 
 .profile-page-content {
-    overflow: scroll;
     padding-bottom: 32px;
 }
 
@@ -51,11 +50,12 @@
 }
 
 .card-parameters {
-    box-shadow: 0 8px 20px rgba(47, 51, 56, 0.35);    
+    box-shadow: 0 8px 20px rgba(47, 51, 56, 0.35);
 }
 
 .anchor-menu {
     background: white;
+    box-shadow: -2px 0px 10px 0px rgba(47, 51, 56, 0.35);
 }
 
 .anchor {
