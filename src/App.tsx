@@ -5,6 +5,7 @@ import { Icon, Layout } from 'antd';
 import axios from 'axios';
 
 import Navbar from './components/Navbar';
+import MobileNavbar from './components/Navbar/Mobile';
 const Homepage = lazy(() => import('./components/Homepage'));
 const Profile = lazy(() => import('./components/Profile'));
 
@@ -12,6 +13,7 @@ import axiosInterceptor from './services/axiosInterceptor';
 import { LoginStore } from './reducers/login';
 
 import './App.css';
+import MediaQuery from 'react-responsive';
 
 interface AppProps {
     match: any,
@@ -55,7 +57,12 @@ export class App extends Component<AppProps, {}>{
         return (
             <div className="app-wrapper">
                 <Layout>
-                    <Navbar match={match} history={history} location={location} />
+                    <MediaQuery minWidth={500}>
+                        <Navbar match={match} history={history} location={location} />
+                    </MediaQuery>
+                    <MediaQuery maxWidth={500}>
+                        <MobileNavbar match={match} history={history} location={location} />
+                    </MediaQuery>
                     <div className="app-container">
                         <Layout.Content className="content-container">
                             <Route exact path={match.url} render={() => this.lazyRender(Homepage)} />

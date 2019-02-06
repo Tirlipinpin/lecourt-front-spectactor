@@ -50,7 +50,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                 >
                     <Menu.Item key="homepage"><Link to={url}>Homepage</Link></Menu.Item>
                     <Menu.Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
-                    <Menu.Item key="3" className="logout-button" onClick={this.logout}>Logout</Menu.Item>
+                    <Menu.Item key="logout" className="logout-button" onClick={this.logout}>Logout</Menu.Item>
                 </Menu>
             </Header>
         );
