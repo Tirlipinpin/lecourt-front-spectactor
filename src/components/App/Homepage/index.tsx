@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect, ReactReduxContext } from 'react-redux';
 import { Carousel, Layout, Icon } from 'antd';
 
+import CarouselArrow from './components/CarouselArrow';
 import './index.css';
 
 export class Homepage extends Component<{}, {}> {
@@ -23,17 +24,44 @@ export class Homepage extends Component<{}, {}> {
                 <Layout className="movies-carousel">
                     <h1>Our selection</h1>
                     <Carousel
-                        className="carousel"
+                        className="movie-posters-carousel"
                         speed={300}
-                        lazyLoad
                         draggable
-                        slidesToShow={5}
+                        slidesToShow={4}
                         slidesToScroll={3}
                         arrows
-                        prevArrow={<Icon type="arrow-left" style={{ cursor: 'pointer' }} />}
-                        nextArrow={<Icon type="arrow-right" style={{ cursor: 'pointer' }} />}
+                        // @ts-ignore
+                        prevArrow={<CarouselArrow className="arrow-slider-left" direction="left" />}
+                        // @ts-ignore
+                        nextArrow={<CarouselArrow className="arrow-slider-right" direction="right" />}
                     >
-                        <div className="movie-poster" style={{ backgroundImage: 'url(http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg)', backgroundSize: 'cover' }} />
+                        <img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
+                        <img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
+                        <img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
+                        <img className="movie-poster" src="http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg" />
+                        <img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
+                        <img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
+                        <img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
+                        <img className="movie-poster" src="http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg" />
+                        <img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
+                        <img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
+                        <img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
+                    </Carousel>
+                </Layout>
+                <Layout className="movies-carousel">
+                    <h1>Our selection</h1>
+                    <Carousel
+                        className="movie-posters-carousel"
+                        speed={300}
+                        draggable
+                        slidesToShow={4}
+                        slidesToScroll={3}
+                        arrows
+                        // @ts-ignore
+                        prevArrow={<CarouselArrow className="arrow-slider" direction="left" />}
+                        // @ts-ignore
+                        nextArrow={<CarouselArrow className="arrow-slider" direction="right" />}
+                    >
                         <img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
                         <img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
                         <img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
