@@ -70,7 +70,7 @@ export class App extends Component<AppProps, {}>{
                         </Layout.Content>
                         <Layout.Footer style={{
                             textAlign: 'center',
-                            background: '#002766',
+                            background: '#001529',
                             color: 'rgba(255, 255, 255, 0.65)'
                         }}>
                             Lecourt ©2019 Created with <Icon type="heart" /> by the best developpers ever
