@@ -75,7 +75,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                     theme="dark"
                     mode="horizontal"
                     style={{ lineHeight: '64px' }}
-                    className="menu-items-container"
+                    className="menu-items-container navbar-menu"
                     selectedKeys={this.isActive()}
                 >
                     <Menu.Item key="homepage"><Link to={url}>Homepage</Link></Menu.Item>

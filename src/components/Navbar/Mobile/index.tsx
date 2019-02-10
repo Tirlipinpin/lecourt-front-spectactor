@@ -7,7 +7,7 @@ const { Header } = Layout;
 import { LOGOUT } from '../../../reducers/login/constantes';
 import logo from '../Logo.png';
 import { UPDATE_SEARCH_TERM } from '../../../reducers/navbar/constantes';
-import navbar, { NavbarStore } from '../../../reducers/navbar';
+import { NavbarStore } from '../../../reducers/navbar';
 
 interface MobileNavbarProps {
     match: any,
@@ -70,6 +70,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
             type="close-circle"
             onClick={() => this.onChangeSearchTerm({ target: { value: '' } })}
             theme="filled"
+            style={{ fill: 'pink' }}
         />
     ))
 
@@ -89,7 +90,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                     visible={ menuOpen }
                     onClose={this.toggleMenu}
                 >
-                    <Menu>
+                    <Menu className="navbar-menu">
                         <Menu.Item key="homepage"><Link to={url}>Homepage</Link></Menu.Item>
                         <Menu.Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
                         <Menu.Item key="logout" onClick={this.logout}>Logout</Menu.Item>

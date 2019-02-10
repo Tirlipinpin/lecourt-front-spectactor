@@ -22,3 +22,11 @@
         float: right;
     }
 }
+
+.navbar-menu .ant-input-search {
+    width: 180px;
+}
+
+.navbar-menu .ant-input {
+    padding-right: 64px !important;
+}
