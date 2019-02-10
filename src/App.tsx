@@ -57,10 +57,10 @@ export class App extends Component<AppProps, {}>{
         return (
             <div className="app-wrapper">
                 <Layout>
-                    <MediaQuery minWidth={500}>
+                    <MediaQuery minWidth={600}>
                         <Navbar match={match} history={history} location={location} />
                     </MediaQuery>
-                    <MediaQuery maxWidth={500}>
+                    <MediaQuery maxWidth={600}>
                         <MobileNavbar match={match} history={history} location={location} />
                     </MediaQuery>
                     <div className="app-container">

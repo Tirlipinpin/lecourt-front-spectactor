@@ -2,8 +2,8 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
 
-import { Navbar } from '.';
-import { NavbarStore } from '../../reducers/navbar';
+import { MobileNavbar } from '.';
+import { NavbarStore } from '../../../reducers/navbar';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -17,10 +17,10 @@ describe('The Profile component', () => {
 
         const navbar: NavbarStore = {
             searchTerm: '',
-        }
+        };
 
         wrapper = shallow(
-            <Navbar
+            <MobileNavbar
                 location={{ pathname: '' }}
                 history={{ push: () => {} }}
                 match={match}

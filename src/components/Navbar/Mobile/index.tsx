@@ -1,17 +1,20 @@
 import React, { Component, Dispatch } from 'react';
-import { Layout, Menu, Drawer, Icon } from 'antd';
+import { Layout, Menu, Drawer, Icon, Input } from 'antd';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const { Header } = Layout;
 import { LOGOUT } from '../../../reducers/login/constantes';
 import logo from '../Logo.png';
+import { UPDATE_SEARCH_TERM } from '../../../reducers/navbar/constantes';
+import navbar, { NavbarStore } from '../../../reducers/navbar';
 
 interface MobileNavbarProps {
     match: any,
     history: any,
     dispatch: Dispatch<any>,
     location: any,
+    navbar: NavbarStore,
 };
 
 interface MobileNavbarState {
@@ -45,10 +48,37 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
         this.setState({ menuOpen: !this.state.menuOpen });
     }
 
+    onChangeSearchTerm = (e: any) => {
+        const { dispatch } = this.props;
+
+        dispatch({
+            type: UPDATE_SEARCH_TERM,
+            payload: e.target.value,
+        });
+    }
+
+    onSearchTerm = () => {
+        const { history, navbar, match } = this.props;
+        const { searchTerm } = navbar;
+
+        if (searchTerm.length > 0)
+            history.push(`${match.url}/search`);
+    }
+
+    renderClearIcon = React.createElement(() => (
+        <Icon
+            type="close-circle"
+            onClick={() => this.onChangeSearchTerm({ target: { value: '' } })}
+            theme="filled"
+        />
+    ))
+
     render() {
-        const { history } = this.props;
+        const { history, navbar } = this.props;
         const { url } = this.props.match;
         const { menuOpen } = this.state;
+
+        const { searchTerm } = navbar;
 
         return (
             <div>
@@ -63,6 +93,16 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                         <Menu.Item key="homepage"><Link to={url}>Homepage</Link></Menu.Item>
                         <Menu.Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
                         <Menu.Item key="logout" onClick={this.logout}>Logout</Menu.Item>
+                        <Menu.Item key="searchbar">
+                            <Input.Search
+                                value={searchTerm}
+                                onChange={this.onChangeSearchTerm}
+                                placeholder="Search a short..."
+                                suffix={searchTerm.length > 0 && this.renderClearIcon}
+                                onPressEnter={this.onSearchTerm}
+                                onSearch={this.onSearchTerm}
+                            />
+                        </Menu.Item>
                     </Menu>
                 </Drawer>
                 <Header
@@ -86,4 +126,6 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
     }
 };
 
-export default connect()(MobileNavbar);
+export default connect(({ navbar }: any) => ({
+    navbar,
+}))(MobileNavbar);
