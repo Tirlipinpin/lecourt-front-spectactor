@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Menu, Card, Avatar, Anchor } from 'antd';
+import { Layout, Skeleton, Card, Avatar, Anchor } from 'antd';
 import MediaQuery from 'react-responsive';
 
 import './index.css';
@@ -29,28 +29,28 @@ export class Profile extends Component<{}, {}> {
                         style={this.cardStyle}
                         bodyStyle={this.cardBodyStyle}
                         id="profile-update"
-                    ></Card>
+                    ><Skeleton active paragraph={{ rows: 8 }} /></Card>
                     <Card
                         className="card-parameters"
                         title="Favorites"
                         style={this.cardStyle}
                         bodyStyle={this.cardBodyStyle}
                         id="favorites"
-                    ></Card>
+                    ><Skeleton active paragraph={{ rows: 3 }} /></Card>
                     <Card
                         className="card-parameters"
                         title="Global preferences"
                         style={this.cardStyle}
                         bodyStyle={this.cardBodyStyle}
                         id="global-preferences"
-                    ></Card>
+                    ><Skeleton active paragraph={{ rows: 8 }} /></Card>
                     <Card
                         className="card-parameters"
                         title="Privacy settings"
                         style={this.cardStyle}
                         bodyStyle={this.cardBodyStyle}
                         id="privacy-settings"
-                    ></Card>
+                    ><Skeleton active paragraph={{ rows: 5 }} /></Card>
                 </Layout.Content>
                 <MediaQuery minDeviceWidth={720}>
                     <Layout.Sider className="anchor-menu">
