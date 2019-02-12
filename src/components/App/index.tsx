@@ -16,6 +16,7 @@ import axiosInterceptor from '../../services/axiosInterceptor';
 import { LoginStore } from '../../reducers/login';
 
 import './index.css';
+import NotFound from '../NotFound';
 
 interface AppProps {
     match: any,
@@ -68,6 +69,7 @@ export class App extends Component<AppProps, {}>{
                                 <Route path={`${match.path}/profile`} render={(props) => this.renderComponent(Profile, props)}/>
                                 <Route path={`${match.path}/watch/:id`} render={(props) => this.renderComponent(Watch, props)}/>
                                 <Route path={`${match.path}/search`} render={(props) => this.renderComponent(Search, props)}/>
+                                <Route render={() => <NotFound />}/>
                             </Switch>
                         </Layout.Content>
                         <Layout.Footer style={{
