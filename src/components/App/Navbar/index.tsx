@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 const { Header } = Layout;
 import logo from './Logo.png';
 import './index.css';
-import { LOGOUT } from '../../reducers/login/constantes';
-import { UPDATE_SEARCH_TERM } from '../../reducers/navbar/constantes';
-import { NavbarStore } from '../../reducers/navbar';
+import { LOGOUT } from '../../../reducers/login/constantes';
+import { UPDATE_SEARCH_TERM } from '../../../reducers/navbar/constantes';
+import { NavbarStore } from '../../../reducers/navbar';
 
 interface NavbarProps {
     match: any,

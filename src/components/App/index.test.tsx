@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import { Redirect } from 'react-router';
 
-import { App } from './App';
+import { App } from '.';
 
 Enzyme.configure({ adapter: new Adapter() });
 

@@ -1,18 +1,19 @@
 import React, { Component, Dispatch, Suspense, lazy } from 'react';
 import { Route, Redirect } from 'react-router';
-import { connect } from 'react-redux';
+import { connect, Connect } from 'react-redux';
 import { Icon, Layout } from 'antd';
 import axios from 'axios';
 
-import Navbar from './components/Navbar';
-import MobileNavbar from './components/Navbar/Mobile';
-const Homepage = lazy(() => import('./components/Homepage'));
-const Profile = lazy(() => import('./components/Profile'));
+import Navbar from './Navbar';
+import MobileNavbar from './Navbar/Mobile';
+const Homepage = lazy(() => import('./Homepage'));
+const Profile = lazy(() => import('./Profile'));
+const Search = lazy(() => import('./Search'));
 
-import axiosInterceptor from './services/axiosInterceptor';
-import { LoginStore } from './reducers/login';
+import axiosInterceptor from '../../services/axiosInterceptor';
+import { LoginStore } from '../../reducers/login';
 
-import './App.css';
+import './index.css';
 import MediaQuery from 'react-responsive';
 
 interface AppProps {
@@ -42,12 +43,12 @@ export class App extends Component<AppProps, {}>{
                 <Icon type="loading" />
             )}
         >
-            <Child />
+            <Child { ...this.props } />
         </Suspense>
     )
 
     render() {
-        const { match, login, history, location } = this.props;
+        const { match, login } = this.props;
 
         if (!login.token)
             return (
@@ -58,15 +59,16 @@ export class App extends Component<AppProps, {}>{
             <div className="app-wrapper">
                 <Layout>
                     <MediaQuery minWidth={600}>
-                        <Navbar match={match} history={history} location={location} />
+                        <Navbar { ...this.props } />
                     </MediaQuery>
                     <MediaQuery maxWidth={600}>
-                        <MobileNavbar match={match} history={history} location={location} />
+                        <MobileNavbar { ...this.props } />
                     </MediaQuery>
                     <div className="app-container">
                         <Layout.Content className="content-container">
                             <Route exact path={match.url} render={() => this.lazyRender(Homepage)} />
-                            <Route path={`${match.path}/profile`} render={() => this.lazyRender(Profile)} />
+                            <Route path={`${match.path}/profile`} render={() => this.lazyRender(Profile)}/>
+                            <Route path={`${match.path}/search`} render={() => <Suspense fallback={<Icon type="loading" />}><Search {...this.props} /></Suspense>} />
                         </Layout.Content>
                         <Layout.Footer style={{
                             textAlign: 'center',

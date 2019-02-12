@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const { Header } = Layout;
-import { LOGOUT } from '../../../reducers/login/constantes';
+import { LOGOUT } from '../../../../reducers/login/constantes';
 import logo from '../Logo.png';
-import { UPDATE_SEARCH_TERM } from '../../../reducers/navbar/constantes';
-import { NavbarStore } from '../../../reducers/navbar';
+import { UPDATE_SEARCH_TERM } from '../../../../reducers/navbar/constantes';
+import { NavbarStore } from '../../../../reducers/navbar';
 
 interface MobileNavbarProps {
     match: any,

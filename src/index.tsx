@@ -10,7 +10,7 @@ import axios from 'axios';
 import * as serviceWorker from './serviceWorker';
 import configureStore, { history } from './store';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import Login from './components/Login';
 import Register from './components/Register';
 
