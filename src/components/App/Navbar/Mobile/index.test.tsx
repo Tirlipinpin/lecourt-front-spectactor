@@ -3,11 +3,11 @@ import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
 
 import { MobileNavbar } from '.';
-import { NavbarStore } from '../../../reducers/navbar';
+import { NavbarStore } from '../../../../reducers/navbar';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('The Profile component', () => {
+describe('The Mobile navbar component', () => {
     let wrapper;
 
     beforeEach(() => {
