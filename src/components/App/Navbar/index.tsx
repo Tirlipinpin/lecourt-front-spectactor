@@ -3,12 +3,14 @@ import { Layout, Menu, Input, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const { Header } = Layout;
 import logo from './Logo.png';
 import './index.css';
 import { LOGOUT } from '../../../reducers/login/constantes';
 import { UPDATE_SEARCH_TERM } from '../../../reducers/navbar/constantes';
 import { NavbarStore } from '../../../reducers/navbar';
+import ClearIcon from './ClearIcon';
+
+const { Header } = Layout;
 
 interface NavbarProps {
     match: any,
@@ -54,14 +56,6 @@ export class Navbar extends Component<NavbarProps, {}> {
             history.push(`${match.url}/search`);
     }
 
-    renderClearIcon = React.createElement(() => (
-        <Icon
-            type="close-circle"
-            onClick={() => this.onChangeSearchTerm({ target: { value: '' } })}
-            theme="filled"
-        />
-    ))
-
     render() {
         const { history, navbar } = this.props;
         const { url } = this.props.match;
@@ -85,7 +79,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                             value={searchTerm}
                             onChange={this.onChangeSearchTerm}
                             placeholder="Search a short..."
-                            suffix={searchTerm.length > 0 && this.renderClearIcon}
+                            suffix={<ClearIcon termLength={searchTerm.length} onChangeSearchTerm={this.onChangeSearchTerm} />}
                             onPressEnter={this.onSearchTerm}
                             onSearch={this.onSearchTerm}
                         />

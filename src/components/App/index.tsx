@@ -1,6 +1,6 @@
 import React, { Component, Dispatch, Suspense, lazy } from 'react';
-import { Route, Redirect } from 'react-router';
-import { connect, Connect } from 'react-redux';
+import { Switch, Route, Redirect } from 'react-router';
+import { connect } from 'react-redux';
 import { Icon, Layout } from 'antd';
 import axios from 'axios';
 
@@ -66,9 +66,11 @@ export class App extends Component<AppProps, {}>{
                     </MediaQuery>
                     <div className="app-container">
                         <Layout.Content className="content-container">
-                            <Route exact path={match.url} render={() => this.lazyRender(Homepage)} />
-                            <Route path={`${match.path}/profile`} render={() => this.lazyRender(Profile)}/>
-                            <Route path={`${match.path}/search`} render={() => <Suspense fallback={<Icon type="loading" />}><Search {...this.props} /></Suspense>} />
+                            <Switch>
+                                <Route exact path={match.url} render={() => this.lazyRender(Homepage)} />
+                                <Route path={`${match.path}/profile`} render={() => this.lazyRender(Profile)}/>
+                                <Route path={`${match.path}/search`} render={() => <Suspense fallback={<Icon type="loading" />}><Search {...this.props} /></Suspense>} />
+                            </Switch>
                         </Layout.Content>
                         <Layout.Footer style={{
                             textAlign: 'center',
