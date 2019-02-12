@@ -8,6 +8,7 @@ import { LOGOUT } from '../../../../reducers/login/constantes';
 import logo from '../Logo.png';
 import { UPDATE_SEARCH_TERM } from '../../../../reducers/navbar/constantes';
 import { NavbarStore } from '../../../../reducers/navbar';
+import ClearIcon from '../ClearIcon';
 
 interface MobileNavbarProps {
     match: any,
@@ -65,15 +66,6 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
             history.push(`${match.url}/search`);
     }
 
-    renderClearIcon = React.createElement(() => (
-        <Icon
-            type="close-circle"
-            onClick={() => this.onChangeSearchTerm({ target: { value: '' } })}
-            theme="filled"
-            style={{ fill: 'pink' }}
-        />
-    ))
-
     render() {
         const { history, navbar } = this.props;
         const { url } = this.props.match;
@@ -99,7 +91,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                                 value={searchTerm}
                                 onChange={this.onChangeSearchTerm}
                                 placeholder="Search a short..."
-                                suffix={searchTerm.length > 0 && this.renderClearIcon}
+                                suffix={<ClearIcon termLength={searchTerm.length} onChangeSearchTerm={this.onChangeSearchTerm} />}
                                 onPressEnter={this.onSearchTerm}
                                 onSearch={this.onSearchTerm}
                             />
