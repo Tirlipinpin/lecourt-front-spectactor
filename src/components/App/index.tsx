@@ -1,5 +1,5 @@
 import React, { Component, Dispatch, Suspense, lazy } from 'react';
-import { Switch, Route, Redirect } from 'react-router';
+import { Switch, Route, Redirect, RouterProps } from 'react-router';
 import { connect } from 'react-redux';
 import { Icon, Layout } from 'antd';
 import axios from 'axios';
@@ -10,6 +10,7 @@ import MobileNavbar from './Navbar/Mobile';
 const Homepage = lazy(() => import('./Homepage'));
 const Profile = lazy(() => import('./Profile'));
 const Search = lazy(() => import('./Search'));
+const Watch = lazy(() => import('./Watch'));
 
 import axiosInterceptor from '../../services/axiosInterceptor';
 import { LoginStore } from '../../reducers/login';
@@ -37,15 +38,11 @@ export class App extends Component<AppProps, {}>{
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
 
-    lazyRender = (Child: React.ComponentType) => (
-        <Suspense
-            fallback={(
-                <Icon type="loading" />
-            )}
-        >
-            <Child { ...this.props } />
+    renderComponent = (Child: any, props: RouterProps) => React.createElement(() => (
+        <Suspense fallback={<Icon type="loading" />}>
+            <Child {...props} />
         </Suspense>
-    )
+    ))
 
     render() {
         const { match, login } = this.props;
@@ -67,9 +64,10 @@ export class App extends Component<AppProps, {}>{
                     <div className="app-container">
                         <Layout.Content className="content-container">
                             <Switch>
-                                <Route exact path={match.url} render={() => this.lazyRender(Homepage)} />
-                                <Route path={`${match.path}/profile`} render={() => this.lazyRender(Profile)}/>
-                                <Route path={`${match.path}/search`} render={() => <Suspense fallback={<Icon type="loading" />}><Search {...this.props} /></Suspense>} />
+                                <Route exact path={match.url} render={(props) => this.renderComponent(Homepage, props)} />
+                                <Route path={`${match.path}/profile`} render={(props) => this.renderComponent(Profile, props)}/>
+                                <Route path={`${match.path}/watch/:id`} render={(props) => this.renderComponent(Watch, props)}/>
+                                <Route path={`${match.path}/search`} render={(props) => this.renderComponent(Search, props)}/>
                             </Switch>
                         </Layout.Content>
                         <Layout.Footer style={{
