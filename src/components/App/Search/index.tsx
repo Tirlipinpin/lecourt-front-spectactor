@@ -1,6 +1,9 @@
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { NavbarStore } from '../../../reducers/navbar';
+import { Layout } from 'antd';
+
+import './index.css';
 
 interface SearchProps {
     match: any,
@@ -16,9 +19,9 @@ export class Search extends Component<SearchProps, {}> {
         const { searchTerm } = navbar;
 
         return (
-            <div>
+            <Layout className="search-page-container">
                 You searched for { searchTerm }
-            </div>
+            </Layout>
         );
     }
 }

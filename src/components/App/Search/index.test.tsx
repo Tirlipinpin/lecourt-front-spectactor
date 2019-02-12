@@ -2,18 +2,18 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
 
-import { Search } from '.';
+import Search from '.';
 
-Enzyme.configure({ adapter: new Adapter() })
+Enzyme.configure({ adapter: new Adapter() });
 
-describe('the Homepage component', () => {
+describe('The Search component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Search match={{}} history={{}} location={{}} dispatch={jest.fn} navbar={{ searchTerm: '' }} />);
+        wrapper = shallow(<Search location={{}} history={{}} match={{}} />);
     });
 
     it('should render correctly', () => {
-        expect(wrapper.length).toEqual(1);
+        expect(wrapper.length).toBe(1);
     });
 });
