@@ -19,7 +19,7 @@ export class Search extends Component<SearchProps, {}> {
         const { searchTerm } = navbar;
 
         return (
-            <Layout className="search-page-container">
+            <Layout className="page-container search-page-container">
                 You searched for { searchTerm }
             </Layout>
         );

@@ -1,75 +1,12 @@
 .watch-page-container {
     min-height: 100vh;
     overflow: hidden;
-    box-shadow: 0 1px 20px 1px rgba(47, 51, 56, 0.35);
-    margin: 32px 64px;
 }
 
 .watch-page-container .description-container {
-    padding: 32px 32px;
-}
-
-.watch-page-container .player-overlay {
-    position: absolute;
-    top: 0;
-    margin-top: 104px;
-    right: 0;
-    margin-right: 72px;
-
-    color: white;
-    padding: 4px 8px;
-    border-radius: 8px;
-}
-
-.player-overlay-info-menu {
-    z-index: 1;
-}
-
-@media screen and (max-width: 500px) {
-    .player-overlay-info-menu .ant-popover-content {
-        max-width: 30vh;
-        max-height: 35vh;
-        overflow-y: scroll;
-        text-overflow: ellipsis;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .player-overlay-info-menu .ant-popover-content {
-        max-width: 20vh;
-        max-height: 35vh;
-        overflow-y: scroll;
-        text-overflow: ellipsis;
-    }
-}
-
-@media screen and (max-width: 300px) {
-    .player-overlay-info-menu .ant-popover-content {
-        max-width: 10vh;
-        max-height: 35vh;
-        overflow-y: scroll;
-        text-overflow: ellipsis;
-    }
-}
-
-@media screen and (min-width: 500px) {
-    .player-overlay-info-menu .ant-popover-content {
-        max-width: 40vh;
-        max-height: 35vh;
-        overflow-y: hidden;
-        text-overflow: ellipsis;
-    }    
-}
-
-.info-menu-button svg {
-    width: 1.5em;
-    height: 1.5em;
+    padding: 16px 128px;
 }
 
 .watch-page-container .movies-carousel {
-    padding: 32px 32px;
-}
-
-.watch-page-container .movies-carousel .movie-poster:hover {
-    cursor: pointer;
+    padding: 0 128px;
 }

@@ -15,7 +15,7 @@ const Img = posed.img({
 export class Homepage extends Component<{}, {}> {
     render() {
         return (
-            <Layout className="homepage-page-container">
+            <Layout className="page-container">
                 <Carousel
                     autoplay
                     dots
