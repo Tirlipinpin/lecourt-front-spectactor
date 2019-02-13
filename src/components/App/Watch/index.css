@@ -65,3 +65,11 @@
     width: 1.5em;
     height: 1.5em;
 }
+
+.watch-page-container .movies-carousel {
+    padding: 32px 32px;
+}
+
+.watch-page-container .movies-carousel .movie-poster:hover {
+    cursor: pointer;
+}
