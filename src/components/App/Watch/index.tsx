@@ -22,7 +22,7 @@ export class Watch extends Component<WatchProps, WatchState> {
     };
 
     handleInfoMenu = (value: boolean) => {
-        this.setState({ infoMenuVisible: value });
+        setTimeout(() => this.setState({ infoMenuVisible: value }), 500);
     };
 
     render() {
