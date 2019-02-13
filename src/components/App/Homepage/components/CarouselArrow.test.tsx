@@ -2,7 +2,7 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
 
-import { Homepage } from '.';
+import CarouselArrow from './CarouselArrow';
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -10,7 +10,7 @@ describe('the Homepage component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Homepage />);
+        wrapper = shallow(<CarouselArrow direction="left" onClick={jest.fn} />);
     });
 
     it('should render correctly', () => {
