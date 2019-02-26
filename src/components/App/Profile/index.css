@@ -2,17 +2,18 @@
     min-height: 100vh;
     overflow: hidden;
     box-shadow: 0 1px 20px 1px rgba(47, 51, 56, 0.35);
+    padding: 0;
 }
 
 @media screen and (min-width: 900px) {
     .profile-page-container {
-        margin: 32px 64px;
+        margin: 32px 128px;
     }
 }
 
 @media screen and (max-width: 720px) {
     .profile-page-container {
-        margin: 32px 56px;
+        margin: 32px 64px;
     }
 }
 
@@ -52,7 +53,7 @@
 }
 
 .cards-parameters-container {
-    padding-bottom: 32px;
+    padding: 0 128px 32px 128px;
 }
 
 .cards-parameters-container .card-parameters {
@@ -60,7 +61,7 @@
 }
 
 .anchor-menu {
-    background: white;
+    padding-left: 8px;
     box-shadow: -2px 0px 10px 0px rgba(47, 51, 56, 0.35);
 }
 

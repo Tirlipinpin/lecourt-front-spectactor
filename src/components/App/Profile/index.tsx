@@ -26,8 +26,8 @@ export class Profile extends Component<{}, {}> {
                     </div>
                     <Layout>
                         <MediaQuery minDeviceWidth={720}>
-                            <Layout.Sider className="anchor-menu">
-                                <Anchor className="anchor" offsetTop={64}>
+                            <Layout.Sider className="anchor-menu" theme="light">
+                                <Anchor className="anchor" offsetTop={86} bounds={64}>
                                     <h2 className="anchor-title">Go to</h2>
                                     <Anchor.Link href="#profile-update" title="Profile update" />
                                     <Anchor.Link href="#favorites" title="Favorites" />
