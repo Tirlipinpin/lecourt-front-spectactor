@@ -28,28 +28,34 @@
     }
 }
 
-.profile-page-content {
-    padding-bottom: 32px;
-}
-
 .profile-page-header {
     height: 300px;
     background-image: url(http://cubmagazine.co.uk/wp-content/uploads/2018/01/27220577-cinema-wallpapers.jpeg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    display: flex;
+    align-items: baseline;
+}
+
+.profile-page-header h1 {
+    color: white;
 }
 
 .user-profile-picture {
     background-color: #262626;
-    margin-top: 236px;
+    margin-top: 16px;
     margin-left: 36px;
     z-index: 1;
     color: #ffc53d;
     box-shadow: 0 8px 20px rgba(47, 51, 56, 0.35);
 }
 
-.card-parameters {
+.cards-parameters-container {
+    padding-bottom: 32px;
+}
+
+.cards-parameters-container .card-parameters {
     box-shadow: 0 8px 20px rgba(47, 51, 56, 0.35);
 }
 
