@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Collapse, Row, Col, Carousel } from 'antd';
+import { Layout, Row, Col, Carousel } from 'antd';
 import posed from 'react-pose';
-
 import ReactPlayer from 'react-player';
+
+const StaffGallery = lazy(() => import('./components/StaffGallery'));
 
 import './index.css';
 
@@ -52,14 +53,13 @@ export class Watch extends Component<WatchProps, WatchState> {
                 <Layout className="description-container">
                     <Row gutter={16}>
                         <Col span={12}>
-                            <h1>Big Buck bunny</h1>
-                            <h4>{content}</h4>
+                            <h1 className="movie-title">Big Buck bunny</h1>
+                            <h4 className="movie-summary">{content}</h4>
                         </Col>
                         <Col span={12}>
-                            <Collapse>
-                                <Collapse.Panel key="staff" header="Staff">
-                                </Collapse.Panel>
-                            </Collapse>
+                            <Suspense fallback="Loading...">
+                                <StaffGallery />
+                            </Suspense>
                         </Col>
                     </Row>
                 </Layout>
@@ -74,7 +74,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                         slidesToScroll={3}
                         arrows
                     >
-                        <Img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
+                        <Img style={{ cursor: 'pointer' }} className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
                         <Img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
                         <Img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
                         <Img className="movie-poster" src="http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg" />

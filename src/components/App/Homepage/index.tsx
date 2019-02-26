@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Carousel, Layout } from 'antd';
 import posed from 'react-pose';
+import { History } from 'history';
 
 import CarouselArrow from './components/CarouselArrow';
 import './index.css';
+
+export interface HomepageProps {
+    history: History,
+}
 
 const Img = posed.img({
     hoverable: true,
@@ -12,7 +17,28 @@ const Img = posed.img({
     hover: { filter: 'grayscale(0%) blur(0px)', scale: 1.1 }
 });
 
-export class Homepage extends Component<{}, {}> {
+export class Homepage extends Component<HomepageProps, {}> {
+    pictures: string[] = [
+        'http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg',
+        'https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg',
+        'http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg',
+        'https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg',
+        'http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg',
+        'https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg',
+        'http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg',
+        'https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg',
+        'http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg',
+        'https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg',
+        'http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg',
+        'https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg',
+    ];
+
+    goToWatch = (id: number) => {
+        const { history } = this.props;
+
+        history.push(`/app/watch/${id}`);
+    }
+
     render() {
         return (
             <Layout className="page-container">
@@ -42,17 +68,16 @@ export class Homepage extends Component<{}, {}> {
                         // @ts-ignore
                         nextArrow={<CarouselArrow className="arrow-slider-right" direction="right" />}
                     >
-                        <Img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
-                        <Img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
-                        <Img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
-                        <Img className="movie-poster" src="http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg" />
-                        <Img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
-                        <Img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
-                        <Img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
-                        <Img className="movie-poster" src="http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg" />
-                        <Img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
-                        <Img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
-                        <Img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
+                        {
+                            this.pictures.map((picture, id) => (
+                                <Img
+                                    key={id}
+                                    className="movie-poster"
+                                    src={picture}
+                                    onClick={() => this.goToWatch(id)}
+                                />
+                            ))
+                        }
                     </Carousel>
                 </Layout>
                 <Layout className="movies-carousel">
@@ -69,17 +94,16 @@ export class Homepage extends Component<{}, {}> {
                         // @ts-ignore
                         nextArrow={<CarouselArrow className="arrow-slider" direction="right" />}
                     >
-                        <Img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
-                        <Img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
-                        <Img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
-                        <Img className="movie-poster" src="http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg" />
-                        <Img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
-                        <Img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
-                        <Img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
-                        <Img className="movie-poster" src="http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg" />
-                        <Img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
-                        <Img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
-                        <Img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
+                        {
+                            this.pictures.map((picture, id) => (
+                                <Img
+                                    key={id}
+                                    className="movie-poster"
+                                    src={picture}
+                                    onClick={() => this.goToWatch(id)}
+                                />
+                            ))
+                        }
                     </Carousel>
                 </Layout>
             </Layout>
