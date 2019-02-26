@@ -33,6 +33,51 @@ export class Homepage extends Component<HomepageProps, {}> {
         'https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg',
     ];
 
+    carouselResponsiveSettings = [
+        {
+            breakpoint: 1258,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            },
+        },
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            },
+        },
+        {
+            breakpoint: 876,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            },
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 2,
+                initialSlide: 2
+            },
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            },
+        }
+    ];
+
     goToWatch = (id: number) => {
         const { history } = this.props;
 
@@ -56,13 +101,16 @@ export class Homepage extends Component<HomepageProps, {}> {
                 </Carousel>
                 <Layout className="movies-carousel">
                     <h1>Our selection</h1>
-                    <Carousel
+                    <
+                        //@ts-ignore
+                        Carousel
                         className="movie-posters-carousel"
                         speed={300}
                         draggable
-                        slidesToShow={8}
+                        slidesToShow={5}
                         slidesToScroll={3}
                         arrows
+                        responsive={this.carouselResponsiveSettings}
                         // @ts-ignore
                         prevArrow={<CarouselArrow className="arrow-slider-left" direction="left" />}
                         // @ts-ignore
@@ -82,17 +130,20 @@ export class Homepage extends Component<HomepageProps, {}> {
                 </Layout>
                 <Layout className="movies-carousel">
                     <h1>Our selection</h1>
-                    <Carousel
+                    <
+                        //@ts-ignore
+                        Carousel
                         className="movie-posters-carousel"
                         speed={300}
                         draggable
-                        slidesToShow={8}
+                        slidesToShow={5}
                         slidesToScroll={3}
                         arrows
+                        responsive={this.carouselResponsiveSettings}
                         // @ts-ignore
-                        prevArrow={<CarouselArrow className="arrow-slider" direction="left" />}
+                        prevArrow={<CarouselArrow className="arrow-slider-left" direction="left" />}
                         // @ts-ignore
-                        nextArrow={<CarouselArrow className="arrow-slider" direction="right" />}
+                        nextArrow={<CarouselArrow className="arrow-slider-right" direction="right" />}
                     >
                         {
                             this.pictures.map((picture, id) => (
