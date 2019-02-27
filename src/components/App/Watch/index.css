@@ -1,0 +1,33 @@
+.watch-page-container {
+    min-height: 100vh;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+
+.watch-page-container .description-container {
+    padding: 16px 128px;
+    background: white;
+}
+
+.watch-page-container .description-container .movie-title {
+    font-size: 3em;
+}
+
+.watch-page-container .description-container .movie-summary {
+    font-size: 1.3em;
+}
+
+.watch-page-container .movies-carousel {
+    padding: 16px 128px 32px 128px;
+    background: black;
+    width: 100%;
+    color: white;
+}
+
+.watch-page-container .movies-carousel h1 {
+    color: white;
+}
+
+.watch-page-container .movies-carousel .slick-arrow {
+    color: white;
+}

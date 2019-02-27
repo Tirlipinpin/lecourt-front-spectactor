@@ -8,3 +8,9 @@
 .content-container {
     background-color: white;
 }
+
+.page-container {
+    margin: 32px 128px;
+    padding-bottom: 32px;
+    box-shadow: 0 4px 20px 1px rgba(47, 51, 56, 0.35);
+}

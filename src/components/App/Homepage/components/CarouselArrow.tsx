@@ -3,6 +3,7 @@ import { Icon } from 'antd';
 
 export interface CarouselArrowProps {
     direction: string,
+    className: string,
     onClick: () => void,
 };
 

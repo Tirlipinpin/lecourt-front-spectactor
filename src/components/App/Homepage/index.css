@@ -1,9 +1,3 @@
-.homepage-page-container {
-    margin: 32px 64px;
-    padding-bottom: 32px;
-    box-shadow: 0 4px 20px 1px rgba(47, 51, 56, 0.35);
-}
-
 .homepage-carousel {
     text-align: center;
     max-height: 640px;
@@ -36,4 +30,8 @@
 
 .movie-poster.anticon-arrow-right {
     margin-left: 10px;
+}
+
+.movies-carousel .movie-posters-carousel .movie-poster {
+    cursor: pointer;
 }

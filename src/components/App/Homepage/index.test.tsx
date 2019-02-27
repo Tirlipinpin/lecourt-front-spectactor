@@ -1,6 +1,7 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
+import { createMemoryHistory } from 'history'
 
 import { Homepage } from '.';
 
@@ -10,7 +11,7 @@ describe('the Homepage component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Homepage />);
+        wrapper = shallow(<Homepage history={createMemoryHistory()} />);
     });
 
     it('should render correctly', () => {

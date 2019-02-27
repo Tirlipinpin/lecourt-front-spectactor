@@ -13,6 +13,7 @@ import './index.css';
 import App from './components/App';
 import Login from './components/Login';
 import Register from './components/Register';
+import NotFound from './components/NotFound';
 
 axios.defaults.baseURL = 'https://sso.stg.lecourt.tv/';
 
@@ -30,7 +31,7 @@ ReactDOM.render(
                     <Route path="/app" component={App} />
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
-                    <Route render={() => (<div>Page not found</div>)} />
+                    <Route component={() => <NotFound />} />
                 </Switch>
             </ConnectedRouter>
         </PersistGate>

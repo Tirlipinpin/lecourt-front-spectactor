@@ -2,15 +2,15 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
 
-import Search from '.';
+import Watch from '.';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('The Search component', () => {
+describe('The Watch component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Search location={{}} history={{}} match={{}} />);
+        wrapper = shallow(<Watch location={{}} history={{}} match={{}} />);
     });
 
     it('should render correctly', () => {
