@@ -14,27 +14,14 @@ export interface WatchProps {
     match: any,
 }
 
-export interface WatchState {
-    infoMenuVisible: boolean,
-}
-
 const Img = posed.img({
     hoverable: true,
     init: { filter: 'grayscale(80%) blur(2px)', scale: 1 },
     hover: { filter: 'grayscale(0%) blur(0px)', scale: 1.1 }
 });
 
-export class Watch extends Component<WatchProps, WatchState> {
-    state = {
-        infoMenuVisible: true,
-    };
-
-    handleInfoMenu = (value: boolean) => {
-        setTimeout(() => this.setState({ infoMenuVisible: value }), 500);
-    };
-
+export class Watch extends Component<WatchProps, {}> {
     render() {
-        const { infoMenuVisible } = this.state;
         const content = `Dans un monde coloré, tout va pour le mieux : un gros lapin se réveille et sort de sa tanière. Il respire à pleins poumons les essences du printemps et admire les papillons. Seulement, c'est sans compter la méchanceté de trois rongeurs (Frank, Rinky et Gamera) qui tuent un de ces papillons sous les yeux abasourdis du lapin. Celui-ci décide alors de se venger. Après une longue préparation de divers pièges, les trois mammifères vont respectivement se faire faucher par un tronc en balancement, se faire catapulter et finir en cerf-volant. Une claire référence est faite au film Predator au moment où le lapin prépare les pièges pour se venger.`
 
         return (
@@ -46,22 +33,19 @@ export class Watch extends Component<WatchProps, WatchState> {
                         width="100%"
                         height="70vh"
                         style={{ backgroundColor: 'black' }}
-                        onPlay={() => this.handleInfoMenu(false)}
-                        onPause={() => this.handleInfoMenu(true)}
                     />
                 </div>
-                <Layout className="description-container">
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <h1 className="movie-title">Big Buck bunny</h1>
+                <Layout className="details-container">
+                    <div className="description-container">
+                            <h1 className="watch-title">Big Buck bunny</h1>
                             <h4 className="movie-summary">{content}</h4>
-                        </Col>
-                        <Col span={12}>
-                            <Suspense fallback="Loading...">
-                                <StaffGallery />
-                            </Suspense>
-                        </Col>
-                    </Row>
+                    </div>
+                    <div className="casting-container">
+                        <h1 className="watch-title">Casting</h1>
+                        <Suspense fallback="Loading...">
+                            <StaffGallery />
+                        </Suspense>
+                    </div>
                 </Layout>
 
                 <Layout className="movies-carousel">

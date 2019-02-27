@@ -1,10 +1,6 @@
-.movie-staff {
-    padding: 8px;
-}
-
 .movie-staff .movie-staff-member {
     cursor: pointer;
-    height: 224px;
+    height: 200px;
     width: auto;
     background-repeat: no-repeat;
     background-size: cover;

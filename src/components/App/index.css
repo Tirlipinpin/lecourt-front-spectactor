@@ -14,3 +14,27 @@
     padding-bottom: 32px;
     box-shadow: 0 4px 20px 1px rgba(47, 51, 56, 0.35);
 }
+
+@media screen and (min-width: 900px) {
+    .page-container {
+        margin: 32px 128px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .page-container {
+        margin: 32px 64px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .page-container {
+        margin: 32px 32px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .page-container {
+        margin: 32px 0;
+    }
+}

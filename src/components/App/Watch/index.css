@@ -4,17 +4,29 @@
     padding-bottom: 0;
 }
 
-.watch-page-container .description-container {
-    padding: 16px 128px;
+.watch-page-container .details-container {
     background: white;
 }
 
-.watch-page-container .description-container .movie-title {
-    font-size: 3em;
+@media screen and (max-width: 900px) {
+    .watch-page-container .details-container {
+        padding: 16px 8px;
+    }
 }
 
-.watch-page-container .description-container .movie-summary {
-    font-size: 1.3em;
+@media screen and (min-width: 900px) {
+    .watch-page-container .details-container {
+        padding: 16px 128px;
+    }
+}
+
+.watch-page-container .details-container .watch-title {
+    font-size: 2rem;
+}
+
+.watch-page-container .details-container .movie-summary {
+    font-size: 1em;
+    text-align: justify;
 }
 
 .watch-page-container .movies-carousel {

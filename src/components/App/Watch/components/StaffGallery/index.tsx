@@ -29,7 +29,7 @@ export default class StaffGallery extends PureComponent<{}, {}> {
                 className="movie-staff"
             >
                 <StackGrid
-                    columnWidth={150}
+                    columnWidth={120}
                 >
                 {
                     this.pictures.map((picture, index) => (
