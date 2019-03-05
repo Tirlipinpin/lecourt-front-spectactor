@@ -1,11 +1,15 @@
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { NavbarStore } from '../../../reducers/navbar';
 import { Layout } from 'antd';
+import axios from 'axios';
 
+import MoviesCarousel from '../shared/MoviesCarousel';
 import './index.css';
 
-interface SearchProps {
+import { NavbarStore } from '../../../reducers/navbar';
+import { Movie } from '../interfaces';
+
+export interface SearchProps {
     match: any,
     history: any,
     dispatch: Dispatch<any>,
@@ -13,14 +17,39 @@ interface SearchProps {
     navbar: NavbarStore,
 };
 
-export class Search extends Component<SearchProps, {}> {
+export interface SearchState {
+    movies: Movie[],
+};
+
+export class Search extends Component<SearchProps, SearchState> {
+    state: Readonly<SearchState> = {
+        movies: [],
+    }
+
+    async componentDidMount() {
+        const { searchTerm } = this.props.navbar;
+
+        const res = await axios.get('movies/search', {
+            params: {
+                limit: 20,
+                page: 1,
+                words: searchTerm,
+            }
+        });
+
+        if (res && res.status === 200)
+            this.setState({ movies: res.data });
+    }
+
     render() {
-        const { navbar } = this.props;
+        const { navbar, history } = this.props;
         const { searchTerm } = navbar;
+        const { movies } = this.state;
 
         return (
             <Layout className="page-container search-page-container">
-                You searched for { searchTerm }
+                <h1>You searched for { searchTerm }</h1>
+                <MoviesCarousel movies={movies} history={history} />
             </Layout>
         );
     }

@@ -1,18 +1,30 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Row, Col, Carousel } from 'antd';
+import { Layout, Carousel, Col, Row } from 'antd';
 import posed from 'react-pose';
 import ReactPlayer from 'react-player';
+import axios from 'axios';
 
-const StaffGallery = lazy(() => import('./components/StaffGallery'));
+const Casting = lazy(() => import('./components/Casting'));
 
 import './index.css';
+
+import { Movie } from '../interfaces';
+import NotFound from '../../NotFound';
+import MoviesCarousel from '../shared/MoviesCarousel';
+
 
 export interface WatchProps {
     location: any,
     history: any,
     match: any,
-}
+};
+
+export interface WatchState {
+    movie: Movie,
+    notFound: boolean,
+    recommandations: Movie[],
+};
 
 const Img = posed.img({
     hoverable: true,
@@ -20,9 +32,38 @@ const Img = posed.img({
     hover: { filter: 'grayscale(0%) blur(0px)', scale: 1.1 }
 });
 
-export class Watch extends Component<WatchProps, {}> {
+export class Watch extends Component<WatchProps, WatchState> {
+    state: Readonly<WatchState> = {
+        movie: {} as Movie,
+        notFound: false,
+        recommandations: [],
+    }
+
+    async componentDidMount() {
+        const { match } = this.props;
+        const { id } = match.params;
+
+        const res = await axios.get(`movies/${id}`);
+        if (!res)
+            this.setState({ notFound: true });
+        else
+            this.setState({ movie: res.data });
+
+        const recommandationsRes = await axios.get('movies', {
+            params: {
+                limit: 20,
+            },
+        });
+
+        this.setState({ recommandations: recommandationsRes.data });
+    }
+
     render() {
-        const content = `Dans un monde coloré, tout va pour le mieux : un gros lapin se réveille et sort de sa tanière. Il respire à pleins poumons les essences du printemps et admire les papillons. Seulement, c'est sans compter la méchanceté de trois rongeurs (Frank, Rinky et Gamera) qui tuent un de ces papillons sous les yeux abasourdis du lapin. Celui-ci décide alors de se venger. Après une longue préparation de divers pièges, les trois mammifères vont respectivement se faire faucher par un tronc en balancement, se faire catapulter et finir en cerf-volant. Une claire référence est faite au film Predator au moment où le lapin prépare les pièges pour se venger.`
+        const { movie, notFound, recommandations } = this.state;
+        const { history } = this.props;
+
+        if (notFound)
+            return <NotFound title="No short found for this id..." />
 
         return (
             <Layout className="page-container watch-page-container">
@@ -35,41 +76,22 @@ export class Watch extends Component<WatchProps, {}> {
                         style={{ backgroundColor: 'black' }}
                     />
                 </div>
-                <Layout className="details-container">
+                <div className="details-container">
                     <div className="description-container">
-                            <h1 className="watch-title">Big Buck bunny</h1>
-                            <h4 className="movie-summary">{content}</h4>
+                            <h1 className="watch-title">{movie.title}</h1>
+                            <h4 className="movie-summary">{movie.summary}</h4>
                     </div>
                     <div className="casting-container">
                         <h1 className="watch-title">Casting</h1>
                         <Suspense fallback="Loading...">
-                            <StaffGallery />
+                            { movie.directors && <Casting actors={movie.actors} directors={movie.directors} staff={movie.staff} /> }
                         </Suspense>
                     </div>
-                </Layout>
+                </div>
 
                 <Layout className="movies-carousel">
                     <h1>Your recommendations</h1>
-                    <Carousel
-                        className="movie-posters-carousel"
-                        speed={300}
-                        draggable
-                        slidesToShow={7}
-                        slidesToScroll={3}
-                        arrows
-                    >
-                        <Img style={{ cursor: 'pointer' }} className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
-                        <Img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
-                        <Img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
-                        <Img className="movie-poster" src="http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg" />
-                        <Img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
-                        <Img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
-                        <Img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
-                        <Img className="movie-poster" src="http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg" />
-                        <Img className="movie-poster" src="https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg" />
-                        <Img className="movie-poster" src="http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg" />
-                        <Img className="movie-poster" src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
-                    </Carousel>
+                    <MoviesCarousel movies={recommandations} history={history} />
                 </Layout>
 
             </Layout>

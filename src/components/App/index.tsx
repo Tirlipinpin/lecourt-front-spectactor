@@ -29,14 +29,16 @@ interface AppProps {
 export class App extends Component<AppProps, {}>{
     componentDidMount() {
         const { history, dispatch, login } = this.props;
-        const { token } = login;
+        // const { token } = login;
 
         axiosInterceptor(() => {
             dispatch({ type: 'LOGOUT' });
             history.push('/login');
         });
 
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        axios.defaults.baseURL = 'https://management.stg.lecourt.tv/';
+        axios.defaults.headers.common['Authorization'] = `changeIt`;
+        // axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
 
     renderComponent = (Child: any, props: RouterProps) => React.createElement(() => (
@@ -69,7 +71,7 @@ export class App extends Component<AppProps, {}>{
                                 <Route path={`${match.path}/profile`} render={(props) => this.renderComponent(Profile, props)}/>
                                 <Route path={`${match.path}/watch/:id`} render={(props) => this.renderComponent(Watch, props)}/>
                                 <Route path={`${match.path}/search`} render={(props) => this.renderComponent(Search, props)}/>
-                                <Route render={() => <NotFound />}/>
+                                <Route render={() => <NotFound title="Page not found !" />}/>
                             </Switch>
                         </Layout.Content>
                         <Layout.Footer style={{

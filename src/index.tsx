@@ -31,7 +31,7 @@ ReactDOM.render(
                     <Route path="/app" component={App} />
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
-                    <Route component={() => <NotFound />} />
+                    <Route component={() => <NotFound title="Page not found !" />} />
                 </Switch>
             </ConnectedRouter>
         </PersistGate>
