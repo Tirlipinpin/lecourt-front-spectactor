@@ -15,6 +15,11 @@ function* fetchToken(action: any): any {
             withCredentials: true,
         });
 
+        const { data }  = token;
+
+        if (!data)
+            throw new Error('');
+
         yield put({
             type: FETCH_TOKEN_SUCCEEDED,
             payload: token,
