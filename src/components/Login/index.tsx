@@ -1,4 +1,4 @@
-import React, { Component, Dispatch } from 'react';
+import React, { Component, Dispatch, SyntheticEvent, FormEvent } from 'react';
 import { connect } from 'react-redux';
 import { Form, Icon, Input, Button } from 'antd';
 import { Redirect } from 'react-router';
@@ -18,28 +18,28 @@ interface LoginState {
 }
 
 export class Login extends Component<LoginProps, LoginState> {
-    constructor(props: any) {
-        super(props);
+    state = {
+        email: '',
+        password: '',
+    };
 
-        this.state = {
-            email: '',
-            password: '',
-        };
-    }
+    handleEmail = (e: SyntheticEvent): void => {
+        const target = e.target as HTMLInputElement;
 
-    handleEmail = (e: any) => {
         this.setState({
-            email: e.target.value,
+            email: target.value,
         });
     }
 
-    handlePassword = (e: any) => {
+    handlePassword = (e: SyntheticEvent): void => {
+        const target = e.target as HTMLInputElement;
+
         this.setState({
-            password: e.target.value,
+            password: target.value,
         });
     }
 
-    fetchToken = (e: any) => {
+    fetchToken = (e: FormEvent<any>): void => {
         const { dispatch } = this.props;
         const { email, password } = this.state;
 

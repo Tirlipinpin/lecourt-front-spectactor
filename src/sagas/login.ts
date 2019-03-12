@@ -1,12 +1,13 @@
 import { put, takeLatest } from 'redux-saga/effects';
+import { AnyAction } from 'redux';
 import axios from 'axios';
 import { notification } from 'antd';
 
 import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED } from '../reducers/login/constantes';
 
-function* fetchToken(action: any): any {
+function* fetchToken(action: AnyAction): IterableIterator<Object | void> {
     try {
-        const token = yield axios('tokens/create', {
+        const token = yield axios('https://sso.stg.lecourt.tv/tokens/create', {
             method: 'POST',
             auth: {
                 username: action.email,
@@ -15,10 +16,10 @@ function* fetchToken(action: any): any {
             withCredentials: true,
         });
 
-        const { data }  = token;
+        if (!token)
+            throw new Error('Network error');
 
-        if (!data)
-            throw new Error('');
+        const { data } = token;
 
         yield put({
             type: FETCH_TOKEN_SUCCEEDED,

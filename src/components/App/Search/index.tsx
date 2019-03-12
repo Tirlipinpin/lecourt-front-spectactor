@@ -2,6 +2,8 @@ import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { Layout } from 'antd';
 import axios from 'axios';
+import { History, Location } from 'history';
+import { match } from 'react-router';
 
 import MoviesCarousel from '../shared/MoviesCarousel';
 import './index.css';
@@ -10,10 +12,10 @@ import { NavbarStore } from '../../../reducers/navbar';
 import { Movie } from '../interfaces';
 
 export interface SearchProps {
-    match: any,
-    history: any,
+    match: match,
+    history: History,
+    location: Location,
     dispatch: Dispatch<any>,
-    location: any,
     navbar: NavbarStore,
 };
 

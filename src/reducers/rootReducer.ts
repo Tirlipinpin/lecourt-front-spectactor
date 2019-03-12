@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { History } from 'history';
 
 import navbar from './navbar';
 import homepage from './homepage';
@@ -16,7 +17,7 @@ const persistConfig = {
     ]
 }
 
-export default (history: any) => persistReducer(persistConfig, combineReducers({
+export default (history: History) => persistReducer(persistConfig, combineReducers({
     router: connectRouter(history),
     navbar,
     homepage,

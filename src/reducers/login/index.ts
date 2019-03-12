@@ -1,4 +1,5 @@
 import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED, LOGOUT } from './constantes';
+import { Reducer, AnyAction } from 'redux';
 
 export interface LoginStore {
     loading: boolean,
@@ -9,7 +10,7 @@ export const defaultState: LoginStore = {
     loading: false,
 };
 
-export default (state = defaultState, action: any) => {
+const loginReducer: Reducer<LoginStore, AnyAction> = (state: LoginStore = defaultState, action: AnyAction) => {
     switch(action.type) {
         case FETCH_TOKEN:
             return {
@@ -36,3 +37,5 @@ export default (state = defaultState, action: any) => {
             return state;
     };
 }
+
+export default loginReducer;

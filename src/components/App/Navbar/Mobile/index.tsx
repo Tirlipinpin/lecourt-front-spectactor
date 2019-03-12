@@ -1,7 +1,8 @@
 import React, { Component, Dispatch } from 'react';
 import { Layout, Menu, Drawer, Icon, Input } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, match } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { History, Location } from 'history';
 
 const { Header } = Layout;
 import { LOGOUT } from '../../../../reducers/login/constantes';
@@ -11,10 +12,10 @@ import { NavbarStore } from '../../../../reducers/navbar';
 import ClearIcon from '../ClearIcon';
 
 interface MobileNavbarProps {
-    match: any,
-    history: any,
+    match: match,
+    history: History,
+    location: Location,
     dispatch: Dispatch<any>,
-    location: any,
     navbar: NavbarStore,
 };
 

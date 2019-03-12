@@ -4,6 +4,8 @@ import { Layout, Carousel, Col, Row } from 'antd';
 import posed from 'react-pose';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
+import { History, Location } from 'history';
+import { match } from 'react-router';
 
 const Casting = lazy(() => import('./components/Casting'));
 
@@ -15,9 +17,9 @@ import MoviesCarousel from '../shared/MoviesCarousel';
 
 
 export interface WatchProps {
-    location: any,
-    history: any,
     match: any,
+    history: History,
+    location: Location,
 };
 
 export interface WatchState {

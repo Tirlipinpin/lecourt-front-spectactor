@@ -1,4 +1,5 @@
 import { REGISTER_USER, REGISTER_USER_SUCCEEDED, REGISTER_USER_FAILED } from './constantes';
+import { Reducer, AnyAction } from 'redux';
 
 export interface RegisterStore {
     loading: boolean,
@@ -8,7 +9,7 @@ export const defaultState: RegisterStore = {
     loading: false,
 };
 
-export default (state = defaultState, action: any) => {
+const registerReducer: Reducer<RegisterStore, AnyAction> = (state: RegisterStore = defaultState, action: AnyAction) => {
     switch(action.type) {
         case REGISTER_USER:
             return {
@@ -29,3 +30,5 @@ export default (state = defaultState, action: any) => {
             return state;
     };
 };
+
+export default registerReducer;

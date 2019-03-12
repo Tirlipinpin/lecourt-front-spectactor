@@ -1,9 +1,10 @@
 import React, { Component, Dispatch, Suspense, lazy } from 'react';
-import { Switch, Route, Redirect, RouterProps } from 'react-router';
+import { Switch, Route, Redirect, RouterProps, match } from 'react-router';
 import { connect } from 'react-redux';
 import { Icon, Layout } from 'antd';
 import axios from 'axios';
 import MediaQuery from 'react-responsive';
+import { History, Location } from 'history';
 
 import Navbar from './Navbar';
 import MobileNavbar from './Navbar/Mobile';
@@ -19,9 +20,9 @@ import './index.css';
 import NotFound from '../NotFound';
 
 interface AppProps {
-    match: any,
-    history: any,
-    location: any,
+    match: match,
+    history: History,
+    location: Location,
     login: LoginStore,
     dispatch: Dispatch<any>,
 }

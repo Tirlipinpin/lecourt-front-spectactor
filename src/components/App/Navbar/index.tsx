@@ -1,7 +1,8 @@
 import React, { Component, Dispatch } from 'react';
 import { Layout, Menu, Input, Icon } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, match } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { History, Location } from 'history';
 
 import logo from './Logo.png';
 import './index.css';
@@ -13,10 +14,10 @@ import ClearIcon from './ClearIcon';
 const { Header } = Layout;
 
 interface NavbarProps {
-    match: any,
-    history: any,
+    match: match,
+    history: History,
+    location: Location,
     dispatch: Dispatch<any>,
-    location: any,
     navbar: NavbarStore,
 };
 
