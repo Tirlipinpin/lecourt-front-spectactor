@@ -1,51 +1,39 @@
-import React, { Component } from 'react';
+import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { Carousel, Layout, Icon } from 'antd';
 import { History } from 'history';
-import axios from 'axios';
 
-import './index.css';
-
-import { Movie } from '../interfaces';
+import { FETCH_MOVIES } from '../../../reducers/homepage/constantes';
 import MoviesCarousel from '../shared/MoviesCarousel';
+import './index.css';
+import { HomepageStore } from '../../../reducers/homepage';
+
 
 export interface HomepageProps {
     history: History,
+    dispatch: Dispatch<any>,
+    homepage: HomepageStore,
 }
 
-export interface HomepageState {
-    movies: Movie[],
-    latestMovies: Movie[],
-}
-
-export class Homepage extends Component<HomepageProps, HomepageState> {
-    state: Readonly<HomepageState> = {
-        movies: [],
-        latestMovies: [],
-    };
-
+export class Homepage extends Component<HomepageProps, {}> {
     async componentDidMount() {
-        const res = await axios.get('movies', {
-            params: {
-                limit: 20,
-            },
+        const { dispatch } = this.props;
+
+        dispatch({
+            type: FETCH_MOVIES,
+            payload: {},
         });
 
-        this.setState({ movies: res.data });
-
-        const latestRes = await axios.get('movies/latest', {
-            params: {
-                limit: 20,
+        dispatch({
+            type: FETCH_MOVIES,
+            payload: {
+                latest: true,
             },
         });
-
-        this.setState({ latestMovies: latestRes.data });
-
     }
 
     render() {
-        const { movies, latestMovies } = this.state;
-        const { history } = this.props;
+        const { history, homepage } = this.props;
 
         return (
             <Layout className="page-container">
@@ -63,15 +51,17 @@ export class Homepage extends Component<HomepageProps, HomepageState> {
                 </Carousel>
                 <Layout className="movies-carousel">
                     <h1>Our selection</h1>
-                    <MoviesCarousel movies={movies} history={history} />
+                    <MoviesCarousel movies={homepage.movies} history={history} />
                 </Layout>
                 <Layout className="movies-carousel">
                     <h1>Latest shorts</h1>
-                    <MoviesCarousel movies={latestMovies} history={history} />
+                    <MoviesCarousel movies={homepage.latestMovies} history={history} />
                 </Layout>
             </Layout>
         );
     }
 };
 
-export default connect()(Homepage);
+export default connect(({ homepage }: any) => ({
+    homepage,
+}))(Homepage);
