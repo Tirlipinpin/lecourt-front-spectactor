@@ -13,7 +13,7 @@ describe('the Login component', () => {
         wrapper = shallow(<Login dispatch={() => {}} login={{ loading: false }} />);
     });
 
-    it('should render correctly', () => {
+    test('should render correctly', () => {
         expect(wrapper.length).toEqual(1);
     });
 });

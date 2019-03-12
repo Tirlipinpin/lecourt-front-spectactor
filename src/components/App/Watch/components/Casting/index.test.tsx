@@ -20,7 +20,7 @@ describe('The StaffGallery component', () => {
         wrapper = shallow(<Casting actors={[ { role: '', person } ]} directors={[ person ]} staff={[ { role: '', person } ]} />);
     });
 
-    it('should render correctly', () => {
+    test('should render correctly', () => {
         expect(wrapper.length).toBe(1);
     });
 });

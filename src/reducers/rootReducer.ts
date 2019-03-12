@@ -9,6 +9,7 @@ import homepage from './homepage';
 import login from './login';
 import register from './register';
 import search from './search';
+import watch from './watch';
 
 const persistConfig = {
     key: 'root',
@@ -25,4 +26,5 @@ export default (history: History) => persistReducer(persistConfig, combineReduce
     login,
     register,
     search,
+    watch,
 }));

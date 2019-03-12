@@ -17,7 +17,7 @@ describe('The Register component', () => {
         wrapper = shallow(<Register register={store} dispatch={() => {}} />);
     });
 
-    it('should render correctly', () => {
+    test('should render correctly', () => {
         expect(wrapper.length).toEqual(1);
     });
 });

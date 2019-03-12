@@ -10,10 +10,16 @@ describe('the Homepage component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<CarouselArrow direction="left" onClick={jest.fn} />);
+        wrapper = shallow(
+            <CarouselArrow
+                direction="left"
+                onClick={jest.fn}
+                className="poney"
+            />
+        );
     });
 
-    it('should render correctly', () => {
+    test('should render correctly', () => {
         expect(wrapper.length).toEqual(1);
     });
 });

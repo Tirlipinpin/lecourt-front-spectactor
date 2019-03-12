@@ -26,11 +26,11 @@ describe('the Homepage component', () => {
         );
     });
 
-    it('should render correctly', () => {
+    test('should render correctly', () => {
         expect(wrapper.length).toEqual(1);
     });
 
-    it('should dispatch FETCH_MOVIES twice with simple and latest requests', () => {
+    test('should dispatch FETCH_MOVIES twice with simple and latest requests', () => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
             type: 'FETCH_MOVIES',
             payload: {},

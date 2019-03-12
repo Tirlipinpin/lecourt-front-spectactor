@@ -1,36 +1,57 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
+import { match } from 'react-router';
+import { History, Location } from 'history';
 
-import { Navbar } from '.';
 import { NavbarStore } from '../../../reducers/navbar';
+import { Navbar } from '.';
+
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('The Navbar component', () => {
-    let wrapper;
+    let wrapper: ShallowWrapper<Navbar>;
+    const dispatch = jest.fn();
 
     beforeEach(() => {
-        const match = {
+        const match: match = {
             url: 'poney',
-        };
-
+        } as match;
+        const history: History = {} as History;
+        const location: Location = {
+            pathname: '',
+        } as Location;
         const navbar: NavbarStore = {
             searchTerm: '',
-        }
+        };
 
         wrapper = shallow(
             <Navbar
-                location={{ pathname: '' }}
-                history={{ push: () => {} }}
+                location={location}
+                history={history}
                 match={match}
-                dispatch={() => {}}
+                dispatch={dispatch}
                 navbar={navbar}
             />
         );
     });
 
-    it('should render correctly', () => {
+    test('should render correctly', () => {
         expect(wrapper.length).toBe(1);
+    });
+
+    test('should dispatch a UPDATE_SEARCH_TERM action when updating search term', () => {
+        const instance = wrapper.instance() as Navbar;
+        instance.onChangeSearchTerm({
+            target: {
+                value: 'poney',
+            },
+        });
+
+        expect(dispatch).toHaveBeenCalledWith({
+            type: 'UPDATE_SEARCH_TERM',
+            payload: 'poney',
+        });
     });
 });

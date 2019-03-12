@@ -1,4 +1,4 @@
-import React, { Component, Dispatch } from 'react';
+import React, { Component, Dispatch, SyntheticEvent } from 'react';
 import { Layout, Menu, Input, Icon } from 'antd';
 import { Link, match } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -40,7 +40,7 @@ export class Navbar extends Component<NavbarProps, {}> {
         ];
     }
 
-    onChangeSearchTerm = (e: any) => {
+    onChangeSearchTerm = (e: any): void => {
         const { dispatch } = this.props;
 
         dispatch({

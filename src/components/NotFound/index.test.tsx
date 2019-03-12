@@ -10,10 +10,14 @@ describe('The NotFound component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<NotFound />);
+        wrapper = shallow(
+            <NotFound
+                title="poney"
+            />
+        );
     });
 
-    it('should render correctly', () => {
+    test('should render correctly', () => {
         expect(wrapper.length).toBe(1);
     });
 });

@@ -1,69 +1,55 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { Redirect, match } from 'react-router';
 
-import { Redirect } from 'react-router';
+import { History, Location } from 'history';
 
 import { App } from '.';
+import { LoginStore } from '../../reducers/login';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('The App component', () => {
+    let wrapper: ShallowWrapper;
+    const dispatch = jest.fn();
 
-    it('should render correctly', () => {
-        const store = {
+    beforeEach(() => {
+        const match: match = {} as match;
+        const history: History = {} as History;
+        const location: Location = {} as Location;
+        const login: LoginStore = {
             token: 'something',
             loading: false,
         };
 
-        const wrapper = shallow(
+        wrapper = shallow(
             <App
-                match={{}}
-                history={{}}
-                login={store}
-                dispatch={() => {}}
-                location={{}}
+                match={match}
+                history={history}
+                location={location}
+                login={login}
+                dispatch={dispatch}
             />
         );
+    });
 
+    test('should render correctly', () => {
         expect(wrapper.length).toBe(1);
     });
 
-    it('should redirect when user is not logged', () => {
-        const store = {
-            token: null,
-            loading: false,
-        };
-
-        const wrapper = shallow(
-            <App
-                match={{}}
-                history={{}}
-                login={store}
-                dispatch={() => {}}
-                location={{}}
-            />
-        );
+    test('should redirect when user is not logged', () => {
+        wrapper.setProps({
+            login: {
+                token: null,
+                loading: false,
+            }
+        })
 
         expect(wrapper.find(Redirect)).toHaveLength(1);
     });
 
-    it('should display app when user is logged', () => {
-        const store = {
-            token: 'something',
-            loading: false,
-        };
-
-        const wrapper = shallow(
-            <App
-                match={{}}
-                history={{}}
-                login={store}
-                dispatch={() => {}}
-                location={{}}
-            />
-        );
-
+    test('should display app when user is logged', () => {
         expect(wrapper.find('.app-wrapper')).toHaveLength(1);
     });
 });

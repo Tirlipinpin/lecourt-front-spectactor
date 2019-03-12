@@ -1,32 +1,21 @@
-import React, { Component, lazy, Suspense } from 'react';
+import React, { Component, lazy, Suspense, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Carousel, Col, Row } from 'antd';
+import { Layout, Icon } from 'antd';
 import posed from 'react-pose';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
 import { History, Location } from 'history';
-import { match } from 'react-router';
 
 const Casting = lazy(() => import('./components/Casting'));
 
-import './index.css';
-
+import { WatchStore } from '../../../reducers/watch';
 import { Movie } from '../interfaces';
 import NotFound from '../../NotFound';
 import MoviesCarousel from '../shared/MoviesCarousel';
+import { FETCH_MOVIE_DETAILS } from '../../../reducers/watch/constantes';
 
+import './index.css';
 
-export interface WatchProps {
-    match: any,
-    history: History,
-    location: Location,
-};
-
-export interface WatchState {
-    movie: Movie,
-    notFound: boolean,
-    recommandations: Movie[],
-};
 
 const Img = posed.img({
     hoverable: true,
@@ -34,22 +23,33 @@ const Img = posed.img({
     hover: { filter: 'grayscale(0%) blur(0px)', scale: 1.1 }
 });
 
+export interface WatchProps {
+    match: any,
+    history: History,
+    location: Location,
+    dispatch: Dispatch<any>,
+    watch: WatchStore,
+};
+
+export interface WatchState {
+    recommandations: Movie[],
+};
+
 export class Watch extends Component<WatchProps, WatchState> {
     state: Readonly<WatchState> = {
-        movie: {} as Movie,
-        notFound: false,
         recommandations: [],
     }
 
     async componentDidMount() {
-        const { match } = this.props;
+        const { match, dispatch } = this.props;
         const { id } = match.params;
 
-        const res = await axios.get(`movies/${id}`);
-        if (!res)
-            this.setState({ notFound: true });
-        else
-            this.setState({ movie: res.data });
+        dispatch({
+            type: FETCH_MOVIE_DETAILS,
+            payload: {
+                id,
+            },
+        });
 
         const recommandationsRes = await axios.get('movies', {
             params: {
@@ -61,10 +61,19 @@ export class Watch extends Component<WatchProps, WatchState> {
     }
 
     render() {
-        const { movie, notFound, recommandations } = this.state;
-        const { history } = this.props;
+        const { recommandations } = this.state;
+        const { history, watch } = this.props;
+        const { movie, notFound, loading } = watch;
 
-        if (notFound)
+        if (loading) {
+            return (
+                <Layout className="page-container watch-page-container">
+                    <Icon type="loading" />
+                </Layout>
+            );
+        }
+
+        if (!loading && notFound)
             return <NotFound title="No short found for this id..." />
 
         return (
@@ -101,4 +110,6 @@ export class Watch extends Component<WatchProps, WatchState> {
     }
 }
 
-export default connect()(Watch);
+export default connect(({ watch }: any) => ({
+    watch,
+}))(Watch);

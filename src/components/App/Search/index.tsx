@@ -1,6 +1,6 @@
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { Layout } from 'antd';
+import { Layout, Icon } from 'antd';
 import { History, Location } from 'history';
 
 import { FETCH_SEARCH_MOVIES } from '../../../reducers/search/constantes';
@@ -34,6 +34,14 @@ export class Search extends Component<SearchProps, {}> {
     render() {
         const { history, search } = this.props;
         const { term } = this.props.match.params;
+
+        if (search.loading) {
+            return (
+                <Layout className="page-container search-page-container">
+                    <Icon type="loading" />
+                </Layout>
+            );
+        }
 
         if (!search.loading && search.movies.length < 1) {
             return (

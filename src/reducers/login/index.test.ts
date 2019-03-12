@@ -2,11 +2,11 @@ import login, { defaultState } from '.';
 import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED, LOGOUT } from './constantes';
 
 describe('login reducer', () => {
-    it('should return initial state', () => {
-        expect(login(defaultState, {})).toEqual(defaultState);
+    test('should return initial state', () => {
+        expect(login(defaultState, { type: 'poney' })).toEqual(defaultState);
     });
 
-    it('should start loading when fetch is triggered', () => {
+    test('should start loading when fetch is triggered', () => {
         const action = {
             type: FETCH_TOKEN,
         };
@@ -16,7 +16,7 @@ describe('login reducer', () => {
         });
     });
 
-    it('should stop loading when fetch is successful', () => {
+    test('should stop loading when fetch is successful', () => {
         const action = {
             type: FETCH_TOKEN_SUCCEEDED,
             payload: {
@@ -30,7 +30,7 @@ describe('login reducer', () => {
         });
     });
 
-    it('should return an error state when fetch fails', () => {
+    test('should return an error state when fetch fails', () => {
         const action = {
             type: FETCH_TOKEN_FAILED,
             payload: 'error message',
@@ -41,7 +41,7 @@ describe('login reducer', () => {
         });
     });
 
-    it('should logout when LOGOUT action is triggered', () => {
+    test('should logout when LOGOUT action is triggered', () => {
         const action = {
             type: LOGOUT,
         };

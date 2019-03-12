@@ -38,11 +38,11 @@ describe('The Search component', () => {
         );
     });
 
-    it('should render correctly', () => {
+    test('should render correctly', () => {
         expect(wrapper.length).toBe(1);
     });
 
-    it('should dispatch a FETCH_SEARCH_MOVIES when rendered', () => {
+    test('should dispatch a FETCH_SEARCH_MOVIES when rendered', () => {
         expect(dispatch).toHaveBeenCalledWith({
             type: 'FETCH_SEARCH_MOVIES',
             payload: {
@@ -51,11 +51,11 @@ describe('The Search component', () => {
         });
     });
 
-    it('should not render the Carousel when there is no results', () => {
+    test('should not render the Carousel when there is no results', () => {
         expect(wrapper.find('.no-content').length).toBe(1);
     });
 
-    it('should render the Carousel when there is results', () => {
+    test('should render the Carousel when there is results', () => {
         wrapper.setProps({
             search: {
                 movies: [{
