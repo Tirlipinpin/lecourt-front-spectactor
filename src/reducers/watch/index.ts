@@ -34,6 +34,7 @@ const watchReducer: Reducer<WatchStore, AnyAction> = (state: WatchStore = defaul
                 ...state,
                 notFound: true,
                 loading: false,
+                movie: {},
             };
         default:
             return state;

@@ -6,14 +6,14 @@ import { RegisterStore } from '../../reducers/register';
 
 import './index.css';
 
-interface RegisterState {
+export interface RegisterState {
     displayName: string,
     email: string,
     password: string,
     passwordConfirm: string,
 };
 
-interface RegisterProps {
+export interface RegisterProps {
     dispatch: Dispatch<any>,
     register: RegisterStore,
 };

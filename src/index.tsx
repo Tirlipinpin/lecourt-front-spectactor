@@ -5,7 +5,6 @@ import { ConnectedRouter } from 'connected-react-router'
 import { Provider } from 'react-redux';
 // @ts-ignore
 import { PersistGate } from 'redux-persist/es/integration/react';
-import axios from 'axios';
 
 import * as serviceWorker from './serviceWorker';
 import configureStore, { history } from './store';

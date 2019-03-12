@@ -7,15 +7,15 @@ import { LoginStore } from '../../reducers/login';
 
 import './index.css';
 
-interface LoginProps {
+export interface LoginProps {
     dispatch: Dispatch<any>,
     login: LoginStore,
 };
 
-interface LoginState {
+export interface LoginState {
     email: string,
     password: string,
-}
+};
 
 export class Login extends Component<LoginProps, LoginState> {
     state = {
