@@ -85,19 +85,15 @@ export default class MoviesCarousel extends PureComponent<MoviesCarouselProps, {
             return <Icon type="loading" />
 
         return (
-            <
-                //@ts-ignore
-                Carousel
+            <Carousel
                 className="movie-posters-carousel"
                 speed={300}
                 slidesToShow={5}
                 slidesToScroll={3}
                 arrows
                 responsive={this.carouselResponsiveSettings}
-                // @ts-ignore
-                prevArrow={<CarouselArrow className="arrow-slider-left" direction="left" />}
-                // @ts-ignore
-                nextArrow={<CarouselArrow className="arrow-slider-right" direction="right" />}
+                prevArrow={React.createElement(({ onClick }: any) => <CarouselArrow onClick={onClick} className="arrow-slider-left" direction="left" />)}
+                nextArrow={React.createElement(({ onClick }: any) => <CarouselArrow onClick={onClick} className="arrow-slider-right" direction="right" />)}
             >
                 {
                     movies.map((movie: Movie) => (
