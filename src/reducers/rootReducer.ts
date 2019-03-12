@@ -8,6 +8,7 @@ import navbar from './navbar';
 import homepage from './homepage';
 import login from './login';
 import register from './register';
+import search from './search';
 
 const persistConfig = {
     key: 'root',
@@ -23,4 +24,5 @@ export default (history: History) => persistReducer(persistConfig, combineReduce
     homepage,
     login,
     register,
+    search,
 }));

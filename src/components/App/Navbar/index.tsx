@@ -54,7 +54,7 @@ export class Navbar extends Component<NavbarProps, {}> {
         const { searchTerm } = navbar;
 
         if (searchTerm.length > 0)
-            history.push(`${match.url}/search`);
+            history.push(`${match.url}/search/${searchTerm}`);
     }
 
     render() {

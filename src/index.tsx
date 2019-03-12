@@ -15,8 +15,6 @@ import Login from './components/Login';
 import Register from './components/Register';
 import NotFound from './components/NotFound';
 
-axios.defaults.baseURL = 'https://sso.stg.lecourt.tv/';
-
 const { store, persistor } = configureStore();
 
 ReactDOM.render(

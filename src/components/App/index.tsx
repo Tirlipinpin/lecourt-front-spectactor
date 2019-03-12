@@ -71,7 +71,7 @@ export class App extends Component<AppProps, {}>{
                                 <Route exact path={match.url} render={(props) => this.renderComponent(Homepage, props)} />
                                 <Route path={`${match.path}/profile`} render={(props) => this.renderComponent(Profile, props)}/>
                                 <Route path={`${match.path}/watch/:id`} render={(props) => this.renderComponent(Watch, props)}/>
-                                <Route path={`${match.path}/search`} render={(props) => this.renderComponent(Search, props)}/>
+                                <Route path={`${match.path}/search/:term`} render={(props) => this.renderComponent(Search, props)}/>
                                 <Route render={() => <NotFound title="Page not found !" />}/>
                             </Switch>
                         </Layout.Content>

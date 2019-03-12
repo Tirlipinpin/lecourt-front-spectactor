@@ -1,62 +1,57 @@
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { Layout } from 'antd';
-import axios from 'axios';
 import { History, Location } from 'history';
-import { match } from 'react-router';
 
+import { FETCH_SEARCH_MOVIES } from '../../../reducers/search/constantes';
+
+import { SearchStore } from '../../../reducers/search';
 import MoviesCarousel from '../shared/MoviesCarousel';
 import './index.css';
 
-import { NavbarStore } from '../../../reducers/navbar';
-import { Movie } from '../interfaces';
 
 export interface SearchProps {
-    match: match,
+    match: any,
     history: History,
     location: Location,
     dispatch: Dispatch<any>,
-    navbar: NavbarStore,
+    search: SearchStore,
 };
 
-export interface SearchState {
-    movies: Movie[],
-};
-
-export class Search extends Component<SearchProps, SearchState> {
-    state: Readonly<SearchState> = {
-        movies: [],
-    }
-
+export class Search extends Component<SearchProps, {}> {
     async componentDidMount() {
-        const { searchTerm } = this.props.navbar;
+        const { dispatch, match } = this.props;
+        const { term } = match.params;
 
-        const res = await axios.get('movies/search', {
-            params: {
-                limit: 20,
-                page: 1,
-                words: searchTerm,
-            }
+        dispatch({
+            type: FETCH_SEARCH_MOVIES,
+            payload: {
+                term,
+            },
         });
-
-        if (res && res.status === 200)
-            this.setState({ movies: res.data });
     }
 
     render() {
-        const { navbar, history } = this.props;
-        const { searchTerm } = navbar;
-        const { movies } = this.state;
+        const { history, search } = this.props;
+        const { term } = this.props.match.params;
+
+        if (!search.loading && search.movies.length < 1) {
+            return (
+                <Layout className="page-container search-page-container">
+                    <h1 className="no-content">No content found</h1>
+                </Layout>
+            );
+        }
 
         return (
             <Layout className="page-container search-page-container">
-                <h1>You searched for { searchTerm }</h1>
-                <MoviesCarousel movies={movies} history={history} />
+                <h1>You searched for { term }</h1>
+                <MoviesCarousel movies={search.movies} history={history} />
             </Layout>
         );
     }
 }
 
-export default connect(({ navbar }: any) =>({
-    navbar,
+export default connect(({ search }: any) =>({
+    search,
 }))(Search);

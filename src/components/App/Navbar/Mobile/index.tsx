@@ -64,7 +64,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
         const { searchTerm } = navbar;
 
         if (searchTerm.length > 0)
-            history.push(`${match.url}/search`);
+            history.push(`${match.url}/search/${searchTerm}`);
     }
 
     render() {
@@ -78,7 +78,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
             <div>
                 <Drawer
                     title='Lecourt'
-                    placement='right'
+                    placement='left'
                     closable
                     visible={ menuOpen }
                     onClose={this.toggleMenu}
