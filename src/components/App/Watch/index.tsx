@@ -58,7 +58,8 @@ export class Watch extends Component<WatchProps, WatchState> {
             },
         });
 
-        this.setState({ recommandations: recommandationsRes.data });
+        if (recommandationsRes && recommandationsRes.data)
+            this.setState({ recommandations: recommandationsRes.data });
     }
 
     render() {
@@ -80,13 +81,16 @@ export class Watch extends Component<WatchProps, WatchState> {
         return (
             <Layout className="page-container watch-page-container">
                 <div>
-                    <ReactPlayer
-                        url={`https://storage.stg.lecourt.tv/movies/${movie.id}`}
-                        controls
-                        width="100%"
-                        height="70vh"
-                        style={{ backgroundColor: 'black' }}
-                    />
+                    {this.props.watch.movie.id
+                        ? <ReactPlayer
+                            url={`https://storage.stg.lecourt.tv/movies/${movie.id}`}
+                            controls
+                            width="100%"
+                            height="70vh"
+                            style={{ backgroundColor: 'black' }}
+                          />
+                        : <Icon type="loading" />
+                    }
                 </div>
                 <div className="details-container">
                     <div className="description-container">

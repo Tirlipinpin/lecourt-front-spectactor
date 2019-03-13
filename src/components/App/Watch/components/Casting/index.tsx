@@ -1,9 +1,8 @@
 import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 
-import './index.css';
-
 import { Person, Actor, Staff } from '../../../interfaces';
+import './index.css';
 
 
 export interface CastingProps {
@@ -23,16 +22,16 @@ export default class Casting extends PureComponent<CastingProps, {}> {
             >
             {
                 staffActors.map(staffActor => (
-                    <div key={staffActor.person.id}>
-                        <Link to="#">{staffActor.person.firstName} {staffActor.person.lastName}</Link>
-                    </div>
+                    <React.Fragment key={staffActor.person.id}>
+                        <Link to="#">{staffActor.person.firstName} {staffActor.person.lastName} </Link>
+                    </React.Fragment>
                 ))
             }
             {
                 directors.map(director => (
-                    <div key={director.id}>
-                        <Link to="#">{director.firstName} {director.lastName}</Link>
-                    </div>
+                    <React.Fragment key={director.id}>
+                        <Link to="#">{director.firstName} {director.lastName} </Link>
+                    </React.Fragment>
                 ))
             }
             </div>

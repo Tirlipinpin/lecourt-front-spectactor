@@ -15,6 +15,10 @@ export interface Staff {
     role: string,
 };
 
+export interface Image {
+
+};
+
 export interface Movie {
     id: number,
     title: string,
@@ -27,4 +31,5 @@ export interface Movie {
     actors: Actor[],
     directors: Person[],
     staff: Staff[],
+    images: Image[],
 };
