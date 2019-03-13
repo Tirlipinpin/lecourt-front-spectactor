@@ -14,6 +14,9 @@ describe('the MoviePoster component', () => {
         const movie: Movie = {
             id: 42,
             title: 'poney',
+            images: [{
+                    id: 'chapeau',
+            }],
         } as Movie;
 
         wrapper = shallow(
