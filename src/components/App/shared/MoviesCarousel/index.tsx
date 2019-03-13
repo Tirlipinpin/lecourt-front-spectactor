@@ -1,23 +1,18 @@
 import React, { PureComponent } from 'react';
-import { Carousel, Icon } from 'antd';
+import { Carousel, Icon, Tooltip } from 'antd';
 import CarouselArrow from './components/CarouselArrow';
-import posed from 'react-pose';
 import { History } from 'history';
+
+import MoviePoster from './components/MoviePoster';
+import { Movie } from '../../interfaces';
 
 import './index.css';
 
-import { Movie } from '../../interfaces';
 
 export interface MoviesCarouselProps {
     movies: Movie[],
     history: History,
 };
-
-const Img = posed.img({
-    hoverable: true,
-    init: { filter: 'grayscale(80%) blur(2px)', scale: 1 },
-    hover: { filter: 'grayscale(0%) blur(0px)', scale: 1.1 }
-});
 
 export default class MoviesCarousel extends PureComponent<MoviesCarouselProps, {}> {
     carouselResponsiveSettings = [
@@ -64,13 +59,6 @@ export default class MoviesCarousel extends PureComponent<MoviesCarouselProps, {
             },
         }
     ];
-
-    
-    pictures: string[] = [
-        'http://www.champselyseesfilmfestival.com/2018/wp-content/uploads/sites/11/2018/04/caro2.jpg',
-        'https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg',
-        'http://www.zippyframes.com/images/stories/italy/inanimate_lucia_bulgheroni.jpg',
-    ];
     
     goToWatch = (id: number) => {
         const { history } = this.props;
@@ -97,12 +85,12 @@ export default class MoviesCarousel extends PureComponent<MoviesCarouselProps, {
             >
                 {
                     movies.map((movie: Movie) => (
-                        <Img
-                            src={this.pictures[1]}
-                            onClick={() => this.goToWatch(movie.id)}
-                            className="movie-poster"
+                        <div
                             key={movie.id}
-                        />
+                            onClick={() => this.goToWatch(movie.id)}
+                        >
+                            <MoviePoster movie={movie} />
+                        </div>
                     ))
                 }
             </Carousel>

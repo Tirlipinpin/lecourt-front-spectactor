@@ -81,7 +81,7 @@ export class Watch extends Component<WatchProps, WatchState> {
             <Layout className="page-container watch-page-container">
                 <div>
                     <ReactPlayer
-                        url="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+                        url={`https://storage.stg.lecourt.tv/movies/${movie.id}`}
                         controls
                         width="100%"
                         height="70vh"

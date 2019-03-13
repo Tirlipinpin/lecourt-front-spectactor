@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Icon } from 'antd';
 
-import './CarouselArrow.css';
-
+import './index.css';
 
 export interface CarouselArrowProps {
     direction: string,
