@@ -20,7 +20,7 @@ export default class MoviesCarousel extends PureComponent<MoviesCarouselProps, {
             breakpoint: 1258,
             settings: {
                 slidesToShow: 4,
-                slidesToScroll: 3,
+                slidesToScroll: 4,
                 infinite: true,
                 dots: true
             },
@@ -38,7 +38,7 @@ export default class MoviesCarousel extends PureComponent<MoviesCarouselProps, {
             breakpoint: 876,
             settings: {
                 slidesToShow: 2,
-                slidesToScroll: 3,
+                slidesToScroll: 2,
                 infinite: true,
                 dots: true
             },
@@ -47,7 +47,7 @@ export default class MoviesCarousel extends PureComponent<MoviesCarouselProps, {
             breakpoint: 600,
             settings: {
                 slidesToShow: 1,
-                slidesToScroll: 2,
+                slidesToScroll: 1,
                 initialSlide: 2
             },
         },
@@ -77,7 +77,7 @@ export default class MoviesCarousel extends PureComponent<MoviesCarouselProps, {
                 className="movie-posters-carousel"
                 speed={300}
                 slidesToShow={5}
-                slidesToScroll={3}
+                slidesToScroll={5}
                 arrows
                 responsive={this.carouselResponsiveSettings}
                 prevArrow={React.createElement(({ onClick }: any) => <CarouselArrow onClick={onClick} className="arrow-slider-left" direction="left" />)}
