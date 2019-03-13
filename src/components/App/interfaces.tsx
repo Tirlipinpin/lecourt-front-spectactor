@@ -16,7 +16,7 @@ export interface Staff {
 };
 
 export interface Image {
-
+    id: string,
 };
 
 export interface Movie {

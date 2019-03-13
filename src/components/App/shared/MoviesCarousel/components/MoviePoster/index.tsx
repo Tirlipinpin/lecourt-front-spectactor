@@ -46,11 +46,12 @@ export default class MoviePoster extends PureComponent<MoviePosterProps, MoviePo
 
     render() {
         const { hovering } = this.state;
+        const { movie } = this.props;
 
         return (
              <Div
                     className="movie-poster"
-                    style={{ backgroundImage: `url('https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg')` }}
+                    style={{ backgroundImage: `url('${movie.images[0] || 'https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg'}')` }}
                     onMouseEnter={() => this.handleHover(true)}
                     onMouseLeave={() => this.handleHover(false)}
                 >
