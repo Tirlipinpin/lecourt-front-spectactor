@@ -1,12 +1,13 @@
 import React, { Component, lazy, Suspense, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Icon } from 'antd';
+import { Layout, Icon, Typography } from 'antd';
 import posed from 'react-pose';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
 import { History, Location } from 'history';
 
 const Casting = lazy(() => import('./components/Casting'));
+const { Title, Paragraph } = Typography;
 
 import { WatchStore } from '../../../reducers/watch';
 import { Movie } from '../interfaces';
@@ -89,11 +90,16 @@ export class Watch extends Component<WatchProps, WatchState> {
                 </div>
                 <div className="details-container">
                     <div className="description-container">
-                            <h1 className="watch-title">{movie.title}</h1>
-                            <h4 className="movie-summary">{movie.summary}</h4>
+                            <Title level={2} className="watch-title">{movie.title}</Title>
+                            <Paragraph
+                                className="movie-summary"
+                                ellipsis={{ rows: 2, expandable: true }}
+                            >
+                                {movie.summary}
+                            </Paragraph>
                     </div>
                     <div className="casting-container">
-                        <h1 className="watch-title">Casting</h1>
+                        <Title level={2} className="watch-title">Casting</Title>
                         <Suspense fallback="Loading...">
                             { movie.directors && <Casting actors={movie.actors} directors={movie.directors} staff={movie.staff} /> }
                         </Suspense>
@@ -101,7 +107,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                 </div>
 
                 <Layout className="movies-carousel">
-                    <h1>Your recommendations</h1>
+                    <Title level={2}>Your recommendations</Title>
                     <MoviesCarousel movies={recommandations} history={history} />
                 </Layout>
 

@@ -1,5 +1,9 @@
-.search-page-container {
+.search-page-container .ant-page-header {
+    border-bottom: 1px solid #ebedf0;
+    margin-bottom: 8px;
+}
+
+.search-page-content {
     min-height: 100vh;
     padding: 0 64px;
-    background: white;
 }

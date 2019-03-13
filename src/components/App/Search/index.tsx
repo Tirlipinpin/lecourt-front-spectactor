@@ -1,6 +1,6 @@
-import React, { Component, Dispatch } from 'react';
+import React, { Component, Dispatch, ReactFragment } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Icon } from 'antd';
+import { Layout, Icon, PageHeader, Typography } from 'antd';
 import { History, Location } from 'history';
 
 import { FETCH_SEARCH_MOVIES } from '../../../reducers/search/constantes';
@@ -31,31 +31,47 @@ export class Search extends Component<SearchProps, {}> {
         });
     }
 
+    renderPageHeader = (Header: JSX.Element, Child: JSX.Element | null) => (
+        <Layout className="page-container search-page-container">
+            <PageHeader className="search-page-header" title={`You searched for ${this.props.match.params.term}`}>
+                {Header}
+            </PageHeader>
+            <div className="search-page-content">
+                {Child}
+            </div>
+        </Layout>
+    );
+
     render() {
         const { history, search } = this.props;
-        const { term } = this.props.match.params;
 
         if (search.loading) {
-            return (
-                <Layout className="page-container search-page-container">
+            return this.renderPageHeader(
+                <React.Fragment>
                     <Icon type="loading" />
-                </Layout>
+                </React.Fragment>,
+                null,
             );
         }
 
         if (!search.loading && search.movies.length < 1) {
-            return (
-                <Layout className="page-container search-page-container">
-                    <h1 className="no-content">No content found</h1>
-                </Layout>
+            return this.renderPageHeader(
+                <React.Fragment>
+                    <Typography.Paragraph>
+                        No content found
+                    </Typography.Paragraph>
+                </React.Fragment>,
+                null,
             );
         }
 
-        return (
-            <Layout className="page-container search-page-container">
-                <h1>You searched for { term }</h1>
-                <MoviesCarousel movies={search.movies} history={history} />
-            </Layout>
+        return this.renderPageHeader(
+            <React.Fragment>
+                <Typography.Paragraph>
+                    Results: {search.movies.length}
+                </Typography.Paragraph>
+            </React.Fragment>,
+            <MoviesCarousel movies={search.movies} history={history} />
         );
     }
 }

@@ -52,7 +52,7 @@ describe('The Search component', () => {
     });
 
     test('should not render the Carousel when there is no results', () => {
-        expect(wrapper.find('.no-content').length).toBe(1);
+        expect(wrapper.find(MoviesCarousel).length).toBe(0);
     });
 
     test('should render the Carousel when there is results', () => {
