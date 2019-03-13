@@ -21,15 +21,15 @@ export default class Casting extends PureComponent<CastingProps, {}> {
                 className="movie-staff"
             >
             {
-                staffActors.map(staffActor => (
-                    <React.Fragment key={staffActor.person.id}>
+                staffActors.map((staffActor, index) => (
+                    <React.Fragment key={index}>
                         <Link to="#">{staffActor.person.firstName} {staffActor.person.lastName} </Link>
                     </React.Fragment>
                 ))
             }
             {
-                directors.map(director => (
-                    <React.Fragment key={director.id}>
+                directors.map((director, index) => (
+                    <React.Fragment key={index}>
                         <Link to="#">{director.firstName} {director.lastName} </Link>
                     </React.Fragment>
                 ))
