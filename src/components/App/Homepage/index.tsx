@@ -1,6 +1,6 @@
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { Carousel, Layout, Icon } from 'antd';
+import { Carousel, Layout, Typography } from 'antd';
 import { History } from 'history';
 
 import { FETCH_MOVIES } from '../../../reducers/homepage/constantes';
@@ -50,11 +50,11 @@ export class Homepage extends Component<HomepageProps, {}> {
                     <img src="https://i.ytimg.com/vi/qeAjs_9XLbk/maxresdefault.jpg" />
                 </Carousel>
                 <Layout className="movies-carousel">
-                    <h1>Our selection</h1>
+                    <Typography.Title level={2}>Our selection</Typography.Title>
                     <MoviesCarousel movies={homepage.movies} history={history} />
                 </Layout>
                 <Layout className="movies-carousel">
-                    <h1>Latest shorts</h1>
+                    <Typography.Title level={2}>Latest shorts</Typography.Title>
                     <MoviesCarousel movies={homepage.latestMovies} history={history} />
                 </Layout>
             </Layout>
