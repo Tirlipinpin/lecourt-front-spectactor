@@ -32,4 +32,7 @@ export interface Movie {
     directors: Person[],
     staff: Staff[],
     images: Image[],
+    file: {
+        id: string,
+    }
 };
