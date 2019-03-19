@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { ImageComponentProps } from 'react-photo-gallery';
 import posed from 'react-pose';
 import { Movie } from '../../../../interfaces';
-import { Tooltip } from 'antd';
+import { Popover, Typography } from 'antd';
 
 
 export interface MoviePosterProps extends ImageComponentProps {
@@ -30,8 +30,16 @@ export default class MoviePoster extends PureComponent<MoviePosterProps, {}> {
                 }}
                 className="movie-poster-container"
             >
-                <Tooltip
+                <Popover
                     title={movie.title}
+                    content={
+                        <div>
+                            <Typography.Paragraph>Duration: {movie.duration}s</Typography.Paragraph>
+                            {
+                                movie.result_quality && <Typography.Paragraph>Quality of result: {movie.result_quality}%</Typography.Paragraph>
+                            }
+                        </div>
+                    }
                 >
                     <Image
                         onClick={() => goToWatch(index)}
@@ -40,7 +48,7 @@ export default class MoviePoster extends PureComponent<MoviePosterProps, {}> {
                         width={photo.width}
                         className="movie-poster"
                     />
-                </Tooltip>
+                </Popover>
         </div>
         );
     }
