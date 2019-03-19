@@ -4,7 +4,7 @@ import { Carousel, Layout, Typography } from 'antd';
 import { History } from 'history';
 
 import { FETCH_MOVIES } from '../../../reducers/homepage/constantes';
-import MoviesCarousel from '../shared/MoviesCarousel';
+import MoviesGallery from '../shared/MoviesGallery';
 import './index.css';
 import { HomepageStore } from '../../../reducers/homepage';
 
@@ -51,11 +51,11 @@ export class Homepage extends Component<HomepageProps, {}> {
                 </Carousel>
                 <Layout className="movies-carousel">
                     <Typography.Title level={2}>Our selection</Typography.Title>
-                    <MoviesCarousel movies={homepage.movies} history={history} />
+                    <MoviesGallery movies={homepage.movies} history={history} />
                 </Layout>
                 <Layout className="movies-carousel">
                     <Typography.Title level={2}>Latest shorts</Typography.Title>
-                    <MoviesCarousel movies={homepage.latestMovies} history={history} />
+                    <MoviesGallery movies={homepage.latestMovies} history={history} />
                 </Layout>
             </Layout>
         );

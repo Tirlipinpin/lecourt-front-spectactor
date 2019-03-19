@@ -12,7 +12,7 @@ const { Title, Paragraph } = Typography;
 import { WatchStore } from '../../../reducers/watch';
 import { Movie } from '../interfaces';
 import NotFound from '../../NotFound';
-import MoviesCarousel from '../shared/MoviesCarousel';
+import MoviesGallery from '../shared/MoviesGallery';
 import { FETCH_MOVIE_DETAILS } from '../../../reducers/watch/constantes';
 
 import './index.css';
@@ -112,7 +112,7 @@ export class Watch extends Component<WatchProps, WatchState> {
 
                 <Layout className="movies-carousel">
                     <Title level={2}>Your recommendations</Title>
-                    <MoviesCarousel movies={recommandations} history={history} />
+                    <MoviesGallery movies={recommandations} history={history} />
                 </Layout>
 
             </Layout>

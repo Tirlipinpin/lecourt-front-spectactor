@@ -1,20 +1,19 @@
 import React, { PureComponent } from 'react';
-import { Carousel, Icon, Tooltip } from 'antd';
-import CarouselArrow from './components/CarouselArrow';
+import { Icon } from 'antd';
+import Gallery, { ImageComponentProps } from 'react-photo-gallery';
 import { History } from 'history';
 
-import MoviePoster from './components/MoviePoster';
 import { Movie } from '../../interfaces';
 
-import './index.css';
+import MoviePoster from './components/MoviePoster';
 
 
-export interface MoviesCarouselProps {
+export interface MoviesGalleryProps {
     movies: Movie[],
     history: History,
 };
 
-export default class MoviesCarousel extends PureComponent<MoviesCarouselProps, {}> {
+export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}> {
     carouselResponsiveSettings = [
         {
             breakpoint: 1258,
@@ -59,11 +58,14 @@ export default class MoviesCarousel extends PureComponent<MoviesCarouselProps, {
             },
         }
     ];
-    
-    goToWatch = (id: number) => {
-        const { history } = this.props;
 
-        history.push(`/app/watch/${id}`);
+    goToWatch = (id: number) => {
+        const { history, movies } = this.props;
+        const movie: Movie = movies[id];
+
+        if (!movie) return;
+
+        history.push(`/app/watch/${movie.id}`);
     }
 
     render() {
@@ -72,28 +74,22 @@ export default class MoviesCarousel extends PureComponent<MoviesCarouselProps, {
         if (movies.length < 1)
             return <Icon type="loading" />
 
+        const photos = this.props.movies.map(movie => ({
+            src: 'https://wx3.sinaimg.cn/large/0078HDDZly1fryg0w2z2vj31hc0u0jus.jpg',
+            width: 16,
+            height: 9,
+        }));
+    
         return (
-            <Carousel
-                className="movie-posters-carousel"
-                speed={300}
-                slidesToShow={5}
-                slidesToScroll={5}
-                arrows
-                responsive={this.carouselResponsiveSettings}
-                prevArrow={React.createElement(({ onClick }: any) => <CarouselArrow onClick={onClick} className="arrow-slider-left" direction="left" />)}
-                nextArrow={React.createElement(({ onClick }: any) => <CarouselArrow onClick={onClick} className="arrow-slider-right" direction="right" />)}
-            >
-                {
-                    movies.map((movie: Movie) => (
-                        <div
-                            key={movie.id}
-                            onClick={() => this.goToWatch(movie.id)}
-                        >
-                            <MoviePoster movie={movie} />
-                        </div>
-                    ))
-                }
-            </Carousel>
+            <Gallery
+                photos={photos}
+                ImageComponent={(props: ImageComponentProps) =>
+                    <MoviePoster
+                        {...props}
+                        goToWatch={this.goToWatch}
+                        movie={movies[props.index]}
+                    />}
+            />
         );
     }
 }

@@ -5,7 +5,7 @@ import { History, Location } from 'history';
 
 import { SearchStore } from '../../../reducers/search';
 import { Search } from '.';
-import MoviesCarousel from '../shared/MoviesCarousel';
+import MoviesGallery from '../shared/MoviesGallery';
 
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -52,7 +52,7 @@ describe('The Search component', () => {
     });
 
     test('should not render the Carousel when there is no results', () => {
-        expect(wrapper.find(MoviesCarousel).length).toBe(0);
+        expect(wrapper.find(MoviesGallery).length).toBe(0);
     });
 
     test('should render the Carousel when there is results', () => {
@@ -64,6 +64,6 @@ describe('The Search component', () => {
                 }],
             },
         });
-        expect(wrapper.find(MoviesCarousel).length).toBe(1);
+        expect(wrapper.find(MoviesGallery).length).toBe(1);
     });
 });

@@ -34,5 +34,6 @@ export interface Movie {
     images: Image[],
     file: {
         id: string,
-    }
+    },
+    result_quality: number,
 };

@@ -6,7 +6,7 @@ import { History, Location } from 'history';
 import { FETCH_SEARCH_MOVIES } from '../../../reducers/search/constantes';
 
 import { SearchStore } from '../../../reducers/search';
-import MoviesCarousel from '../shared/MoviesCarousel';
+import MoviesGallery from '../shared/MoviesGallery';
 import './index.css';
 
 
@@ -71,7 +71,7 @@ export class Search extends Component<SearchProps, {}> {
                     Results: {search.movies.length}
                 </Typography.Paragraph>
             </React.Fragment>,
-            <MoviesCarousel movies={search.movies} history={history} />
+            <MoviesGallery movies={search.movies} history={history} />
         );
     }
 }

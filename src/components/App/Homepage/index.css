@@ -14,20 +14,3 @@
     width: 90%;
     margin: auto;
 }
-
-.movie-posters-carousel .movie-poster {
-    border-right: 5px solid white;
-}
-
-.movie-posters-carousel {
-    display: flex !important;
-    align-items: center;
-}
-
-.movie-poster.anticon-arrow-left {
-    margin-right: 10px;
-}
-
-.movie-poster.anticon-arrow-right {
-    margin-left: 10px;
-}

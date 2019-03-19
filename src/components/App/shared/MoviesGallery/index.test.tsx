@@ -1,16 +1,16 @@
 import React from 'react';
 import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { Icon, Carousel } from 'antd';
+import { Icon } from 'antd';
 import { History } from 'history';
 
 import { Movie } from '../../interfaces';
-import MoviesCarousel from '.';
+import MoviesGallery from '.';
 
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('The MoviesCarousel component', () => {
+describe('The MoviesGallery component', () => {
     let wrapper: ShallowWrapper;
 
     beforeEach(() => {
@@ -18,7 +18,7 @@ describe('The MoviesCarousel component', () => {
         const movies: Movie[] = [];
 
         wrapper = shallow(
-            <MoviesCarousel
+            <MoviesGallery
                 movies={movies}
                 history={history}
             />
@@ -43,6 +43,6 @@ describe('The MoviesCarousel component', () => {
             }],
         });
 
-        expect(wrapper.find(Carousel).length).toBe(1);
+        expect(wrapper.find('Gallery').length).toBe(1);
     });
 });
