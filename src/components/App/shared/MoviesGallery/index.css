@@ -6,13 +6,21 @@
 }
 
 .search-results-container .movie-poster-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    margin: 2%;
+    margin: 2% 1% 2% 1%;
+    width: 284px;
+    overflow: hidden;
+    display: table-cell;
+    vertical-align: middle;
 }
 
-.search-results-container .movie-poster {
-    cursor: pointer;
+.search-results-container .movie-poster-container .movie-poster-container-image {
+    height: 400px;
     width: 100%;
+    display: flex;
+}
+
+.search-results-container .movie-poster-container-image .movie-poster {
+    cursor: pointer;
+    max-width: 100%;
+    max-height: 100%;
 }
