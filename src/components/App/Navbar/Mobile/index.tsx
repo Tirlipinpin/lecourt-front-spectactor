@@ -84,7 +84,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                     visible={ menuOpen }
                     onClose={this.toggleMenu}
                 >
-                    <Menu className="navbar-menu">
+                    <Menu className="navbar-menu" theme="light">
                         <Menu.Item key="homepage"><Link to={url}><Trans i18nKey="HOMEPAGE_BUTTON" /></Link></Menu.Item>
                         <Menu.Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
                         <Menu.Item key="logout" onClick={this.logout}><Trans i18nKey="LOGOUT" /></Menu.Item>
@@ -107,7 +107,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                     }}
                 >
                     <Menu
-                        theme="dark"
+                        theme="light"
                         mode="horizontal"
                         style={{ lineHeight: '64px' }}
                         selectedKeys={this.isActive()}
