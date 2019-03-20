@@ -5,6 +5,7 @@ import posed from 'react-pose';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
 import { History, Location } from 'history';
+import { Trans } from 'react-i18next';
 
 const Casting = lazy(() => import('./components/Casting'));
 const { Title, Paragraph } = Typography;
@@ -111,7 +112,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                 </div>
 
                 <Layout className="movies-carousel">
-                    <Title level={2}>Your recommendations</Title>
+                    <Title level={2}><Trans i18nKey="YOUR_RECOMMENDATIONS" /></Title>
                     <MoviesGallery movies={recommandations} history={history} />
                 </Layout>
 

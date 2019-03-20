@@ -3,7 +3,7 @@
     z-index: 10;
     width: 100%;
     box-shadow: 0 8px 20px rgba(41, 45, 51, 0.35);
-    padding: 0 16px;
+    padding: 0 0;
 }
 
 .logo {
@@ -14,7 +14,8 @@
 }
 
 .menu-items-container {
-    margin-left: 5%;
+    padding: 0 1%;
+    width: 100vw;
 }
 
 @media screen and (min-width: 450px) {

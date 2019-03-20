@@ -13,6 +13,9 @@ import App from './components/App';
 import Login from './components/Login';
 import Register from './components/Register';
 import NotFound from './components/NotFound';
+import './i18n';
+
+localStorage.setItem('i18nextLng', 'fr');
 
 const { store, persistor } = configureStore();
 
