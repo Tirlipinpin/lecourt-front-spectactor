@@ -6,6 +6,7 @@ import { History, Location } from 'history';
 
 import { NavbarStore } from '../../../reducers/navbar';
 import { Navbar } from '.';
+import { WithTranslation } from 'react-i18next';
 
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -25,6 +26,9 @@ describe('The Navbar component', () => {
         const navbar: NavbarStore = {
             searchTerm: '',
         };
+        const i18n = {
+            t: jest.fn(),
+        } as unknown;
 
         wrapper = shallow(
             <Navbar
@@ -33,6 +37,7 @@ describe('The Navbar component', () => {
                 match={match}
                 dispatch={dispatch}
                 navbar={navbar}
+                {...i18n as WithTranslation}
             />
         );
     });

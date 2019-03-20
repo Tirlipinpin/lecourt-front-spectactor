@@ -23,7 +23,6 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-i18next": "^10.5.2",
-    "react-photo-gallery": "^6.3.2",
     "react-player": "^1.9.3",
     "react-pose": "^4.0.8",
     "react-redux": "^6.0.1",

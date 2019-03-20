@@ -111,7 +111,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                     </div>
                 </div>
 
-                <Layout className="movies-carousel">
+                <Layout className="recommendations">
                     <Title level={2}><Trans i18nKey="YOUR_RECOMMENDATIONS" /></Title>
                     <MoviesGallery movies={recommandations} history={history} />
                 </Layout>

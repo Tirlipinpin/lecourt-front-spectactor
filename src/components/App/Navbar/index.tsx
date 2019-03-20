@@ -3,7 +3,7 @@ import { Layout, Menu, Input, Icon } from 'antd';
 import { Link, match } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { History, Location } from 'history';
-import { Trans } from 'react-i18next';
+import { Trans, WithTranslation, withTranslation } from 'react-i18next';
 
 import logo from './Logo.png';
 import './index.css';
@@ -14,7 +14,7 @@ import ClearIcon from './ClearIcon';
 
 const { Header } = Layout;
 
-interface NavbarProps {
+interface NavbarProps extends WithTranslation {
     match: match,
     history: History,
     location: Location,
@@ -59,7 +59,7 @@ export class Navbar extends Component<NavbarProps, {}> {
     }
 
     render() {
-        const { history, navbar } = this.props;
+        const { history, navbar, t } = this.props;
         const { url } = this.props.match;
 
         const { searchTerm } = navbar;
@@ -73,14 +73,16 @@ export class Navbar extends Component<NavbarProps, {}> {
                     className="menu-items-container navbar-menu"
                     selectedKeys={this.isActive()}
                 >
-                    <img src={logo} className="logo" onClick={() => history.push(url)} />
+                    <Menu.Item className="navbar-logo">
+                        <img src={logo} className="logo" onClick={() => history.push(url)} />
+                    </Menu.Item>
                     <Menu.Item key="homepage"><Link to={url}><Trans i18nKey="HOMEPAGE_BUTTON" /></Link></Menu.Item>
                     <Menu.Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
-                    <Menu.Item key="searchbar">
+                    <Menu.Item key="searchbar" className="navbar-searchbar">
                         <Input.Search
                             value={searchTerm}
                             onChange={this.onChangeSearchTerm}
-                            placeholder="Search a short..."
+                            placeholder={t('SEARCH_BAR_PLACEHOLDER')}
                             suffix={<ClearIcon termLength={searchTerm.length} onChangeSearchTerm={this.onChangeSearchTerm} />}
                             onPressEnter={this.onSearchTerm}
                             onSearch={this.onSearchTerm}
@@ -95,4 +97,4 @@ export class Navbar extends Component<NavbarProps, {}> {
 
 export default connect(({ navbar }: any) =>({
     navbar,
-}))(Navbar);
+}))(withTranslation()(Navbar));

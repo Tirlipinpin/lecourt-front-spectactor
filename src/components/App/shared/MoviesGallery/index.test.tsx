@@ -43,6 +43,6 @@ describe('The MoviesGallery component', () => {
             }],
         });
 
-        expect(wrapper.find('Gallery').length).toBe(1);
+        expect(wrapper.find('.search-results-container').length).toBe(1);
     });
 });

@@ -1,7 +1,8 @@
-import React, { Component, Dispatch, ReactFragment } from 'react';
+import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { Layout, Icon, PageHeader, Typography } from 'antd';
 import { History, Location } from 'history';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 import { FETCH_SEARCH_MOVIES } from '../../../reducers/search/constantes';
 
@@ -10,7 +11,7 @@ import MoviesGallery from '../shared/MoviesGallery';
 import './index.css';
 
 
-export interface SearchProps {
+export interface SearchProps extends WithTranslation {
     match: any,
     history: History,
     location: Location,
@@ -33,7 +34,7 @@ export class Search extends Component<SearchProps, {}> {
 
     renderPageHeader = (Header: JSX.Element, Child: JSX.Element | null) => (
         <Layout className="page-container search-page-container">
-            <PageHeader className="search-page-header" title={`You searched for ${this.props.match.params.term}`}>
+            <PageHeader className="search-page-header" title={`${this.props.t('YOU_SEARCHED_FOR')} ${this.props.match.params.term}`}>
                 {Header}
             </PageHeader>
             <div className="search-page-content">
@@ -78,4 +79,4 @@ export class Search extends Component<SearchProps, {}> {
 
 export default connect(({ search }: any) =>({
     search,
-}))(Search);
+}))(withTranslation()(Search));

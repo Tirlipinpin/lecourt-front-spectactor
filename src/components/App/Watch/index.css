@@ -10,9 +10,18 @@
     flex-wrap: wrap;
 }
 
+.watch-page-container .recommendations h2 {
+    color: white;
+    margin-left: 112px;
+}
+
 @media screen and (max-width: 900px) {
     .watch-page-container .details-container {
         padding: 16px 8px;
+    }
+
+    .watch-page-container .recommendations h2 {
+        margin: 0;
     }
 }
 
@@ -41,21 +50,17 @@
     text-align: justify;
 }
 
-.watch-page-container .movies-carousel {
-    padding: 16px 128px 32px 128px;
+.watch-page-container .recommendations {
+    padding: 16px  16px 32px 16px;
     background: black;
     width: 100%;
     color: white;
 }
 
-.watch-page-container .movies-carousel h1 {
+.watch-page-container .recommendations .slick-arrow {
     color: white;
 }
 
-.watch-page-container .movies-carousel .slick-arrow {
-    color: white;
-}
-
-.watch-page-container .movies-carousel .ant-typography {
+.watch-page-container .recommendations .ant-typography {
     color: white;
 }

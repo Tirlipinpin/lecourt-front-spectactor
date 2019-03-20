@@ -2,6 +2,7 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 import { History, Location } from 'history';
+import { WithTranslation } from 'react-i18next';
 
 import { SearchStore } from '../../../reducers/search';
 import { Search } from '.';
@@ -26,6 +27,9 @@ describe('The Search component', () => {
             loading: false,
             movies: [],
         };
+        const i18n = {
+            t: jest.fn(),
+        } as unknown;
 
         wrapper = shallow(
             <Search
@@ -34,6 +38,7 @@ describe('The Search component', () => {
                 match={match}
                 search={search}
                 dispatch={dispatch}
+                {...i18n as WithTranslation}
             />
         );
     });
@@ -51,11 +56,11 @@ describe('The Search component', () => {
         });
     });
 
-    test('should not render the Carousel when there is no results', () => {
+    test('should not render the Gallery when there is no results', () => {
         expect(wrapper.find(MoviesGallery).length).toBe(0);
     });
 
-    test('should render the Carousel when there is results', () => {
+    test('should render the Gallery when there is results', () => {
         wrapper.setProps({
             search: {
                 movies: [{

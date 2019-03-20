@@ -3,6 +3,7 @@ import { Layout, Menu, Drawer, Icon, Input } from 'antd';
 import { Link, match } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { History, Location } from 'history';
+import { Trans, WithTranslation, withTranslation } from 'react-i18next';
 
 const { Header } = Layout;
 import { LOGOUT } from '../../../../reducers/login/constantes';
@@ -11,7 +12,7 @@ import { UPDATE_SEARCH_TERM } from '../../../../reducers/navbar/constantes';
 import { NavbarStore } from '../../../../reducers/navbar';
 import ClearIcon from '../ClearIcon';
 
-interface MobileNavbarProps {
+interface MobileNavbarProps extends WithTranslation {
     match: match,
     history: History,
     location: Location,
@@ -68,7 +69,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
     }
 
     render() {
-        const { history, navbar } = this.props;
+        const { history, navbar, t } = this.props;
         const { url } = this.props.match;
         const { menuOpen } = this.state;
 
@@ -84,14 +85,14 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                     onClose={this.toggleMenu}
                 >
                     <Menu className="navbar-menu">
-                        <Menu.Item key="homepage"><Link to={url}>Homepage</Link></Menu.Item>
+                        <Menu.Item key="homepage"><Link to={url}><Trans i18nKey="HOMEPAGE_BUTTON" /></Link></Menu.Item>
                         <Menu.Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
-                        <Menu.Item key="logout" onClick={this.logout}>Logout</Menu.Item>
+                        <Menu.Item key="logout" onClick={this.logout}><Trans i18nKey="LOGOUT" /></Menu.Item>
                         <Menu.Item key="searchbar">
                             <Input.Search
                                 value={searchTerm}
                                 onChange={this.onChangeSearchTerm}
-                                placeholder="Search a short..."
+                                placeholder={t('SEARCH_BAR_PLACEHOLDER')}
                                 suffix={<ClearIcon termLength={searchTerm.length} onChangeSearchTerm={this.onChangeSearchTerm} />}
                                 onPressEnter={this.onSearchTerm}
                                 onSearch={this.onSearchTerm}
@@ -122,4 +123,4 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
 
 export default connect(({ navbar }: any) => ({
     navbar,
-}))(MobileNavbar);
+}))(withTranslation()(MobileNavbar));

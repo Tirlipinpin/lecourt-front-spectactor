@@ -5,6 +5,7 @@ import { Icon, Layout } from 'antd';
 import axios from 'axios';
 import MediaQuery from 'react-responsive';
 import { History, Location } from 'history';
+import { Trans } from 'react-i18next';
 
 import Navbar from './Navbar';
 import MobileNavbar from './Navbar/Mobile';
@@ -78,7 +79,7 @@ export class App extends Component<AppProps, {}>{
                         <Layout.Footer style={{
                             textAlign: 'center',
                         }}>
-                            Lecourt ©2019 Created with <Icon type="heart" /> by the best developpers ever
+                            <Trans i18nKey="FOOTER" />
                         </Layout.Footer>
                     </div>
                 </Layout>

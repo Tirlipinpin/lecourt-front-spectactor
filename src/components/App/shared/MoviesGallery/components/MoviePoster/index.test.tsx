@@ -3,6 +3,7 @@ import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import MoviePoster, { MoviePosterProps } from '.';
+import { CardProps } from 'antd/lib/card';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -12,13 +13,7 @@ describe('The MoviePoster component', () => {
 
     beforeEach(() => {
         const props = {
-            photo: {
-                src: 'poney',
-                height: 21,
-                width: 42,
-            },
             goToWatch,
-            index: 1234,
             movie: {
                 id: 4321,
                 title: 'chapeau',
@@ -33,8 +28,11 @@ describe('The MoviePoster component', () => {
     });
 
     test('should call getOnClick on clik', () => {
-        wrapper.find('.movie-poster').simulate('click');
+        const props = wrapper.find('.movie-poster-container').props() as CardProps;
+        const Image = props.cover as any;
 
-        expect(goToWatch).toHaveBeenCalledWith(1234);
+        Image.props.onClick();
+
+        expect(goToWatch).toHaveBeenCalledWith(4321);
     });
 });
