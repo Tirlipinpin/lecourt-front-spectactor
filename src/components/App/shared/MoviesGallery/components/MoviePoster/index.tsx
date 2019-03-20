@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Movie } from '../../../../interfaces';
 
+
 export interface MoviePosterProps {
     goToWatch: (id: number) => void,
     movie: Movie,
