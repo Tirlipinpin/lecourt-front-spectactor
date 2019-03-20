@@ -23,7 +23,7 @@ export default (props: MoviePosterProps) => {
     const { goToWatch, movie } = props;
     const t = useTranslation().t;
 
-    const posterImage = movie.images.find(i => i.type === 'poster')
+    const posterImage = (movie.images || []).find(i => i.type === 'poster')
     const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.id}` : defaultPoster
 
     return (

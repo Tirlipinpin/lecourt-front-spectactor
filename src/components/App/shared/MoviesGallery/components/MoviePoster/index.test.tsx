@@ -10,13 +10,15 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('The MoviePoster component', () => {
     let wrapper: ShallowWrapper;
     const goToWatch = jest.fn();
+    const uuid = "a9c1aea3-f720-4d3f-b545-b939fbd08680";
 
     beforeEach(() => {
         const props = {
             goToWatch,
             movie: {
-                id: 4321,
+                id: uuid,
                 title: 'chapeau',
+                images: [],
             },
         } as unknown;
 
@@ -28,11 +30,15 @@ describe('The MoviePoster component', () => {
     });
 
     test('should call getOnClick on clik', () => {
-        const props = wrapper.find('.movie-poster-container').props() as CardProps;
-        const Image = props.cover as any;
+        const cardProps = wrapper.find('.movie-poster-container').props() as CardProps;
+        expect(cardProps).toBeTruthy()
 
-        Image.props.onClick();
+        const { cover } = cardProps as any;
+        expect(cover).toBeTruthy()
 
-        expect(goToWatch).toHaveBeenCalledWith(4321);
+        const imageProps = cover.props.children.props
+        imageProps.onClick();
+
+        expect(goToWatch).toHaveBeenCalledWith(uuid);
     });
 });
