@@ -11,10 +11,11 @@ import { HomepageStore } from '../../../reducers/homepage';
 
 
 export interface HomepageProps {
-    history: History,
-    dispatch: Dispatch<any>,
-    homepage: HomepageStore,
+    history: History
+    dispatch: Dispatch<any>
+    homepage: HomepageStore
 }
+
 
 export class Homepage extends Component<HomepageProps, {}> {
     async componentDidMount() {

@@ -2,7 +2,7 @@ import { UPDATE_SEARCH_TERM } from './constantes';
 import { Reducer, AnyAction } from 'redux';
 
 export interface NavbarStore {
-    searchTerm: string,
+    searchTerm: string
 };
 
 export const defaultState = {

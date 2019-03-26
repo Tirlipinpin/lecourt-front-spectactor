@@ -5,8 +5,8 @@ import { Movie } from "../../components/App/interfaces";
 import { FETCH_MOVIES_SUCCEEDED, FETCH_LATEST_MOVIES_SUCCEEDED } from "./constantes";
 
 export interface HomepageStore {
-    movies: Movie[],
-    latestMovies: Movie[],
+    movies: Movie[]
+    latestMovies: Movie[]
 };
 
 export const defaultState: HomepageStore = {

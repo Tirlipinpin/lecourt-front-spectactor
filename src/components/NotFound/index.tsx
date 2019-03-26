@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 import './index.css';
 
 export interface NotFoundProps {
-    title: string,
+    title: string
 };
 
 export default class NotFound extends PureComponent<NotFoundProps, {}> {

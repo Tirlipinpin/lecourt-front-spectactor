@@ -2,7 +2,7 @@ import { REGISTER_USER, REGISTER_USER_SUCCEEDED, REGISTER_USER_FAILED } from './
 import { Reducer, AnyAction } from 'redux';
 
 export interface RegisterStore {
-    loading: boolean,
+    loading: boolean
 };
 
 export const defaultState: RegisterStore = {

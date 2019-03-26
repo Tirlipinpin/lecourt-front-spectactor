@@ -21,7 +21,7 @@ interface MobileNavbarProps extends WithTranslation {
 };
 
 interface MobileNavbarState {
-    menuOpen: boolean,
+    menuOpen: boolean
 };
 
 export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState> {

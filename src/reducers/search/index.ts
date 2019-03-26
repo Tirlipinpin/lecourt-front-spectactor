@@ -4,8 +4,8 @@ import { Movie } from '../../components/App/interfaces'
 import { FETCH_SEARCH_MOVIES, FETCH_SEARCH_MOVIES_SUCCEEDED, FETCH_SEARCH_MOVIES_FAILED } from './constantes';
 
 export interface SearchStore {
-    loading: boolean,
-    movies: Movie[],
+    loading: boolean
+    movies: Movie[]
 };
 
 export const defaultState: SearchStore = {

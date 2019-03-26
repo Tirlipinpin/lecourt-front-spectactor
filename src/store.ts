@@ -12,8 +12,8 @@ import sagas from './sagas';
 export const history = createBrowserHistory();
 
 export interface ConfigureStore {
-    store: Store<any, AnyAction>,
-    persistor: Persistor,
+    store: Store<any, AnyAction>
+    persistor: Persistor
 };
 
 const sagaMiddleware = createSagaMiddleware();

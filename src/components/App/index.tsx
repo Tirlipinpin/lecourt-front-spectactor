@@ -20,12 +20,13 @@ import { LoginStore } from '../../reducers/login';
 import './index.css';
 import NotFound from '../NotFound';
 
+
 interface AppProps {
-    match: match,
-    history: History,
-    location: Location,
-    login: LoginStore,
-    dispatch: Dispatch<any>,
+    match: match
+    history: History
+    location: Location
+    login: LoginStore
+    dispatch: Dispatch<any>
 }
 
 export class App extends Component<AppProps, {}>{
@@ -50,7 +51,7 @@ export class App extends Component<AppProps, {}>{
     ))
 
     render() {
-        const { match, login } = this.props;
+        const { match, login, location } = this.props;
 
         if (!login.token)
             return (
@@ -68,7 +69,7 @@ export class App extends Component<AppProps, {}>{
                     </MediaQuery>
                     <div className="app-container">
                         <Layout.Content className="content-container">
-                            <Switch>
+                            <Switch location={location}>
                                 <Route exact path={match.url} render={(props) => this.renderComponent(Homepage, props)} />
                                 <Route path={`${match.path}/profile`} render={(props) => this.renderComponent(Profile, props)}/>
                                 <Route path={`${match.path}/watch/:id`} render={(props) => this.renderComponent(Watch, props)}/>

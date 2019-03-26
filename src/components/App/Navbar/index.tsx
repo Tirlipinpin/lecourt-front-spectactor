@@ -15,11 +15,11 @@ import ClearIcon from './ClearIcon';
 const { Header } = Layout;
 
 interface NavbarProps extends WithTranslation {
-    match: match,
-    history: History,
-    location: Location,
-    dispatch: Dispatch<any>,
-    navbar: NavbarStore,
+    match: match
+    history: History
+    location: Location
+    dispatch: Dispatch<any>
+    navbar: NavbarStore
 };
 
 export class Navbar extends Component<NavbarProps, {}> {

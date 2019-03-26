@@ -4,9 +4,9 @@ import { Movie } from '../../components/App/interfaces'
 import { FETCH_MOVIE_DETAILS, FETCH_MOVIE_DETAILS_SUCCEEDED, FETCH_MOVIE_DETAILS_FAILED } from './constantes';
 
 export interface WatchStore {
-    loading: boolean,
-    movie: Movie,
-    notFound: boolean,
+    loading: boolean
+    movie: Movie
+    notFound: boolean
 };
 
 export const defaultState: WatchStore = {

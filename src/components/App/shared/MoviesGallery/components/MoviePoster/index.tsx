@@ -7,8 +7,8 @@ import { Movie } from '../../../../interfaces';
 
 
 export interface MoviePosterProps {
-    goToWatch: (id: number) => void,
-    movie: Movie,
+    goToWatch: (id: number) => void
+    movie: Movie
 }
 
 const Image = posed.img({

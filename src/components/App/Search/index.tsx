@@ -12,11 +12,11 @@ import './index.css';
 
 
 export interface SearchProps extends WithTranslation {
-    match: any,
-    history: History,
-    location: Location,
-    dispatch: Dispatch<any>,
-    search: SearchStore,
+    match: any
+    history: History
+    location: Location
+    dispatch: Dispatch<any>
+    search: SearchStore
 };
 
 export class Search extends Component<SearchProps, {}> {

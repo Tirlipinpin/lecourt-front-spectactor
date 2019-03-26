@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Icon } from 'antd';
 import { History } from 'history';
+import posed, { PoseGroup } from 'react-pose';
 
 import { Movie } from '../../interfaces';
 import MoviePoster from './components/MoviePoster';
@@ -9,9 +10,20 @@ import './index.css';
 
 
 export interface MoviesGalleryProps {
-    movies: Movie[],
-    history: History,
+    movies: Movie[]
+    history: History
 };
+
+const MoviePosterContainer = posed.div({
+    enter: {
+        x: 0,
+        opacity: 1,
+    },
+    exit: {
+        x: 50,
+        opacity: 0,
+    },
+})
 
 export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}> {
     goToWatch = (id: number) => {
@@ -28,15 +40,18 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
 
         return (
             <div className="search-results-container">
-                {
-                    movies.map((movie: Movie, index) => (
-                        <MoviePoster
-                            key={index}
-                            goToWatch={this.goToWatch}
-                            movie={movie}
-                        />
-                    ))
-                }
+                <PoseGroup>
+                    {
+                        movies.map((movie: Movie, index) => (
+                            <MoviePosterContainer initialPose='exit' pose='enter' key={index}>
+                                <MoviePoster
+                                    goToWatch={this.goToWatch}
+                                    movie={movie}
+                                />
+                            </MoviePosterContainer>
+                        ))
+                    }
+                </PoseGroup>
             </div>
         );
     }

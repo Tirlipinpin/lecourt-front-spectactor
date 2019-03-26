@@ -2,8 +2,8 @@ import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED, LOGOUT } from '
 import { Reducer, AnyAction } from 'redux';
 
 export interface LoginStore {
-    loading: boolean,
-    token?: string | null,
+    loading: boolean
+    token?: string | null
 };
 
 export const defaultState: LoginStore = {

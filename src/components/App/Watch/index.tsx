@@ -26,15 +26,15 @@ const Img = posed.img({
 });
 
 export interface WatchProps {
-    match: any,
-    history: History,
-    location: Location,
-    dispatch: Dispatch<any>,
-    watch: WatchStore,
+    match: any
+    history: History
+    location: Location
+    dispatch: Dispatch<any>
+    watch: WatchStore
 };
 
 export interface WatchState {
-    recommandations: Movie[],
+    recommandations: Movie[]
 };
 
 export class Watch extends Component<WatchProps, WatchState> {

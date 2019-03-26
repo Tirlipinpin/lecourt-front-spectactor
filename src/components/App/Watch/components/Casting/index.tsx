@@ -6,9 +6,9 @@ import './index.css';
 
 
 export interface CastingProps {
-    actors: Actor[],
-    directors: Person[],
-    staff: Staff[],
+    actors: Actor[]
+    directors: Person[]
+    staff: Staff[]
 };
 
 export default class Casting extends PureComponent<CastingProps, {}> {
