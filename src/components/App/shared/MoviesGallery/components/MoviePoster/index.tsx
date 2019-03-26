@@ -28,6 +28,7 @@ export default (props: MoviePosterProps) => {
 
     return (
         <Card
+            className="movie-poster-card"
             cover={
                 <div className="movie-poster-container-image">
                     <Image

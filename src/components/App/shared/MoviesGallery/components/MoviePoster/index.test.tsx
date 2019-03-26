@@ -30,7 +30,7 @@ describe('The MoviePoster component', () => {
     });
 
     test('should call getOnClick on clik', () => {
-        const cardProps = wrapper.find('.movie-poster-container').props() as CardProps;
+        const cardProps = wrapper.find('.movie-poster-card').props() as CardProps;
         expect(cardProps).toBeTruthy()
 
         const { cover } = cardProps as any;
