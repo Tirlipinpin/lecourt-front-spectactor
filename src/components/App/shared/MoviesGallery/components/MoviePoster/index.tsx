@@ -1,6 +1,6 @@
 import React from 'react';
 import posed from 'react-pose';
-import { Card } from 'antd';
+import { Card, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import { Movie } from '../../../../interfaces';
@@ -28,7 +28,6 @@ export default (props: MoviePosterProps) => {
 
     return (
         <Card
-            className="movie-poster-container"
             cover={
                 <div className="movie-poster-container-image">
                     <Image

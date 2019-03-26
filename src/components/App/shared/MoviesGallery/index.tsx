@@ -43,7 +43,12 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
                 <PoseGroup>
                     {
                         movies.map((movie: Movie, index) => (
-                            <MoviePosterContainer initialPose='exit' pose='enter' key={index}>
+                            <MoviePosterContainer
+                                initialPose='exit'
+                                pose='enter'
+                                key={index}
+                                className='movie-poster-container'
+                            >
                                 <MoviePoster
                                     goToWatch={this.goToWatch}
                                     movie={movie}
