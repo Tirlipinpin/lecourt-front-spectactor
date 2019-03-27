@@ -84,7 +84,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                 <div>
                     {this.props.watch.movie.id
                         ? <ReactPlayer
-                            url={`https://storage.stg.lecourt.tv/movies/${movie.file.id}`}
+                            url={`https://upload.stg.lecourt.tv/movies/${movie.file.id}`}
                             controls
                             width="100%"
                             height="70vh"
