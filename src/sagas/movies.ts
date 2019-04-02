@@ -17,7 +17,7 @@ function* fetchMovies(action: AnyAction): IterableIterator<Object | void> {
 
         const res = yield axios.get(`movies${latest ? '/latest' : ''}`, {
             params: {
-                limit: 20,
+                limit: 8,
             }
         });
 

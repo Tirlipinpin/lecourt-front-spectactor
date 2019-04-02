@@ -40,7 +40,9 @@ export interface Movie {
     images: Image[]
     genres: Genre[]
     file: {
-        id: string
+        node: {
+            id: string
+        }
     },
     result_quality: number
 };

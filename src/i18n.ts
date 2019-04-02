@@ -37,7 +37,6 @@ i18n
       }
     },
     fallbackLng: "fr",
-    debug: true,
 
     ns: ["translations"],
     defaultNS: "translations",
