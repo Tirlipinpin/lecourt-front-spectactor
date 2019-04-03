@@ -1,14 +1,14 @@
 import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 
-import { Person, Actor, Staff } from '../../../interfaces';
+import { ActorRelation, DirectorRelation, StaffRelation } from '../../../interfaces';
 import './index.css';
 
 
 export interface CastingProps {
-    actors: Actor[]
-    directors: Person[]
-    staff: Staff[]
+    actors: ActorRelation[]
+    directors: DirectorRelation[]
+    staff: StaffRelation[]
 };
 
 export default class Casting extends PureComponent<CastingProps, {}> {
@@ -23,14 +23,14 @@ export default class Casting extends PureComponent<CastingProps, {}> {
             {
                 staffActors.map((staffActor, index) => (
                     <React.Fragment key={index}>
-                        <Link to="#">{staffActor.person.firstName} {staffActor.person.lastName} </Link>
+                        <Link to="#">{staffActor.node.firstName} {staffActor.node.lastName} </Link>
                     </React.Fragment>
                 ))
             }
             {
                 directors.map((director, index) => (
                     <React.Fragment key={index}>
-                        <Link to="#">{director.firstName} {director.lastName} </Link>
+                        <Link to="#">{director.node.firstName} {director.node.lastName} </Link>
                     </React.Fragment>
                 ))
             }
