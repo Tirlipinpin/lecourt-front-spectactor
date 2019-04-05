@@ -17,7 +17,7 @@ describe('The StaffGallery component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Casting actors={[ { role: '', person } ]} directors={[ person ]} staff={[ { role: '', person } ]} />);
+        wrapper = shallow(<Casting actors={[ { node: person, role: 'Role' } ]} directors={[ { node: person } ]} staff={[ { node: person, job: 'Cameraman' } ]} />);
     });
 
     test('should render correctly', () => {

@@ -24,7 +24,7 @@ export default (props: MoviePosterProps) => {
     const t = useTranslation().t;
 
     const posterImage = (movie.images || []).find(i => i.type === 'poster')
-    const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.id}` : defaultPoster
+    const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.node.id}` : defaultPoster
 
     return (
         <Card
@@ -44,7 +44,7 @@ export default (props: MoviePosterProps) => {
                 title={movie.title}
                 description={
                     <div>
-                        {(movie.genres || []).map(g => g.name).join(', ')}<br />
+                        {(movie.genres || []).map(g => g.node.name).join(', ')}<br />
                         {
                             movie.result_quality && `${t('RESULT_QUALITY')}: ${movie.result_quality}%`
                         }

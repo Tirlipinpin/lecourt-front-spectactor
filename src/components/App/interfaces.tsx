@@ -6,13 +6,13 @@ export interface Person {
 };
 
 export interface Actor {
-    person: Person
+    node: Person
     role: string
 };
 
 export interface Staff {
-    person: Person
-    role: string
+    node: Person
+    job: string
 };
 
 export interface Image {
@@ -25,6 +25,33 @@ export interface Genre {
     name: string
 }
 
+export interface File {
+    id: string
+}
+
+// Movie model relations
+export interface ActorRelation {
+    node: Person
+    role: string
+}
+export interface StaffRelation {
+    node: Person
+    job: string
+}
+export interface DirectorRelation {
+    node: Person
+}
+export interface ImageRelation {
+    node: Image
+    type: string
+}
+export interface GenreRelation {
+    node: Genre
+}
+export interface FileRelation {
+    node: File
+}
+
 export interface Movie {
     id: number
     title: string
@@ -34,15 +61,11 @@ export interface Movie {
     duration: number
     createdAt: string
     updatedAt: string
-    actors: Actor[]
-    directors: Person[]
-    staff: Staff[]
-    images: Image[]
-    genres: Genre[]
-    file: {
-        node: {
-            id: string
-        }
-    },
+    actors: ActorRelation[]
+    directors: DirectorRelation[]
+    staff: StaffRelation[]
+    images: ImageRelation[]
+    genres: GenreRelation[]
+    file: FileRelation,
     result_quality: number
 };
