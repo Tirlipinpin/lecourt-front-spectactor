@@ -1,9 +1,8 @@
-body {
-    /* background: linear-gradient(to right,rgb(211, 145, 134), #D3B586, rgb(139, 119, 87)); */
-    /* background-color: #B5543D; */
+.auth-background {
     background-color: #B5543D;
     background-image: -webkit-linear-gradient(30deg, rgb(143, 31, 31) 50%, rgb(181, 61, 61) 50%);
-    min-height: 500px;
+    height: 100vh;
+    width: 100vw;
 }
 
 .auth-container {

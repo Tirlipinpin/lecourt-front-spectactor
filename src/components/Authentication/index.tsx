@@ -22,15 +22,17 @@ export class Authentication extends Component<AuthenticationProps, {}> {
         const { location, match, login } = this.props
 
         return (
-            <div className="auth-container">
-                <img src={logo} className="logo" />
-                <div className="auth-form">
-                    { login.token && <Redirect to="/app" /> }
-                    <Switch location={location}>
-                        <Route path={`${match.url}/login`} render={() => <Login loading={login.loading} />} />
-                        <Route path={`${match.url}/register`} component={Register} />
-                        <Route render={() => <NotFound title='Page not found !' />}/>
-                    </Switch>
+            <div className="auth-background">
+                <div className="auth-container">
+                    <img src={logo} className="logo" />
+                    <div className="auth-form">
+                        { login.token && <Redirect to="/app" /> }
+                        <Switch location={location}>
+                            <Route path={`${match.url}/login`} render={() => <Login loading={login.loading} />} />
+                            <Route path={`${match.url}/register`} component={Register} />
+                            <Route render={() => <NotFound title='Page not found !' />}/>
+                        </Switch>
+                    </div>
                 </div>
             </div>
         )
