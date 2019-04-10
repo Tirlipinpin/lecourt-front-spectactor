@@ -1,25 +1,63 @@
-.login-form {
-    width: 25%;
+body {
+    /* background: linear-gradient(to right,rgb(211, 145, 134), #D3B586, rgb(139, 119, 87)); */
+    /* background-color: #B5543D; */
+    background-color: #B5543D;
+    background-image: -webkit-linear-gradient(30deg, rgb(143, 31, 31) 50%, rgb(181, 61, 61) 50%);
+    min-height: 500px;
+}
+
+.login-wrap {
+    width: 20%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.login-wrap img {
+    display: block;
+    width: 40%;
+    height: auto;
+    margin: 5%;
+    margin-top: -30%;
+}
+
+.login-wrap .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 50px;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+}
+
+.login-form-item {
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 400px) {
-    .login-form {
+    .login-wrap {
         width: 70%;
     }
 }
 
 @media screen and (min-width: 400px) and (max-width: 640px) {
-    .login-form {
+    .login-wrap {
         width: 60%;
     }
 }
 
+@media screen and (min-width: 640px) and (max-width: 1200px) {
+    .login-wrap {
+        width: 40%;
+    }
+}
+
 .login-form .login-form-button {
-    width: 100%;
+    margin: 3vh 0 3vh 0;
 }

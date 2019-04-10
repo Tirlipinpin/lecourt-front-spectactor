@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { History, Location } from 'history';
 import { Trans, WithTranslation, withTranslation } from 'react-i18next';
 
-import logo from './Logo.png';
+import logo from '../../../assets/Logo.png';
 import './index.css';
 import { LOGOUT } from '../../../reducers/login/constantes';
 import { UPDATE_SEARCH_TERM } from '../../../reducers/navbar/constantes';
