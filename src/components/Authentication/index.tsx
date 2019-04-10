@@ -10,7 +10,7 @@ import { LoginStore } from '../../reducers/login';
 import './index.css';
 import logo from '../../assets/Logo.png';
 
-type AuthenticationProps = {
+export type AuthenticationProps = {
     match: match
     history: History
     location: Location
