@@ -7,7 +7,7 @@ import { Trans, WithTranslation, withTranslation } from 'react-i18next';
 
 const { Header } = Layout;
 import { LOGOUT } from '../../../../reducers/login/constantes';
-import logo from '../Logo.png';
+import logo from '../../../../assets/Logo.png';
 import { UPDATE_SEARCH_TERM } from '../../../../reducers/navbar/constantes';
 import { NavbarStore } from '../../../../reducers/navbar';
 import ClearIcon from '../ClearIcon';
@@ -36,7 +36,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
             type: LOGOUT,
         });
 
-        history.push('/login');
+        history.push('/');
     }
 
     isActive = (): Array<string> => {

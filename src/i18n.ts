@@ -19,6 +19,8 @@ i18n
             RESULT_QUALITY: 'Result quality',
             YOU_SEARCHED_FOR: 'You searched for',
             FOOTER: 'Lecourt ©2019 Created with love by the best developers ever',
+            REGISTER: 'Register',
+            LOGIN: 'Sign in',
         }
       },
       fr: {
@@ -33,6 +35,8 @@ i18n
             RESULT_QUALITY: 'Qualité du résultat',
             YOU_SEARCHED_FOR: 'Vous avez recherché',
             FOOTER: 'Lecourt ©2019 Créé avec amour par les meilleurs développeurs',
+            REGISTER: 'Inscription',
+            LOGIN: 'Connexion',
         }
       }
     },

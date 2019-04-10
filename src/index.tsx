@@ -10,9 +10,8 @@ import * as serviceWorker from './serviceWorker';
 import configureStore, { history } from './store';
 import './index.css';
 import App from './components/App';
-import Login from './components/Login';
-import Register from './components/Register';
 import NotFound from './components/NotFound';
+import Authentication from './components/Authentication';
 import './i18n';
 
 localStorage.setItem('i18nextLng', 'fr');
@@ -29,8 +28,7 @@ ReactDOM.render(
                 <Switch>
                     <Redirect to="/app" from="/" exact />
                     <Route path="/app" component={App} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/register" component={Register} />
+                    <Route path="/authentication" component={Authentication} />
                     <Route component={() => <NotFound title="Page not found !" />} />
                 </Switch>
             </ConnectedRouter>
