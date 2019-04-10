@@ -6,7 +6,7 @@ body {
     min-height: 500px;
 }
 
-.login-wrap {
+.auth-container {
     width: 20%;
     position: absolute;
     top: 50%;
@@ -17,7 +17,7 @@ body {
     align-items: center;
 }
 
-.login-wrap img {
+.auth-container img {
     display: block;
     width: 40%;
     height: auto;
@@ -25,7 +25,7 @@ body {
     margin-top: -30%;
 }
 
-.login-wrap .login-form {
+.auth-container .auth-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,28 +36,28 @@ body {
     text-align: center;
 }
 
-.login-form-item {
+.auth-form-item {
     margin-bottom: 10px;
 }
 
 @media screen and (max-width: 400px) {
-    .login-wrap {
+    .auth-container {
         width: 70%;
     }
 }
 
 @media screen and (min-width: 400px) and (max-width: 640px) {
-    .login-wrap {
+    .auth-container {
         width: 60%;
     }
 }
 
 @media screen and (min-width: 640px) and (max-width: 1200px) {
-    .login-wrap {
+    .auth-container {
         width: 40%;
     }
 }
 
-.login-form .login-form-button {
+.auth-form .auth-form-button {
     margin: 3vh 0 3vh 0;
 }

@@ -30,7 +30,7 @@ export class Navbar extends Component<NavbarProps, {}> {
             type: LOGOUT,
         });
 
-        history.push('/login');
+        history.push('/');
     }
 
     isActive = (): Array<string> => {

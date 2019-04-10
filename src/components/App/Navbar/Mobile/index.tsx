@@ -36,7 +36,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
             type: LOGOUT,
         });
 
-        history.push('/login');
+        history.push('/');
     }
 
     isActive = (): Array<string> => {
