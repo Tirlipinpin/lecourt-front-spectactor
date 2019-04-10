@@ -55,7 +55,7 @@ export class App extends Component<AppProps, {}>{
 
         if (!login.token)
             return (
-                <Redirect to="/" />
+                <Redirect to="/authentication/login" />
             );
 
         return (
