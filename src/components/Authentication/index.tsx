@@ -30,7 +30,7 @@ export class Authentication extends Component<AuthenticationProps, {}> {
                         <Switch location={location}>
                             <Route path={`${match.url}/login`} render={() => <Login loading={login.loading} />} />
                             <Route path={`${match.url}/register`} component={Register} />
-                            <Route render={() => <NotFound title='Page not found !' />}/>
+                            <Route render={() => <Redirect to={`${match.url}/login`} />} />
                         </Switch>
                     </div>
                 </div>
