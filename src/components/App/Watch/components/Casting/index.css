@@ -1,3 +1,20 @@
+.movie-staff {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.movie-staff-card {
+    margin-right: 0.5vw;
+    width: 300px;
+    min-width: 300px;
+}
+
+.movie-staff-card-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
 .movie-staff .movie-staff-member {
     cursor: pointer;
     height: 200px;
