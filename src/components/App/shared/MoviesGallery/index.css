@@ -16,7 +16,6 @@
 .search-results-container .movie-poster-container .movie-poster-container-image {
     height: 400px;
     width: 100%;
-    display: flex;
 }
 
 .search-results-container .movie-poster-container-image .movie-poster {

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import posed from 'react-pose';
-import { Card, Typography, Tooltip } from 'antd';
+import { Card, Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import { Movie } from '../../../../interfaces';
@@ -38,6 +38,7 @@ export default (props: MoviePosterProps) => {
                     <Image
                         onClick={() => goToWatch(movie.id)}
                         src={poster}
+                        className="movie-poster"
                     />
                 </div>
             }
