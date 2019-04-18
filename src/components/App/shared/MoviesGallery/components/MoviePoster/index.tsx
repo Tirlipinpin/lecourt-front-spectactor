@@ -35,11 +35,9 @@ export default (props: MoviePosterProps) => {
             className="movie-poster-card"
             cover={
                 <div className="movie-poster-container-image">
-                <Tooltip placement="rightTop" title={`Result quality indicator`}><div className={qualityBanner(movie.result_quality || 0)} /></Tooltip>
                     <Image
                         onClick={() => goToWatch(movie.id)}
                         src={poster}
-                        className="movie-poster"
                     />
                 </div>
             }
