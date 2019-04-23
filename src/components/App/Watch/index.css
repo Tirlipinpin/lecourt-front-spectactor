@@ -1,13 +1,10 @@
 .watch-page-container {
     min-height: 100vh;
-    overflow: hidden;
     padding-bottom: 0;
 }
 
 .watch-page-container .details-container {
     background: white;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .watch-page-container .recommendations h2 {

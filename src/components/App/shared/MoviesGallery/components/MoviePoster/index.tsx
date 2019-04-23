@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import posed from 'react-pose';
-import { Card, Typography } from 'antd';
+import { Card, Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import { Movie } from '../../../../interfaces';
@@ -9,6 +9,10 @@ import { Movie } from '../../../../interfaces';
 export interface MoviePosterProps {
     goToWatch: (id: number) => void
     movie: Movie
+}
+
+function qualityBanner(quality: number): string {
+    return (quality <= 25 ? "movie-poster-quality hide" : "movie-poster-quality")
 }
 
 const Image = posed.img({
@@ -41,15 +45,14 @@ export default (props: MoviePosterProps) => {
             bordered={false}
         >
             <Card.Meta
-                title={movie.title}
-                description={
-                    <div>
-                        {(movie.genres || []).map(g => g.node.name).join(', ')}<br />
-                        {
-                            movie.result_quality && `${t('RESULT_QUALITY')}: ${movie.result_quality}%`
-                        }
-                    </div>
+                title={
+                    <Fragment>
+                        <Tooltip placement="rightTop" title="This result might be relevant for you"><div className={qualityBanner(movie.result_quality || 0)} /></Tooltip>
+                        {movie.title}
+                    </Fragment>
                 }
+                className="movie-poster-card-meta"
+                description={(movie.genres || []).map(g => g.node.name).join(', ')}
             />
         </Card>
     );
