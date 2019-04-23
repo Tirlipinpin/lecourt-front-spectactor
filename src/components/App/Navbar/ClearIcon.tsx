@@ -37,6 +37,10 @@ export default class ClearIcon extends PureComponent<ClearIconProps> {
                         },
                     })}
                     theme="filled"
+                    style={{
+                        color: 'rgba(0,0,0,.25)',
+                        fontSize: 12,
+                    }}
                 />
             </Box>
         );
