@@ -34,7 +34,7 @@
     height: 13px;
     margin-right: 7px;
     display: inline-flex;
-    background-color: #8B2D24;
+    background-color: rgb(30, 121, 33);
 }
 
 .movie-poster-quality.hide {

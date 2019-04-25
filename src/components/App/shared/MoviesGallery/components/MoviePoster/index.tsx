@@ -21,11 +21,12 @@ const Image = posed.img({
     hover: { filter: 'grayscale(0%) blur(0px)' }
 });
 
-const defaultPoster = "https://m.media-amazon.com/images/M/MV5BNmYxZDQ2YTUtOTJlNy00NDgzLWE0ODctYTllNWIxNDU4YmY4XkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_CR0,45,480,270_AL_UX477_CR0,0,477,268_AL_.jpg"
+const defaultPoster = "https://www.itsnicethat.com/system/files/042015/5530f2285c3e3c1451002636/images_slice_large/emptyfilmposters-itsnicethat-The-Lion-King.png?1438258632"
 
 export default (props: MoviePosterProps) => {
     const { goToWatch, movie } = props;
-    const t = useTranslation().t;
+
+    const { t } = useTranslation()
 
     const posterImage = (movie.images || []).find(i => i.type === 'poster')
     const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.node.id}` : defaultPoster
@@ -47,7 +48,7 @@ export default (props: MoviePosterProps) => {
             <Card.Meta
                 title={
                     <Fragment>
-                        <Tooltip placement="rightTop" title="This result might be relevant for you"><div className={qualityBanner(movie.result_quality || 0)} /></Tooltip>
+                        <Tooltip placement="rightTop" title={t('RESULT_RELEVANT')}><div className={qualityBanner(movie.result_quality || 0)} /></Tooltip>
                         {movie.title}
                     </Fragment>
                 }
