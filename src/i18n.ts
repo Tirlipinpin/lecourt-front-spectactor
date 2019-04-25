@@ -21,6 +21,7 @@ i18n
             FOOTER: 'Lecourt ©2019 Created with love by the best developers ever',
             REGISTER: 'Register',
             LOGIN: 'Sign in',
+            RESULT_RELEVANT: 'This result might be relevant for you',
         }
       },
       fr: {
@@ -37,6 +38,7 @@ i18n
             FOOTER: 'Lecourt ©2019 Créé avec amour par les meilleurs développeurs',
             REGISTER: 'Inscription',
             LOGIN: 'Connexion',
+            RESULT_RELEVANT: 'Ce résultat peut correspondre à ce que vous cherchez',
         }
       }
     },
