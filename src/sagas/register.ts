@@ -7,11 +7,11 @@ import { REGISTER_USER, REGISTER_USER_SUCCEEDED, REGISTER_USER_FAILED } from '..
 
 function* registerUser(action: AnyAction): IterableIterator<Object | void> {
     try {
-        const token = yield axios.post('https://sso.stg.lecourt.tv/tokens/create', {
-            auth: {
-                username: 'user',
-                password: 'password',
-            },
+        const token = yield axios.post('https://sso.stg.lecourt.tv/users/auth/register', {
+            display_name: action.payload.displayName,
+            email: action.payload.email,
+            password: action.payload.password,
+            password_confirm: action.payload.passwordConfirm,
         });
 
         yield put({
