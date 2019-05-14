@@ -44,8 +44,14 @@ export class App extends Component<AppProps, {}>{
         // axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
 
+    loadingPage = (): React.ReactElement => (
+        <div className="loading-page">
+            <Icon type="loading" style={{ fontSize: '3vw' }} />
+        </div>
+    )
+
     renderComponent = (Child: any, props: RouterProps) => React.createElement(() => (
-        <Suspense fallback={<Icon type="loading" />}>
+        <Suspense fallback={this.loadingPage()}>
             <Child {...props} />
         </Suspense>
     ))
