@@ -6,27 +6,27 @@
     "@types/history": "^4.7.2",
     "@types/jest": "24.0.11",
     "@types/node": "11.13.0",
-    "@types/react": "^16.8.10",
+    "@types/react": "^16.8.17",
     "@types/react-dom": "16.8.3",
-    "@types/react-redux": "^7.0.6",
+    "@types/react-redux": "^7.0.9",
     "@types/react-responsive": "^3.0.3",
     "@types/react-router": "^4.4.5",
-    "@types/react-router-dom": "^4.3.1",
+    "@types/react-router-dom": "^4.3.3",
     "@types/redux": "^3.6.0",
     "@types/redux-persist": "^4.3.1",
-    "antd": "^3.16.1",
+    "antd": "^3.18.1",
     "axios": "^0.18.0",
-    "connected-react-router": "^6.3.2",
+    "connected-react-router": "^6.4.0",
     "cross-env": "^5.2.0",
-    "i18next": "^15.0.8",
+    "i18next": "^15.1.0",
     "i18next-browser-languagedetector": "^3.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-i18next": "^10.6.1",
-    "react-player": "^1.10.0",
+    "react-i18next": "^10.9.0",
+    "react-player": "^1.11.0",
     "react-pose": "^4.0.8",
     "react-redux": "^6.0.1",
-    "react-responsive": "^6.1.1",
+    "react-responsive": "^6.1.2",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^2.1.8",
@@ -34,7 +34,7 @@
     "redux-mock-store": "^1.5.3",
     "redux-persist": "^5.10.0",
     "redux-saga": "^1.0.2",
-    "typescript": "3.4.1"
+    "typescript": "^3.4.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -53,10 +53,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@types/enzyme": "^3.9.1",
+    "@types/enzyme": "^3.9.2",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-adapter-react-16": "^1.13.0",
     "redux-devtools-extension": "^2.13.8"
   }
 }
