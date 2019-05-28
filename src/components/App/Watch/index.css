@@ -49,15 +49,20 @@
 
 .watch-page-container .recommendations {
     padding: 16px  16px 32px 16px;
-    background: black;
+    background: white;
     width: 100%;
-    color: white;
+    color: black;
+}
+
+.watch-page-container .recommendations h2 {
+    border-left: 4px solid black;
+    padding-left: 8px;
 }
 
 .watch-page-container .recommendations .slick-arrow {
-    color: white;
+    color: black;
 }
 
 .watch-page-container .recommendations .ant-typography {
-    color: white;
+    color: black;
 }
