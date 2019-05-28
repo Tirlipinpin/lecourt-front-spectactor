@@ -6,7 +6,7 @@ import { createMemoryHistory } from 'history'
 import { HomepageStore } from '../../../reducers/homepage';
 import { Homepage } from '.';
 
-Enzyme.configure({ adapter: new Adapter() })
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('the Homepage component', () => {
     let wrapper;
@@ -16,7 +16,7 @@ describe('the Homepage component', () => {
         const homepage: HomepageStore = {
             movies: [],
             latestMovies: [],
-        }
+        };
         wrapper = shallow(
             <Homepage
                 homepage={homepage}

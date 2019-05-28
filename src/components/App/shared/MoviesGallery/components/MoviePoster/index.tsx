@@ -21,19 +21,20 @@ const Image = posed.img({
     hover: { filter: 'grayscale(0%) blur(0px)' }
 });
 
-const defaultPoster = "https://www.itsnicethat.com/system/files/042015/5530f2285c3e3c1451002636/images_slice_large/emptyfilmposters-itsnicethat-The-Lion-King.png?1438258632"
+const defaultPoster = "https://www.itsnicethat.com/system/files/042015/5530f2285c3e3c1451002636/images_slice_large/emptyfilmposters-itsnicethat-The-Lion-King.png?1438258632";
 
 export default (props: MoviePosterProps) => {
     const { goToWatch, movie } = props;
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
-    const posterImage = (movie.images || []).find(i => i.type === 'poster')
-    const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.node.id}` : defaultPoster
+    const posterImage = (movie.images || []).find(i => i.type === 'poster');
+    const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.node.id}` : defaultPoster;
 
     return (
         <Card
             className="movie-poster-card"
+            hoverable
             cover={
                 <div className="movie-poster-container-image">
                     <Image
