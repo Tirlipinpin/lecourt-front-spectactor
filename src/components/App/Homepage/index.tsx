@@ -1,7 +1,7 @@
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { Carousel, Layout, Typography } from 'antd';
-import { History } from 'history';
+import { RouteComponentProps } from 'react-router';
 import { Trans } from "react-i18next";
 
 import { FETCH_MOVIES } from '../../../reducers/homepage/constantes';
@@ -10,8 +10,7 @@ import './index.css';
 import { HomepageStore } from '../../../reducers/homepage';
 
 
-export interface HomepageProps {
-    history: History
+export interface HomepageProps extends RouteComponentProps {
     dispatch: Dispatch<any>
     homepage: HomepageStore
 }

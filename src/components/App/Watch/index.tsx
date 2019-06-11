@@ -4,7 +4,7 @@ import { Layout, Icon, Typography } from 'antd';
 import posed from 'react-pose';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
-import { History, Location } from 'history';
+import { RouteComponentProps } from 'react-router';
 import { Trans } from 'react-i18next';
 
 const Casting = lazy(() => import('./components/Casting'));
@@ -25,10 +25,11 @@ const Img = posed.img({
     hover: { filter: 'grayscale(0%) blur(0px)', scale: 1.1 }
 });
 
-export interface WatchProps {
-    match: any
-    history: History
-    location: Location
+export type WatchPropsParams = {
+    id: string
+}
+
+export interface WatchProps extends RouteComponentProps<WatchPropsParams> {
     dispatch: Dispatch<any>
     watch: WatchStore
 };

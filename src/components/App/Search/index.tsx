@@ -1,7 +1,7 @@
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { Layout, Icon, PageHeader, Typography } from 'antd';
-import { History, Location } from 'history';
+import { RouteComponentProps } from 'react-router';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
 import { FETCH_SEARCH_MOVIES } from '../../../reducers/search/constantes';
@@ -10,11 +10,11 @@ import { SearchStore } from '../../../reducers/search';
 import MoviesGallery from '../shared/MoviesGallery';
 import './index.css';
 
+export type SearchPropsParams = {
+    term: string
+}
 
-export interface SearchProps extends WithTranslation {
-    match: any
-    history: History
-    location: Location
+export interface SearchProps extends WithTranslation, RouteComponentProps<SearchPropsParams> {
     dispatch: Dispatch<any>
     search: SearchStore
 };

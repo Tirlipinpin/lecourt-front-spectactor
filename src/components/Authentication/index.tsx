@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, match, Redirect } from 'react-router';
+import { Switch, Route, match, Redirect, RouteComponentProps } from 'react-router';
 import { History, Location } from 'history';
 import NotFound from '../NotFound';
 import Login from './Login';
@@ -10,10 +10,7 @@ import { LoginStore } from '../../reducers/login';
 import './index.css';
 import logo from '../../assets/Logo.png';
 
-export type AuthenticationProps = {
-    match: match
-    history: History
-    location: Location
+export interface AuthenticationProps extends RouteComponentProps {
     login: LoginStore
 }
 

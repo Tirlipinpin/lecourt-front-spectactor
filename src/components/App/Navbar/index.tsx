@@ -1,6 +1,7 @@
 import React, { Component, Dispatch, SyntheticEvent } from 'react';
 import { Layout, Menu, Input, Icon } from 'antd';
-import { Link, match } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux';
 import { History, Location } from 'history';
 import { Trans, WithTranslation, withTranslation } from 'react-i18next';
@@ -14,10 +15,7 @@ import ClearIcon from './ClearIcon';
 
 const { Header } = Layout;
 
-interface NavbarProps extends WithTranslation {
-    match: match
-    history: History
-    location: Location
+interface NavbarProps extends WithTranslation, RouteComponentProps {
     dispatch: Dispatch<any>
     navbar: NavbarStore
 };

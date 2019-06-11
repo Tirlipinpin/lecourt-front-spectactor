@@ -1,10 +1,9 @@
 import React, { Component, Dispatch, Suspense, lazy } from 'react';
-import { Switch, Route, Redirect, RouterProps, match } from 'react-router';
+import { Switch, Route, Redirect, RouterProps, match, RouteComponentProps } from 'react-router';
 import { connect } from 'react-redux';
 import { Icon, Layout } from 'antd';
 import axios from 'axios';
 import MediaQuery from 'react-responsive';
-import { History, Location } from 'history';
 import { Trans } from 'react-i18next';
 
 import Navbar from './Navbar';
@@ -21,10 +20,7 @@ import './index.css';
 import NotFound from '../NotFound';
 
 
-interface AppProps {
-    match: match
-    history: History
-    location: Location
+interface AppProps extends RouteComponentProps {
     login: LoginStore
     dispatch: Dispatch<any>
 }
@@ -50,7 +46,7 @@ export class App extends Component<AppProps, {}>{
         </div>
     )
 
-    renderComponent = (Child: any, props: RouterProps) => React.createElement(() => (
+    lazyRender = (Child: any, props: RouterProps) => React.createElement(() => (
         <Suspense fallback={this.loadingPage()}>
             <Child {...props} />
         </Suspense>
@@ -76,10 +72,10 @@ export class App extends Component<AppProps, {}>{
                     <div className="app-container">
                         <Layout.Content className="content-container">
                             <Switch location={location}>
-                                <Route exact path={match.url} render={(props) => this.renderComponent(Homepage, props)} />
-                                <Route path={`${match.path}/profile`} render={(props) => this.renderComponent(Profile, props)}/>
-                                <Route path={`${match.path}/watch/:id`} render={(props) => this.renderComponent(Watch, props)}/>
-                                <Route path={`${match.path}/search/:term`} render={(props) => this.renderComponent(Search, props)}/>
+                                <Route exact path={match.url} render={(props) => this.lazyRender(Homepage, props)} />
+                                <Route path={`${match.path}/profile`} render={(props) => this.lazyRender(Profile, props)}/>
+                                <Route path={`${match.path}/watch/:id`} render={(props) => this.lazyRender(Watch, props)}/>
+                                <Route path={`${match.path}/search/:term`} render={(props) => this.lazyRender(Search, props)}/>
                                 <Route render={() => <NotFound title="Page not found !" />}/>
                             </Switch>
                         </Layout.Content>

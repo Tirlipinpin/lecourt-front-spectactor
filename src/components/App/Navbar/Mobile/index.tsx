@@ -1,8 +1,8 @@
 import React, { Component, Dispatch } from 'react';
 import { Layout, Menu, Drawer, Icon, Input } from 'antd';
-import { Link, match } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { History, Location } from 'history';
+import { RouteComponentProps } from 'react-router';
 import { Trans, WithTranslation, withTranslation } from 'react-i18next';
 
 const { Header } = Layout;
@@ -12,10 +12,7 @@ import { UPDATE_SEARCH_TERM } from '../../../../reducers/navbar/constantes';
 import { NavbarStore } from '../../../../reducers/navbar';
 import ClearIcon from '../ClearIcon';
 
-interface MobileNavbarProps extends WithTranslation {
-    match: match,
-    history: History,
-    location: Location,
+interface MobileNavbarProps extends WithTranslation, RouteComponentProps {
     dispatch: Dispatch<any>,
     navbar: NavbarStore,
 };
