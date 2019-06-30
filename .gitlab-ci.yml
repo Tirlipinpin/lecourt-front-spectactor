@@ -2,7 +2,7 @@
 # Gitlab-CI bliink.io
 #-------------------------------------------------------------------------------
 
-image: bsingr/docker-and-compose:17-1.12.0
+image: tmaier/docker-compose:18.09
 
 variables:
   DOCKER_DRIVER: overlay
@@ -68,7 +68,7 @@ build_staging:
   stage: build
   <<: [ *branch-test, *runner-docker ]
   services:
-    - docker:17-dind
+    - docker:dind
   script:
     - docker build --pull -t $CONTAINER_STAGING_IMAGE -f development.Dockerfile .
     - docker push $CONTAINER_STAGING_IMAGE
