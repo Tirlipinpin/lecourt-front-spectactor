@@ -22,13 +22,15 @@ export class Homepage extends Component<HomepageProps, {}> {
 
         dispatch({
             type: FETCH_MOVIES,
-            payload: {},
+            payload: {
+                urlComplement: '/latest',
+            },
         });
 
         dispatch({
             type: FETCH_MOVIES,
             payload: {
-                latest: true,
+                urlComplement: '/latest',
             },
         });
     }
@@ -52,7 +54,7 @@ export class Homepage extends Component<HomepageProps, {}> {
                 </Carousel>
                 <Layout className="movies-carousel">
                     <Typography.Title level={2}><Trans i18nKey="OUR_SELECTION" /></Typography.Title>
-                    <MoviesGallery movies={homepage.movies} history={history} />
+                    <MoviesGallery movies={homepage.latestMovies} history={history} />
                 </Layout>
                 <Layout className="movies-carousel">
                     <Typography.Title level={2}><Trans i18nKey="LATEST_SHORTS" /></Typography.Title>

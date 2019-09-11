@@ -13,9 +13,9 @@ import {
 
 function* fetchMovies(action: AnyAction): IterableIterator<Object | void> {
     try {
-        const { latest } = action.payload;
+        const { urlComplement } = action.payload;
 
-        const res = yield axios.get(`movies${latest ? '/latest' : ''}`, {
+        const res = yield axios.get(`movies${urlComplement || ''}`, {
             params: {
                 limit: 8,
             }
@@ -27,7 +27,7 @@ function* fetchMovies(action: AnyAction): IterableIterator<Object | void> {
         const { data } = res;
 
         yield put({
-            type: latest ? FETCH_MOVIES_SUCCEEDED : FETCH_LATEST_MOVIES_SUCCEEDED,
+            type: urlComplement.includes('/latest') ? FETCH_LATEST_MOVIES_SUCCEEDED : FETCH_MOVIES_SUCCEEDED,
             payload: data,
         });
     } catch (e) {
