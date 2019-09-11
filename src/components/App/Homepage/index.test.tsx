@@ -30,16 +30,18 @@ describe('the Homepage component', () => {
         expect(wrapper.length).toEqual(1);
     });
 
-    test('should dispatch FETCH_MOVIES twice with simple and latest requests', () => {
+    test('should dispatch FETCH_MOVIES twice with latest requests', () => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
             type: 'FETCH_MOVIES',
-            payload: {},
+            payload: {
+                urlComplement: '/latest',
+            },
         });
 
         expect(dispatch).toHaveBeenNthCalledWith(2, {
             type: 'FETCH_MOVIES',
             payload: {
-                latest: true,
+                urlComplement: '/latest',
             },
         });
     });
