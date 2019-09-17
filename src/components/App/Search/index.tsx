@@ -4,7 +4,7 @@ import { Layout, Icon, PageHeader, Typography } from 'antd';
 import { RouteComponentProps } from 'react-router';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
-import { FETCH_SEARCH_MOVIES } from '../../../reducers/search/constantes';
+import { FETCH_SEARCH_MOVIES } from '../../../reducers/search/constants';
 
 import { SearchStore } from '../../../reducers/search';
 import MoviesGallery from '../shared/MoviesGallery';
@@ -17,7 +17,8 @@ export type SearchPropsParams = {
 export interface SearchProps extends WithTranslation, RouteComponentProps<SearchPropsParams> {
     dispatch: Dispatch<any>
     search: SearchStore
-};
+    t?: any
+}
 
 export class Search extends Component<SearchProps, {}> {
     async componentDidMount() {

@@ -1,16 +1,26 @@
 import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
+import { Provider } from 'react-redux';
+import { Store } from 'redux';
 
 import Profile from '.';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('The Profile component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Profile />);
+        const store = {
+            subscribe: jest.fn(),
+            dispatch: jest.fn(),
+            replaceReducer: jest.fn(),
+            getState: jest.fn(),
+        } as unknown;
+
+        wrapper = shallow(
+          <Provider store={store as Store}>
+            <Profile />
+          </Provider>
+        );
     });
 
     test('should render correctly', () => {

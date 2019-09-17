@@ -22,6 +22,7 @@ i18n
             REGISTER: 'Register',
             LOGIN: 'Sign in',
             RESULT_RELEVANT: 'This result might be relevant for you',
+            GENRES: 'Genres',
         }
       },
       fr: {
@@ -39,6 +40,7 @@ i18n
             REGISTER: 'Inscription',
             LOGIN: 'Connexion',
             RESULT_RELEVANT: 'Ce résultat peut correspondre à ce que vous cherchez',
+            GENRES: 'Catégories',
         }
       }
     },

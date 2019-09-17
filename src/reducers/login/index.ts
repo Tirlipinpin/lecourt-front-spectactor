@@ -1,4 +1,4 @@
-import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED, LOGOUT } from './constantes';
+import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED, LOGOUT } from './constants';
 import { Reducer, AnyAction } from 'redux';
 
 export interface LoginStore {

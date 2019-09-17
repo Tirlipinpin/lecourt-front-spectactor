@@ -1,5 +1,4 @@
 import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 import { match } from 'react-router';
 import { History, Location } from 'history';
@@ -7,9 +6,6 @@ import { History, Location } from 'history';
 import { NavbarStore } from '../../../reducers/navbar';
 import { Navbar } from '.';
 import { WithTranslation } from 'react-i18next';
-
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('The Navbar component', () => {
     let wrapper: ShallowWrapper<Navbar>;
@@ -25,6 +21,7 @@ describe('The Navbar component', () => {
         } as Location;
         const navbar: NavbarStore = {
             searchTerm: '',
+            genres: [],
         };
         const i18n = {
             t: jest.fn(),

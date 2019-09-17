@@ -1,5 +1,4 @@
 import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 import { History, Location } from 'history';
 
@@ -7,8 +6,6 @@ import { MobileNavbar } from '.';
 import { NavbarStore } from '../../../../reducers/navbar';
 import { match } from 'react-router';
 import { WithTranslation } from 'react-i18next';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('The Mobile navbar component', () => {
     let wrapper: ShallowWrapper;

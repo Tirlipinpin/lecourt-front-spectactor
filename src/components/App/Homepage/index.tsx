@@ -2,9 +2,9 @@ import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { Carousel, Layout, Typography } from 'antd';
 import { RouteComponentProps } from 'react-router';
-import { Trans } from "react-i18next";
+import { Trans } from 'react-i18next';
 
-import { FETCH_MOVIES } from '../../../reducers/homepage/constantes';
+import { FETCH_LATEST_MOVIES } from '../../../reducers/homepage/constants';
 import MoviesGallery from '../shared/MoviesGallery';
 import './index.css';
 import { HomepageStore } from '../../../reducers/homepage';
@@ -21,17 +21,11 @@ export class Homepage extends Component<HomepageProps, {}> {
         const { dispatch } = this.props;
 
         dispatch({
-            type: FETCH_MOVIES,
-            payload: {
-                urlComplement: '/latest',
-            },
+            type: FETCH_LATEST_MOVIES,
         });
 
         dispatch({
-            type: FETCH_MOVIES,
-            payload: {
-                urlComplement: '/latest',
-            },
+            type: FETCH_LATEST_MOVIES,
         });
     }
 

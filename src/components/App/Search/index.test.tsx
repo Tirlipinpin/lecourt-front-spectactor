@@ -1,5 +1,4 @@
 import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 import { History, Location } from 'history';
 import { WithTranslation } from 'react-i18next';
@@ -7,9 +6,6 @@ import { WithTranslation } from 'react-i18next';
 import { SearchStore } from '../../../reducers/search';
 import { Search } from '.';
 import MoviesGallery from '../shared/MoviesGallery';
-
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('The Search component', () => {
     let wrapper: ShallowWrapper;

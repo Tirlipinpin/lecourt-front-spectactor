@@ -1,7 +1,7 @@
 import { Reducer, AnyAction } from 'redux';
 
 import { Movie } from '../../components/App/interfaces'
-import { FETCH_SEARCH_MOVIES, FETCH_SEARCH_MOVIES_SUCCEEDED, FETCH_SEARCH_MOVIES_FAILED } from './constantes';
+import { FETCH_SEARCH_MOVIES, FETCH_SEARCH_MOVIES_SUCCEEDED, FETCH_SEARCH_MOVIES_FAILED } from './constants';
 
 export interface SearchStore {
     loading: boolean

@@ -1,4 +1,4 @@
-import { REGISTER_USER, REGISTER_USER_SUCCEEDED, REGISTER_USER_FAILED } from './constantes';
+import { REGISTER_USER, REGISTER_USER_SUCCEEDED, REGISTER_USER_FAILED } from './constants';
 import { Reducer, AnyAction } from 'redux';
 
 export interface RegisterStore {

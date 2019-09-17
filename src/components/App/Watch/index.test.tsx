@@ -1,5 +1,4 @@
 import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
 import { Icon } from 'antd';
 import { Location, History } from 'history';
@@ -8,8 +7,6 @@ import { WatchStore } from '../../../reducers/watch';
 import { Movie } from '../interfaces';
 import { Watch } from '.';
 import NotFound from '../../NotFound';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('The Watch component', () => {
     let wrapper: ShallowWrapper;

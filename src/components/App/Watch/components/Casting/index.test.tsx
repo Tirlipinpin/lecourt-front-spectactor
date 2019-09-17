@@ -1,11 +1,8 @@
 import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
 
 import Casting from '.';
 import { Person } from '../../../interfaces';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('The StaffGallery component', () => {
     const person: Person = {

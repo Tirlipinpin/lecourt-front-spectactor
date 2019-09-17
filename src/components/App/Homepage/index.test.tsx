@@ -1,12 +1,9 @@
 import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
 import { createMemoryHistory } from 'history'
 
 import { HomepageStore } from '../../../reducers/homepage';
 import { Homepage } from '.';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('the Homepage component', () => {
     let wrapper;
@@ -30,19 +27,13 @@ describe('the Homepage component', () => {
         expect(wrapper.length).toEqual(1);
     });
 
-    test('should dispatch FETCH_MOVIES twice with latest requests', () => {
+    test('should dispatch twice FETCH_LATEST_MOVIES', () => {
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-            type: 'FETCH_MOVIES',
-            payload: {
-                urlComplement: '/latest',
-            },
+            type: 'FETCH_LATEST_MOVIES',
         });
 
         expect(dispatch).toHaveBeenNthCalledWith(2, {
-            type: 'FETCH_MOVIES',
-            payload: {
-                urlComplement: '/latest',
-            },
+            type: 'FETCH_LATEST_MOVIES',
         });
     });
 });

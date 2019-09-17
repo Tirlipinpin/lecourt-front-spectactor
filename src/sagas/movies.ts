@@ -8,14 +8,14 @@ import {
     FETCH_LATEST_MOVIES_SUCCEEDED,
     FETCH_MOVIES_FAILED,
     FETCH_MOVIES,
-} from '../reducers/homepage/constantes';
+    FETCH_LATEST_MOVIES_FAILED,
+    FETCH_LATEST_MOVIES,
+} from '../reducers/homepage/constants';
 
 
 function* fetchMovies(action: AnyAction): IterableIterator<Object | void> {
     try {
-        const { urlComplement } = action.payload;
-
-        const res = yield axios.get(`movies${urlComplement || ''}`, {
+        const res = yield axios.get('movies', {
             params: {
                 limit: 8,
             }
@@ -27,7 +27,7 @@ function* fetchMovies(action: AnyAction): IterableIterator<Object | void> {
         const { data } = res;
 
         yield put({
-            type: urlComplement.includes('/latest') ? FETCH_LATEST_MOVIES_SUCCEEDED : FETCH_MOVIES_SUCCEEDED,
+            type: FETCH_MOVIES_SUCCEEDED,
             payload: data,
         });
     } catch (e) {
@@ -41,8 +41,37 @@ function* fetchMovies(action: AnyAction): IterableIterator<Object | void> {
     }
 }
 
+function* fetchLatestMovies(action: AnyAction): IterableIterator<Object | void> {
+    try {
+        const res = yield axios.get('movies/latest', {
+            params: {
+                limit: 8,
+            }
+        });
+
+        if (!res)
+            throw new Error('Unable to fetch the latest movies');
+
+        const { data } = res;
+
+        yield put({
+            type: FETCH_LATEST_MOVIES_SUCCEEDED,
+            payload: data,
+        });
+    } catch (e) {
+        yield put({
+            type: FETCH_LATEST_MOVIES_FAILED,
+        });
+        yield notification['error']({
+            message: 'An error occured',
+            description: e.message,
+        });
+    }
+}
+
 function* saga() {
     yield takeEvery(FETCH_MOVIES, fetchMovies);
+    yield takeEvery(FETCH_LATEST_MOVIES, fetchLatestMovies);
 }
 
 export default saga;

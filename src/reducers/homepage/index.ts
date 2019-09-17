@@ -2,7 +2,7 @@ import { Reducer } from "react";
 import { AnyAction } from "redux";
 
 import { Movie } from "../../components/App/interfaces";
-import { FETCH_MOVIES_SUCCEEDED, FETCH_LATEST_MOVIES_SUCCEEDED } from "./constantes";
+import { FETCH_MOVIES_SUCCEEDED, FETCH_LATEST_MOVIES_SUCCEEDED } from "./constants";
 
 export interface HomepageStore {
     movies: Movie[]

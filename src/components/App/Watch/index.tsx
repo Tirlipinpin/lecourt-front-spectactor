@@ -14,7 +14,7 @@ import { WatchStore } from '../../../reducers/watch';
 import { Movie } from '../interfaces';
 import NotFound from '../../NotFound';
 import MoviesGallery from '../shared/MoviesGallery';
-import { FETCH_MOVIE_DETAILS } from '../../../reducers/watch/constantes';
+import { FETCH_MOVIE_DETAILS } from '../../../reducers/watch/constants';
 
 import './index.css';
 

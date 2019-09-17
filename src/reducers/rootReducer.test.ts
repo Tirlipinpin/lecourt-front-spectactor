@@ -10,6 +10,7 @@ import { LoginStore } from './login';
 import { RegisterStore } from './register';
 import { SearchStore } from './search';
 import { WatchStore } from './watch';
+import { IBrowseGenresStore } from './browseGenres';
 
 
 describe('rootReducer', () => {
@@ -24,6 +25,7 @@ describe('rootReducer', () => {
             register: {} as RegisterStore,
             search: {} as SearchStore,
             watch: {} as WatchStore,
+            browseGenres: {} as IBrowseGenresStore,
             _persist: {} as PersistState,
         }, {} as AnyAction);
 
@@ -36,6 +38,7 @@ describe('rootReducer', () => {
             router: {},
             search: {},
             watch: {},
+            browseGenres: {},
         });
     })
 });

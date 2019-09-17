@@ -10,6 +10,7 @@ import login from './login';
 import register from './register';
 import search from './search';
 import watch from './watch';
+import browseGenres from './browseGenres';
 
 const persistConfig = {
     key: 'root',
@@ -17,7 +18,7 @@ const persistConfig = {
     whitelist: [
         'login',
     ]
-}
+};
 
 export default (history: History) => persistReducer(persistConfig, combineReducers({
     router: connectRouter(history),
@@ -27,4 +28,5 @@ export default (history: History) => persistReducer(persistConfig, combineReduce
     register,
     search,
     watch,
+    browseGenres,
 }));

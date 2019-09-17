@@ -10,6 +10,7 @@ describe('navbar reducer', () => {
             type: 'UPDATE_SEARCH_TERM',
             payload: 'poney',
         })).toEqual({
+            genres: [],
             searchTerm: 'poney',
         });
     });

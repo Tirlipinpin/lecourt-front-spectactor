@@ -1,11 +1,8 @@
 import React from 'react';
 import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 
 import MoviePoster, { MoviePosterProps } from '.';
 import { CardProps } from 'antd/lib/card';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('The MoviePoster component', () => {
     let wrapper: ShallowWrapper;

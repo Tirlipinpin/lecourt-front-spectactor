@@ -3,7 +3,7 @@ import { AnyAction } from 'redux';
 import axios from 'axios';
 import { notification } from 'antd';
 
-import { FETCH_MOVIE_DETAILS, FETCH_MOVIE_DETAILS_SUCCEEDED, FETCH_MOVIE_DETAILS_FAILED } from '../reducers/watch/constantes';
+import { FETCH_MOVIE_DETAILS, FETCH_MOVIE_DETAILS_SUCCEEDED, FETCH_MOVIE_DETAILS_FAILED } from '../reducers/watch/constants';
 
 function* fetchMovieDetails(action: AnyAction): IterableIterator<Object | void> {
     try {

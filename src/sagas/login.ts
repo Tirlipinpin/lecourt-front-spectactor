@@ -3,7 +3,7 @@ import { AnyAction } from 'redux';
 import axios from 'axios';
 import { notification } from 'antd';
 
-import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED } from '../reducers/login/constantes';
+import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED } from '../reducers/login/constants';
 
 function* fetchToken(action: AnyAction): IterableIterator<Object | void> {
     try {
@@ -18,8 +18,6 @@ function* fetchToken(action: AnyAction): IterableIterator<Object | void> {
 
         if (!token)
             throw new Error('Network error');
-
-        const { data } = token;
 
         yield put({
             type: FETCH_TOKEN_SUCCEEDED,

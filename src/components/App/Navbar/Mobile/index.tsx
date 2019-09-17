@@ -5,21 +5,23 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Trans, WithTranslation, withTranslation } from 'react-i18next';
 
-const { Header } = Layout;
-import { LOGOUT } from '../../../../reducers/login/constantes';
+import { LOGOUT } from '../../../../reducers/login/constants';
 import logo from '../../../../assets/Logo.png';
-import { UPDATE_SEARCH_TERM } from '../../../../reducers/navbar/constantes';
+import { UPDATE_SEARCH_TERM } from '../../../../reducers/navbar/constants';
 import { NavbarStore } from '../../../../reducers/navbar';
 import ClearIcon from '../ClearIcon';
 
+const { Header } = Layout;
+
 interface MobileNavbarProps extends WithTranslation, RouteComponentProps {
-    dispatch: Dispatch<any>,
-    navbar: NavbarStore,
-};
+    dispatch: Dispatch<any>
+    navbar: NavbarStore
+    t?: any
+}
 
 interface MobileNavbarState {
     menuOpen: boolean
-};
+}
 
 export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState> {
     state = {
@@ -42,11 +44,11 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
         return [
             location.pathname.split('/')[2] || 'homepage',
         ];
-    }
+    };
 
     toggleMenu = () => {
         this.setState({ menuOpen: !this.state.menuOpen });
-    }
+    };
 
     onChangeSearchTerm = (e: any) => {
         const { dispatch } = this.props;
@@ -55,7 +57,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
             type: UPDATE_SEARCH_TERM,
             payload: e.target.value,
         });
-    }
+    };
 
     onSearchTerm = () => {
         const { history, navbar, match } = this.props;
@@ -63,7 +65,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
 
         if (searchTerm.length > 0)
             history.push(`${match.url}/search/${searchTerm}`);
-    }
+    };
 
     render() {
         const { history, navbar, t } = this.props;

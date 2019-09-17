@@ -1,5 +1,11 @@
 import React, { Component, Dispatch, Suspense, lazy } from 'react';
-import { Switch, Route, Redirect, RouterProps, match, RouteComponentProps } from 'react-router';
+import {
+    Switch,
+    Route,
+    Redirect,
+    RouterProps,
+    RouteComponentProps,
+} from 'react-router';
 import { connect } from 'react-redux';
 import { Icon, Layout } from 'antd';
 import axios from 'axios';
@@ -12,6 +18,7 @@ const Homepage = lazy(() => import('./Homepage'));
 const Profile = lazy(() => import('./Profile'));
 const Search = lazy(() => import('./Search'));
 const Watch = lazy(() => import('./Watch'));
+const BrowseGenres = lazy(() => import('./BrowseGenres'));
 
 import axiosInterceptor from '../../services/axiosInterceptor';
 import { LoginStore } from '../../reducers/login';
@@ -46,7 +53,7 @@ export class App extends Component<AppProps, {}>{
         </div>
     )
 
-    lazyRender = (Child: any, props: RouterProps) => React.createElement(() => (
+    lazyRender = (Child: any, props?: RouterProps) => React.createElement(() => (
         <Suspense fallback={this.loadingPage()}>
             <Child {...props} />
         </Suspense>
@@ -76,6 +83,7 @@ export class App extends Component<AppProps, {}>{
                                 <Route path={`${match.path}/profile`} render={(props) => this.lazyRender(Profile, props)}/>
                                 <Route path={`${match.path}/watch/:id`} render={(props) => this.lazyRender(Watch, props)}/>
                                 <Route path={`${match.path}/search/:term`} render={(props) => this.lazyRender(Search, props)}/>
+                                <Route path={`${match.path}/browse_genres`} render={(props) => this.lazyRender(BrowseGenres, props)}/>
                                 <Route render={() => <NotFound title="Page not found !" />}/>
                             </Switch>
                         </Layout.Content>

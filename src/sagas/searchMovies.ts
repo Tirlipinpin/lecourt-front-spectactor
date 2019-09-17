@@ -7,7 +7,7 @@ import {
     FETCH_SEARCH_MOVIES_SUCCEEDED,
     FETCH_SEARCH_MOVIES_FAILED,
     FETCH_SEARCH_MOVIES,
-} from '../reducers/search/constantes';
+} from '../reducers/search/constants';
 
 
 function* fetchSearchMovies(action: AnyAction): IterableIterator<Object | void> {

@@ -1,26 +1,43 @@
-import React, { Component, Dispatch, SyntheticEvent } from 'react';
-import { Layout, Menu, Input, Icon } from 'antd';
+import React, { Component, Dispatch } from 'react';
+import {
+    Layout,
+    Menu,
+    Input,
+    Icon,
+} from 'antd';
 import { Link } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux';
-import { History, Location } from 'history';
-import { Trans, WithTranslation, withTranslation } from 'react-i18next';
+import {Trans, WithTranslation, withTranslation} from 'react-i18next';
 
 import logo from '../../../assets/Logo.png';
 import './index.css';
-import { LOGOUT } from '../../../reducers/login/constantes';
-import { UPDATE_SEARCH_TERM } from '../../../reducers/navbar/constantes';
+import { LOGOUT } from '../../../reducers/login/constants';
+import {
+    FETCH_NAVBAR_GENRES,
+    UPDATE_SEARCH_TERM,
+} from '../../../reducers/navbar/constants';
 import { NavbarStore } from '../../../reducers/navbar';
 import ClearIcon from './ClearIcon';
 
 const { Header } = Layout;
+const { SubMenu, Item, ItemGroup } = Menu;
 
-interface NavbarProps extends WithTranslation, RouteComponentProps {
+interface NavbarProps extends RouteComponentProps, WithTranslation {
     dispatch: Dispatch<any>
     navbar: NavbarStore
-};
+    t?: any
+}
 
 export class Navbar extends Component<NavbarProps, {}> {
+    componentDidMount(): void {
+        const { dispatch } = this.props;
+
+        setTimeout(() => dispatch({
+            type: FETCH_NAVBAR_GENRES,
+        }), 0);
+    }
+
     logout = () => {
         const { dispatch, history } = this.props;
 
@@ -29,7 +46,7 @@ export class Navbar extends Component<NavbarProps, {}> {
         });
 
         history.push('/');
-    }
+    };
 
     isActive = (): Array<string> => {
         const { location } = this.props;
@@ -37,7 +54,7 @@ export class Navbar extends Component<NavbarProps, {}> {
         return [
             location.pathname.split('/')[2] || 'homepage',
         ];
-    }
+    };
 
     onChangeSearchTerm = (e: any): void => {
         const { dispatch } = this.props;
@@ -46,7 +63,7 @@ export class Navbar extends Component<NavbarProps, {}> {
             type: UPDATE_SEARCH_TERM,
             payload: e.target.value,
         });
-    }
+    };
 
     onSearchTerm = () => {
         const { history, navbar, match } = this.props;
@@ -54,10 +71,16 @@ export class Navbar extends Component<NavbarProps, {}> {
 
         if (searchTerm.length > 0)
             history.push(`${match.url}/search/${searchTerm}`);
-    }
+    };
+
+    redirectToGenre = (value: string) => {
+        const { history } = this.props;
+
+        history.push(`/app/movies/genre/${value}`);
+    };
 
     render() {
-        const { history, navbar, t } = this.props;
+        const { match, history, navbar, t } = this.props;
         const { url } = this.props.match;
 
         const { searchTerm } = navbar;
@@ -71,12 +94,12 @@ export class Navbar extends Component<NavbarProps, {}> {
                     className="menu-items-container navbar-menu"
                     selectedKeys={this.isActive()}
                 >
-                    <Menu.Item className="navbar-logo">
+                    <Item className="navbar-logo">
                         <img src={logo} className="logo" onClick={() => history.push(url)} />
-                    </Menu.Item>
-                    <Menu.Item key="homepage"><Link to={url}><Trans i18nKey="HOMEPAGE_BUTTON" /></Link></Menu.Item>
-                    <Menu.Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
-                    <Menu.Item key="searchbar" className="navbar-searchbar">
+                    </Item>
+                    <Item key="homepage"><Link to={url}><Trans i18nKey="HOMEPAGE_BUTTON" /></Link></Item>
+                    <Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Item>
+                    <Item key="searchbar" className="navbar-searchbar">
                         <Input.Search
                             value={searchTerm}
                             onChange={this.onChangeSearchTerm}
@@ -85,13 +108,33 @@ export class Navbar extends Component<NavbarProps, {}> {
                             onPressEnter={this.onSearchTerm}
                             onSearch={this.onSearchTerm}
                         />
-                    </Menu.Item>
-                    <Menu.Item key="logout" className="logout-button" onClick={this.logout}><Trans i18nKey="LOGOUT" /></Menu.Item>
+                    </Item>
+                    <Item key="logout" className="logout-button" onClick={this.logout}><Trans i18nKey="LOGOUT" /></Item>
+                    <SubMenu
+                      title={
+                          <span className="">
+                              <Icon type="down" />
+                              {t('GENRES')}
+                          </span>
+                      }
+                    >
+                        <ItemGroup title="Most used genres">
+                            {navbar.genres.map(genre => (
+                                <Item key={genre.id} onClick={() => this.redirectToGenre(genre.id)}>
+                                    {genre.name}
+                                </Item>
+                              )
+                            )}
+                            <Item>
+                                <Link to={`${match.url}/browse_genres`}>See more...</Link>
+                            </Item>
+                        </ItemGroup>
+                    </SubMenu>
                 </Menu>
             </Header>
         );
     }
-};
+}
 
 export default connect(({ navbar }: any) =>({
     navbar,

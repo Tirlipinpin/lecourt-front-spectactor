@@ -1,14 +1,10 @@
 import React from 'react';
 import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import { Icon } from 'antd';
 import { History } from 'history';
 
 import { Movie } from '../../interfaces';
 import MoviesGallery from '.';
-
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('The MoviesGallery component', () => {
     let wrapper: ShallowWrapper;
