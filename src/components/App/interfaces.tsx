@@ -26,7 +26,7 @@ export interface Genre {
 }
 
 export interface File {
-    id: string
+    filename: string
 }
 
 // Movie model relations
@@ -66,6 +66,6 @@ export interface Movie {
     staff: StaffRelation[]
     images: ImageRelation[]
     genres: GenreRelation[]
-    file: FileRelation,
+    movieFile: FileRelation,
     result_quality: number
 };

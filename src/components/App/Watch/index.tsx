@@ -85,8 +85,11 @@ export class Watch extends Component<WatchProps, WatchState> {
                 <div>
                     {movie.id
                         ? <ReactPlayer
-                            url={`https://storage.stg.lecourt.tv/movies/${movie.file ? movie.file.node.id : ''}`}
+                            url={`https://storage.googleapis.com/lecourt-movies-dev/${movie.movieFile ? movie.movieFile.node.filename : ''}.m3u8`}
                             controls
+                            fileConfig={{
+                                forceHLS: true,
+                            }}
                             width="100%"
                             height="70vh"
                             style={{ backgroundColor: 'black' }}
