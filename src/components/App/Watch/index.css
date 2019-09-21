@@ -66,3 +66,22 @@
 .watch-page-container .recommendations .ant-typography {
     color: black;
 }
+
+.watch-page-container .quality-dropdown-icon {
+    color: white;
+    position: absolute;
+    font-size: 14px;
+    top: 8px;
+    right: 16px;
+}
+
+.watch-page-container .quality-dropdown-icon:hover {
+    color: #48a0f7;
+}
+
+.watch-page-container .quality-dropdown-icon-disabled {
+    color: grey;
+    position: absolute;
+    font-size: 14px;
+    top: 8px;
+    right: 16px;}

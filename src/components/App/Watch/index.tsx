@@ -1,29 +1,22 @@
 import React, { Component, lazy, Suspense, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Icon, Typography } from 'antd';
-import posed from 'react-pose';
+import { Layout, Icon, Typography, Dropdown, Menu } from 'antd';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
 import { RouteComponentProps } from 'react-router';
 import { Trans } from 'react-i18next';
-
-const Casting = lazy(() => import('./components/Casting'));
-const { Title, Paragraph } = Typography;
+import Hls from 'hls.js';
 
 import { WatchStore } from '../../../reducers/watch';
 import { Movie } from '../interfaces';
 import NotFound from '../../NotFound';
 import MoviesGallery from '../shared/MoviesGallery';
 import { FETCH_MOVIE_DETAILS } from '../../../reducers/watch/constants';
-
 import './index.css';
 
-
-const Img = posed.img({
-    hoverable: true,
-    init: { filter: 'grayscale(80%) blur(2px)', scale: 1 },
-    hover: { filter: 'grayscale(0%) blur(0px)', scale: 1.1 }
-});
+const Casting = lazy(() => import('./components/Casting'));
+const { Title, Paragraph } = Typography;
+const { Item } = Menu;
 
 export type WatchPropsParams = {
     id: string
@@ -32,16 +25,19 @@ export type WatchPropsParams = {
 export interface WatchProps extends RouteComponentProps<WatchPropsParams> {
     dispatch: Dispatch<any>
     watch: WatchStore
-};
+}
 
 export interface WatchState {
     recommandations: Movie[]
-};
+    hlsInstance?: Hls
+}
 
 export class Watch extends Component<WatchProps, WatchState> {
+    PlayerRef = React.createRef<ReactPlayer>();
+
     state: Readonly<WatchState> = {
         recommandations: [],
-    }
+    };
 
     async componentDidMount() {
         const { match, dispatch } = this.props;
@@ -64,8 +60,43 @@ export class Watch extends Component<WatchProps, WatchState> {
             this.setState({ recommandations: recommandationsRes.data });
     }
 
+    onLoadPlayer = () => {
+        if (!this.PlayerRef.current) return;
+
+        const hlsInstance: Hls = this.PlayerRef.current.getInternalPlayer('hls') as Hls;
+        this.setState({
+            hlsInstance,
+        });
+    };
+
+    setQuality = (level: number) => {
+        const { hlsInstance } = this.state;
+        if (!hlsInstance) return;
+
+        hlsInstance.currentLevel = level;
+    };
+
+    renderQualityMenu = () => {
+        const { hlsInstance } = this.state;
+        if (!hlsInstance) return;
+
+        return (
+            <Menu selectable>
+                {hlsInstance.levels.map((level, index) => (
+                  <Item
+                    key={level.height}
+                  >
+                      <a
+                        onClick={() => this.setQuality(index)}
+                      >{ level.height }</a>
+                  </Item>
+                ))}
+            </Menu>
+        );
+    };
+
     render() {
-        const { recommandations } = this.state;
+        const { recommandations, hlsInstance } = this.state;
         const { history, watch } = this.props;
         const { movie, notFound, loading } = watch;
 
@@ -84,16 +115,42 @@ export class Watch extends Component<WatchProps, WatchState> {
             <Layout className="page-container watch-page-container">
                 <div>
                     {movie.id
-                        ? <ReactPlayer
-                            url={`https://storage.googleapis.com/lecourt-movies-dev/${movie.movieFile ? movie.movieFile.node.filename : ''}.m3u8`}
-                            controls
-                            fileConfig={{
-                                forceHLS: true,
+                      ? (
+                          <div
+                            style={{
+                                width: '100%',
+                                height: '70vh',
+                                position: 'relative',
                             }}
-                            width="100%"
-                            height="70vh"
-                            style={{ backgroundColor: 'black' }}
-                          />
+                          >
+                              <ReactPlayer
+                                url={`https://storage.googleapis.com/lecourt-movies-dev/${movie.movieFile ? movie.movieFile.node.filename : ''}.m3u8`}
+                                controls
+                                config={{
+                                    file: {
+                                        forceHLS: true,
+                                    },
+                                }}
+                                width="100%"
+                                height="100%"
+                                style={{ backgroundColor: 'black' }}
+                                ref={this.PlayerRef}
+                                onReady={this.onLoadPlayer}
+                              />
+
+                              <div className={!hlsInstance ? 'quality-dropdown-icon-disabled' : 'quality-dropdown-icon'}>
+                                  <Dropdown
+                                    overlay={this.renderQualityMenu()}
+                                    disabled={!hlsInstance}
+                                  >
+                                      <Icon
+                                        type="setting"
+                                        theme="filled"
+                                      />
+                                  </Dropdown>
+                              </div>
+                          </div>
+                      )
                         : <Icon type="loading" />
                     }
                 </div>
