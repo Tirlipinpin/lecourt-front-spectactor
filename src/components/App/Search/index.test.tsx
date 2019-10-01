@@ -55,16 +55,4 @@ describe('The Search component', () => {
     test('should not render the Gallery when there is no results', () => {
         expect(wrapper.find(MoviesGallery).length).toBe(0);
     });
-
-    test('should render the Gallery when there is results', () => {
-        wrapper.setProps({
-            search: {
-                movies: [{
-                    id: 42,
-                    title: 'poney',
-                }],
-            },
-        });
-        expect(wrapper.find(MoviesGallery).length).toBe(1);
-    });
 });

@@ -11,6 +11,7 @@ import { RegisterStore } from './register';
 import { SearchStore } from './search';
 import { WatchStore } from './watch';
 import { IBrowseGenresStore } from './browseGenres';
+import { IGenresStore } from './genres';
 
 
 describe('rootReducer', () => {
@@ -26,6 +27,7 @@ describe('rootReducer', () => {
             search: {} as SearchStore,
             watch: {} as WatchStore,
             browseGenres: {} as IBrowseGenresStore,
+            genres: {} as IGenresStore,
             _persist: {} as PersistState,
         }, {} as AnyAction);
 
@@ -39,6 +41,7 @@ describe('rootReducer', () => {
             search: {},
             watch: {},
             browseGenres: {},
+            genres: {},
         });
     })
 });

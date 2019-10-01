@@ -14,17 +14,18 @@ import { Trans } from 'react-i18next';
 
 import Navbar from './Navbar';
 import MobileNavbar from './Navbar/Mobile';
+import NotFound from '../NotFound';
 const Homepage = lazy(() => import('./Homepage'));
 const Profile = lazy(() => import('./Profile'));
 const Search = lazy(() => import('./Search'));
 const Watch = lazy(() => import('./Watch'));
 const BrowseGenres = lazy(() => import('./BrowseGenres'));
+const Genres = lazy(() => import('./Genres'));
 
 import axiosInterceptor from '../../services/axiosInterceptor';
 import { LoginStore } from '../../reducers/login';
 
 import './index.css';
-import NotFound from '../NotFound';
 
 
 interface AppProps extends RouteComponentProps {
@@ -83,6 +84,7 @@ export class App extends Component<AppProps, {}>{
                                 <Route path={`${match.path}/profile`} render={(props) => this.lazyRender(Profile, props)}/>
                                 <Route path={`${match.path}/watch/:id`} render={(props) => this.lazyRender(Watch, props)}/>
                                 <Route path={`${match.path}/search/:term`} render={(props) => this.lazyRender(Search, props)}/>
+                                <Route path={`${match.path}/genres/:genreId`} render={(props) => this.lazyRender(Genres, props)}/>
                                 <Route path={`${match.path}/browse_genres`} render={(props) => this.lazyRender(BrowseGenres, props)}/>
                                 <Route render={() => <NotFound title="Page not found !" />}/>
                             </Switch>

@@ -142,6 +142,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                                   <Dropdown
                                     overlay={this.renderQualityMenu()}
                                     disabled={!hlsInstance}
+                                    trigger={['click']}
                                   >
                                       <Icon
                                         type="setting"

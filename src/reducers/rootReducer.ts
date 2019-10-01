@@ -11,6 +11,7 @@ import register from './register';
 import search from './search';
 import watch from './watch';
 import browseGenres from './browseGenres';
+import genres from './genres';
 
 const persistConfig = {
     key: 'root',
@@ -29,4 +30,5 @@ export default (history: History) => persistReducer(persistConfig, combineReduce
     search,
     watch,
     browseGenres,
+    genres,
 }));

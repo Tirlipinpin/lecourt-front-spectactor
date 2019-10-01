@@ -32,14 +32,7 @@ export default ({ history }: IBrowseGenresProps) => {
         className="genre-card"
         hoverable
         bordered={false}
-        cover={
-            <img
-              className="genre-card-image"
-              alt={genre.name}
-              src="https://di.phncdn.com/is-static/images/categories/(m=qQXH4HUbetZD8zjadOf)(mh=tM-BItrY3G7KqAcK)roku_221.jpg"
-            />
-        }
-        onClick={() => history.push(`/app/movies/genre/${genre.id}`)}
+        onClick={() => history.push(`/app/genres/${genre.id}`)}
       >
           <Meta
             title={

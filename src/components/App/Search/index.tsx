@@ -1,14 +1,14 @@
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Icon, PageHeader, Typography } from 'antd';
+import { Icon, Typography } from 'antd';
 import { RouteComponentProps } from 'react-router';
 import { withTranslation, WithTranslation } from 'react-i18next';
-
-import { FETCH_SEARCH_MOVIES } from '../../../reducers/search/constants';
 
 import { SearchStore } from '../../../reducers/search';
 import MoviesGallery from '../shared/MoviesGallery';
 import './index.css';
+import { RenderPageStructures } from '../services';
+import { fetchSearchMovies } from './actions';
 
 export type SearchPropsParams = {
     term: string
@@ -25,56 +25,58 @@ export class Search extends Component<SearchProps, {}> {
         const { dispatch, match } = this.props;
         const { term } = match.params;
 
-        dispatch({
-            type: FETCH_SEARCH_MOVIES,
-            payload: {
-                term,
-            },
-        });
+        dispatch(fetchSearchMovies(term));
     }
-
-    renderPageHeader = (Header: JSX.Element, Child: JSX.Element | null) => (
-        <Layout className="page-container search-page-container">
-            <PageHeader className="search-page-header" title={`${this.props.t('YOU_SEARCHED_FOR')} ${this.props.match.params.term}`}>
-                {Header}
-            </PageHeader>
-            <div className="search-page-content">
-                {Child}
-            </div>
-        </Layout>
-    );
 
     render() {
         const { history, search } = this.props;
 
         if (search.loading) {
-            return this.renderPageHeader(
-                <React.Fragment>
-                    <Icon type="loading" />
-                </React.Fragment>,
-                null,
-            );
+            return <RenderPageStructures
+                Header={(
+                    <React.Fragment>
+                        <Icon type="loading" />
+                    </React.Fragment>
+                )}
+                title={`${this.props.t('YOU_SEARCHED_FOR')} ${this.props.match.params.term}`}
+                pageContainerClass="search-page-container"
+                pageHeaderClass="search-page-header"
+                pageContentClass="search-page-content"
+            />;
         }
 
         if (!search.loading && search.movies.length < 1) {
-            return this.renderPageHeader(
-                <React.Fragment>
-                    <Typography.Paragraph>
-                        No content found
-                    </Typography.Paragraph>
-                </React.Fragment>,
-                null,
-            );
+            return <RenderPageStructures
+                Header={(
+                    <React.Fragment>
+                        <Typography.Paragraph>
+                            No content found
+                        </Typography.Paragraph>
+                    </React.Fragment>
+                )}
+                title={`${this.props.t('YOU_SEARCHED_FOR')} ${this.props.match.params.term}`}
+                pageContainerClass="search-page-container"
+                pageHeaderClass="search-page-header"
+                pageContentClass="search-page-content"
+            />;
         }
 
-        return this.renderPageHeader(
-            <React.Fragment>
-                <Typography.Paragraph>
-                    Results: {search.movies.length}
-                </Typography.Paragraph>
-            </React.Fragment>,
-            <MoviesGallery movies={search.movies} history={history} />
-        );
+        return <RenderPageStructures
+            Header={(
+                <React.Fragment>
+                    <Typography.Paragraph>
+                        Results: {search.movies.length}
+                    </Typography.Paragraph>
+                </React.Fragment>
+            )}
+            Child={(
+                <MoviesGallery movies={search.movies} history={history} />
+            )}
+            title={`${this.props.t('YOU_SEARCHED_FOR')} ${this.props.match.params.term}`}
+            pageContainerClass="search-page-container"
+            pageHeaderClass="search-page-header"
+            pageContentClass="search-page-content"
+        />;
     }
 }
 

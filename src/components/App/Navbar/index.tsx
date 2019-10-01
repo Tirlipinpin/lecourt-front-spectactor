@@ -76,7 +76,7 @@ export class Navbar extends Component<NavbarProps, {}> {
     redirectToGenre = (value: string) => {
         const { history } = this.props;
 
-        history.push(`/app/movies/genre/${value}`);
+        history.push(`/app/genres/${value}`);
     };
 
     render() {
