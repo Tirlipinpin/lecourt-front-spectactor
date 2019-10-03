@@ -1,11 +1,13 @@
-import { Card, Icon } from 'antd';
-import React, {Fragment, useEffect } from 'react';
+import { Card, Icon, Typography } from 'antd';
+import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 import { Genre } from '../interfaces';
 import { FETCH_GENRES } from '../../../reducers/browseGenres/constants';
 import './index.css';
+import { RenderPageStructures } from '../services';
 
 const { Meta } = Card;
 
@@ -18,6 +20,7 @@ export default ({ history }: IBrowseGenresProps) => {
     }));
 
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     useEffect(() => {
         dispatch({ type: FETCH_GENRES })
@@ -31,7 +34,6 @@ export default ({ history }: IBrowseGenresProps) => {
         key={genre.id}
         className="genre-card"
         hoverable
-        bordered={false}
         onClick={() => history.push(`/app/genres/${genre.id}`)}
       >
           <Meta
@@ -46,8 +48,17 @@ export default ({ history }: IBrowseGenresProps) => {
     ));
 
     return (
-      <div className="page-container browseGenres-page-container">
-          {genresCards}
-      </div>
+      <RenderPageStructures
+        title={t('BROWSE_OUR_GENRES')}
+        Header={(
+            <React.Fragment>
+                <Typography.Paragraph>
+                    {t('WE_HOPE_YOU_FIND_YOUR_PERFECT_MATCH')}
+                </Typography.Paragraph>
+            </React.Fragment>
+        )}
+        Child={genresCards}
+        pageContentClass="browseGenres-page-content"
+      />
     )
 };

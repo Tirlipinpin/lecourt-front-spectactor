@@ -1,3 +1,5 @@
+@import './Antd.replace.css';
+
 .loading-page {
     height: calc(100vh - 133px);
     width: 100vw;
