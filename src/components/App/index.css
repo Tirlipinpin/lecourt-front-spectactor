@@ -24,6 +24,11 @@
     background: white;
 }
 
+.page-container .ant-page-header {
+  border-bottom: 1px solid #ebedf0;
+  margin-bottom: 8px;
+}
+
 @media screen and (min-width: 900px) {
     .page-container {
         margin: 32px 128px;
