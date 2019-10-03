@@ -19,6 +19,7 @@ import {
 } from '../../../reducers/navbar/constants';
 import { NavbarStore } from '../../../reducers/navbar';
 import ClearIcon from './ClearIcon';
+import { Genre } from '../interfaces';
 
 const { Header } = Layout;
 const { SubMenu, Item, ItemGroup } = Menu;
@@ -48,12 +49,16 @@ export class Navbar extends Component<NavbarProps, {}> {
         history.push('/');
     };
 
-    isActive = (): Array<string> => {
-        const { location } = this.props;
+    getActiveKeys = (): Array<string> => {
+        const { location, navbar } = this.props;
+        const currentActive = location.pathname.split('/')[2];
 
-        return [
-            location.pathname.split('/')[2] || 'homepage',
-        ];
+        if (!currentActive) return ['homepage'];
+        if (currentActive === 'browse_genres' || currentActive === 'genres') {
+            return navbar.genres.map((genre: Genre) => `genres:${genre.id}`);
+        }
+
+        return [currentActive];
     };
 
     onChangeSearchTerm = (e: any): void => {
@@ -81,9 +86,10 @@ export class Navbar extends Component<NavbarProps, {}> {
 
     render() {
         const { match, history, navbar, t } = this.props;
+        const { searchTerm } = navbar;
         const { url } = this.props.match;
 
-        const { searchTerm } = navbar;
+        console.log(this.getActiveKeys())
 
         return (
             <Header className="navbar-container">
@@ -92,7 +98,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                     mode="horizontal"
                     style={{ lineHeight: '64px' }}
                     className="menu-items-container navbar-menu"
-                    selectedKeys={this.isActive()}
+                    selectedKeys={this.getActiveKeys()}
                 >
                     <Item className="navbar-logo">
                         <img src={logo} className="logo" onClick={() => history.push(url)} />
@@ -111,16 +117,16 @@ export class Navbar extends Component<NavbarProps, {}> {
                     </Item>
                     <Item key="logout" className="logout-button" onClick={this.logout}><Trans i18nKey="LOGOUT" /></Item>
                     <SubMenu
-                      title={
-                          <span className="">
-                              <Icon type="down" />
-                              {t('GENRES')}
-                          </span>
-                      }
+                        title={
+                            <span className="">
+                                <Icon type="down" />
+                                {t('GENRES')}
+                            </span>
+                        }
                     >
                         <ItemGroup title="Most used genres">
-                            {navbar.genres.map(genre => (
-                                <Item key={genre.id} onClick={() => this.redirectToGenre(genre.id)}>
+                            {navbar.genres.map((genre: Genre) => (
+                                <Item key={`genres:${genre.id}`} onClick={() => this.redirectToGenre(genre.id)}>
                                     {genre.name}
                                 </Item>
                               )

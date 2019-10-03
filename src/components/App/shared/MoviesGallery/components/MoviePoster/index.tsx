@@ -17,7 +17,7 @@ function qualityBanner(quality: number): string {
 
 const Image = posed.img({
     hoverable: true,
-    init: { filter: 'grayscale(25%) blur(0.5px)' },
+    init: { filter: 'grayscale(25%) blur(0.2px)' },
     hover: { filter: 'grayscale(0%) blur(0px)' }
 });
 
