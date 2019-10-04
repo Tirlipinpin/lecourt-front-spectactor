@@ -22,9 +22,18 @@
     color: white;
 }
 
-.ant-menu-item-selected {
-    color: black;
-    background: none !important;
+.ant-menu .ant-menu-item-selected {
+  color: black;
+  background: none !important;
+}
+
+.ant-menu-item-group-list .ant-menu-item-selected {
+  color: #FF5242;
+  background: #FFDEDB !important;
+}
+
+.ant-menu-item-group-list .ant-menu-item-selected a {
+  color: #FF5242;
 }
 
 .ant-menu-item:hover,
@@ -32,7 +41,8 @@
 .navbar-container .ant-menu .ant-menu-item-selected a,
 .navbar-container .ant-menu .ant-menu-item a:hover,
 .navbar-container .ant-menu .logout-button:hover,
-.navbar-container .ant-menu .ant-menu-submenu-active .ant-menu-submenu-title span
+.navbar-container .ant-menu .ant-menu-submenu-active .ant-menu-submenu-title span,
+.navbar-container .ant-menu .ant-menu-submenu-selected .ant-menu-submenu-title span
 {
     color: #FF5242;
     background: none;
