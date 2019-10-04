@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
+import  { shallow, ShallowWrapper } from 'enzyme';
 
 import MoviePoster, { MoviePosterProps } from '.';
 import { CardProps } from 'antd/lib/card';

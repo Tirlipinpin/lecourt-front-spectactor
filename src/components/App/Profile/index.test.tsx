@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
+import  { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 

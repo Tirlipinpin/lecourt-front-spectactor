@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
+import  { shallow, ShallowWrapper } from 'enzyme';
 import { History, Location } from 'history';
 
 import { MobileNavbar } from '.';

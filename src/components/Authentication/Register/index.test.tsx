@@ -1,5 +1,5 @@
 import React, { FormEvent, SyntheticEvent } from 'react';
-import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
+import  { shallow, ShallowWrapper } from 'enzyme';
 
 import { Register, RegisterState } from '.';
 

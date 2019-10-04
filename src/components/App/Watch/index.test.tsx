@@ -1,6 +1,5 @@
 import React from 'react';
-import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
-import { Icon } from 'antd';
+import { shallow, ShallowWrapper } from 'enzyme';
 import { Location, History } from 'history';
 
 import { WatchStore } from '../../../reducers/watch';
@@ -59,9 +58,7 @@ describe('The Watch component', () => {
             }
         });
 
-        expect(wrapper.find(Icon).props()).toEqual({
-            type: 'loading',
-        });
+        expect(wrapper.find('Loader').exists()).toBe(true);
     });
 
     test('should render NotFound component when fetching datas', () => {

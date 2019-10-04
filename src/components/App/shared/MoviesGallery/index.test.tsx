@@ -1,6 +1,5 @@
 import React from 'react';
-import Enzyme, { shallow, ShallowWrapper } from 'enzyme';
-import { Icon } from 'antd';
+import { shallow, ShallowWrapper } from 'enzyme';
 import { History } from 'history';
 
 import { Movie } from '../../interfaces';
@@ -26,9 +25,7 @@ describe('The MoviesGallery component', () => {
     });
 
     test('should render a loading icon when there is no movies', () => {
-        expect(wrapper.find(Icon).props()).toEqual({
-            type: 'loading',
-        });
+        expect(wrapper.find('Loader').exists()).toBe(true);
     });
 
     test('should render a carousel when there is movies', () => {
