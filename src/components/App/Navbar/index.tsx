@@ -49,13 +49,14 @@ export class Navbar extends Component<NavbarProps, {}> {
         history.push('/');
     };
 
-    getActiveKeys = (): Array<string> => {
+    getActiveKey = (): Array<string> => {
         const { location, navbar } = this.props;
         const currentActive = location.pathname.split('/')[2];
 
         if (!currentActive) return ['homepage'];
-        if (currentActive === 'browse_genres' || currentActive === 'genres') {
-            return navbar.genres.map((genre: Genre) => `genres:${genre.id}`);
+        if (currentActive === 'genres') {
+            const genreId = location.pathname.split('/')[3];
+            return `genres:${genreId}`;
         }
 
         return [currentActive];
@@ -89,8 +90,6 @@ export class Navbar extends Component<NavbarProps, {}> {
         const { searchTerm } = navbar;
         const { url } = this.props.match;
 
-        console.log(this.getActiveKeys())
-
         return (
             <Header className="navbar-container">
                 <Menu
@@ -98,7 +97,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                     mode="horizontal"
                     style={{ lineHeight: '64px' }}
                     className="menu-items-container navbar-menu"
-                    selectedKeys={this.getActiveKeys()}
+                    selectedKeys={this.getActiveKey()}
                 >
                     <Item className="navbar-logo">
                         <img src={logo} className="logo" onClick={() => history.push(url)} />
@@ -131,7 +130,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                                 </Item>
                               )
                             )}
-                            <Item>
+                            <Item key="browse_genres">
                                 <Link to={`${match.url}/browse_genres`}>See more...</Link>
                             </Item>
                         </ItemGroup>
