@@ -56,7 +56,7 @@ export class Navbar extends Component<NavbarProps, {}> {
         if (!currentActive) return ['homepage'];
         if (currentActive === 'genres') {
             const genreId = location.pathname.split('/')[3];
-            return `genres:${genreId}`;
+            return [`genres:${genreId}`];
         }
 
         return [currentActive];
