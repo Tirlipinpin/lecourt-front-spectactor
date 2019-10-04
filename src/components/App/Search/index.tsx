@@ -1,6 +1,6 @@
 import React, { Component, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { Icon, Typography } from 'antd';
+import { Typography } from 'antd';
 import { RouteComponentProps } from 'react-router';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
@@ -9,6 +9,7 @@ import MoviesGallery from '../shared/MoviesGallery';
 import './index.css';
 import { RenderPageStructures } from '../services';
 import { fetchSearchMovies } from './actions';
+import Loader from '../shared/Loader';
 
 export type SearchPropsParams = {
     term: string
@@ -34,9 +35,7 @@ export class Search extends Component<SearchProps, {}> {
         if (search.loading) {
             return <RenderPageStructures
                 Header={(
-                    <React.Fragment>
-                        <Icon type="loading" />
-                    </React.Fragment>
+                    <Loader />
                 )}
                 title={`${this.props.t('YOU_SEARCHED_FOR')} ${this.props.match.params.term}`}
                 pageContainerClass="search-page-container"

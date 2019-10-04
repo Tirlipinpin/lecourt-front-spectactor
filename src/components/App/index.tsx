@@ -7,11 +7,15 @@ import {
     RouteComponentProps,
 } from 'react-router';
 import { connect } from 'react-redux';
-import { Icon, Layout } from 'antd';
+import { Layout } from 'antd';
 import axios from 'axios';
 import MediaQuery from 'react-responsive';
 import { Trans } from 'react-i18next';
+import axiosInterceptor from '../../services/axiosInterceptor';
+import { LoginStore } from '../../reducers/login';
+import './index.css';
 
+import Loader from './shared/Loader';
 import Navbar from './Navbar';
 import MobileNavbar from './Navbar/Mobile';
 import NotFound from '../NotFound';
@@ -22,10 +26,6 @@ const Watch = lazy(() => import('./Watch'));
 const BrowseGenres = lazy(() => import('./BrowseGenres'));
 const Genres = lazy(() => import('./Genres'));
 
-import axiosInterceptor from '../../services/axiosInterceptor';
-import { LoginStore } from '../../reducers/login';
-
-import './index.css';
 
 
 interface AppProps extends RouteComponentProps {
@@ -50,7 +50,7 @@ export class App extends Component<AppProps, {}>{
 
     loadingPage = (): React.ReactElement => (
         <div className="loading-page">
-            <Icon type="loading" style={{ fontSize: '3vw' }} />
+            <Loader size="3vw" />
         </div>
     )
 

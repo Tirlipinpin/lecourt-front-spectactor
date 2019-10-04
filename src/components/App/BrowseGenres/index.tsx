@@ -1,4 +1,4 @@
-import { Card, Icon, Typography } from 'antd';
+import { Card, Typography } from 'antd';
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
@@ -8,6 +8,7 @@ import { Genre } from '../interfaces';
 import { FETCH_GENRES } from '../../../reducers/browseGenres/constants';
 import './index.css';
 import { RenderPageStructures } from '../services';
+import { Loader } from '../shared/Loader';
 
 const { Meta } = Card;
 
@@ -27,7 +28,7 @@ export default ({ history }: IBrowseGenresProps) => {
     }, []);
 
     if (loading)
-        return <Icon type="loading" />;
+        return <Loader />;
 
     const genresCards = genres.map((genre: Genre) => (
       <Card

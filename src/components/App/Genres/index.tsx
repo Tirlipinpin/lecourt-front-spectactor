@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { Icon, Typography } from 'antd';
+import { Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { fetchMoviesWithGenres } from './actions';
 import { RenderPageStructures } from '../services';
 import MoviesGallery from '../shared/MoviesGallery';
+import Loader from '../shared/Loader';
 
 export type IGenresPropsParams = {
     genreId: string
@@ -29,9 +30,7 @@ export const Genres = ({ match, history }: IGenresProps) => {
     if (loading) {
         return <RenderPageStructures
             Header={(
-                <React.Fragment>
-                    <Icon type="loading" />
-                </React.Fragment>
+                <Loader />
             )}
             title={`${t('OUR_MOVIES_FOR_THIS_GENRE')}`}
             pageContainerClass="genres-page-container"

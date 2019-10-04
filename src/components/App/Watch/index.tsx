@@ -12,6 +12,7 @@ import { Movie } from '../interfaces';
 import NotFound from '../../NotFound';
 import MoviesGallery from '../shared/MoviesGallery';
 import { FETCH_MOVIE_DETAILS } from '../../../reducers/watch/constants';
+import Loader from '../shared/Loader';
 import './index.css';
 
 const Casting = lazy(() => import('./components/Casting'));
@@ -103,7 +104,7 @@ export class Watch extends Component<WatchProps, WatchState> {
         if (loading) {
             return (
                 <Layout className="page-container watch-page-container">
-                    <Icon type="loading" />
+                    <Loader />
                 </Layout>
             );
         }
@@ -152,7 +153,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                               </div>
                           </div>
                       )
-                        : <Icon type="loading" />
+                        : <Loader />
                     }
                 </div>
                 <div className="details-container">

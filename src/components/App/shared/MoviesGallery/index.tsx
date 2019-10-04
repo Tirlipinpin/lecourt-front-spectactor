@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
-import { Icon } from 'antd';
 import { History } from 'history';
 import posed, { PoseGroup } from 'react-pose';
-
 import { Movie } from '../../interfaces';
 import MoviePoster from './components/MoviePoster';
-
+import Loader from '../Loader';
 import './index.css';
 
 
@@ -36,7 +34,7 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
         const { movies } = this.props;
 
         if (movies.length < 1)
-            return <Icon type="loading" />
+            return <Loader />
 
         return (
             <div className="search-results-container">
