@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, match, Redirect, RouteComponentProps } from 'react-router';
-import { History, Location } from 'history';
-import NotFound from '../NotFound';
+import { Switch, Route, Redirect, RouteComponentProps } from 'react-router';
 import Login from './Login';
 import Register from './Register';
 import { connect } from 'react-redux';
@@ -16,23 +14,26 @@ export interface AuthenticationProps extends RouteComponentProps {
 
 export class Authentication extends Component<AuthenticationProps, {}> {
     render() {
-        const { location, match, login } = this.props
+        const { location, match, login } = this.props;
+        const { token } = login;
+
+        if (token)
+            return <Redirect to="/app" />;
 
         return (
-            <div className="auth-background">
-                <div className="auth-container">
-                    <img src={logo} className="logo" />
+            <div className="auth-container">
+                <div className="left-auth-container" />
+                <div className="right-auth-container">
+                    <img src={logo} className="logo" alt="Lecourt logo" />
                     <div className="auth-form">
-                        { login.token && <Redirect to="/app" /> }
                         <Switch location={location}>
                             <Route path={`${match.url}/login`} render={() => <Login loading={login.loading} />} />
                             <Route path={`${match.url}/register`} component={Register} />
-                            <Route render={() => <Redirect to={`${match.url}/login`} />} />
                         </Switch>
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
