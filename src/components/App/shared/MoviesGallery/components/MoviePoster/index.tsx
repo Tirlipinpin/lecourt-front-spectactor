@@ -17,8 +17,20 @@ function qualityBanner(quality: number): string {
 
 const Image = posed.img({
     hoverable: true,
-    init: { filter: 'grayscale(25%) blur(0.2px)' },
-    hover: { filter: 'grayscale(0%) blur(0px)' }
+    init: {
+        filter: 'grayscale(25%) blur(0.5px)',
+        '-webkit-filter': 'grayscale(25%) blur(1px)',
+        '-moz-filter': 'grayscale(25%) blur(1px)',
+        '-ms-filter': 'grayscale(25%) blur(1px)',
+        '-o-filter': 'grayscale(25%) blur(1px)',
+    },
+    hover: {
+        filter: 'grayscale(0%) blur(0px)',
+        '-webkit-filter': 'grayscale(0%) blur(0px)',
+        '-moz-filter': 'grayscale(0%) blur(0px)',
+        '-ms-filter': 'grayscale(0%) blur(0px)',
+        '-o-filter': 'grayscale(0%) blur(0px)',
+    }
 });
 
 const defaultPoster = "https://www.itsnicethat.com/system/files/042015/5530f2285c3e3c1451002636/images_slice_large/emptyfilmposters-itsnicethat-The-Lion-King.png?1438258632";
