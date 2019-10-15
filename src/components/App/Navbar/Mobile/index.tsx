@@ -5,13 +5,16 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Trans, WithTranslation, withTranslation } from 'react-i18next';
 
-import { LOGOUT } from '../../../../reducers/login/constants';
 import logo from '../../../../assets/Logo.png';
-import { UPDATE_SEARCH_TERM } from '../../../../reducers/navbar/constants';
 import { NavbarStore } from '../../../../reducers/navbar';
 import ClearIcon from '../ClearIcon';
+import './index.css';
+import { Genre } from '../../interfaces';
+import { fetchNavbarGenres } from '../actions';
+import { onChangeSearchTerm, logout, redirectToGenre, onSearchTerm, getActiveKey } from '../services';
 
 const { Header } = Layout;
+const { SubMenu, Item, ItemGroup } = Menu;
 
 interface MobileNavbarProps extends WithTranslation, RouteComponentProps {
     dispatch: Dispatch<any>
@@ -28,47 +31,18 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
         menuOpen: false,
     };
 
-    logout = () => {
-        const { dispatch, history } = this.props;
+    componentDidMount() {
+        const { dispatch } = this.props;
 
-        dispatch({
-            type: LOGOUT,
-        });
-
-        history.push('/');
+        setTimeout(() => dispatch(fetchNavbarGenres()), 0);
     }
-
-    isActive = (): Array<string> => {
-        const { location } = this.props;
-
-        return [
-            location.pathname.split('/')[2] || 'homepage',
-        ];
-    };
 
     toggleMenu = () => {
         this.setState({ menuOpen: !this.state.menuOpen });
     };
 
-    onChangeSearchTerm = (e: any) => {
-        const { dispatch } = this.props;
-
-        dispatch({
-            type: UPDATE_SEARCH_TERM,
-            payload: e.target.value,
-        });
-    };
-
-    onSearchTerm = () => {
-        const { history, navbar, match } = this.props;
-        const { searchTerm } = navbar;
-
-        if (searchTerm.length > 0)
-            history.push(`${match.url}/search/${searchTerm}`);
-    };
-
     render() {
-        const { history, navbar, t } = this.props;
+        const { history, match, navbar, t } = this.props;
         const { url } = this.props.match;
         const { menuOpen } = this.state;
 
@@ -83,20 +57,39 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                     visible={ menuOpen }
                     onClose={this.toggleMenu}
                 >
-                    <Menu className="navbar-menu" theme="light">
+                    <Menu className="navbar-menu mobile-navbar-menu" theme="light">
                         <Menu.Item key="homepage"><Link to={url}><Trans i18nKey="HOMEPAGE_BUTTON" /></Link></Menu.Item>
                         <Menu.Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
-                        <Menu.Item key="logout" onClick={this.logout}><Trans i18nKey="LOGOUT" /></Menu.Item>
                         <Menu.Item key="searchbar">
                             <Input.Search
                                 value={searchTerm}
-                                onChange={this.onChangeSearchTerm}
+                                onChange={onChangeSearchTerm}
                                 placeholder={t('SEARCH_BAR_PLACEHOLDER')}
-                                suffix={<ClearIcon termLength={searchTerm.length} onChangeSearchTerm={this.onChangeSearchTerm} />}
-                                onPressEnter={this.onSearchTerm}
-                                onSearch={this.onSearchTerm}
+                                suffix={<ClearIcon termLength={searchTerm.length} onChangeSearchTerm={onChangeSearchTerm} />}
+                                onPressEnter={onSearchTerm}
+                                onSearch={onSearchTerm}
                             />
                         </Menu.Item>
+                        <SubMenu
+                            title={
+                                <span className="">
+                                    {t('GENRES')}
+                                </span>
+                            }
+                        >
+                            <ItemGroup title="Most used genres">
+                                {navbar.genres.map((genre: Genre) => (
+                                    <Item key={`genres:${genre.id}`} onClick={() => redirectToGenre(genre.id)}>
+                                        {genre.name}
+                                    </Item>
+                                )
+                                )}
+                                <Item key="browse_genres">
+                                    <Link to={`${match.url}/browse_genres`}>See more...</Link>
+                                </Item>
+                            </ItemGroup>
+                        </SubMenu>
+                        <Menu.Item key="logout" onClick={logout}><Trans i18nKey="LOGOUT" /></Menu.Item>
                     </Menu>
                 </Drawer>
                 <Header
@@ -109,10 +102,11 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                         theme="light"
                         mode="horizontal"
                         style={{ lineHeight: '64px' }}
-                        selectedKeys={this.isActive()}
+                        selectedKeys={getActiveKey()}
+                        className="top-mobile-navbar"
                     >
-                        <Menu.Item style={{ marginLeft: 'auto' }}><img src={logo} className="logo" onClick={() => history.push(url)} /></Menu.Item>
-                        <Menu.Item onClick={this.toggleMenu} style={{ float: 'right' }}><Icon type="menu-unfold" /></Menu.Item>
+                        <Menu.Item className="top-mobile-navbar-logo"><img src={logo} className="logo" onClick={() => history.push(url)} /></Menu.Item>
+                        <Menu.Item className="top-mobile-navbar-button" onClick={this.toggleMenu}><Icon type="menu-unfold" /></Menu.Item>
                     </Menu>
                 </Header>
             </div>

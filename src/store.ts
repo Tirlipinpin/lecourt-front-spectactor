@@ -17,22 +17,20 @@ export interface ConfigureStore {
 };
 
 const sagaMiddleware = createSagaMiddleware();
-
-const configureStore = (): ConfigureStore => {
-    const store = createStore(
-        rootReducer(history),
-        composeWithDevTools(
-            applyMiddleware(
-                routerMiddleware(history),
-                sagaMiddleware,
-            ),
+export const store  = createStore(
+    rootReducer(history),
+    composeWithDevTools(
+        applyMiddleware(
+            routerMiddleware(history),
+            sagaMiddleware,
         ),
-    );
-    return {
-        store,
-        persistor: persistStore(store),
-    };
-}
+    ),
+);
+
+const configureStore = (): ConfigureStore => ({
+    store,
+    persistor: persistStore(store),
+});
 
 setTimeout(() => sagaMiddleware.run(sagas), 0);
 

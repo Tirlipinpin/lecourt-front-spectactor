@@ -1,0 +1,15 @@
+.top-mobile-navbar .top-mobile-navbar-logo {
+    margin-left: auto;
+}
+
+.top-mobile-navbar .top-mobile-navbar-button {
+    float: right;
+}
+
+.top-mobile-navbar .ant-menu-item {
+    color: white;
+}
+
+.mobile-navbar-menu {
+    border: none;
+}

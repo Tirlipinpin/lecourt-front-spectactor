@@ -12,14 +12,11 @@ import {Trans, WithTranslation, withTranslation} from 'react-i18next';
 
 import logo from '../../../assets/Logo.png';
 import './index.css';
-import { LOGOUT } from '../../../reducers/login/constants';
-import {
-    FETCH_NAVBAR_GENRES,
-    UPDATE_SEARCH_TERM,
-} from '../../../reducers/navbar/constants';
 import { NavbarStore } from '../../../reducers/navbar';
 import ClearIcon from './ClearIcon';
 import { Genre } from '../interfaces';
+import { fetchNavbarGenres } from './actions';
+import { getActiveKey, onChangeSearchTerm, redirectToGenre, onSearchTerm, logout } from './services';
 
 const { Header } = Layout;
 const { SubMenu, Item, ItemGroup } = Menu;
@@ -34,57 +31,8 @@ export class Navbar extends Component<NavbarProps, {}> {
     componentDidMount(): void {
         const { dispatch } = this.props;
 
-        setTimeout(() => dispatch({
-            type: FETCH_NAVBAR_GENRES,
-        }), 0);
+        setTimeout(() => dispatch(fetchNavbarGenres()), 0);
     }
-
-    logout = () => {
-        const { dispatch, history } = this.props;
-
-        dispatch({
-            type: LOGOUT,
-        });
-
-        history.push('/');
-    };
-
-    getActiveKey = (): Array<string> => {
-        const { location, navbar } = this.props;
-        const currentActive = location.pathname.split('/')[2];
-
-        if (!currentActive) return ['homepage'];
-        if (currentActive === 'genres') {
-            const genreId = location.pathname.split('/')[3];
-            const isGenreIdListed = navbar.genres.find(genre => genre.id === genreId);
-            return isGenreIdListed ? [`genres:${genreId}`] : ['browse_genres'];
-        }
-
-        return [currentActive];
-    };
-
-    onChangeSearchTerm = (e: any): void => {
-        const { dispatch } = this.props;
-
-        dispatch({
-            type: UPDATE_SEARCH_TERM,
-            payload: e.target.value,
-        });
-    };
-
-    onSearchTerm = () => {
-        const { history, navbar, match } = this.props;
-        const { searchTerm } = navbar;
-
-        if (searchTerm.length > 0)
-            history.push(`${match.url}/search/${searchTerm}`);
-    };
-
-    redirectToGenre = (value: string) => {
-        const { history } = this.props;
-
-        history.push(`/app/genres/${value}`);
-    };
 
     render() {
         const { match, history, navbar, t } = this.props;
@@ -98,7 +46,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                     mode="horizontal"
                     style={{ lineHeight: '64px' }}
                     className="menu-items-container navbar-menu"
-                    selectedKeys={this.getActiveKey()}
+                    selectedKeys={getActiveKey()}
                 >
                     <Item className="navbar-logo">
                         <img src={logo} className="logo" onClick={() => history.push(url)} />
@@ -108,14 +56,14 @@ export class Navbar extends Component<NavbarProps, {}> {
                     <Item key="searchbar" className="navbar-searchbar">
                         <Input.Search
                             value={searchTerm}
-                            onChange={this.onChangeSearchTerm}
+                            onChange={onChangeSearchTerm}
                             placeholder={t('SEARCH_BAR_PLACEHOLDER')}
-                            suffix={<ClearIcon termLength={searchTerm.length} onChangeSearchTerm={this.onChangeSearchTerm} />}
-                            onPressEnter={this.onSearchTerm}
-                            onSearch={this.onSearchTerm}
+                            suffix={<ClearIcon termLength={searchTerm.length} onChangeSearchTerm={onChangeSearchTerm} />}
+                            onPressEnter={onSearchTerm}
+                            onSearch={onSearchTerm}
                         />
                     </Item>
-                    <Item key="logout" className="logout-button" onClick={this.logout}><Trans i18nKey="LOGOUT" /></Item>
+                    <Item key="logout" className="logout-button" onClick={logout}><Trans i18nKey="LOGOUT" /></Item>
                     <SubMenu
                         title={
                             <span className="">
@@ -126,7 +74,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                     >
                         <ItemGroup title="Most used genres">
                             {navbar.genres.map((genre: Genre) => (
-                                <Item key={`genres:${genre.id}`} onClick={() => this.redirectToGenre(genre.id)}>
+                                <Item key={`genres:${genre.id}`} onClick={() => redirectToGenre(genre.id)}>
                                     {genre.name}
                                 </Item>
                               )

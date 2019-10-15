@@ -21,6 +21,7 @@ describe('The Mobile navbar component', () => {
         } as Location;
         const navbar: NavbarStore = {
             searchTerm: '',
+            genres: [],
         };
         const i18n = {
             t: jest.fn(),
@@ -40,19 +41,5 @@ describe('The Mobile navbar component', () => {
 
     test('should render correctly', () => {
         expect(wrapper.length).toBe(1);
-    });
-
-    test('should dispatch a UPDATE_SEARCH_TERM action when updating search term', () => {
-        const instance = wrapper.instance() as MobileNavbar;
-        instance.onChangeSearchTerm({
-            target: {
-                value: 'poney',
-            },
-        });
-
-        expect(dispatch).toHaveBeenCalledWith({
-            type: 'UPDATE_SEARCH_TERM',
-            payload: 'poney',
-        });
     });
 });

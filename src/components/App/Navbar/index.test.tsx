@@ -42,18 +42,4 @@ describe('The Navbar component', () => {
     test('should render correctly', () => {
         expect(wrapper.length).toBe(1);
     });
-
-    test('should dispatch a UPDATE_SEARCH_TERM action when updating search term', () => {
-        const instance = wrapper.instance() as Navbar;
-        instance.onChangeSearchTerm({
-            target: {
-                value: 'poney',
-            },
-        });
-
-        expect(dispatch).toHaveBeenCalledWith({
-            type: 'UPDATE_SEARCH_TERM',
-            payload: 'poney',
-        });
-    });
 });
