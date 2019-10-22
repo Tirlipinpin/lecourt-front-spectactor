@@ -18,18 +18,10 @@ function qualityBanner(quality: number): string {
 const Image = posed.img({
     hoverable: true,
     init: {
-        filter: 'grayscale(25%) blur(0.5px)',
-        '-webkit-filter': 'grayscale(25%) blur(1px)',
-        '-moz-filter': 'grayscale(25%) blur(1px)',
-        '-ms-filter': 'grayscale(25%) blur(1px)',
-        '-o-filter': 'grayscale(25%) blur(1px)',
+        filter: 'grayscale(33%)',
     },
     hover: {
-        filter: 'grayscale(0%) blur(0px)',
-        '-webkit-filter': 'grayscale(0%) blur(0px)',
-        '-moz-filter': 'grayscale(0%) blur(0px)',
-        '-ms-filter': 'grayscale(0%) blur(0px)',
-        '-o-filter': 'grayscale(0%) blur(0px)',
+        filter: 'grayscale(0%)',
     }
 });
 
