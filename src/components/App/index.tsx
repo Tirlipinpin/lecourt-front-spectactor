@@ -13,6 +13,7 @@ import MediaQuery from 'react-responsive';
 import { Trans } from 'react-i18next';
 import axiosInterceptor from '../../services/axiosInterceptor';
 import { LoginStore } from '../../reducers/login';
+import { getManagementUrl } from '../../services/requestUrl';
 import './index.css';
 
 import Loader from './shared/Loader';
@@ -26,8 +27,6 @@ const Watch = lazy(() => import('./Watch'));
 const BrowseGenres = lazy(() => import('./BrowseGenres'));
 const Genres = lazy(() => import('./Genres'));
 
-
-
 interface AppProps extends RouteComponentProps {
     login: LoginStore
     dispatch: Dispatch<any>
@@ -36,16 +35,15 @@ interface AppProps extends RouteComponentProps {
 export class App extends Component<AppProps, {}>{
     componentDidMount() {
         const { history, dispatch, login } = this.props;
-        // const { token } = login;
+        const { token } = login;
 
         axiosInterceptor(() => {
             dispatch({ type: 'LOGOUT' });
             history.push('/');
         });
 
-        axios.defaults.baseURL = 'https://management.stg.lecourt.tv/';
-        axios.defaults.headers.common['Authorization'] = `changeIt`;
-        // axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        axios.defaults.baseURL = getManagementUrl();
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }
 
     loadingPage = (): React.ReactElement => (
