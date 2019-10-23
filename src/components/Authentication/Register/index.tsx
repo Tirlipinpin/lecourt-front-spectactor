@@ -161,16 +161,20 @@ export class Register extends Component<RegisterProps, RegisterState> {
                             }
                         />
                     </Item>
-                    <Button
-                        className="auth-form-button"
-                        htmlType="submit"
-                        type="primary"
-                        disabled={register.loading}
-                        shape="round"
-                        block
+                    <Tooltip
+                        title="Les inscriptions ne sont pas ouvertes !"
                     >
-                        <Trans i18nKey="REGISTER" />
-                    </Button>
+                        <Button
+                            className="auth-form-button"
+                            htmlType="submit"
+                            type="primary"
+                            disabled={/* register.loading */ true}
+                            shape="round"
+                            block
+                        >
+                            <Trans i18nKey="REGISTER" />
+                        </Button>
+                    </Tooltip>
                     <Link to="/authentication/login">Looking to <b>login</b> ?</Link>
                 </Form>
             </Fragment>
