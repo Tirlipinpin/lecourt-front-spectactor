@@ -16,6 +16,8 @@ export const Homepage = ({ history }: IHomepageProps) => {
     const homepage = useSelector((state: any) => state.homepage);
     const { t } = useTranslation();
 
+    const { loadingLatestMovies, latestMovies } = homepage;
+
     useEffect(() => {
         dispatch(fetchLatestMovies());
     }, []);
@@ -24,11 +26,11 @@ export const Homepage = ({ history }: IHomepageProps) => {
       <Fragment>
         <Layout className="movies-carousel">
             <Typography.Title level={2}><Trans i18nKey="OUR_SELECTION" /></Typography.Title>
-            <MoviesGallery movies={homepage.latestMovies} history={history} />
+            <MoviesGallery loading={loadingLatestMovies} movies={latestMovies} history={history} />
         </Layout>
         <Layout className="movies-carousel">
             <Typography.Title level={2}><Trans i18nKey="LATEST_SHORTS" /></Typography.Title>
-            <MoviesGallery movies={homepage.latestMovies} history={history} />
+            <MoviesGallery loading={loadingLatestMovies} movies={latestMovies} history={history} />
         </Layout>
       </Fragment>
   );

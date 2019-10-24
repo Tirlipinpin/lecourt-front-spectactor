@@ -8,8 +8,9 @@ import './index.css';
 
 
 export interface MoviesGalleryProps {
-    movies: Movie[]
     history: History
+    loading?: boolean
+    movies: Movie[]
 };
 
 const MoviePosterContainer = posed.div({
@@ -31,10 +32,16 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
     }
 
     render() {
-        const { movies } = this.props;
+        const { loading, movies } = this.props;
 
-        if (movies.length < 1)
+        if (movies.length < 1 && loading)
             return <Loader />
+        else if (movies.length < 1)
+            return (
+                <div className="search-results-container">
+                    Aucun court-métrage trouvé !
+                </div>
+            );
 
         return (
             <div className="search-results-container">
