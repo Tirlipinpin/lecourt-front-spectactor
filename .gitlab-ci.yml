@@ -2,10 +2,11 @@
 # Gitlab-CI bliink.io
 #-------------------------------------------------------------------------------
 
-image: tmaier/docker-compose:18.09
+image: tmaier/docker-compose:latest
 
 variables:
-  DOCKER_DRIVER: overlay
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ''
   CONTAINER_STAGING_IMAGE: $CI_REGISTRY_IMAGE/staging:$CI_COMMIT_REF_SLUG
 
 before_script:
