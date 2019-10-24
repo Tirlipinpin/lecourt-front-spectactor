@@ -1,4 +1,5 @@
-version: '3'
+version: '3.7'
+
 services:
   front:
     build:
@@ -6,8 +7,5 @@ services:
       dockerfile: development.Dockerfile
     ports:
       - 3000:3000
-    environment:
-      - VIRTUAL_HOST=front.docker
-      - VIRTUAL_PORT=3000
     volumes:
       - .:/app
