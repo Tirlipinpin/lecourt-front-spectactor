@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { notification } from 'antd';
 import { getLoginUrl, getRegisterUrl } from '../services/requestUrl';
 import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED } from '../reducers/login/constants';
@@ -8,19 +8,21 @@ import { REGISTER_USER, REGISTER_USER_SUCCEEDED, REGISTER_USER_FAILED } from '..
 
 function* fetchToken(action: AnyAction): IterableIterator<Object | void> {
     try {
-        const token = yield axios.post(getLoginUrl(), {
+        const res: unknown = yield axios.post(getLoginUrl(), {
             username: action.payload.email,
             password: action.payload.password,
         }, {
             withCredentials: true,
-        })
+        });
 
-        if (!token)
+        const { data: { access_token } } = res as AxiosResponse;
+
+        if (!access_token)
             throw new Error('Network error');
 
         yield put({
             type: FETCH_TOKEN_SUCCEEDED,
-            payload: token,
+            payload: access_token,
         });
     } catch (e) {
         yield put({
@@ -36,16 +38,18 @@ function* fetchToken(action: AnyAction): IterableIterator<Object | void> {
 
 function* registerUser(action: AnyAction): IterableIterator<Object | void> {
     try {
-        const token = yield axios.post(getRegisterUrl(), {
+        const res: unknown = yield axios.post(getRegisterUrl(), {
             display_name: action.payload.displayName,
             email: action.payload.email,
             password: action.payload.password,
             password_confirm: action.payload.passwordConfirm,
         });
 
+        const { data: { access_token } } = res as AxiosResponse;
+
         yield put({
             type: REGISTER_USER_SUCCEEDED,
-            payload: token,
+            payload: access_token,
         });
     } catch (e) {
         yield put({
