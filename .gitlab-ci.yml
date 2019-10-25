@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Gitlab-CI bliink.io
+# Gitlab-CI lecourt.tv
 #-------------------------------------------------------------------------------
 
 image: tmaier/docker-compose:latest
@@ -58,7 +58,7 @@ stages:
 # Variables
 #-------------------------------------------------------------------------------
 .: &variables-compose-staging
-  COMPOSE_FILE: docker-compose.staging.yml
+  COMPOSE_FILE: docker-compose.yml
   COMPOSE_PROJECT_NAME: lecourt-front
 
 #-------------------------------------------------------------------------------
