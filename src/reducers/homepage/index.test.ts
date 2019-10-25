@@ -15,6 +15,8 @@ describe('homepage reducer', () => {
             type: 'FETCH_MOVIES_SUCCEEDED',
             payload: movies,
         })).toEqual({
+            loadingLatestMovies: false,
+            loadingMovies: false,
             latestMovies: [],
             movies,
         });
@@ -30,6 +32,8 @@ describe('homepage reducer', () => {
             type: 'FETCH_LATEST_MOVIES_SUCCEEDED',
             payload: latestMovies,
         })).toEqual({
+            loadingLatestMovies: false,
+            loadingMovies: false,
             latestMovies,
             movies: [],
         });

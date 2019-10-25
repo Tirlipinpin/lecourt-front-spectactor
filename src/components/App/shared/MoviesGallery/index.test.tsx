@@ -16,6 +16,7 @@ describe('The MoviesGallery component', () => {
             <MoviesGallery
                 movies={movies}
                 history={history}
+                loading
             />
         );
     });
