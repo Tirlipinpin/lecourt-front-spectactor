@@ -71,7 +71,7 @@ build_staging:
   services:
     - docker:dind
   script:
-    - docker build --pull -t $CONTAINER_STAGING_IMAGE .
+    - docker build --pull -t $CONTAINER_STAGING_IMAGE -f development.Dockerfile .
     - docker push $CONTAINER_STAGING_IMAGE
 
 deploy_staging:
