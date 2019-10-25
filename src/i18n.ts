@@ -28,6 +28,8 @@ i18n
             GENRES: 'Genres',
             BROWSE_OUR_GENRES: 'Browse our genres',
             WE_HOPE_YOU_FIND_YOUR_PERFECT_MATCH: 'We hope you\'ll find your perfect match',
+            AUTH_NO_ACCOUNT: `Don't have an account?`,
+            AUTH_REGISTER: `Register!`,
         }
       },
       fr: {
@@ -46,12 +48,13 @@ i18n
             OUR_MOVIES_FOR_THIS_GENRE: 'Nos courts pour cette catégorie',
             FOOTER: 'Lecourt ©2019 Créé avec amour par les meilleurs développeurs',
             REGISTER: 'Inscription',
-            LOGIN: 'Connexion',
+            LOGIN: 'Accéder à Lecourt',
             RESULT_RELEVANT: 'Ce résultat peut correspondre à ce que vous cherchez',
             GENRES: 'Catégories',
             BROWSE_OUR_GENRES: 'Naviguez dans nos catégories',
             WE_HOPE_YOU_FIND_YOUR_PERFECT_MATCH: 'Nous espérons que vous trouverez la catégorie parfaite pour vous',
-
+            AUTH_NO_ACCOUNT: `Vous n'êtes pas encore inscrit ?`,
+            AUTH_REGISTER: `Inscrivez-vous !`,
         }
       }
     },
