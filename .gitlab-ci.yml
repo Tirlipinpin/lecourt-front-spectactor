@@ -58,7 +58,7 @@ stages:
 # Variables
 #-------------------------------------------------------------------------------
 .: &variables-compose-staging
-  COMPOSE_FILE: docker-compose.yml
+  COMPOSE_FILE: docker-compose.staging.yml
   COMPOSE_PROJECT_NAME: lecourt-front
 
 #-------------------------------------------------------------------------------

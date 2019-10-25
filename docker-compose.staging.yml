@@ -4,7 +4,13 @@ services:
   front:
     image: $CONTAINER_STAGING_IMAGE
     restart: always
-
+    build:
+      context: .
+      dockerfile: development.Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - .:/app
 networks:
   default:
     external: true
