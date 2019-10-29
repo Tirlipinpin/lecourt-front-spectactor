@@ -14,6 +14,60 @@
     display: flex;
 }
 
+@media screen and (max-width: 1200px) {
+    .auth-container {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .auth-container {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .auth-container {
+        flex-direction: column-reverse;
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .auth-container {
+        flex-direction: column-reverse;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .auth-container {
+        flex-direction: column-reverse;
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .auth-container {
+        flex-direction: column-reverse;
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .auth-container {
+        flex-direction: column-reverse;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .auth-container {
+        flex-direction: column-reverse;
+        width: 90%;
+    }
+}
+
 .auth-container .auth-element {
     padding: 1.5rem 1rem;
 }
@@ -76,4 +130,5 @@
 .auth-container .auth-right .logo {
     height: auto;
     width: 45%;
+    cursor: auto;
 }
