@@ -10,7 +10,7 @@ import logo from '../../assets/logo_text.png';
 import ok from '../../assets/bg.jpg';
 import './index.css';
 
-const { error } = Modal;
+const { warning } = Modal;
 
 export interface AuthenticationProps extends RouteComponentProps {
     login: LoginStore
@@ -18,7 +18,7 @@ export interface AuthenticationProps extends RouteComponentProps {
 
 export class Authentication extends Component<AuthenticationProps, {}> {
     componentDidMount() {
-        error({
+        warning({
             title: `Les inscriptions sont fermées pour le moment, nous faisons ce que nous pouvons pour écourter votre attente le plus possible !`,
         });
     }
