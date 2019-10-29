@@ -4,10 +4,12 @@ import { Reducer, AnyAction } from 'redux';
 export interface LoginStore {
     loading: boolean
     token?: string | null
+    rememberMe: boolean
 };
 
 export const defaultState: LoginStore = {
     loading: false,
+    rememberMe: false,
 };
 
 const loginReducer: Reducer<LoginStore, AnyAction> = (state: LoginStore = defaultState, action: AnyAction) => {
@@ -21,7 +23,8 @@ const loginReducer: Reducer<LoginStore, AnyAction> = (state: LoginStore = defaul
             return {
                 ...state,
                 loading: false,
-                token: action.payload,
+                token: action.payload.token,
+                rememberMe: action.payload.rememberMe,
             }
         case FETCH_TOKEN_FAILED:
             return {

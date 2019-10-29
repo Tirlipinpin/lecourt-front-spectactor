@@ -42,8 +42,25 @@ export class App extends Component<AppProps, {}>{
             history.push('/');
         });
 
+        this.userNotRemembered();
+
         axios.defaults.baseURL = getManagementUrl();
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    userNotRemembered = () => {
+        const { login } = this.props;
+        const { token } = login;
+
+        if (!token) return;
+
+        window.addEventListener('beforeunload', ev => {
+            ev.preventDefault();
+            const { rememberMe } = login;
+            if (!rememberMe) {
+              localStorage.removeItem('persist:root');
+            }
+          });
     }
 
     loadingPage = (): React.ReactElement => (

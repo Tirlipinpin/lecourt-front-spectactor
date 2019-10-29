@@ -7,6 +7,7 @@ import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import './index.css';
+import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 
 const { Item } = Form;
 
@@ -18,12 +19,14 @@ export interface LoginProps {
 export interface LoginState {
     email: string
     password: string
+    rememberMe: boolean
 };
 
 export class Login extends Component<LoginProps, LoginState> {
     state = {
         email: '',
         password: '',
+        rememberMe: false,
     };
 
     handleEmail = (e: SyntheticEvent): void => {
@@ -42,9 +45,17 @@ export class Login extends Component<LoginProps, LoginState> {
         });
     }
 
+    handleRememberMe = (e: CheckboxChangeEvent) => {
+        const { target: { checked } } = e;
+
+        this.setState({
+            rememberMe: checked,
+        });
+    }
+
     fetchToken = (e: FormEvent<any>): void => {
         const { dispatch } = this.props;
-        const { email, password } = this.state;
+        const { email, password, rememberMe } = this.state;
 
         e.preventDefault();
 
@@ -53,6 +64,7 @@ export class Login extends Component<LoginProps, LoginState> {
             payload: {
                 email,
                 password,
+                rememberMe,
             },
         });
     }
@@ -104,7 +116,10 @@ export class Login extends Component<LoginProps, LoginState> {
                             }
                         />
                     </Item>
-                    <Checkbox className="auth-form-checkbox">Remember me</Checkbox>
+                    <Checkbox
+                        className="auth-form-checkbox"
+                        onChange={this.handleRememberMe}
+                    >Remember me</Checkbox>
                     <Button
                         loading={loading}
                         htmlType="submit"

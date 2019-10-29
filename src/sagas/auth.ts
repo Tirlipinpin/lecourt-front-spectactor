@@ -22,7 +22,10 @@ function* fetchToken(action: AnyAction): IterableIterator<Object | void> {
 
         yield put({
             type: FETCH_TOKEN_SUCCEEDED,
-            payload: access_token,
+            payload: {
+                token: access_token,
+                rememberMe: action.payload.rememberMe,
+            }
         });
     } catch (e) {
         yield put({
