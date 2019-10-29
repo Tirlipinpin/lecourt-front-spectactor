@@ -12,6 +12,7 @@ describe('login reducer', () => {
         };
 
         expect(login(defaultState, action)).toEqual({
+            ...defaultState,
             loading: true,
         });
     });
@@ -19,12 +20,16 @@ describe('login reducer', () => {
     test('should stop loading when fetch is successful', () => {
         const action = {
             type: FETCH_TOKEN_SUCCEEDED,
-            payload:  'poney',
+            payload: {
+                token: 'poney',
+                rememberMe: false,
+            },
         };
 
         expect(login(defaultState, action)).toEqual({
             loading: false,
             token: 'poney',
+            rememberMe: false,
         });
     });
 
