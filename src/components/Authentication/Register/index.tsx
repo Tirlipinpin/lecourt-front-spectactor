@@ -169,7 +169,6 @@ export class Register extends Component<RegisterProps, RegisterState> {
                             htmlType="submit"
                             type="primary"
                             disabled={/* register.loading */ true}
-                            shape="round"
                             block
                         >
                             <Trans i18nKey="REGISTER" />
