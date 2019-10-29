@@ -28,7 +28,7 @@ i18n
             GENRES: 'Genres',
             BROWSE_OUR_GENRES: 'Browse our genres',
             WE_HOPE_YOU_FIND_YOUR_PERFECT_MATCH: 'We hope you\'ll find your perfect match',
-            AUTH_NO_ACCOUNT: `Don't have an account?`,
+            AUTH_NO_ACCOUNT: `Don't have an account yet?`,
             AUTH_REGISTER: `Register!`,
         }
       },
@@ -53,7 +53,7 @@ i18n
             GENRES: 'Catégories',
             BROWSE_OUR_GENRES: 'Naviguez dans nos catégories',
             WE_HOPE_YOU_FIND_YOUR_PERFECT_MATCH: 'Nous espérons que vous trouverez la catégorie parfaite pour vous',
-            AUTH_NO_ACCOUNT: `Vous n'êtes pas encore inscrit ?`,
+            AUTH_NO_ACCOUNT: `Pas encore inscrit ?`,
             AUTH_REGISTER: `Inscrivez-vous !`,
         }
       }
