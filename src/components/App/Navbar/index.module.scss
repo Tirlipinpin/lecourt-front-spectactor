@@ -1,0 +1,57 @@
+.navbarContainer {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(41, 45, 51, 0.35);
+    padding: 0 0;
+}
+
+.navbarSearchBar {
+    &:hover {
+        border-bottom: 2px solid transparent !important;
+    }
+}
+
+.navbarLogo {
+    height: 48px;
+    float: left;
+    margin: 8px 8px 8px 0;
+    cursor: pointer;
+}
+
+.menuItemsContainer {
+    padding: 0 1%;
+    width: 100vw;
+
+    background: #292929;
+
+    .logoutButton {
+        color: white;
+
+        &:hover {
+            color: #FF5242;
+        }
+    }
+}
+
+@media screen and (min-width: 450px) {
+    .logoutButton {
+        float: right;
+    }
+}
+
+.navbarMenu {
+    .ant-input-search {
+        width: 180px;
+    }
+
+    .ant-input {
+        padding-right: 64px !important;
+    }
+}
+
+.navbarLogoContainer {
+    &:hover {
+        border-bottom: 2px solid transparent !important;
+    }
+}

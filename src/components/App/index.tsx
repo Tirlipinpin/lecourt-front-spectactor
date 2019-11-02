@@ -14,7 +14,7 @@ import { Trans } from 'react-i18next';
 import axiosInterceptor from '../../services/axiosInterceptor';
 import { LoginStore } from '../../reducers/login';
 import { getManagementUrl } from '../../services/requestUrl';
-import './index.css';
+import './index.scss';
 
 import Loader from './shared/Loader';
 import Navbar from './Navbar';

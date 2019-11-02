@@ -1,0 +1,54 @@
+.ant-card:hover {
+    background: #f0f2f5;
+}
+
+/*    Navbar    */
+.ant-menu-item {
+    a {
+        color: white !important;
+    }
+}
+
+.ant-menu-item-group-list {
+    .ant-menu-item {
+        a {
+            color: black !important;
+        }
+    }
+    .ant-menu-item-selected {
+        color: #FF5242;
+        background: #FFDEDB !important;
+    }
+
+    .ant-menu-item-selected {
+        a {
+            color: #FF5242;
+        }
+    }
+}
+
+.ant-menu-submenu-title {
+    span {
+        color: white;
+    }
+}
+
+.ant-menu-item-selected {
+    color: black;
+    background: none !important;
+}
+
+.ant-menu-submenu-active,
+.ant-menu-item-active,
+.ant-menu-item-selected,
+.ant-menu-submenu-selected {
+    border-color: #FF5242 !important;
+}
+
+.ant-menu-item-selected a,
+.ant-menu-item a:hover,
+.ant-menu-submenu-active .ant-menu-submenu-title span,
+.ant-menu-submenu-selected .ant-menu-submenu-title span {
+    color: #FF5242 !important;
+    background: none !important;
+}

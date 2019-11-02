@@ -10,13 +10,14 @@ import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux';
 import {Trans, WithTranslation, withTranslation} from 'react-i18next';
 
+import { getActiveKey, onChangeSearchTerm, redirectToGenre, onSearchTerm, logout } from './services';
+import { fetchNavbarGenres } from './actions';
 import logo from '../../../assets/Logo.png';
-import './index.css';
 import { NavbarStore } from '../../../reducers/navbar';
 import ClearIcon from './ClearIcon';
 import { Genre } from '../interfaces';
-import { fetchNavbarGenres } from './actions';
-import { getActiveKey, onChangeSearchTerm, redirectToGenre, onSearchTerm, logout } from './services';
+import styles from './index.module.scss';
+import './index.scss';
 
 const { Header } = Layout;
 const { SubMenu, Item, ItemGroup } = Menu;
@@ -40,20 +41,20 @@ export class Navbar extends Component<NavbarProps, {}> {
         const { url } = this.props.match;
 
         return (
-            <Header className="navbar-container">
+            <Header className={styles.navbarContainer}>
                 <Menu
                     theme="light"
                     mode="horizontal"
                     style={{ lineHeight: '64px' }}
-                    className="menu-items-container navbar-menu"
+                    className={`${styles.menuItemsContainer} ${styles.navbarMenu}`}
                     selectedKeys={getActiveKey()}
                 >
-                    <Item className="navbar-logo">
-                        <img src={logo} className="logo" onClick={() => history.push(url)} />
+                    <Item className={styles.navbarLogoContainer}>
+                        <img src={logo} className={styles.navbarLogo} onClick={() => history.push(url)} />
                     </Item>
-                    <Item key="homepage"><Link to={url}><Trans i18nKey="HOMEPAGE_BUTTON" /></Link></Item>
-                    <Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Item>
-                    <Item key="searchbar" className="navbar-searchbar">
+                    <Item className={styles.menuItem} key="homepage"><Link to={url}><Trans i18nKey="HOMEPAGE_BUTTON" /></Link></Item>
+                    <Item className={styles.menuItem} key="profile"><Link to={`${url}/profile`}>Profile</Link></Item>
+                    <Item key="searchbar" className={styles.navbarSearchBar}>
                         <Input.Search
                             value={searchTerm}
                             onChange={onChangeSearchTerm}
@@ -63,10 +64,14 @@ export class Navbar extends Component<NavbarProps, {}> {
                             onSearch={onSearchTerm}
                         />
                     </Item>
-                    <Item key="logout" className="logout-button" onClick={logout}><Trans i18nKey="LOGOUT" /></Item>
+                    <Item
+                        key="logout"
+                        className={styles.logoutButton}
+                        onClick={logout}
+                    ><Trans i18nKey="LOGOUT" /></Item>
                     <SubMenu
                         title={
-                            <span className="">
+                            <span>
                                 <Icon type="down" />
                                 {t('GENRES')}
                             </span>
