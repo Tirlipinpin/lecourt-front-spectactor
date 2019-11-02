@@ -17,7 +17,6 @@ import { NavbarStore } from '../../../reducers/navbar';
 import ClearIcon from './ClearIcon';
 import { Genre } from '../interfaces';
 import styles from './index.module.scss';
-import './index.scss';
 
 const { Header } = Layout;
 const { SubMenu, Item, ItemGroup } = Menu;

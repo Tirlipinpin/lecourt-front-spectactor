@@ -1,0 +1,39 @@
+.topNavbarContainer,
+.navbarContainer {
+    background: #292929;
+}
+
+.mobileNavbarMenu {
+    border: none;
+    background: #292929 !important;
+}
+
+.topMobileNavbarLogo {
+    margin-left: auto;
+}
+
+.navbarLogo {
+    height: 48px;
+    float: left;
+    margin: 8px 8px 8px 0;
+    cursor: pointer;
+}
+
+.topMobileNavbarButton {
+    float: right;
+
+    i {
+        svg {
+            fill: white;
+            color: white;
+        }
+    }
+}
+
+.topMobileNavbarMenuItem {
+    color: white;
+}
+
+.logoutButton {
+    color: white;
+}

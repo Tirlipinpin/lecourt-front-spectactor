@@ -5,13 +5,19 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Trans, WithTranslation, withTranslation } from 'react-i18next';
 
+import { fetchNavbarGenres } from '../actions';
+import {
+    onChangeSearchTerm,
+    logout,
+    redirectToGenre,
+    onSearchTerm,
+    getActiveKey
+} from '../services';
 import logo from '../../../../assets/Logo.png';
 import { NavbarStore } from '../../../../reducers/navbar';
 import ClearIcon from '../ClearIcon';
-import './index.css';
 import { Genre } from '../../interfaces';
-import { fetchNavbarGenres } from '../actions';
-import { onChangeSearchTerm, logout, redirectToGenre, onSearchTerm, getActiveKey } from '../services';
+import styles from './index.module.scss';
 
 const { Header } = Layout;
 const { SubMenu, Item, ItemGroup } = Menu;
@@ -54,10 +60,15 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                     title='Lecourt'
                     placement='left'
                     closable
-                    visible={ menuOpen }
+                    visible={menuOpen}
                     onClose={this.toggleMenu}
+                    headerStyle={{ backgroundColor: '#292929' }}
+                    bodyStyle={{ backgroundColor: '#292929' }}
+                    drawerStyle={{ backgroundColor: '#292929' }}
                 >
-                    <Menu className="navbar-menu mobile-navbar-menu" theme="light">
+                    <Menu
+                        className={styles.mobileNavbarMenu}
+                    >
                         <Menu.Item key="homepage"><Link to={url}><Trans i18nKey="HOMEPAGE_BUTTON" /></Link></Menu.Item>
                         <Menu.Item key="profile"><Link to={`${url}/profile`}>Profile</Link></Menu.Item>
                         <Menu.Item key="searchbar">
@@ -72,7 +83,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                         </Menu.Item>
                         <SubMenu
                             title={
-                                <span className="">
+                                <span>
                                     {t('GENRES')}
                                 </span>
                             }
@@ -89,11 +100,11 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                                 </Item>
                             </ItemGroup>
                         </SubMenu>
-                        <Menu.Item key="logout" onClick={logout}><Trans i18nKey="LOGOUT" /></Menu.Item>
+                        <Menu.Item className={styles.logoutButton} key="logout" onClick={logout}><Trans i18nKey="LOGOUT" /></Menu.Item>
                     </Menu>
                 </Drawer>
                 <Header
-                    className="navbar-container"
+                    className={styles.navbarContainer}
                     style={{
                         padding: 0,
                     }}
@@ -101,12 +112,12 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                     <Menu
                         theme="light"
                         mode="horizontal"
+                        className={styles.topNavbarContainer}
                         style={{ lineHeight: '64px' }}
                         selectedKeys={getActiveKey()}
-                        className="top-mobile-navbar"
                     >
-                        <Menu.Item className="top-mobile-navbar-logo"><img src={logo} className="logo" onClick={() => history.push(url)} /></Menu.Item>
-                        <Menu.Item className="top-mobile-navbar-button" onClick={this.toggleMenu}><Icon type="menu-unfold" /></Menu.Item>
+                        <Menu.Item className={styles.topMobileNavbarLogo}><img src={logo} className={styles.navbarLogo} onClick={() => history.push(url)} /></Menu.Item>
+                        <Menu.Item className={styles.topMobileNavbarButton} onClick={this.toggleMenu}><Icon type="menu-unfold" /></Menu.Item>
                     </Menu>
                 </Header>
             </div>

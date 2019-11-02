@@ -52,3 +52,11 @@
     color: #FF5242 !important;
     background: none !important;
 }
+
+/*    MobileNavbar    */
+.ant-drawer-header {
+    .ant-drawer-close,
+    .ant-drawer-title {
+        color: white;
+    }
+}

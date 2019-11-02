@@ -78,10 +78,11 @@ export class App extends Component<AppProps, {}>{
     render() {
         const { match, login, location } = this.props;
 
-        if (!login.token)
+        if (!login.token) {
             return (
                 <Redirect to="/authentication/login" />
             );
+        }
 
         return (
             <div className="app-wrapper">
