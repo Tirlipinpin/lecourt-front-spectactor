@@ -1,4 +1,4 @@
-import React, { Component, Dispatch } from 'react';
+import React, { Component, Dispatch, Fragment } from 'react';
 import { Layout, Menu, Drawer, Icon, Input } from 'antd';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -55,7 +55,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
         const { searchTerm } = navbar;
 
         return (
-            <div>
+            <Fragment>
                 <Drawer
                     title='Lecourt'
                     placement='left'
@@ -120,7 +120,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                         <Menu.Item className={styles.topMobileNavbarButton} onClick={this.toggleMenu}><Icon type="menu-unfold" /></Menu.Item>
                     </Menu>
                 </Header>
-            </div>
+            </Fragment>
         );
     }
 };
