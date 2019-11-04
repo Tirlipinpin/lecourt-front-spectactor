@@ -37,10 +37,10 @@ export class App extends Component<AppProps, {}>{
         const { history, dispatch, login } = this.props;
         const { token } = login;
 
-        // axiosInterceptor(() => {
-        //     dispatch({ type: 'LOGOUT' });
-        //     history.push('/');
-        // });
+        axiosInterceptor(() => {
+            dispatch({ type: 'LOGOUT' });
+            history.push('/');
+        });
 
         this.userNotRemembered();
 
@@ -78,11 +78,11 @@ export class App extends Component<AppProps, {}>{
     render() {
         const { match, login, location } = this.props;
 
-        // if (!login.token) {
-        //     return (
-        //         <Redirect to="/authentication/login" />
-        //     );
-        // }
+        if (!login.token) {
+            return (
+                <Redirect to="/authentication/login" />
+            );
+        }
 
         return (
             <div className="app-wrapper">
