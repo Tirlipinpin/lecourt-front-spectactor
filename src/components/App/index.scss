@@ -1,24 +1,5 @@
 @import './Antd.replace.scss';
 
-.loading-page {
-    height: calc(100vh - 133px);
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.app-container {
-    min-height: calc(100vh - 64px);
-    margin-top: 64px;
-    display: flex;
-    flex-direction: column;
-}
-
-.content-container {
-    background-color: white;
-}
-
 .page-container {
     margin: 32px 128px;
     padding-bottom: 32px;

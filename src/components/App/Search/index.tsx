@@ -6,10 +6,10 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 
 import { SearchStore } from '../../../reducers/search';
 import MoviesGallery from '../shared/MoviesGallery';
-import './index.css';
 import { RenderPageStructures } from '../services';
 import { fetchSearchMovies } from './actions';
 import Loader from '../shared/Loader';
+import styles from './index.module.scss';
 
 export type SearchPropsParams = {
     term: string
@@ -40,7 +40,7 @@ export class Search extends Component<SearchProps, {}> {
                 title={`${this.props.t('YOU_SEARCHED_FOR')} ${this.props.match.params.term}`}
                 pageContainerClass="search-page-container"
                 pageHeaderClass="search-page-header"
-                pageContentClass="search-page-content"
+                pageContentClass={styles.searchPageContent}
             />;
         }
 
@@ -56,7 +56,7 @@ export class Search extends Component<SearchProps, {}> {
                 title={`${this.props.t('YOU_SEARCHED_FOR')} ${this.props.match.params.term}`}
                 pageContainerClass="search-page-container"
                 pageHeaderClass="search-page-header"
-                pageContentClass="search-page-content"
+                pageContentClass={styles.searchPageContent}
             />;
         }
 
@@ -74,7 +74,7 @@ export class Search extends Component<SearchProps, {}> {
             title={`${this.props.t('YOU_SEARCHED_FOR')} ${this.props.match.params.term}`}
             pageContainerClass="search-page-container"
             pageHeaderClass="search-page-header"
-            pageContentClass="search-page-content"
+            pageContentClass={styles.searchPageContent}
         />;
     }
 }

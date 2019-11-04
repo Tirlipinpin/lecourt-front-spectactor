@@ -14,6 +14,7 @@ import { Trans } from 'react-i18next';
 import axiosInterceptor from '../../services/axiosInterceptor';
 import { LoginStore } from '../../reducers/login';
 import { getManagementUrl } from '../../services/requestUrl';
+import styles from './index.module.scss';
 import './index.scss';
 
 import Loader from './shared/Loader';
@@ -64,7 +65,7 @@ export class App extends Component<AppProps, {}>{
     }
 
     loadingPage = (): React.ReactElement => (
-        <div className="loading-page">
+        <div className={styles.loadingPage}>
             <Loader size="3vw" />
         </div>
     )
@@ -85,7 +86,7 @@ export class App extends Component<AppProps, {}>{
         }
 
         return (
-            <div className="app-wrapper">
+            <div className={styles.appWrapper}>
                 <Layout>
                     <MediaQuery minWidth={600}>
                         <Navbar { ...this.props } />
@@ -93,8 +94,8 @@ export class App extends Component<AppProps, {}>{
                     <MediaQuery maxWidth={600}>
                         <MobileNavbar { ...this.props } />
                     </MediaQuery>
-                    <div className="app-container">
-                        <Layout.Content className="content-container">
+                    <div className={styles.appContainer}>
+                        <Layout.Content className={styles.appContent}>
                             <Switch location={location}>
                                 <Route exact path={match.url} render={(props) => this.lazyRender(Homepage, props)} />
                                 <Route path={`${match.path}/profile`} render={(props) => this.lazyRender(Profile, props)}/>

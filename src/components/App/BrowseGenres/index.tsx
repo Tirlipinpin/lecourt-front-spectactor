@@ -1,16 +1,15 @@
-import { Card, Typography } from 'antd';
-import React, { Fragment, useEffect } from 'react';
+import { Typography } from 'antd';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
 import { Genre } from '../interfaces';
 import { FETCH_GENRES } from '../../../reducers/browseGenres/constants';
-import './index.css';
 import { RenderPageStructures } from '../services';
 import { Loader } from '../shared/Loader';
-
-const { Meta } = Card;
+import styles from './index.module.scss';
+import { GenreCard } from './components/GenreCard';
 
 export interface IBrowseGenresProps extends RouteComponentProps {}
 
@@ -31,21 +30,10 @@ export default ({ history }: IBrowseGenresProps) => {
         return <Loader />;
 
     const genresCards = genres.map((genre: Genre) => (
-      <Card
-        key={genre.id}
-        className="genre-card"
-        hoverable
-        onClick={() => history.push(`/app/genres/${genre.id}`)}
-      >
-          <Meta
-            title={
-                <Fragment>
-                    {genre.name}
-                </Fragment>
-            }
-            className="genre-card-meta"
-          />
-      </Card>
+        <GenreCard
+            genre={genre}
+            historyPush={history.push}
+        />
     ));
 
     return (
@@ -59,7 +47,7 @@ export default ({ history }: IBrowseGenresProps) => {
             </React.Fragment>
         )}
         Child={genresCards}
-        pageContentClass="browseGenres-page-content"
+        pageContentClass={styles.browseGenresPageContent}
       />
     )
 };
