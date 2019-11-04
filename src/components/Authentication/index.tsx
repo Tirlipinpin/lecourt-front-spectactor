@@ -7,8 +7,8 @@ import { Modal, Avatar } from 'antd';
 import { LoginStore } from '../../reducers/login';
 
 import logo from '../../assets/logo_text.png';
-import ok from '../../assets/bg.jpg';
-import './index.css';
+import background from '../../assets/bg.jpg';
+import styles from './index.module.scss';
 
 const { warning } = Modal;
 
@@ -31,17 +31,17 @@ export class Authentication extends Component<AuthenticationProps, {}> {
             return <Redirect to="/app" />;
 
         return (
-            <div className="auth-background" style={{ backgroundImage: `url(${ok})` }}>
-                <div className="auth-container">
-                    <div className="auth-element auth-form">
+            <div className={styles.authPageContainer} style={{ backgroundImage: `url(${background})` }}>
+                <div className={styles.authContainer}>
+                    <div className={`${styles.authElement} ${styles.authForm}`}>
                         <Avatar size={64} icon="user"/>
                         <Switch location={location}>
                             <Route path={`${match.url}/login`} render={() => <Login loading={login.loading} />} />
                             <Route path={`${match.url}/register`} component={Register} />
                         </Switch>
                     </div>
-                    <div className="auth-element auth-right">
-                        <img className="logo" src={logo} />
+                    <div className={`${styles.authElement} ${styles.authRight}`}>
+                        <img className={styles.logo} src={logo} />
                     </div>
                 </div>
             </div>

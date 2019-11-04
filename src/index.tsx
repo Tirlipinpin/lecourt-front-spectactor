@@ -8,11 +8,11 @@ import { PersistGate } from 'redux-persist/es/integration/react';
 
 import * as serviceWorker from './serviceWorker';
 import configureStore, { history } from './store';
-import './index.css';
 import App from './components/App';
 import NotFound from './components/NotFound';
 import Authentication from './components/Authentication';
 import './i18n';
+import './index.scss';
 
 localStorage.setItem('i18nextLng', 'fr');
 

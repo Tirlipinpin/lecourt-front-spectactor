@@ -1,11 +1,13 @@
+@import 'styles/colors';
+
 .topNavbarContainer,
 .navbarContainer {
-    background: #292929;
+    background: $lc-black;
 }
 
 .mobileNavbarMenu {
     border: none;
-    background: #292929 !important;
+    background: $lc-black !important;
 }
 
 .topMobileNavbarLogo {

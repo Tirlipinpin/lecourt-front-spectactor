@@ -6,8 +6,8 @@ import { Form, Icon, Input, Button, Tooltip, Typography, Checkbox } from 'antd';
 import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import './index.css';
 import { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import styles from '../index.module.scss';
 
 const { Item } = Form;
 
@@ -75,14 +75,14 @@ export class Login extends Component<LoginProps, LoginState> {
 
         return (
             <Fragment>
-                <Typography.Title level={3} className="auth-form-title">
+                <Typography.Title level={3} className={styles.authFormTitle}>
                     <Trans i18nKey='LOGIN' />
                 </Typography.Title>
-                <Form onSubmit={this.fetchToken} className="auth-form-container">
+                <Form onSubmit={this.fetchToken} className={styles.authFormContainer}>
                     <Item
                         label="Email"
                         colon={false}
-                        className="auth-form-item"
+                        className={styles.authFormItem}
                     >
                         <Input
                             allowClear
@@ -100,7 +100,7 @@ export class Login extends Component<LoginProps, LoginState> {
                     <Item
                         label="Password"
                         colon={false}
-                        className="auth-form-item"
+                        className={styles.authFormItem}
                     >
                         <Input
                             allowClear
@@ -117,14 +117,14 @@ export class Login extends Component<LoginProps, LoginState> {
                         />
                     </Item>
                     <Checkbox
-                        className="auth-form-checkbox"
+                        className={styles.authFormCheckbox}
                         onChange={this.handleRememberMe}
                     >Remember me</Checkbox>
                     <Button
                         loading={loading}
                         htmlType="submit"
                         type="primary"
-                        className="auth-form-button"
+                        className={styles.authFormButton}
                         block={true}
                     >
                         <Trans i18nKey="LOGIN" />
