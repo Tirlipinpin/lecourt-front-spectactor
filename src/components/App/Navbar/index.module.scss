@@ -5,55 +5,55 @@
     z-index: 10;
     width: 100%;
     box-shadow: 0 8px 20px rgba(41, 45, 51, 0.35);
-    padding: 0 0;
-}
+    padding: 0 0 !important;
 
-.navbarSearchBar {
-    &:hover {
-        border-bottom: 2px solid transparent !important;
-    }
-}
+    .menuItemsContainer {
+        padding: 0 1%;
+        width: 100vw;
+    
+        background: $lc-black;
+    
+        .logoutButton {
+            color: white;
+    
+            &:hover {
+                color: #FF5242;
+            }
+        }
+    }    
 
-.navbarLogo {
-    height: 48px;
-    float: left;
-    margin: 8px 8px 8px 0;
-    cursor: pointer;
-}
-
-.menuItemsContainer {
-    padding: 0 1%;
-    width: 100vw;
-
-    background: $lc-black;
-
-    .logoutButton {
-        color: white;
-
+    .navbarSearchBar {
         &:hover {
-            color: #FF5242;
+            border-bottom: 2px solid transparent !important;
         }
     }
-}
-
-@media screen and (min-width: 450px) {
-    .logoutButton {
-        float: right;
+    
+    .navbarLogo {
+        height: 48px;
+        float: left;
+        margin: 8px 8px 8px 0;
+        cursor: pointer;
     }
-}
-
-.navbarMenu {
-    .ant-input-search {
-        width: 180px;
+    
+    @media screen and (min-width: 450px) {
+        .logoutButton {
+            float: right;
+        }
     }
-
-    .ant-input {
-        padding-right: 64px !important;
+    
+    .navbarMenu {
+        .ant-input-search {
+            width: 180px;
+        }
+    
+        .ant-input {
+            padding-right: 64px !important;
+        }
     }
-}
-
-.navbarLogoContainer {
-    &:hover {
-        border-bottom: 2px solid transparent !important;
-    }
+    
+    .navbarLogoContainer {
+        &:hover {
+            border-bottom: 2px solid transparent !important;
+        }
+    }    
 }
