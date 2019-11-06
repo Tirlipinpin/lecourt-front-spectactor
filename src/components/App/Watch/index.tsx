@@ -11,9 +11,9 @@ import { WatchStore } from '../../../reducers/watch';
 import { Movie } from '../interfaces';
 import NotFound from '../../NotFound';
 import MoviesGallery from '../shared/MoviesGallery';
-import { FETCH_MOVIE_DETAILS } from '../../../reducers/watch/constants';
 import Loader from '../shared/Loader';
-import './index.css';
+import { FETCH_MOVIE_DETAILS } from '../../../reducers/watch/constants';
+import styles from './index.module.scss';
 
 const Casting = lazy(() => import('./components/Casting'));
 const { Title, Paragraph } = Typography;
@@ -103,7 +103,7 @@ export class Watch extends Component<WatchProps, WatchState> {
 
         if (loading) {
             return (
-                <Layout className="page-container watch-page-container">
+                <Layout className={`page-container ${styles.watchPageContainer}`}>
                     <Loader />
                 </Layout>
             );
@@ -113,7 +113,7 @@ export class Watch extends Component<WatchProps, WatchState> {
             return <NotFound title="No short found for this id..." />
 
         return (
-            <Layout className="page-container watch-page-container">
+            <Layout className={`page-container ${styles.watchPageContainer}`}>
                 <div>
                     {movie.id
                       ? (
@@ -139,7 +139,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                                 onReady={this.onLoadPlayer}
                               />
 
-                              <div className={!hlsInstance ? 'quality-dropdown-icon-disabled' : 'quality-dropdown-icon'}>
+                              <div className={!hlsInstance ? styles.qualityDropdownIconDisabled : styles.qualityDropdownIcon}>
                                   <Dropdown
                                     overlay={this.renderQualityMenu()}
                                     disabled={!hlsInstance}
@@ -156,25 +156,25 @@ export class Watch extends Component<WatchProps, WatchState> {
                         : <Loader />
                     }
                 </div>
-                <div className="details-container">
-                    <div className="description-container">
-                            <Title level={2} className="watch-title">{movie.title}</Title>
+                <div className={styles.detailsContainer}>
+                    <div className={styles.descriptionContainer}>
+                            <Title level={2} className={styles.watchTitle}>{movie.title}</Title>
                             <Paragraph
-                                className="movie-summary"
+                                className={styles.movieSummary}
                                 ellipsis={{ rows: 2, expandable: true }}
                             >
                                 {movie.summary}
                             </Paragraph>
                     </div>
-                    <div className="casting-container">
-                        <Title level={2} className="watch-title">Casting</Title>
-                        <Suspense fallback="Loading...">
+                    <div className={styles.castingContainer}>
+                        <Title level={2} className={styles.watchTitle}>Casting</Title>
+                        <Suspense fallback={<Loader />}>
                             { movie.directors && <Casting actors={movie.actors} directors={movie.directors} staff={movie.staff} /> }
                         </Suspense>
                     </div>
                 </div>
 
-                <Layout className="recommendations">
+                <Layout className={styles.recommendations}>
                     <Title level={2}><Trans i18nKey="YOUR_RECOMMENDATIONS" /></Title>
                     <MoviesGallery movies={recommandations} history={history} />
                 </Layout>

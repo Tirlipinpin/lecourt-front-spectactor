@@ -5,9 +5,9 @@ import { RouteComponentProps } from 'react-router';
 import { Trans, useTranslation } from 'react-i18next';
 
 import MoviesGallery from '../shared/MoviesGallery';
-import './index.css';
 import { fetchLatestMovies } from './actions';
 import { RenderPageStructures } from '../services';
+import styles from './index.module.scss';
 
 export interface IHomepageProps extends RouteComponentProps {}
 
@@ -24,11 +24,11 @@ export const Homepage = ({ history }: IHomepageProps) => {
 
     const content = (
       <Fragment>
-        <Layout className="movies-carousel">
+        <Layout className={styles.moviesCarousel}>
             <Typography.Title level={2}><Trans i18nKey="OUR_SELECTION" /></Typography.Title>
             <MoviesGallery loading={loadingLatestMovies} movies={latestMovies} history={history} />
         </Layout>
-        <Layout className="movies-carousel">
+        <Layout className={styles.moviesCarousel}>
             <Typography.Title level={2}><Trans i18nKey="LATEST_SHORTS" /></Typography.Title>
             <MoviesGallery loading={loadingLatestMovies} movies={latestMovies} history={history} />
         </Layout>

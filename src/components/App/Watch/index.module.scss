@@ -1,0 +1,91 @@
+.watchPageContainer {
+    min-height: 100vh;
+    padding-bottom: 0;
+
+    .detailsContainer {
+        background: white;
+
+        .descriptionContainer {
+            flex: 1;
+        }
+
+        .castingContainer {
+            flex: 1;
+        }
+
+        .watchTitle {
+            font-size: 2rem;
+            border-left: 4px solid black;
+            padding-left: 8px;
+        }
+
+        .movie-summary {
+            font-size: 1em;
+            text-align: justify;
+        }
+    }
+
+    .recommendations {
+        padding: 16px 16px 32px 16px;
+        background: white;
+        width: 100%;
+        color: black;
+
+        h2 {
+            margin-left: 16px;
+        }
+    }
+
+    .qualityDropdownIcon {
+        color: white;
+        position: absolute;
+        font-size: 14px;
+        top: 8px;
+        right: 16px;
+
+        &:hover {
+            color: #48a0f7;
+        }
+    }
+
+    .qualityDropdownIconDisabled {
+        color: grey;
+        position: absolute;
+        font-size: 14px;
+        top: 8px;
+        right: 16px;
+    }
+    
+}
+
+@media screen and (max-width: 900px) {
+    .watchPageContainer {
+        .detailsContainer {
+            padding: 16px 4px;
+        }
+
+        .recommendations {
+            padding: 16px 4px;
+
+            h2 {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .watchPageContainer {
+        .detailsContainer {
+            padding: 16px 32px;
+        }
+    }
+}
+
+.watch-page-container .recommendations .slick-arrow {
+    color: black;
+}
+
+.watch-page-container .recommendations .ant-typography {
+    color: black;
+}
