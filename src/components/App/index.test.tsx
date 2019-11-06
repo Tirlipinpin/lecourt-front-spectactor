@@ -5,6 +5,7 @@ import { Redirect, match } from 'react-router';
 import { History, Location } from 'history';
 
 import { App } from '.';
+import styles from './index.module.scss';
 import { LoginStore } from '../../reducers/login';
 
 describe('The App component', () => {
@@ -18,6 +19,7 @@ describe('The App component', () => {
         const login: LoginStore = {
             token: 'something',
             loading: false,
+            rememberMe: true,
         };
 
         wrapper = shallow(
@@ -47,6 +49,6 @@ describe('The App component', () => {
     });
 
     test('should display app when user is logged', () => {
-        expect(wrapper.find('.app-wrapper')).toHaveLength(1);
+        expect(wrapper.find(`.${styles.appWrapper}`)).toHaveLength(1);
     });
 });

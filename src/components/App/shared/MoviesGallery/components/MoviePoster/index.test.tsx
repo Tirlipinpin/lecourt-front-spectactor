@@ -1,8 +1,9 @@
 import React from 'react';
+import { CardProps } from 'antd/lib/card';
 import  { shallow, ShallowWrapper } from 'enzyme';
 
 import MoviePoster, { MoviePosterProps } from '.';
-import { CardProps } from 'antd/lib/card';
+import styles from './index.module.scss';
 
 describe('The MoviePoster component', () => {
     let wrapper: ShallowWrapper;
@@ -27,7 +28,7 @@ describe('The MoviePoster component', () => {
     });
 
     test('should call getOnClick on clik', () => {
-        const cardProps = wrapper.find('.movie-poster-card').props() as CardProps;
+        const cardProps = wrapper.find(`.${styles.moviePosterCard}`).props() as CardProps;
         expect(cardProps).toBeTruthy()
 
         const { cover } = cardProps as any;

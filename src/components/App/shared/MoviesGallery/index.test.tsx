@@ -37,6 +37,6 @@ describe('The MoviesGallery component', () => {
             }],
         });
 
-        expect(wrapper.find('.PoseGroup').length).toBe(1);
+        expect(wrapper.find('PoseGroup').length).toBe(1);
     });
 });
