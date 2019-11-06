@@ -4,8 +4,7 @@ import posed, { PoseGroup } from 'react-pose';
 import { Movie } from '../../interfaces';
 import MoviePoster from './components/MoviePoster';
 import Loader from '../Loader';
-import './index.css';
-
+import styles from './index.module.scss';
 
 export interface MoviesGalleryProps {
     history: History
@@ -38,13 +37,13 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
             return <Loader />
         else if (movies.length < 1)
             return (
-                <div className="search-results-container">
+                <div className={styles.moviesGalleryContainer}>
                     Aucun court-métrage trouvé !
                 </div>
             );
 
         return (
-            <div className="search-results-container">
+            <div className={styles.moviesGalleryContainer}>
                 <PoseGroup>
                     {
                         movies.map((movie: Movie, index) => (
@@ -52,7 +51,7 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
                                 initialPose='exit'
                                 pose='enter'
                                 key={index}
-                                className='movie-poster-container'
+                                className={styles.moviePosterContainer}
                             >
                                 <MoviePoster
                                     goToWatch={this.goToWatch}

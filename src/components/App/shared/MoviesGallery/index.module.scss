@@ -1,0 +1,12 @@
+.moviesGalleryContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .moviePosterContainer {
+        margin: 2% 1% 2% 1%;
+        width: 284px;
+        display: table-cell;
+        vertical-align: middle;
+    }
+}

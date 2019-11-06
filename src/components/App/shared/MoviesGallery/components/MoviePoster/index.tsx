@@ -4,15 +4,15 @@ import { Card, Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import { Movie } from '../../../../interfaces';
-
+import styles from './index.module.scss';
 
 export interface MoviePosterProps {
     goToWatch: (id: number) => void
     movie: Movie
 }
 
-function qualityBanner(quality: number): string {
-    return (quality <= 25 ? "movie-poster-quality hide" : "movie-poster-quality")
+const qualityBanner = (quality: number): string => {
+    return (quality <= 25 ? "movie-poster-quality hide" : styles.moviePosterQuality)
 }
 
 const Image = posed.img({
@@ -37,28 +37,33 @@ export default (props: MoviePosterProps) => {
 
     return (
         <Card
-            className="movie-poster-card"
+            className={styles.moviePosterCard}
             hoverable
             cover={
-                <div className="movie-poster-container-image">
+                <div className={styles.moviePosterContainerImage}>
                     <Image
                         onClick={() => goToWatch(movie.id)}
                         src={poster}
-                        className="movie-poster"
+                        className={styles.moviePoster}
                     />
                 </div>
             }
             bordered={false}
         >
             <Card.Meta
+                className={styles.moviePosterCardMeta}
+                description={(movie.genres || []).map(g => g.node.name).join(', ')}
                 title={
                     <Fragment>
-                        <Tooltip placement="rightTop" title={t('RESULT_RELEVANT')}><div className={qualityBanner(movie.result_quality || 0)} /></Tooltip>
+                        <Tooltip
+                            placement="rightTop"
+                            title={t('RESULT_RELEVANT')}
+                        >
+                            <div className={qualityBanner(movie.result_quality || 0)} />
+                        </Tooltip>
                         {movie.title}
                     </Fragment>
                 }
-                className="movie-poster-card-meta"
-                description={(movie.genres || []).map(g => g.node.name).join(', ')}
             />
         </Card>
     );

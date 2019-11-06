@@ -29,7 +29,7 @@ describe('The MoviesGallery component', () => {
         expect(wrapper.find('Loader').exists()).toBe(true);
     });
 
-    test('should render a carousel when there is movies', () => {
+    test('should render the PoseGroupe containing the carousel when there is movies', () => {
         wrapper.setProps({
             movies: [{
                 id: 42,
@@ -37,6 +37,6 @@ describe('The MoviesGallery component', () => {
             }],
         });
 
-        expect(wrapper.find('.search-results-container').length).toBe(1);
+        expect(wrapper.find('.PoseGroup').length).toBe(1);
     });
 });

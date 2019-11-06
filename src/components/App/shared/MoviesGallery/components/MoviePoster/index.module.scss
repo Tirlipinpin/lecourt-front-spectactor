@@ -1,0 +1,29 @@
+.moviePosterCard {
+    .moviePosterContainerImage {
+        height: 400px;
+        width: 100%;
+
+        .moviePoster {
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .moviePosterCardMeta {
+        display: flex;
+        flex-direction: column;
+
+        .moviePosterQuality {
+            width: 5px;
+            height: 13px;
+            margin-right: 7px;
+            display: inline-flex;
+            background-color: rgb(30, 121, 33);
+        }
+        
+        &.hide {
+            display: none;
+        }        
+    }
+}
