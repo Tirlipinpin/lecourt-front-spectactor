@@ -1,0 +1,25 @@
+.movieStaff {
+    display: flex;
+    overflow-x: scroll;
+
+    .movieStaffCard {
+        margin-right: 0.5vw;
+        width: 300px;
+        min-width: 300px;
+    }
+
+    .movieStaffCardImage {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .movieStaffMember {
+        cursor: pointer;
+        height: 200px;
+        width: auto;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+}
