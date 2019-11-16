@@ -87,9 +87,9 @@ export class Watch extends Component<WatchProps, WatchState> {
                   <Item
                     key={level.height}
                   >
-                      <a
+                      <button
                         onClick={() => this.setQuality(index)}
-                      >{ level.height }</a>
+                      >{ level.height }</button>
                   </Item>
                 ))}
             </Menu>

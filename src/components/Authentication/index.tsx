@@ -41,7 +41,7 @@ export class Authentication extends Component<AuthenticationProps, {}> {
                         </Switch>
                     </div>
                     <div className={`${styles.authElement} ${styles.authRight}`}>
-                        <img className={styles.logo} src={logo} />
+                        <img alt="LC-logo" className={styles.logo} src={logo} />
                     </div>
                 </div>
             </div>

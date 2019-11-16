@@ -24,7 +24,7 @@ export default class Casting extends PureComponent<CastingProps, {}> {
                     <React.Fragment key={index}>
                         <Card
                             className={styles.movieStaffCard}
-                            cover={<img className={styles.movieStaffCardImage} src="http://plus.lesoir.be/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2017/06/09/node_98808/2835712/public/2017/06/09/B9712244201Z.1_20170609092446_000+GG197EKKF.1-0.jpg?itok=J5KL9BP9" />}
+                            cover={<img alt="actor-profile" className={styles.movieStaffCardImage} src="http://plus.lesoir.be/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2017/06/09/node_98808/2835712/public/2017/06/09/B9712244201Z.1_20170609092446_000+GG197EKKF.1-0.jpg?itok=J5KL9BP9" />}
                             actions={[<Icon type="instagram" />, <Icon type="facebook" />]}
                         >
                             <Meta
@@ -41,7 +41,7 @@ export default class Casting extends PureComponent<CastingProps, {}> {
                     <React.Fragment key={index}>
                     <Card
                         className={styles.movieStaffCard}
-                        cover={<img className={styles.movieStaffCardImage} src="https://pmcvariety.files.wordpress.com/2017/04/steven-spielberg.jpg?w=1000&h=562&crop=1" />}
+                        cover={<img alt="director-profile" className={styles.movieStaffCardImage} src="https://pmcvariety.files.wordpress.com/2017/04/steven-spielberg.jpg?w=1000&h=562&crop=1" />}
                         actions={[<Icon type="instagram" />, <Icon type="facebook" />]}
                     >
                         <Meta
@@ -58,7 +58,7 @@ export default class Casting extends PureComponent<CastingProps, {}> {
                     <React.Fragment key={index}>
                     <Card
                         className={styles.movieStaffMember}
-                        cover={<img className="movie-staff-card-image" src="https://resize.over-blog.com/400x400-ct.jpg?http://we.over-blog.com/0/00/12/98/2011-03/Porto-Bike-Tour--flickrurl-httpflickr-comphotos679.jpg" />}
+                        cover={<img alt="staff-profile" className="movie-staff-card-image" src="https://resize.over-blog.com/400x400-ct.jpg?http://we.over-blog.com/0/00/12/98/2011-03/Porto-Bike-Tour--flickrurl-httpflickr-comphotos679.jpg" />}
                         actions={[<Icon type="instagram" />, <Icon type="facebook" />]}
                     >
                         <Meta

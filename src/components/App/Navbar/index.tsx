@@ -24,7 +24,7 @@ const { SubMenu, Item, ItemGroup } = Menu;
 interface NavbarProps extends RouteComponentProps, WithTranslation {
     dispatch: Dispatch<any>
     navbar: NavbarStore
-    t?: any
+    t: any
 }
 
 export class Navbar extends Component<NavbarProps, {}> {
@@ -49,7 +49,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                     selectedKeys={getActiveKey()}
                 >
                     <Item className={styles.navbarLogoContainer}>
-                        <img src={logo} className={styles.navbarLogo} onClick={() => history.push(url)} />
+                        <img alt="LC-logo" src={logo} className={styles.navbarLogo} onClick={() => history.push(url)} />
                     </Item>
                     <Item className={styles.menuItem} key="homepage"><Link to={url}><Trans i18nKey="HOMEPAGE_BUTTON" /></Link></Item>
                     <Item className={styles.menuItem} key="profile"><Link to={`${url}/profile`}>Profile</Link></Item>

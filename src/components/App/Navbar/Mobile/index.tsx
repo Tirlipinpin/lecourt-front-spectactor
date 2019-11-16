@@ -25,7 +25,7 @@ const { SubMenu, Item, ItemGroup } = Menu;
 interface MobileNavbarProps extends WithTranslation, RouteComponentProps {
     dispatch: Dispatch<any>
     navbar: NavbarStore
-    t?: any
+    t: any
 }
 
 interface MobileNavbarState {
@@ -116,7 +116,9 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                         style={{ lineHeight: '64px' }}
                         selectedKeys={getActiveKey()}
                     >
-                        <Menu.Item className={styles.topMobileNavbarLogo}><img src={logo} className={styles.navbarLogo} onClick={() => history.push(url)} /></Menu.Item>
+                        <Menu.Item className={styles.topMobileNavbarLogo}>
+                            <img alt="LC-logo" src={logo} className={styles.navbarLogo} onClick={() => history.push(url)} />
+                        </Menu.Item>
                         <Menu.Item className={styles.topMobileNavbarButton} onClick={this.toggleMenu}><Icon type="menu-unfold" /></Menu.Item>
                     </Menu>
                 </Header>

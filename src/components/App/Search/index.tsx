@@ -18,7 +18,7 @@ export type SearchPropsParams = {
 export interface SearchProps extends WithTranslation, RouteComponentProps<SearchPropsParams> {
     dispatch: Dispatch<any>
     search: SearchStore
-    t?: any
+    t: any
 }
 
 export class Search extends Component<SearchProps, {}> {

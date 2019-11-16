@@ -1,4 +1,4 @@
-import React, { PureComponent, SyntheticEvent } from 'react';
+import React, { PureComponent } from 'react';
 import posed from 'react-pose';
 
 import { Icon } from 'antd';
