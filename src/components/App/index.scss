@@ -1,7 +1,7 @@
 @import './Antd.replace.scss';
 
 .page-container {
-    margin: 32px 128px;
+    margin: 32px 6rem;
     padding-bottom: 32px;
     box-shadow: 0 4px 20px 1px rgba(47, 51, 56, 0.35);
     background: white;
@@ -14,19 +14,19 @@
 
 @media screen and (min-width: 900px) {
     .page-container {
-        margin: 32px 128px;
+        margin: 32px 6rem;
     }
 }
 
 @media screen and (max-width: 720px) {
     .page-container {
-        margin: 32px 64px;
+        margin: 32px 3rem;
     }
 }
 
 @media screen and (max-width: 480px) {
     .page-container {
-        margin: 32px 32px;
+        margin: 32px 2rem;
     }
 }
 
