@@ -1,11 +1,11 @@
-import React, { PureComponent, Fragment } from "react";
+import React, { PureComponent, Fragment } from 'react';
+import { Button, Row, Col, Typography, Collapse } from 'antd';
 
-import { ActorRelation, DirectorRelation, StaffRelation, Person } from '../../../interfaces'
-import { Button, Row, Col, Typography, Collapse } from "antd"
-import styles from './index.module.scss'
+import { ActorRelation, DirectorRelation, StaffRelation, Person } from '../../../interfaces';
+import styles from './index.module.scss';
 
 const { Paragraph, Text, Title } = Typography;
-const { Panel } = Collapse
+const { Panel } = Collapse;
 
 export interface CastingProps {
     actors: ActorRelation[]
@@ -21,10 +21,10 @@ const mock_pictures = [
     'https://www.thenewsminute.com/sites/default/files/styles/news_detail/public/Parul_Yadav_750.jpg?itok=_zqN1BVd',
     'https://media2.s-nbcnews.com/j/newscms/2018_32/2522881/180807-ruby-rose-se-203p_84ba510721b6d71d8983f423877f3628.fit-760w.jpg',
     'http://fr.web.img3.acsta.net/pictures/19/08/22/10/21/5666493.jpg',
-]
+];
 
 export default class Casting extends PureComponent<CastingProps, {}> {
-    renderPerson(key: number, p: { node: Person }, role: string) {
+    renderPerson(key: number, person: { node: Person }, role: string) {
         return (
             <Col xl={4} md={8} sm={12} key={key} className={styles.item}>
                 <div className={styles.movieStaffCard} style={{ backgroundImage: `url(${mock_pictures[(Date.now() + key) % mock_pictures.length]})`}}>
@@ -32,7 +32,7 @@ export default class Casting extends PureComponent<CastingProps, {}> {
                         <Button className={styles.button} shape="round" icon="search" >Details</Button>
                     </div>
                 </div>
-                <Text strong>{p.node.firstName} {p.node.lastName}</Text>
+                <Text strong>{person.node.firstName} {person.node.lastName}</Text>
                 <Paragraph type="secondary">{role}</Paragraph>
             </Col>
         )
