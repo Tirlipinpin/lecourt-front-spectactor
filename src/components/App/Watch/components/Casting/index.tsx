@@ -1,9 +1,11 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 
-import { ActorRelation, DirectorRelation, StaffRelation } from '../../../interfaces';
-import { Card, Icon, Avatar } from "antd";
-import Meta from "antd/lib/card/Meta";
-import styles from './index.module.scss';
+import { ActorRelation, DirectorRelation, StaffRelation, Person } from '../../../interfaces'
+import { Button, Row, Col, Typography, Collapse } from "antd"
+import styles from './index.module.scss'
+
+const { Paragraph, Text, Title } = Typography;
+const { Panel } = Collapse
 
 export interface CastingProps {
     actors: ActorRelation[]
@@ -11,66 +13,67 @@ export interface CastingProps {
     staff: StaffRelation[]
 };
 
+const mock_pictures = [
+    'https://s3.r29static.com/bin/entry/9e6/720x864,85/2172764/image.webp',
+    'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
+    'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/mh-wolverine-split-4-1559751275.jpg?crop=0.292xw:0.583xh;0.0481xw,0.103xh&resize=640:*',
+    'http://broocksagency.com/wp-content/uploads/2018/10/Derek-Ugochukwu_1.jpg',
+    'https://www.thenewsminute.com/sites/default/files/styles/news_detail/public/Parul_Yadav_750.jpg?itok=_zqN1BVd',
+    'https://media2.s-nbcnews.com/j/newscms/2018_32/2522881/180807-ruby-rose-se-203p_84ba510721b6d71d8983f423877f3628.fit-760w.jpg',
+    'http://fr.web.img3.acsta.net/pictures/19/08/22/10/21/5666493.jpg',
+]
+
 export default class Casting extends PureComponent<CastingProps, {}> {
+    renderPerson(key: number, p: { node: Person }, role: string) {
+        return (
+            <Col xl={4} md={8} sm={12} key={key} className={styles.item}>
+                <div className={styles.movieStaffCard} style={{ backgroundImage: `url(${mock_pictures[(Date.now() + key) % mock_pictures.length]})`}}>
+                    <div className={styles.overlay}>
+                        <Button className={styles.button} shape="round" icon="search" >Details</Button>
+                    </div>
+                </div>
+                <Text strong>{p.node.firstName} {p.node.lastName}</Text>
+                <Paragraph type="secondary">{role}</Paragraph>
+            </Col>
+        )
+    }
+
     render() {
         const { staff, actors, directors } = this.props;
 
         return (
-            <div
-                className={styles.movieStaff}
-            >
-            {
-                actors.map((actor, index) => (
-                    <React.Fragment key={index}>
-                        <Card
-                            className={styles.movieStaffCard}
-                            cover={<img alt="actor-profile" className={styles.movieStaffCardImage} src="http://plus.lesoir.be/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2017/06/09/node_98808/2835712/public/2017/06/09/B9712244201Z.1_20170609092446_000+GG197EKKF.1-0.jpg?itok=J5KL9BP9" />}
-                            actions={[<Icon type="instagram" />, <Icon type="facebook" />]}
+            <Fragment>
+                <Row
+                    className={styles.movieStaff}
+                    type="flex"
+                    justify="start"
+                    gutter={[16, 16]}
+                >
+                    {actors.map((actor, index) => this.renderPerson(index, actor, `Role : ${actor.role}`))}
+                </Row>
+                <Collapse bordered={false} style={{ borderBottom: 'none', width: '100%' }}>
+                    <Panel key="1" header="Afficher le staff complet" style={{ borderBottom: 'none' }}>
+                        <Title level={4}>Réalisateurs</Title>
+                        <Row
+                            className={styles.movieStaff}
+                            type="flex"
+                            justify="start"
+                            gutter={[16, 16]}
                         >
-                            <Meta
-                                avatar={<Avatar src="https://herstand.com/projects/actor/symbol.svg" />}
-                                title={`${actor.node.firstName} ${actor.node.lastName}`}
-                                description={actor.role}
-                            />
-                        </Card>
-                    </React.Fragment>
-                ))
-            }
-            {
-                directors.map((director, index) => (
-                    <React.Fragment key={index}>
-                    <Card
-                        className={styles.movieStaffCard}
-                        cover={<img alt="director-profile" className={styles.movieStaffCardImage} src="https://pmcvariety.files.wordpress.com/2017/04/steven-spielberg.jpg?w=1000&h=562&crop=1" />}
-                        actions={[<Icon type="instagram" />, <Icon type="facebook" />]}
-                    >
-                        <Meta
-                            avatar={<Avatar src="https://www.shareicon.net/download/2016/01/02/696985_chair.svg" />}
-                            title={`${director.node.firstName} ${director.node.lastName}`}
-                            description='Realisateur'
-                        />
-                    </Card>
-                    </React.Fragment>
-                ))
-            }
-            {
-                staff.map((staff, index) => (
-                    <React.Fragment key={index}>
-                    <Card
-                        className={styles.movieStaffMember}
-                        cover={<img alt="staff-profile" className="movie-staff-card-image" src="https://resize.over-blog.com/400x400-ct.jpg?http://we.over-blog.com/0/00/12/98/2011-03/Porto-Bike-Tour--flickrurl-httpflickr-comphotos679.jpg" />}
-                        actions={[<Icon type="instagram" />, <Icon type="facebook" />]}
-                    >
-                        <Meta
-                            avatar={<Avatar src="https://png.pngtree.com/svg/20160225/staff_979285.png" />}
-                            title={`${staff.node.firstName} ${staff.node.lastName}`}
-                            description={staff.job}
-                        />
-                    </Card>
-                    </React.Fragment>
-                ))
-            }
-            </div>
+                            {directors.map((person, index) => this.renderPerson(index, person, 'Réalisateur'))}
+                        </Row>
+                        <Title level={4}>Staff</Title>
+                        <Row
+                            className={styles.movieStaff}
+                            type="flex"
+                            justify="start"
+                            gutter={[16, 16]}
+                        >
+                            {staff.map((person, index) => this.renderPerson(index, person, `Staff : ${person.job}`))}
+                        </Row>
+                    </Panel>
+                </Collapse>
+            </Fragment>
         );
     }
 }

@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Switch, Route, Redirect, RouteComponentProps } from 'react-router';
-import Login from './Login';
-import Register from './Register';
-import { connect } from 'react-redux';
-import { Modal, Avatar } from 'antd';
-import { LoginStore } from '../../reducers/login';
+import React, { Component } from 'react'
+import { Switch, Route, Redirect, RouteComponentProps } from 'react-router'
+import Login from './Login'
+import Register from './Register'
+import { connect } from 'react-redux'
+import { Modal, Avatar } from 'antd'
+import { LoginStore } from '../../reducers/login'
 
-import logo from '../../assets/logo_text.png';
-import background from '../../assets/bg.jpg';
-import styles from './index.module.scss';
+import logo from '../../assets/logo_text.png'
+import background from '../../assets/bg.jpg'
+import styles from './index.module.scss'
 
 const { warning } = Modal;
 
