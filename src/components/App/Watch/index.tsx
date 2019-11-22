@@ -158,7 +158,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                 </div>
                 <div className={styles.detailsContainer}>
                     <div className={styles.descriptionContainer}>
-                            <Title level={2} className={styles.watchTitle}>{movie.title}</Title>
+                            <Title level={3} className={styles.watchTitle}>{movie.title}</Title>
                             <Paragraph
                                 className={styles.movieSummary}
                                 ellipsis={{ rows: 2, expandable: true }}
@@ -167,7 +167,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                             </Paragraph>
                     </div>
                     <div className={styles.castingContainer}>
-                        <Title level={2} className={styles.watchTitle}>Casting</Title>
+                        <Title level={4}>Casting</Title>
                         <Suspense fallback={<Loader />}>
                             { movie.directors && <Casting actors={movie.actors} directors={movie.directors} staff={movie.staff} /> }
                         </Suspense>
@@ -175,7 +175,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                 </div>
 
                 <Layout className={styles.recommendations}>
-                    <Title level={2}><Trans i18nKey="YOUR_RECOMMENDATIONS" /></Title>
+                    <Title level={4}><Trans i18nKey="YOUR_RECOMMENDATIONS" /></Title>
                     <MoviesGallery movies={recommandations} history={history} />
                 </Layout>
 

@@ -7,20 +7,18 @@
 
         .descriptionContainer {
             flex: 1;
+            margin-bottom: 2rem;
         }
 
         .castingContainer {
             flex: 1;
+            margin-bottom: 2rem;
         }
 
         .watchTitle {
-            font-size: 2rem;
-            border-left: 4px solid black;
-            padding-left: 8px;
         }
 
         .movie-summary {
-            font-size: 1em;
             text-align: justify;
         }
     }
