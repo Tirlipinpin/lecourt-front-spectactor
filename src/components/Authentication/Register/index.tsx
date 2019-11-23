@@ -2,7 +2,6 @@ import React, { Component, Dispatch, Fragment, FormEvent, SyntheticEvent } from 
 import { connect } from 'react-redux';
 import { Form, Icon, Input, Button, Typography, Tooltip } from 'antd';
 import { Trans } from 'react-i18next';
-import { Link } from 'react-router-dom';
 
 import { RegisterStore } from '../../../reducers/register';
 import styles from '../index.module.scss';
@@ -173,7 +172,6 @@ export class Register extends Component<RegisterProps, RegisterState> {
                             <Trans i18nKey="REGISTER" />
                         </Button>
                     </Tooltip>
-                    <Link to="/authentication/login">Looking to <b>login</b> ?</Link>
                 </Form>
             </Fragment>
         );
