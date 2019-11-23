@@ -9,7 +9,6 @@ import { fetchLatestMovies } from './actions';
 import { RenderPageStructures } from '../services';
 import styles from './index.module.scss';
 import { HomepageStore } from '../../../reducers/homepage';
-import { Button } from 'designSystem';
 
 const content = (homepage: HomepageStore, history: RouteComponentProps['history']) => (
     <Fragment>

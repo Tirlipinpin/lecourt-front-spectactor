@@ -39,6 +39,6 @@ const genresReducer: Reducer<IGenresStore, AnyAction> = (state: SearchStore = de
         default:
             return state;
     }
-}
+};
 
 export default genresReducer;

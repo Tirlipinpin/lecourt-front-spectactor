@@ -40,4 +40,4 @@ export const logout = () => {
     });
 
     history.push('/');
-}
+};

@@ -35,7 +35,7 @@ export default class Casting extends PureComponent<CastingProps, {}> {
                 <Text strong>{person.node.firstName} {person.node.lastName}</Text>
                 <Paragraph type="secondary">{role}</Paragraph>
             </Col>
-        )
+        );
     }
 
     render() {

@@ -12,8 +12,8 @@ export interface MoviePosterProps {
 }
 
 const qualityBanner = (quality: number): string => {
-    return (quality <= 25 ? "movie-poster-quality hide" : styles.moviePosterQuality)
-}
+    return (quality <= 25 ? "movie-poster-quality hide" : styles.moviePosterQuality);
+};
 
 const Image = posed.img({
     hoverable: true,
@@ -67,4 +67,4 @@ export default (props: MoviePosterProps) => {
             />
         </Card>
     );
-}
+};

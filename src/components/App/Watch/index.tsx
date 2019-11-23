@@ -110,7 +110,7 @@ export class Watch extends Component<WatchProps, WatchState> {
         }
 
         if (!loading && notFound)
-            return <NotFound title="No short found for this id..." />
+            return <NotFound title="No short found for this id..." />;
 
         return (
             <Layout className={`page-container ${styles.watchPageContainer}`}>

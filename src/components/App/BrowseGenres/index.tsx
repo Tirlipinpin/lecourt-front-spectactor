@@ -23,7 +23,7 @@ export default ({ history }: IBrowseGenresProps) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        dispatch({ type: FETCH_GENRES })
+        dispatch({ type: FETCH_GENRES });
     }, []);
 
     if (loading)
@@ -49,5 +49,5 @@ export default ({ history }: IBrowseGenresProps) => {
         Child={genresCards}
         pageContentClass={styles.browseGenresPageContent}
       />
-    )
+    );
 };

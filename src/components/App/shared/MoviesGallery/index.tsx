@@ -21,7 +21,7 @@ const MoviePosterContainer = posed.div({
         x: 50,
         opacity: 0,
     },
-})
+});
 
 export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}> {
     goToWatch = (id: number) => {
@@ -34,7 +34,7 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
         const { loading, movies } = this.props;
 
         if (movies.length < 1 && loading)
-            return <Loader />
+            return <Loader />;
         else if (movies.length < 1)
             return (
                 <div className={styles.moviesGalleryContainer}>

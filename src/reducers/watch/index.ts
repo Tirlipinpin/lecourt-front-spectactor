@@ -1,6 +1,6 @@
 import { Reducer, AnyAction } from 'redux';
 
-import { Movie } from '../../components/App/interfaces'
+import { Movie } from '../../components/App/interfaces';
 import { FETCH_MOVIE_DETAILS, FETCH_MOVIE_DETAILS_SUCCEEDED, FETCH_MOVIE_DETAILS_FAILED } from './constants';
 
 export interface WatchStore {

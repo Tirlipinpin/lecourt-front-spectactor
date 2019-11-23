@@ -25,20 +25,20 @@ const loginReducer: Reducer<LoginStore, AnyAction> = (state: LoginStore = defaul
                 loading: false,
                 token: action.payload.token,
                 rememberMe: action.payload.rememberMe,
-            }
+            };
         case FETCH_TOKEN_FAILED:
             return {
                 ...state,
                 loading: false,
-            }
+            };
         case LOGOUT:
             return {
                 ...state,
                 token: null,
-            }
+            };
         default:
             return state;
     };
-}
+};
 
 export default loginReducer;

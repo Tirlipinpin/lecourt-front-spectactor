@@ -6,7 +6,7 @@ import {
     Icon,
 } from 'antd';
 import { Link } from 'react-router-dom';
-import { RouteComponentProps } from 'react-router'
+import { RouteComponentProps } from 'react-router';
 import { connect } from 'react-redux';
 import {Trans, WithTranslation, withTranslation} from 'react-i18next';
 
