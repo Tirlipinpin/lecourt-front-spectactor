@@ -38,7 +38,8 @@
   "eslintConfig": {
     "extends": "react-app",
     "rules": {
-        "semi": "warn"
+        "semi": "warn",
+        "react-hooks/exhaustive-deps": "off"
     }
   },
   "browserslist": [

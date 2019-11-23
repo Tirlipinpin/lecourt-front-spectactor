@@ -3,26 +3,18 @@ import { Switch, Route, Redirect, RouteComponentProps } from 'react-router';
 import Login from './Login';
 import Register from './Register';
 import { connect } from 'react-redux';
-import { Modal, Avatar } from 'antd';
+import { Avatar } from 'antd';
 
 import { LoginStore } from '../../reducers/login';
 import logo from '../../assets/logo_text.png';
 import background from '../../assets/bg.jpg';
 import styles from './index.module.scss';
 
-const { warning } = Modal;
-
 export interface AuthenticationProps extends RouteComponentProps {
     login: LoginStore
 }
 
 export class Authentication extends Component<AuthenticationProps, {}> {
-    componentDidMount() {
-        warning({
-            title: `Les inscriptions sont fermées pour le moment, nous faisons ce que nous pouvons pour écourter votre attente le plus possible !`,
-        });
-    }
-
     render() {
         const { location, match, login } = this.props;
         const { token } = login;
