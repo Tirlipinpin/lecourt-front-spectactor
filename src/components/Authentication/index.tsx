@@ -14,8 +14,9 @@ import { Avatar, Divider, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import { Trans } from 'react-i18next';
 
+import { getFacebookLoginUrl, getGoogleLoginUrl } from 'services/requestUrl';
 import { lazyRenderer } from 'services/renderer/lazyRenderer';
-import { LoginStore } from '../../reducers/login';
+import { ILoginStore } from '../../reducers/login';
 import logo from '../../assets/logo_text.png';
 import background from '../../assets/bg.jpg';
 import styles from './index.module.scss';
@@ -24,7 +25,7 @@ const Login = lazy(() => import('./Login'));
 const Register = lazy(() => import('./Register'));
 
 export interface AuthenticationProps extends RouteComponentProps {
-    login: LoginStore
+    login: ILoginStore
 }
 
 export class Authentication extends Component<AuthenticationProps, {}> {
@@ -53,18 +54,20 @@ export class Authentication extends Component<AuthenticationProps, {}> {
 
     renderAuthFooter = (): ReactNode => (
         <div className={styles.authFormFooter}>
-            <a
-                className={styles.socialLoginLink}
-                href="https://api.stg.lecourt.tv/auth/login/facebook"
-            >
-                <Icon type="facebook" />
-            </a>
-            <a
-                className={styles.socialLoginLink}
-                href="https://api.stg.lecourt.tv/auth/login/google"
-            >
-                <Icon type="google" />
-            </a>
+            <div>
+                <a
+                    className={styles.socialLoginLink}
+                    href={getFacebookLoginUrl()}
+                >
+                    <Icon type="facebook" />
+                </a>
+                <a
+                    className={styles.socialLoginLink}
+                    href={getGoogleLoginUrl()}
+                >
+                    <Icon type="google" />
+                </a>
+            </div>
             <Divider
                 className={styles.divider}
                 type="vertical"

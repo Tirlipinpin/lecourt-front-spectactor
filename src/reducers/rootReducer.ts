@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 import { History } from 'history';
 
 import navbar from './navbar';
@@ -13,15 +11,7 @@ import watch from './watch';
 import browseGenres from './browseGenres';
 import genres from './genres';
 
-const persistConfig = {
-    key: 'root',
-    storage,
-    whitelist: [
-        'login',
-    ]
-};
-
-export default (history: History) => persistReducer(persistConfig, combineReducers({
+export default (history: History) => combineReducers({
     router: connectRouter(history),
     navbar,
     homepage,
@@ -31,4 +21,4 @@ export default (history: History) => persistReducer(persistConfig, combineReduce
     watch,
     browseGenres,
     genres,
-}));
+});

@@ -1,5 +1,4 @@
 import { applyMiddleware, createStore, Store, AnyAction } from 'redux';
-import { persistStore, Persistor } from 'redux-persist';
 import { createBrowserHistory } from 'history';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -13,7 +12,6 @@ export const history = createBrowserHistory();
 
 export interface ConfigureStore {
     store: Store<any, AnyAction>
-    persistor: Persistor
 };
 
 const sagaMiddleware = createSagaMiddleware();
@@ -29,7 +27,6 @@ export const store  = createStore(
 
 const configureStore = (): ConfigureStore => ({
     store,
-    persistor: persistStore(store),
 });
 
 setTimeout(() => sagaMiddleware.run(sagas), 0);

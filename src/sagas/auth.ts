@@ -1,16 +1,26 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { AnyAction } from 'redux';
 import axios, { AxiosResponse } from 'axios';
 import { notification } from 'antd';
 import { getLoginUrl, getRegisterUrl } from '../services/requestUrl';
 import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED } from '../reducers/login/constants';
 import { REGISTER_USER, REGISTER_USER_SUCCEEDED, REGISTER_USER_FAILED } from '../reducers/register/constants';
 
-function* fetchToken(action: AnyAction): IterableIterator<Object | void> {
+export interface IFetchTokenAction {
+    type: string
+    payload: {
+        email: string
+        password: string
+        rememberMe: boolean
+    }
+}
+
+function* fetchToken(action: IFetchTokenAction): IterableIterator<Object | void> {
     try {
+        const { payload: { email, password, rememberMe } } = action;
+
         const res: unknown = yield axios.post(getLoginUrl(), {
-            username: action.payload.email,
-            password: action.payload.password,
+            username: email,
+            password: password,
         }, {
             withCredentials: true,
         });
@@ -24,8 +34,8 @@ function* fetchToken(action: AnyAction): IterableIterator<Object | void> {
             type: FETCH_TOKEN_SUCCEEDED,
             payload: {
                 token: access_token,
-                rememberMe: action.payload.rememberMe,
-            }
+                rememberMe: rememberMe,
+            },
         });
     } catch (e) {
         yield put({
@@ -38,14 +48,32 @@ function* fetchToken(action: AnyAction): IterableIterator<Object | void> {
     }
 }
 
+export interface IRegisterUserAction {
+    type: string
+    payload: {
+        displayName: string
+        email: string
+        password: string
+        passwordConfirmation: string
+    }
+}
 
-function* registerUser(action: AnyAction): IterableIterator<Object | void> {
+function* registerUser(action: IRegisterUserAction): IterableIterator<Object | void> {
     try {
+        const {
+            payload: {
+                displayName,
+                email,
+                password,
+                passwordConfirmation
+            }
+        } = action;
+
         const res: unknown = yield axios.post(getRegisterUrl(), {
-            display_name: action.payload.displayName,
-            email: action.payload.email,
-            password: action.payload.password,
-            password_confirm: action.payload.passwordConfirm,
+            display_name: displayName,
+            email: email,
+            password: password,
+            password_confirm: passwordConfirmation,
         });
 
         const { data: { access_token } } = res as AxiosResponse;

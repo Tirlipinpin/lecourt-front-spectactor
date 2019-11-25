@@ -11,7 +11,7 @@ import axios from 'axios';
 import MediaQuery from 'react-responsive';
 import { Trans } from 'react-i18next';
 import axiosInterceptor from '../../services/axiosInterceptor';
-import { LoginStore } from '../../reducers/login';
+import { ILoginStore } from '../../reducers/login';
 import { getManagementUrl } from '../../services/requestUrl';
 import styles from './index.module.scss';
 import './index.scss';
@@ -29,7 +29,7 @@ const BrowseGenres = lazy(() => import('./BrowseGenres'));
 const Genres = lazy(() => import('./Genres'));
 
 interface AppProps extends RouteComponentProps {
-    login: LoginStore
+    login: ILoginStore
     dispatch: Dispatch<any>
 }
 
@@ -43,25 +43,8 @@ export class App extends Component<AppProps, {}>{
             history.push('/');
         });
 
-        this.userNotRemembered();
-
         axios.defaults.baseURL = getManagementUrl();
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    };
-
-    userNotRemembered = () => {
-        const { login } = this.props;
-        const { token } = login;
-
-        if (!token) return;
-
-        window.addEventListener('beforeunload', ev => {
-            ev.preventDefault();
-            const { rememberMe } = login;
-            if (!rememberMe) {
-              localStorage.removeItem('persist:root');
-            }
-          });
     };
 
     loadingPage = (): React.ReactElement => (
