@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router';
-import cookie from 'cookie';
+import Cookies from 'js-cookie';
 import qs from 'query-string';
 import Loader from 'components/shared/Loader';
 
@@ -11,21 +11,13 @@ export class LoginFromExternal extends Component<ILoginFromExternal> {
     const { history, location: { search } } = this.props;
     const { expires_in, token } = qs.parse(search);
 
-    let tokenCookie: string = '';
-
     if (expires_in && token && typeof token === 'string') {
-        tokenCookie = cookie.serialize('token', token, {
-            expires: new Date(+expires_in),
-            secure: true,
+        Cookies.set('user_authorization', token, {
+            expires: +expires_in,
         });
     } else if (token && typeof token === 'string') {
-        tokenCookie = cookie.serialize('token', token, {
-            secure: true,
-        });
+        Cookies.set('user_authorization', token);
     }
-
-    document.cookie = `${document.cookie};${tokenCookie}`;
-    console.log(document.cookie, tokenCookie);
 
     history.push('/app');
   }

@@ -10,6 +10,7 @@ import { Layout } from 'antd';
 import axios from 'axios';
 import MediaQuery from 'react-responsive';
 import { Trans } from 'react-i18next';
+import Cookies from 'js-cookie';
 import axiosInterceptor from '../../services/axiosInterceptor';
 import { ILoginStore } from '../../reducers/login';
 import { getManagementUrl } from '../../services/requestUrl';
@@ -35,12 +36,14 @@ interface AppProps extends RouteComponentProps {
 
 export class App extends Component<AppProps, {}>{
     componentDidMount() {
-        const { history, dispatch, login } = this.props;
+        const { dispatch, login } = this.props;
         const { token } = login;
 
         axiosInterceptor(() => {
             dispatch({ type: 'LOGOUT' });
-            history.push('/');
+            Cookies.remove('token');
+            //@ts-ignore
+            window.location = process.env.REACT_APP_FRONT_URL;
         });
 
         axios.defaults.baseURL = getManagementUrl();

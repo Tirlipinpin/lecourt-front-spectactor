@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Route, Switch, Redirect } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
-import cookie from 'cookie';
+import Cookies from 'js-cookie';
 import { lazyRenderer } from 'services/renderer/lazyRenderer';
 import { restoreToken } from 'actions';
 import * as serviceWorker from './serviceWorker';
@@ -20,7 +20,7 @@ localStorage.setItem('i18nextLng', 'fr');
 
 const { store } = configureStore();
 
-const { user_authorization } = cookie.parse(document.cookie);
+const user_authorization = Cookies.get('user_authorization');
 
 if (user_authorization)
     store.dispatch(restoreToken(user_authorization));
