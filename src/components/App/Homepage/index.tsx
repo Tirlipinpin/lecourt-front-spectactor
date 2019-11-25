@@ -4,7 +4,7 @@ import { Layout, Typography } from 'antd';
 import { RouteComponentProps } from 'react-router';
 import { Trans, useTranslation } from 'react-i18next';
 
-import MoviesGallery from '../shared/MoviesGallery';
+import MoviesGallery from '../../shared/MoviesGallery';
 import { fetchLatestMovies } from './actions';
 import { RenderPageStructures } from '../services';
 import styles from './index.module.scss';

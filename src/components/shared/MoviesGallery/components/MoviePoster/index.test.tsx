@@ -2,7 +2,7 @@ import React from 'react';
 import { CardProps } from 'antd/lib/card';
 import  { shallow, ShallowWrapper } from 'enzyme';
 
-import MoviePoster, { MoviePosterProps } from '.';
+import MoviePoster, { MoviePosterProps } from '../MoviePoster';
 import styles from './index.module.scss';
 
 describe('The MoviePoster component', () => {

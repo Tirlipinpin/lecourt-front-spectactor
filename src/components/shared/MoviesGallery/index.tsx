@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { History } from 'history';
 import posed, { PoseGroup } from 'react-pose';
-import { Movie } from '../../interfaces';
+import { Movie } from '../../App/interfaces';
 import MoviePoster from './components/MoviePoster';
 import Loader from '../Loader';
 import styles from './index.module.scss';

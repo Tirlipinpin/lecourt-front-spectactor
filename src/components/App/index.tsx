@@ -1,9 +1,8 @@
-import React, { Component, Dispatch, Suspense, lazy } from 'react';
+import React, { Component, Dispatch, lazy } from 'react';
 import {
     Switch,
     Route,
     Redirect,
-    RouterProps,
     RouteComponentProps,
 } from 'react-router';
 import { connect } from 'react-redux';
@@ -17,10 +16,11 @@ import { getManagementUrl } from '../../services/requestUrl';
 import styles from './index.module.scss';
 import './index.scss';
 
-import Loader from './shared/Loader';
+import Loader from '../shared/Loader';
 import Navbar from './Navbar';
 import MobileNavbar from './Navbar/Mobile';
 import NotFound from '../NotFound';
+import { lazyRenderer } from 'services/renderer/lazyRenderer';
 const Homepage = lazy(() => import('./Homepage'));
 const Profile = lazy(() => import('./Profile'));
 const Search = lazy(() => import('./Search'));
@@ -47,7 +47,7 @@ export class App extends Component<AppProps, {}>{
 
         axios.defaults.baseURL = getManagementUrl();
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    }
+    };
 
     userNotRemembered = () => {
         const { login } = this.props;
@@ -62,19 +62,13 @@ export class App extends Component<AppProps, {}>{
               localStorage.removeItem('persist:root');
             }
           });
-    }
+    };
 
     loadingPage = (): React.ReactElement => (
         <div className={styles.loadingPage}>
             <Loader size="3vw" />
         </div>
-    )
-
-    lazyRender = (Child: any, props?: RouterProps) => React.createElement(() => (
-        <Suspense fallback={this.loadingPage()}>
-            <Child {...props} />
-        </Suspense>
-    ))
+    );
 
     render() {
         const { match, login, location } = this.props;
@@ -97,12 +91,12 @@ export class App extends Component<AppProps, {}>{
                     <div className={styles.appContainer}>
                         <Layout.Content className={styles.appContent}>
                             <Switch location={location}>
-                                <Route exact path={match.url} render={(props) => this.lazyRender(Homepage, props)} />
-                                <Route path={`${match.path}/profile`} render={(props) => this.lazyRender(Profile, props)}/>
-                                <Route path={`${match.path}/watch/:id`} render={(props) => this.lazyRender(Watch, props)}/>
-                                <Route path={`${match.path}/search/:term`} render={(props) => this.lazyRender(Search, props)}/>
-                                <Route path={`${match.path}/genres/:genreId`} render={(props) => this.lazyRender(Genres, props)}/>
-                                <Route path={`${match.path}/browse_genres`} render={(props) => this.lazyRender(BrowseGenres, props)}/>
+                                <Route exact path={match.url} render={(props) => lazyRenderer(Homepage, props)} />
+                                <Route path={`${match.path}/profile`} render={(props) => lazyRenderer(Profile, props)}/>
+                                <Route path={`${match.path}/watch/:id`} render={(props) => lazyRenderer(Watch, props)}/>
+                                <Route path={`${match.path}/search/:term`} render={(props) => lazyRenderer(Search, props)}/>
+                                <Route path={`${match.path}/genres/:genreId`} render={(props) => lazyRenderer(Genres, props)}/>
+                                <Route path={`${match.path}/browse_genres`} render={(props) => lazyRenderer(BrowseGenres, props)}/>
                                 <Route render={() => <NotFound title="Page not found !" />}/>
                             </Switch>
                         </Layout.Content>

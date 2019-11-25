@@ -5,7 +5,7 @@ import { WithTranslation } from 'react-i18next';
 
 import { SearchStore } from '../../../reducers/search';
 import { Search } from '.';
-import MoviesGallery from '../shared/MoviesGallery';
+import MoviesGallery from '../../shared/MoviesGallery';
 
 describe('The Search component', () => {
     let wrapper: ShallowWrapper;

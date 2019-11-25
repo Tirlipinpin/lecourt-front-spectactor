@@ -3,7 +3,7 @@ import posed from 'react-pose';
 import { Card, Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
 
-import { Movie } from '../../../../interfaces';
+import { Movie } from '../../../../App/interfaces';
 import styles from './index.module.scss';
 
 export interface MoviePosterProps {

@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { History } from 'history';
 
-import { Movie } from '../../interfaces';
-import MoviesGallery from '.';
+import { Movie } from '../../App/interfaces';
+import MoviesGallery from '../MoviesGallery';
 
 describe('The MoviesGallery component', () => {
     let wrapper: ShallowWrapper;

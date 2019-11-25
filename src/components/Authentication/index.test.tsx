@@ -17,6 +17,7 @@ describe('The App component', () => {
         const login: LoginStore = {
             token: 'poney',
             loading: false,
+            rememberMe: false,
         };
 
         wrapper = shallow(

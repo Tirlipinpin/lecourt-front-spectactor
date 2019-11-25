@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Genre } from '../interfaces';
 import { FETCH_GENRES } from '../../../reducers/browseGenres/constants';
 import { RenderPageStructures } from '../services';
-import { Loader } from '../shared/Loader';
+import { Loader } from '../../shared/Loader';
 import styles from './index.module.scss';
 import { GenreCard } from './components/GenreCard';
 

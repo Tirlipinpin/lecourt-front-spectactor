@@ -1,21 +1,27 @@
-import React, { Component, ReactNode } from 'react';
+import React, {
+  Component,
+  ReactNode,
+  lazy,
+} from 'react';
 import {
     Switch,
     Route,
     Redirect,
-    RouteComponentProps
+    RouteComponentProps,
 } from 'react-router';
-import Login from './Login';
-import Register from './Register';
 import { connect } from 'react-redux';
 import { Avatar, Divider, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import { Trans } from 'react-i18next';
 
+import { lazyRenderer } from 'services/renderer/lazyRenderer';
 import { LoginStore } from '../../reducers/login';
 import logo from '../../assets/logo_text.png';
 import background from '../../assets/bg.jpg';
 import styles from './index.module.scss';
+
+const Login = lazy(() => import('./Login'));
+const Register = lazy(() => import('./Register'));
 
 export interface AuthenticationProps extends RouteComponentProps {
     login: LoginStore
@@ -80,8 +86,8 @@ export class Authentication extends Component<AuthenticationProps, {}> {
                     <div className={`${styles.authElement} ${styles.authForm}`}>
                         <Avatar size={64} icon="user"/>
                         <Switch location={location}>
-                            <Route path={`${match.url}/login`} render={() => <Login loading={login.loading} />} />
-                            <Route path={`${match.url}/register`} component={Register} />
+                            <Route path={`${match.url}/login`} render={props => lazyRenderer(Login, { ...props, loading: login.loading })} />
+                            <Route path={`${match.url}/register`} render={props => lazyRenderer(Register, props)} />
                         </Switch>
                         {this.renderAuthFooter()}
                     </div>
