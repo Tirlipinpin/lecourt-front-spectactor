@@ -41,9 +41,8 @@ export class App extends Component<AppProps, {}>{
 
         axiosInterceptor(() => {
             dispatch({ type: 'LOGOUT' });
-            Cookies.remove('token');
-            //@ts-ignore
-            window.location = process.env.REACT_APP_FRONT_URL;
+            Cookies.remove('user_authorization');
+            window.location.href = process.env.REACT_APP_FRONT_URL!;
         });
 
         axios.defaults.baseURL = getManagementUrl();

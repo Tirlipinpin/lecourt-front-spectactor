@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import { history, store } from '../../../../store';
 import { updateSearchTerm } from '../actions';
 import { LOGOUT } from '../../../../reducers/login/constants';
@@ -39,5 +40,6 @@ export const logout = () => {
         type: LOGOUT,
     });
 
-    history.push('/');
+    Cookies.remove('user_authorization');
+    window.location.href = process.env.REACT_APP_FRONT_URL!;
 };

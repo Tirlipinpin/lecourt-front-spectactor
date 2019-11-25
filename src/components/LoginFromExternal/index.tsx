@@ -8,18 +8,22 @@ export interface ILoginFromExternal extends RouteComponentProps {}
 
 export class LoginFromExternal extends Component<ILoginFromExternal> {
   componentDidMount() {
-    const { history, location: { search } } = this.props;
+    const { location: { search } } = this.props;
     const { expires_in, token } = qs.parse(search);
 
+    console.log(expires_in, token);
+
+
     if (expires_in && token && typeof token === 'string') {
+        console.log('bite');
         Cookies.set('user_authorization', token, {
-            expires: +expires_in,
+            expires: new Date(Date.now() + +expires_in),
         });
     } else if (token && typeof token === 'string') {
         Cookies.set('user_authorization', token);
     }
 
-    history.push('/app');
+    window.location.href = process.env.REACT_APP_FRONT_URL!;
   }
 
   render() {
