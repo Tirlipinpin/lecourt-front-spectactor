@@ -27,7 +27,6 @@ const loginReducer: Reducer<ILoginStore, AnyAction> = (state: ILoginStore = defa
             return {
                 ...state,
                 loading: false,
-                token: action.payload.token,
             };
         case FETCH_TOKEN_FAILED:
             return {

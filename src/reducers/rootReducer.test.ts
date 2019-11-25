@@ -6,7 +6,7 @@ import rootReducer from './rootReducer';
 import { RouterState } from 'connected-react-router';
 import { NavbarStore } from './navbar';
 import { HomepageStore } from './homepage';
-import { LoginStore } from './login';
+import { ILoginStore } from './login';
 import { RegisterStore } from './register';
 import { SearchStore } from './search';
 import { WatchStore } from './watch';
@@ -22,17 +22,15 @@ describe('rootReducer', () => {
             router: {} as RouterState,
             navbar: {} as NavbarStore,
             homepage: {} as HomepageStore | undefined,
-            login: {} as LoginStore,
+            login: {} as ILoginStore,
             register: {} as RegisterStore,
             search: {} as SearchStore,
             watch: {} as WatchStore,
             browseGenres: {} as IBrowseGenresStore,
             genres: {} as IGenresStore,
-            _persist: {} as PersistState,
         }, {} as AnyAction);
 
         expect(reducers).toEqual({
-            _persist: {},
             homepage: {},
             login: {},
             navbar: {},

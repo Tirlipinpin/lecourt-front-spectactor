@@ -1,9 +1,18 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios, { AxiosResponse } from 'axios';
 import { notification } from 'antd';
+import Cookies from 'js-cookie';
 import { getLoginUrl, getRegisterUrl } from '../services/requestUrl';
-import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED } from '../reducers/login/constants';
-import { REGISTER_USER, REGISTER_USER_SUCCEEDED, REGISTER_USER_FAILED } from '../reducers/register/constants';
+import {
+    FETCH_TOKEN,
+    FETCH_TOKEN_FAILED,
+    FETCH_TOKEN_SUCCEEDED,
+} from '../reducers/login/constants';
+import {
+    REGISTER_USER,
+    REGISTER_USER_SUCCEEDED,
+    REGISTER_USER_FAILED,
+} from '../reducers/register/constants';
 
 export interface IFetchTokenAction {
     type: string
@@ -25,18 +34,25 @@ function* fetchToken(action: IFetchTokenAction): IterableIterator<Object | void>
             withCredentials: true,
         });
 
-        const { data: { access_token } } = res as AxiosResponse;
+        const { data: { access_token, expires_in } } = res as AxiosResponse;
 
         if (!access_token)
             throw new Error('Network error');
 
+
         yield put({
             type: FETCH_TOKEN_SUCCEEDED,
-            payload: {
-                token: access_token,
-                rememberMe: rememberMe,
-            },
         });
+
+        if (rememberMe) {
+            Cookies.set('user_authorization', access_token, {
+                expires: new Date(Date.now() + expires_in),
+            });
+        } else {
+            Cookies.set('user_authorization', access_token);
+        }
+        window.location.href = process.env.REACT_APP_FRONT_URL!;
+
     } catch (e) {
         yield put({
             type: FETCH_TOKEN_FAILED,
