@@ -11,11 +11,7 @@ export class LoginFromExternal extends Component<ILoginFromExternal> {
     const { location: { search } } = this.props;
     const { expires_in, token } = qs.parse(search);
 
-    console.log(expires_in, token);
-
-
     if (expires_in && token && typeof token === 'string') {
-        console.log('bite');
         Cookies.set('user_authorization', token, {
             expires: new Date(Date.now() + +expires_in),
         });
