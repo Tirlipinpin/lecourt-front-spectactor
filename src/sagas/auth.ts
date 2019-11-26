@@ -44,8 +44,6 @@ function* fetchToken(action: IFetchTokenAction): IterableIterator<Object | void>
             type: FETCH_TOKEN_SUCCEEDED,
         });
 
-        console.log(process.env.REACT_APP_DOMAIN_URL);
-
         if (rememberMe) {
             Cookies.set('user_authorization', access_token, {
                 expires: new Date(Date.now() + expires_in),
