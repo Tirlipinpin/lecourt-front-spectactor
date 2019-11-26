@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import { history, store } from '../../../../store';
 import { updateSearchTerm } from '../actions';
-import { LOGOUT } from '../../../../reducers/login/constants';
+import { logout } from 'components/App/actions';
 
 const { dispatch } = store;
 
@@ -35,11 +35,11 @@ export const getActiveKey = (): string[] => {
     return [currentActive];
 };
 
-export const logout = () => {
-    dispatch({
-        type: LOGOUT,
-    });
+export const navbarLogout = () => {
+    dispatch(logout());
 
-    Cookies.remove('user_authorization');
+    Cookies.remove('user_authorization', {
+      domain: process.env.REACT_APP_DOMAIN_URL,
+    });
     window.location.href = process.env.REACT_APP_FRONT_URL!;
 };

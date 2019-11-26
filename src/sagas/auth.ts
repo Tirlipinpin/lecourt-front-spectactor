@@ -44,12 +44,17 @@ function* fetchToken(action: IFetchTokenAction): IterableIterator<Object | void>
             type: FETCH_TOKEN_SUCCEEDED,
         });
 
+        console.log(process.env.REACT_APP_DOMAIN_URL);
+
         if (rememberMe) {
             Cookies.set('user_authorization', access_token, {
                 expires: new Date(Date.now() + expires_in),
-            });
+                domain: process.env.REACT_APP_DOMAIN_URL,
+              });
         } else {
-            Cookies.set('user_authorization', access_token);
+            Cookies.set('user_authorization', access_token, {
+              domain: process.env.REACT_APP_DOMAIN_URL,
+            });
         }
         window.location.href = process.env.REACT_APP_FRONT_URL!;
 

@@ -22,6 +22,7 @@ import Navbar from './Navbar';
 import MobileNavbar from './Navbar/Mobile';
 import NotFound from '../NotFound';
 import { lazyRenderer } from 'services/renderer/lazyRenderer';
+import { logout } from './actions';
 const Homepage = lazy(() => import('./Homepage'));
 const Profile = lazy(() => import('./Profile'));
 const Search = lazy(() => import('./Search'));
@@ -40,8 +41,10 @@ export class App extends Component<AppProps, {}>{
         const { token } = login;
 
         axiosInterceptor(() => {
-            dispatch({ type: 'LOGOUT' });
-            Cookies.remove('user_authorization');
+            dispatch(logout());
+            Cookies.remove('user_authorization', {
+              domain: process.env.REACT_APP_DOMAIN_URL,
+            });
             window.location.href = process.env.REACT_APP_FRONT_URL!;
         });
 

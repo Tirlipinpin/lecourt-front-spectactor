@@ -14,9 +14,12 @@ export class LoginFromExternal extends Component<ILoginFromExternal> {
     if (expires_in && token && typeof token === 'string') {
         Cookies.set('user_authorization', token, {
             expires: new Date(Date.now() + +expires_in),
-        });
+            domain: process.env.REACT_APP_DOMAIN_URL,
+          });
     } else if (token && typeof token === 'string') {
-        Cookies.set('user_authorization', token);
+        Cookies.set('user_authorization', token, {
+          domain: process.env.REACT_APP_DOMAIN_URL,
+        });
     }
 
     window.location.href = process.env.REACT_APP_FRONT_URL!;
