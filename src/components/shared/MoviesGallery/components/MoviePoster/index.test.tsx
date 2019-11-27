@@ -27,15 +27,9 @@ describe('The MoviePoster component', () => {
         );
     });
 
-    test('should call getOnClick on clik', () => {
-        const cardProps = wrapper.find(`.${styles.moviePosterCard}`).props() as CardProps;
-        expect(cardProps).toBeTruthy()
 
-        const { cover } = cardProps as any;
-        expect(cover).toBeTruthy()
-
-        const imageProps = cover.props.children.props
-        imageProps.onClick();
+    test('should call getOnClick on click', () => {
+        wrapper.find(`.${styles.hover}`).simulate('click');
 
         expect(goToWatch).toHaveBeenCalledWith(uuid);
     });
