@@ -16,11 +16,14 @@ const MoviePosterContainer = posed.div({
     enter: {
         x: 0,
         opacity: 1,
+        type: 'string',
+        transition: ({ index }: { index: number }) => ({ delay: index * 100 }),
     },
     exit: {
-        x: 50,
+        x: 100,
         opacity: 0,
     },
+    props: { index: 0 },
 });
 
 export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}> {
@@ -48,10 +51,11 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
                     {
                         movies.map((movie: Movie, index) => (
                             <MoviePosterContainer
+                                className={styles.moviePosterContainer}
                                 initialPose='exit'
                                 pose='enter'
                                 key={index}
-                                className={styles.moviePosterContainer}
+                                index={index}
                             >
                                 <MoviePoster
                                     goToWatch={this.goToWatch}

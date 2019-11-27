@@ -14,7 +14,7 @@ const qualityBanner = (quality: number): string => {
     return (quality <= 25 ? "movie-poster-quality hide" : styles.moviePosterQuality);
 };
 
-const Div = posed.div({
+const Cover = posed.div({
     open: {
         opacity: 1,
     },
@@ -49,7 +49,7 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
                     alt={movie.title}
                 />
                 {(
-                    <Div
+                    <Cover
                         className={styles.hover}
                         pose={cardHovered ? 'open' : 'closed'}
                         onClick={() => goToWatch(movie.id)}
@@ -59,7 +59,7 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
                         >
                             <Icon type="search" /> Watch short movie
                         </button>
-                    </Div>
+                    </Cover>
                 )}
             </div>
             <div className={styles.footer}>
