@@ -1,29 +1,58 @@
-.moviePosterCard {
-    .moviePosterContainerImage {
-        height: 400px;
-        width: 100%;
+@import 'styles/colors';
 
-        .moviePoster {
-            cursor: pointer;
-            width: 100%;
+.moviePosterCard {
+    display: flex;
+    flex-flow: column nowrap;
+
+    .coverContainer {
+        position: relative;
+
+        .hover {
+            padding: 4px;
+            position: absolute;
+            top: 0;
             height: 100%;
+            width: 100%;
+            background: rgba(41, 41, 41, .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            .watchButton {
+                cursor: pointer;
+                background: transparent;
+                border-radius: 30px;
+                transition: all ease-in-out 300ms;
+                border: 1px solid white;
+                color: white;
+                padding: 4px;
+
+                &:hover {
+                    background: white;
+                    color: black;
+                }
+            }
+        }
+
+        .cover {
+            border-radius: 4px;
+            max-height: 400px;
+            width: 100%;
         }
     }
 
-    .moviePosterCardMeta {
+    .footer {
         display: flex;
-        flex-direction: column;
+        flex-flow: column nowrap;
+        padding: 4px;
 
-        .moviePosterQuality {
-            width: 5px;
-            height: 13px;
-            margin-right: 7px;
-            display: inline-flex;
-            background-color: rgb(30, 121, 33);
+        .title {
+            font-size: 1rem;
         }
-        
-        &.hide {
-            display: none;
-        }        
+
+        .genres {
+            font-size: .8rem;
+        }
     }
 }

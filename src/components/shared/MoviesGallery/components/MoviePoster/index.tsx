@@ -1,8 +1,7 @@
-import React, { Fragment } from 'react';
-import posed from 'react-pose';
-import { Card, Tooltip } from 'antd';
+import React, { FunctionComponent, useState } from 'react';
+import { Tooltip, Icon } from 'antd';
 import { useTranslation } from 'react-i18next';
-
+import posed from 'react-pose'
 import { Movie } from '../../../../App/interfaces';
 import styles from './index.module.scss';
 
@@ -15,56 +14,72 @@ const qualityBanner = (quality: number): string => {
     return (quality <= 25 ? "movie-poster-quality hide" : styles.moviePosterQuality);
 };
 
-const Image = posed.img({
-    hoverable: true,
-    init: {
-        filter: 'grayscale(33%)',
+const Div = posed.div({
+    open: {
+        opacity: 1,
     },
-    hover: {
-        filter: 'grayscale(0%)',
-    }
+    closed: {
+        opacity: 0,
+    },
 });
 
-const defaultPoster = "https://www.itsnicethat.com/system/files/042015/5530f2285c3e3c1451002636/images_slice_large/emptyfilmposters-itsnicethat-The-Lion-King.png?1438258632";
+const defaultPoster = "https://static2.tribute.ca/poster/660x980/piper-105395.jpg";
 
-export default (props: MoviePosterProps) => {
+export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
     const { goToWatch, movie } = props;
-
+    const [ cardHovered, handleCardHovered ] = useState(false);
     const { t } = useTranslation();
+
+    const showCardHover = () => handleCardHovered(true);
+    const hideCardHover = () => handleCardHovered(false);
 
     const posterImage = (movie.images || []).find(i => i && i.node && i.node.id);
     const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.node.id}` : defaultPoster;
-
+    
     return (
-        <Card
+        <div
             className={styles.moviePosterCard}
-            hoverable
-            cover={
-                <div className={styles.moviePosterContainerImage}>
-                    <Image
-                        onClick={() => goToWatch(movie.id)}
-                        src={poster}
-                        className={styles.moviePoster}
-                    />
-                </div>
-            }
-            bordered={false}
+            onMouseEnter={showCardHover}
+            onMouseLeave={hideCardHover}
         >
-            <Card.Meta
-                className={styles.moviePosterCardMeta}
-                description={(movie.genres || []).map(g => g.node.name).join(', ')}
-                title={
-                    <Fragment>
-                        <Tooltip
-                            placement="rightTop"
-                            title={t('RESULT_RELEVANT')}
+            <div className={styles.coverContainer}>
+                <img
+                    src={poster}
+                    className={styles.cover}
+                    alt={movie.title}
+                />
+                {(
+                    <Div
+                        className={styles.hover}
+                        pose={cardHovered ? 'open' : 'closed'}
+                        onClick={() => goToWatch(movie.id)}
+                    >
+                        <button
+                            className={styles.watchButton}
                         >
-                            <div className={qualityBanner(movie.result_quality || 0)} />
-                        </Tooltip>
+                            <Icon type="search" /> Watch short movie
+                        </button>
+                    </Div>
+                )}
+            </div>
+            <div className={styles.footer}>
+                <div>
+                    <Tooltip
+                        placement="rightTop"
+                        title={t('RESULT_RELEVANT')}
+                    >
+                        <div className={qualityBanner(movie.result_quality || 0)} />
+                    </Tooltip>
+                    <div className={styles.title}>
                         {movie.title}
-                    </Fragment>
-                }
-            />
-        </Card>
+                    </div>                    
+                    <div className={styles.genres}>
+                        {(movie.genres || []).map(g => g.node.name).join(', ')}
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 };
+
+export default MoviePoster;
