@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router';
 import Cookies from 'js-cookie';
 import qs from 'query-string';
 import Loader from 'components/shared/Loader';
+import styles from './index.module.scss';
 
 export interface ILoginFromExternal extends RouteComponentProps {}
 
@@ -27,7 +28,9 @@ export class LoginFromExternal extends Component<ILoginFromExternal> {
 
   render() {
     return (
-      <Loader />
+        <div className={styles.loginFromExternalPage}>
+            <Loader size="3vw" />
+        </div>
     );
   }
 }
