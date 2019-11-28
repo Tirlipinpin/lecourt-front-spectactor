@@ -30,6 +30,7 @@ i18n
             WE_HOPE_YOU_FIND_YOUR_PERFECT_MATCH: 'We hope you\'ll find your perfect match',
             AUTH_NO_ACCOUNT: `Don't have an account yet?`,
             AUTH_REGISTER: `Register!`,
+            WATCH_SHORT: 'Watch short',
         }
       },
       fr: {
@@ -55,6 +56,7 @@ i18n
             WE_HOPE_YOU_FIND_YOUR_PERFECT_MATCH: 'Nous espérons que vous trouverez la catégorie parfaite pour vous',
             AUTH_NO_ACCOUNT: `Pas encore inscrit ?`,
             AUTH_REGISTER: `Inscrivez-vous !`,
+            WATCH_SHORT: 'Visionner',
         }
       }
     },

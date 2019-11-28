@@ -57,7 +57,7 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
                         <button
                             className={styles.watchButton}
                         >
-                            <Icon type="search" /> Watch short movie
+                            <Icon type="search" /> {t('WATCH_SHORT')}
                         </button>
                     </Cover>
                 )}
