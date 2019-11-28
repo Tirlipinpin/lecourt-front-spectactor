@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Tooltip, Icon } from 'antd';
 import { useTranslation } from 'react-i18next';
-import posed from 'react-pose'
+import posed from 'react-pose';
 import { Movie } from '../../../../App/interfaces';
 import styles from './index.module.scss';
 

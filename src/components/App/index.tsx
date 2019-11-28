@@ -79,12 +79,12 @@ export class App extends Component<AppProps, {}>{
                     <div className={styles.appContainer}>
                         <Layout.Content className={styles.appContent}>
                             <Switch location={location}>
-                                <Route exact path={match.url} render={(props) => lazyRenderer(Homepage, props)} />
-                                <Route path={`${match.path}/profile`} render={(props) => lazyRenderer(Profile, props)}/>
-                                <Route path={`${match.path}/watch/:id`} render={(props) => lazyRenderer(Watch, props)}/>
-                                <Route path={`${match.path}/search/:term`} render={(props) => lazyRenderer(Search, props)}/>
-                                <Route path={`${match.path}/genres/:genreId`} render={(props) => lazyRenderer(Genres, props)}/>
-                                <Route path={`${match.path}/browse_genres`} render={(props) => lazyRenderer(BrowseGenres, props)}/>
+                                <Route exact path={match.url} render={(props) => lazyRenderer(Homepage, props, styles.loader)} />
+                                <Route path={`${match.path}/profile`} render={(props) => lazyRenderer(Profile, props, styles.loader)}/>
+                                <Route path={`${match.path}/watch/:id`} render={(props) => lazyRenderer(Watch, props, styles.loader)}/>
+                                <Route path={`${match.path}/search/:term`} render={(props) => lazyRenderer(Search, props, styles.loader)}/>
+                                <Route path={`${match.path}/genres/:genreId`} render={(props) => lazyRenderer(Genres, props, styles.loader)}/>
+                                <Route path={`${match.path}/browse_genres`} render={(props) => lazyRenderer(BrowseGenres, props, styles.loader)}/>
                                 <Route render={() => <NotFound title="Page not found !" />}/>
                             </Switch>
                         </Layout.Content>

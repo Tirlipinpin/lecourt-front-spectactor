@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Spin, Icon } from 'antd';
 
 export interface ILoaderProps {
   size?: number | string
+  className?: string
 }
 
-export const Loader = ({ size }: ILoaderProps): React.ReactElement => (
+export const Loader: FunctionComponent<ILoaderProps> = ({ size, className }): React.ReactElement => (
   <Spin
-    indicator={<Icon type="loading" style={{ fontSize: size, color: '#FF5242' }} />}
+    className={className}
+    indicator={
+        <Icon
+            type="loading"
+            style={{ fontSize: size, color: '#FF5242' }}
+        />
+    }
   />
 );
 

@@ -9,6 +9,7 @@ import { restoreToken } from 'actions';
 import * as serviceWorker from './serviceWorker';
 import configureStore, { history } from './store';
 import './i18n';
+import styles from './index.module.scss';
 import './index.scss';
 
 const LoginFromExternal = lazy(() => import('./components/LoginFromExternal'));
@@ -28,13 +29,15 @@ if (user_authorization)
 ReactDOM.render(
     <Provider store={ store }>
         <ConnectedRouter history={history}>
-            <Switch>
-                <Redirect to="/app" from="/" exact />
-                <Route path="/app" render={props => lazyRenderer(App, props)} />
-                <Route path="/authentication" render={props => lazyRenderer(Authentication, props)} />
-                <Route path="/loginFromExternal" render={props => lazyRenderer(LoginFromExternal, props)} />
-                <Route render={props => lazyRenderer(NotFound, { ...props, title: 'Page not found !' })} />
-            </Switch>
+            <div className={styles.appContainer}>
+                <Switch>
+                    <Redirect to="/app" from="/" exact />
+                    <Route path="/app" render={props => lazyRenderer(App, props, styles.loader)} />
+                    <Route path="/authentication" render={props => lazyRenderer(Authentication, props, styles.loader)} />
+                    <Route path="/loginFromExternal" render={props => lazyRenderer(LoginFromExternal, props, styles.loader)} />
+                    <Route render={props => lazyRenderer(NotFound, { ...props, title: 'Page not found !' })} />
+                </Switch>
+            </div>
         </ConnectedRouter>
     </Provider>
 , document.getElementById('root'));    

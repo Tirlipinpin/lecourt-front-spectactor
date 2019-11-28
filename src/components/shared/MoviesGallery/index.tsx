@@ -40,7 +40,7 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
         const { loading, movies } = this.props;
 
         if (movies.length < 1 && loading)
-            return <Loader />;
+            return <Loader size="3vw" />;
         else if (movies.length < 1)
             return (
                 <div className={styles.moviesGalleryContainer}>
