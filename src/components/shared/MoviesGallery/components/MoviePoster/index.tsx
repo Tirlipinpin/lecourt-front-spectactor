@@ -10,10 +10,6 @@ export interface MoviePosterProps {
     movie: Movie
 }
 
-const qualityBanner = (quality: number): string => {
-    return (quality <= 25 ? "movie-poster-quality hide" : styles.moviePosterQuality);
-};
-
 const Cover = posed.div({
     open: {
         opacity: 1,
@@ -66,13 +62,12 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
                 <div>
                     <Tooltip
                         placement="rightTop"
-                        title={t('RESULT_RELEVANT')}
+                        title={movie.result_quality > 25 && t('RESULT_RELEVANT')}
                     >
-                        <div className={qualityBanner(movie.result_quality || 0)} />
+                        <div className={`${styles.title} ${movie.result_quality > 25 && styles.moviePosterQuality}`}>
+                            {movie.title}
+                        </div>
                     </Tooltip>
-                    <div className={styles.title}>
-                        {movie.title}
-                    </div>                    
                     <div className={styles.genres}>
                         {(movie.genres || []).map(g => g.node.name).join(', ')}
                     </div>

@@ -27,6 +27,9 @@
                 border: 1px solid white;
                 color: white;
                 padding: 4px;
+                height: 10%;
+                width: 50%;
+                font-size: 1rem;
 
                 &:hover {
                     background: white;
@@ -54,6 +57,16 @@
 
         .genres {
             font-size: .8rem;
+        }
+
+        .moviePosterQuality {
+            border-left: 4px solid darkgreen;
+            padding-left: 4px;
+
+            &.hide {
+                padding-left: none;
+                border: none;
+            }
         }
     }
 }
