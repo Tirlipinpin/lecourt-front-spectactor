@@ -16,8 +16,11 @@ const MoviePosterContainer = posed.div({
     enter: {
         x: 0,
         opacity: 1,
-        type: 'string',
-        transition: ({ index }: { index: number }) => ({ delay: index * 100 }),
+        transition: ({ index }: { index: number }) => ({
+            delay: index * 100,
+            type: 'spring',
+            stiffness: 100,
+        }),
     },
     exit: {
         x: 100,
