@@ -84,18 +84,20 @@ export class Authentication extends Component<AuthenticationProps, {}> {
             return <Redirect to="/app" />;
 
         return (
-            <div className={styles.authPageContainer} style={{ backgroundImage: `url(${background})` }}>
-                <div className={styles.authContainer}>
-                    <div className={`${styles.authElement} ${styles.authForm}`}>
-                        <Avatar size={64} icon="user"/>
-                        <Switch location={location}>
-                            <Route path={`${match.url}/login`} render={props => lazyRenderer(Login, { ...props, loading: login.loading })} />
-                            <Route path={`${match.url}/register`} render={props => lazyRenderer(Register, props)} />
-                        </Switch>
-                        {this.renderAuthFooter()}
-                    </div>
-                    <div className={`${styles.authElement} ${styles.authRight}`}>
-                        <img alt="LC-logo" className={styles.logo} src={logo} />
+            <div className={styles.authPage}>
+                <div className={styles.authPageContainer} style={{ backgroundImage: `url(${background})` }}>
+                    <div className={styles.authContainer}>
+                        <div className={`${styles.authElement} ${styles.authForm}`}>
+                            <Avatar size={64} icon="user"/>
+                            <Switch location={location}>
+                                <Route path={`${match.url}/login`} render={props => lazyRenderer(Login, { ...props, loading: login.loading })} />
+                                <Route path={`${match.url}/register`} render={props => lazyRenderer(Register, props)} />
+                            </Switch>
+                            {this.renderAuthFooter()}
+                        </div>
+                        <div className={`${styles.authElement} ${styles.authRight}`}>
+                            <img alt="LC-logo" className={styles.logo} src={logo} />
+                        </div>
                     </div>
                 </div>
             </div>
