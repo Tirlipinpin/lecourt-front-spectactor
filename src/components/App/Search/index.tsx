@@ -22,7 +22,19 @@ export interface SearchProps extends WithTranslation, RouteComponentProps<Search
 }
 
 export class Search extends Component<SearchProps, {}> {
-    async componentDidMount() {
+    componentDidMount() {
+        this.dispatchFetchSearchMovies();
+    }
+
+    componentDidUpdate(props: SearchProps) {
+        const { params: { term } } = this.props.match;
+        const { params: { term: nextTerm } } = props.match;
+
+        if (term !== nextTerm)
+            this.dispatchFetchSearchMovies();
+    }
+
+    dispatchFetchSearchMovies = () => {
         const { dispatch, match } = this.props;
         const { term } = match.params;
 
