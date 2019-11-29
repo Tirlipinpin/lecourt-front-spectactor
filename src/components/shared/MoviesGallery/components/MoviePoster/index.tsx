@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Tooltip, Icon } from 'antd';
 import { useTranslation } from 'react-i18next';
-import posed from 'react-pose';
 import { Movie } from '../../../../App/interfaces';
 import styles from './index.module.scss';
 
@@ -10,27 +9,14 @@ export interface MoviePosterProps {
     movie: Movie
 }
 
-const Cover = posed.div({
-    open: {
-        opacity: 1,
-    },
-    closed: {
-        opacity: 0,
-    },
-});
-
 const defaultPoster = "https://static2.tribute.ca/poster/660x980/piper-105395.jpg";
 
 export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
     const { goToWatch, movie } = props;
     const { t } = useTranslation();
 
-    const [ cardHovered, handleCardHovered ] = useState(false);
-    const showCardHover = () => handleCardHovered(true);
-    const hideCardHover = () => handleCardHovered(false);
-
     const [ imageLoaded, handleImageLoaded ] = useState(false);
-    const setImageLoaded = () => handleImageLoaded(true);
+    const setImageLoaded = () => handleImageLoaded(false);
 
     const posterImage = (movie.images || []).find(i => i && i.node && i.node.id);
     const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.node.id}` : defaultPoster;
@@ -38,8 +24,6 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
     return (
         <div
             className={styles.moviePosterCard}
-            onMouseEnter={showCardHover}
-            onMouseLeave={hideCardHover}
         >
             <div className={styles.coverContainer}>
                 <img
@@ -50,9 +34,8 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
                 />
                 {!imageLoaded && <div className={styles.loading} />}
                 {(
-                    <Cover
+                    <div
                         className={styles.hover}
-                        pose={cardHovered ? 'open' : 'closed'}
                         onClick={() => goToWatch(movie.id)}
                     >
                         <button
@@ -60,7 +43,7 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
                         >
                             <Icon type="search" /> {t('WATCH_SHORT')}
                         </button>
-                    </Cover>
+                    </div>
                 )}
             </div>
             <div className={styles.footer}>
