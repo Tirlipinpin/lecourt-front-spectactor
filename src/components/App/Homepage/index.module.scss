@@ -1,9 +1,12 @@
-.moviesCarousel {
-    overflow: hidden;
-    width: 100%;
-    margin: auto;
+.pageContainer {
+    margin-top: 32px;
+    .moviesCarousel {
+        overflow: hidden;
+        width: 100%;
+        margin: auto;
 
-    h2 {
-        margin-left: 16px;
+        h3 {
+            margin-left: 16px;
+        }
     }
 }
