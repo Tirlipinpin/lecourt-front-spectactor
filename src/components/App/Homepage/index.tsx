@@ -13,35 +13,38 @@ export const Homepage = ({ history }: IHomepageProps) => {
     const dispatch = useDispatch();
     const homepage = useSelector((state: any) => state.homepage);
     const { t } = useTranslation();
-
+    
     useEffect(() => {
         dispatch(fetchLatestMovies());
     }, []);
-
-  return (
-    <div className={styles.pageContainer}>
-      <Layout className={styles.moviesCarousel}>
-          <Typography.Title
-            level={3}
-            children={t('OUR_SELECTION')}
-            className={styles.sectionTitle}
-          />
-          <MoviesGallery
-            loading={homepage.loadingLatestMovies}
-            movies={homepage.latestMovies}
-            history={history}
-          />
-      </Layout>
-      <Layout className={styles.moviesCarousel}>
-      <Typography.Title
-            level={3}
-            children={t('LATEST_SHORTS')}
-            className={styles.sectionTitle}
-          />
-          <MoviesGallery loading={homepage.loadingLatestMovies} movies={homepage.latestMovies} history={history} />
-      </Layout>
-    </div>
-  );
-};
-
-export default Homepage;
+    
+    return (
+        <div className={styles.pageContainer}>
+            <div className={styles.pageHeader}>
+                {t('WELCOME_TO_LECOURT')}
+            </div>
+            <Layout className={styles.moviesCarousel}>
+                <Typography.Title
+                level={3}
+                children={t('OUR_SELECTION')}
+                className={styles.sectionTitle}
+                />
+                <MoviesGallery
+                loading={homepage.loadingLatestMovies}
+                movies={homepage.latestMovies}
+                history={history}
+                />
+                </Layout>
+                <Layout className={styles.moviesCarousel}>
+                <Typography.Title
+                level={3}
+                children={t('LATEST_SHORTS')}
+                className={styles.sectionTitle}
+                />
+                <MoviesGallery loading={homepage.loadingLatestMovies} movies={homepage.latestMovies} history={history} />
+            </Layout>
+        </div>
+        );
+    };
+    
+    export default Homepage;

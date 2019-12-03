@@ -1,5 +1,15 @@
+@import 'styles/colors';
+
 .pageContainer {
     margin-top: 32px;
+
+    .pageHeader {
+        font-size: 1.5rem;
+        font-weight: 500;
+        width: 100%;
+        margin-bottom: 32px;
+        color: rgba($lc-black, .5);
+    }
 
     .moviesCarousel {
         overflow: hidden;
@@ -8,7 +18,6 @@
 
         .sectionTitle {
             padding-bottom: 8px;
-            margin: 0 16px;
             border-bottom: 1px solid rgba(0, 0, 0, .1);
         }
     }

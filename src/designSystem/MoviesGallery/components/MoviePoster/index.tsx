@@ -22,12 +22,10 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
     const goToMovieId = () => goToWatch(movie.id);
 
     return (
-        <div
-            className={styles.moviePosterCard}
-        >
+        <div className={styles.moviePosterCard}>
             <HoverableImage
                 alt={movie.title}
-                childButton={
+                coverContent={
                     <button
                         className={styles.watchButton}
                     >

@@ -30,7 +30,7 @@ export default class Casting extends PureComponent<CastingProps, {}> {
             <Col xl={4} md={8} sm={12} key={key} className={styles.item}>
                 <HoverableImage
                     alt={person.node.lastName}
-                    childButton={
+                    coverContent={
                         <Button
                             className={styles.button}
                             shape="round"

@@ -52,12 +52,6 @@ export class App extends Component<AppProps, {}>{
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     };
 
-    loadingPage = (): React.ReactElement => (
-        <div className={styles.loadingPage}>
-            <Loader size="3vw" />
-        </div>
-    );
-
     render() {
         const { match, login, location } = this.props;
 
@@ -88,12 +82,10 @@ export class App extends Component<AppProps, {}>{
                                 <Route render={() => <NotFound title="Page not found !" />}/>
                             </Switch>
                         </Layout.Content>
-                        <Layout.Footer style={{
-                            textAlign: 'center',
-                        }}>
+                    </div>
+                    <Layout.Footer className={styles.appFooter}>
                             <Trans i18nKey="FOOTER" />
                         </Layout.Footer>
-                    </div>
                 </Layout>
             </div>
         );

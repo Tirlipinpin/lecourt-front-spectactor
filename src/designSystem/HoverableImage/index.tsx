@@ -8,14 +8,14 @@ import styles from './index.module.scss';
 
 export interface IHoverableImageProps {
     alt: string
-    childButton: ReactNode
+    coverContent: ReactNode
     containerClassName?: string
     goTo?: () => void
     imageClassName?: string
     src: string
 }
 
-const Cover = posed.div({
+const Hover = posed.div({
     open: {
         opacity: 1,
     },
@@ -26,7 +26,7 @@ const Cover = posed.div({
 
 const HoverableImage: FunctionComponent<IHoverableImageProps> = ({
     alt,
-    childButton,
+    coverContent,
     containerClassName,
     imageClassName,
     goTo,
@@ -53,13 +53,13 @@ const HoverableImage: FunctionComponent<IHoverableImageProps> = ({
             />
             {!imageLoaded && <div className={styles.loading} />}
             {(
-                <Cover
+                <Hover
                     className={styles.hover}
                     pose={cardHovered ? 'open' : 'closed'}
                     onClick={goTo}
                 >
-                    {childButton}
-                </Cover>
+                    {coverContent}
+                </Hover>
             )}
         </div>
     );

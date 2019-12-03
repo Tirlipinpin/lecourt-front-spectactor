@@ -1,25 +1,31 @@
-.loadingPage {
-    height: calc(100vh - 133px);
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+@import 'styles/colors';
 
-.appContainer {
-    min-height: calc(100vh - 64px);
-    margin-top: 64px;
-    display: flex;
-    flex-direction: column;
-}
+.appWrapper {
+    .appContainer {
+        min-height: calc(100vh - 64px);
+        margin: 64px 10% 0 10%;
+        display: flex;
+        flex-direction: column;
+    }
 
-.appContent {
-    background-color: white;
-}
+    .appContent {
+        background-color: #f4f4f4;
+    }
 
-.loader {
-    position: absolute !important;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    .loader {
+        position: absolute !important;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .appFooter {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: $lc-black;
+        color: white;
+        width: 100%;
+    }
 }
