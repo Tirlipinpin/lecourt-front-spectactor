@@ -29,7 +29,7 @@ describe('The MoviePoster component', () => {
 
 
     test('should call getOnClick on click', () => {
-        wrapper.find(`.${styles.hover}`).simulate('click');
+        wrapper.find(`.${styles.watchButton}`).simulate('click');
 
         expect(goToWatch).toHaveBeenCalledWith(uuid);
     });
