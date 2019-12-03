@@ -23,11 +23,14 @@ const defaultPoster = "https://static2.tribute.ca/poster/660x980/piper-105395.jp
 
 export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
     const { goToWatch, movie } = props;
-    const [ cardHovered, handleCardHovered ] = useState(false);
     const { t } = useTranslation();
 
+    const [ cardHovered, handleCardHovered ] = useState(false);
     const showCardHover = () => handleCardHovered(true);
     const hideCardHover = () => handleCardHovered(false);
+
+    const [ imageLoaded, handleImageLoaded ] = useState(false);
+    const setImageLoaded = () => handleImageLoaded(true);
 
     const posterImage = (movie.images || []).find(i => i && i.node && i.node.id);
     const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.node.id}` : defaultPoster;
@@ -41,9 +44,11 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
             <div className={styles.coverContainer}>
                 <img
                     src={poster}
-                    className={styles.cover}
+                    className={`${styles.cover} ${!imageLoaded ? styles.loading : ''}`}
                     alt={movie.title}
+                    onLoad={setImageLoaded}
                 />
+                {!imageLoaded && <div className={styles.loading} />}
                 {(
                     <Cover
                         className={styles.hover}
