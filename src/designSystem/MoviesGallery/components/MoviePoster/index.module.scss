@@ -4,69 +4,22 @@
     display: flex;
     flex-flow: column nowrap;
 
-    .coverContainer {
-        position: relative;
+    .watchButton {
+        cursor: pointer;
+        background: transparent;
+        border-radius: 30px;
+        transition: all ease-in-out 300ms;
+        border: 1px solid white;
+        color: white;
+        padding: 4px;
+        height: 10%;
+        width: 50%;
+        font-size: 1rem;
 
-        .hover {
-            border-radius: 4px;
-            position: absolute;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(41, 41, 41, .5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-
-            .watchButton {
-                cursor: pointer;
-                background: transparent;
-                border-radius: 30px;
-                transition: all ease-in-out 300ms;
-                border: 1px solid white;
-                color: white;
-                padding: 4px;
-                height: 10%;
-                width: 50%;
-                font-size: 1rem;
-
-                &:hover {
-                    background: white;
-                    color: black;
-                }
-            }
+        &:hover {
+            background: white;
+            color: black;
         }
-
-        .cover {
-            border-radius: 4px;
-            max-height: 400px;
-            width: 100%;
-
-            &.loading {
-                display: none;
-            }
-        }
-        
-        .loading {
-            @keyframes pulse {
-                0% {
-                    background-color: rgba(165, 165, 165, 0.1);
-                }
-                50% {
-                    background-color: rgba(165, 165, 165, 0.3);
-                }
-                100% {
-                    background-color: rgba(165, 165, 165, 0.1);
-                }
-            }
-
-            border-radius: 4px;
-            height: 400px;
-            width: 100%;
-            animation: pulse 1s infinite ease-in-out;
-        }
-
     }
 
     .footer {

@@ -1,0 +1,44 @@
+.cardContainer {
+    position: relative;
+
+    .hover {
+        border-radius: 4px;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(41, 41, 41, .5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .poster {
+        border-radius: 4px;
+        height: 400px;
+        width: 100%;
+
+        &.loading {
+            display: none;
+        }
+    }
+
+    .loading {
+        border-radius: 4px;
+        height: 400px;
+        width: 100%;
+        animation: pulse 1s infinite ease-in-out;
+
+        @keyframes pulse {
+            0% {
+                background-color: rgba(165, 165, 165, 0.1);
+            }
+            50% {
+                background-color: rgba(165, 165, 165, 0.3);
+            }
+            100% {
+                background-color: rgba(165, 165, 165, 0.1);
+            }
+        }
+    }
+}
