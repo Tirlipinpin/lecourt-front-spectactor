@@ -1,12 +1,15 @@
 .pageContainer {
     margin-top: 32px;
+
     .moviesCarousel {
         overflow: hidden;
         width: 100%;
-        margin: auto;
+        margin: 0;
 
-        h3 {
-            margin-left: 16px;
+        .sectionTitle {
+            padding-bottom: 8px;
+            margin: 0 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, .1);
         }
     }
 }
