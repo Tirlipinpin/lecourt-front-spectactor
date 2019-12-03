@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import { Typography } from 'antd';
 import { RouteComponentProps } from 'react-router';
 import { withTranslation, WithTranslation } from 'react-i18next';
-
+import { Loader } from 'designSystem';
 import { SearchStore } from '../../../reducers/search';
-import MoviesGallery from '../../shared/MoviesGallery';
+import { MoviesGallery } from 'designSystem';
 import { RenderPageStructures } from '../services';
 import { fetchSearchMovies } from './actions';
-import Loader from '../../shared/Loader';
 import styles from './index.module.scss';
 
 export type SearchPropsParams = {

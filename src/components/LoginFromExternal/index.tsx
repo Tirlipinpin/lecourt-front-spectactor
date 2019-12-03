@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router';
 import Cookies from 'js-cookie';
 import qs from 'query-string';
-import Loader from 'components/shared/Loader';
+import { Loader } from 'designSystem';
 import styles from './index.module.scss';
 
 export interface ILoginFromExternal extends RouteComponentProps {}

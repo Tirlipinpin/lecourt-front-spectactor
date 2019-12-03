@@ -6,12 +6,11 @@ import axios from 'axios';
 import { RouteComponentProps } from 'react-router';
 import { Trans } from 'react-i18next';
 import Hls from 'hls.js';
-
+import { Loader } from 'designSystem';
 import { WatchStore } from '../../../reducers/watch';
 import { Movie } from '../interfaces';
 import NotFound from '../../NotFound';
-import MoviesGallery from '../../shared/MoviesGallery';
-import Loader from '../../shared/Loader';
+import { MoviesGallery } from 'designSystem';
 import { FETCH_MOVIE_DETAILS } from '../../../reducers/watch/constants';
 import styles from './index.module.scss';
 

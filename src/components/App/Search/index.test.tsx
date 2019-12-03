@@ -2,10 +2,9 @@ import React from 'react';
 import  { shallow, ShallowWrapper } from 'enzyme';
 import { History, Location } from 'history';
 import { WithTranslation } from 'react-i18next';
-
+import { MoviesGallery } from 'designSystem';
 import { SearchStore } from '../../../reducers/search';
 import { Search } from '.';
-import MoviesGallery from '../../shared/MoviesGallery';
 
 describe('The Search component', () => {
     let wrapper: ShallowWrapper;

@@ -11,18 +11,18 @@ import axios from 'axios';
 import MediaQuery from 'react-responsive';
 import { Trans } from 'react-i18next';
 import Cookies from 'js-cookie';
+import { Loader } from 'designSystem';
 import axiosInterceptor from '../../services/axiosInterceptor';
 import { ILoginStore } from '../../reducers/login';
 import { getManagementUrl } from '../../services/requestUrl';
 import styles from './index.module.scss';
 import './index.scss';
-
-import Loader from '../shared/Loader';
 import Navbar from './Navbar';
 import MobileNavbar from './Navbar/Mobile';
 import NotFound from '../NotFound';
 import { lazyRenderer } from 'services/renderer/lazyRenderer';
 import { logout } from './actions';
+
 const Homepage = lazy(() => import('./Homepage'));
 const Profile = lazy(() => import('./Profile'));
 const Search = lazy(() => import('./Search'));

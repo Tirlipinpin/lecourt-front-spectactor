@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Layout, Typography } from 'antd';
 import { RouteComponentProps } from 'react-router';
 import { useTranslation } from 'react-i18next';
-
-import MoviesGallery from '../../shared/MoviesGallery';
+import { MoviesGallery } from 'designSystem';
 import { fetchLatestMovies } from './actions';
 import styles from './index.module.scss';
 

@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { History } from 'history';
 import posed, { PoseGroup } from 'react-pose';
-import { Movie } from '../../App/interfaces';
+import { Movie } from 'components/App/interfaces';
 import MoviePoster from './components/MoviePoster';
-import Loader from '../Loader';
+import { Loader } from 'designSystem';
 import styles from './index.module.scss';
 
 export interface MoviesGalleryProps {
