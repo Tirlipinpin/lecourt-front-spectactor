@@ -9,7 +9,9 @@ import styles from './index.module.scss';
 export interface IHoverableImageProps {
     alt: string
     childButton: ReactNode
-    goTo: () => void
+    containerClassName?: string
+    goTo?: () => void
+    imageClassName?: string
     src: string
 }
 
@@ -25,6 +27,8 @@ const Cover = posed.div({
 const HoverableImage: FunctionComponent<IHoverableImageProps> = ({
     alt,
     childButton,
+    containerClassName,
+    imageClassName,
     goTo,
     src,
 }) => {
@@ -37,13 +41,13 @@ const HoverableImage: FunctionComponent<IHoverableImageProps> = ({
 
     return (
         <div
-            className={styles.cardContainer}
+            className={`${styles.cardContainer} ${containerClassName}`}
             onMouseEnter={showCardHover}
             onMouseLeave={hideCardHover}
         >
             <img
                 alt={alt}
-                className={`${styles.poster} ${!imageLoaded ? styles.loading : ''}`}
+                className={`${styles.poster} ${imageClassName} ${!imageLoaded ? styles.loading : ''}`}
                 onLoad={setImageLoaded}
                 src={src}
             />

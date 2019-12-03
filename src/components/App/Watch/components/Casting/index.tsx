@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Button, Row, Col, Typography, Collapse } from 'antd';
+import { HoverableImage } from 'designSystem';
 
 import { ActorRelation, DirectorRelation, StaffRelation, Person } from '../../../interfaces';
 import styles from './index.module.scss';
@@ -27,11 +28,19 @@ export default class Casting extends PureComponent<CastingProps, {}> {
     renderPerson(key: number, person: { node: Person }, role: string) {
         return (
             <Col xl={4} md={8} sm={12} key={key} className={styles.item}>
-                <div className={styles.movieStaffCard} style={{ backgroundImage: `url(${mock_pictures[(Date.now() + key) % mock_pictures.length]})`}}>
-                    <div className={styles.overlay}>
-                        <Button className={styles.button} shape="round" icon="search" >Details</Button>
-                    </div>
-                </div>
+                <HoverableImage
+                    alt={person.node.lastName}
+                    childButton={
+                        <Button
+                            className={styles.button}
+                            shape="round"
+                            icon="search"
+                        >Details</Button>
+                    }
+                    containerClassName={styles.castingCoverContainer}
+                    imageClassName={styles.castingCover}
+                    src={mock_pictures[(Date.now() + key) % mock_pictures.length]}
+                />
                 <Text strong>{person.node.firstName} {person.node.lastName}</Text>
                 <Paragraph type="secondary">{role}</Paragraph>
             </Col>

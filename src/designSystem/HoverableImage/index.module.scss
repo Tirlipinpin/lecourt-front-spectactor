@@ -9,13 +9,15 @@
         width: 100%;
         background: rgba(41, 41, 41, .5);
         display: flex;
-        justify-content: center;
+        flex-flow: column nowrap;
         align-items: center;
+        justify-content: flex-end;
+        padding-bottom: 8px;
     }
 
     .poster {
         border-radius: 4px;
-        height: 400px;
+        max-height: 400px;
         width: 100%;
 
         &.loading {
