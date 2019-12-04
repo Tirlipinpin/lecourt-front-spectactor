@@ -17,7 +17,7 @@ function* fetchUserProfile(action: IFetchUserProfileAction): IterableIterator<Ob
         const res: unknown = yield axios.get(getUserUrl());
 
         if (!res)
-            throw new Error('Unable to fetch movies');
+            throw new Error('Unable to fetch your profile information');
 
         const { data } = res as AxiosResponse;
 
