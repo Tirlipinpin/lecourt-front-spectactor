@@ -3,6 +3,8 @@
 .container {
    display: flex; 
    flex-flow: row nowrap;
+   align-items: center;
+   justify-content: center;
    margin-left: auto;
    width: 50%;
    height: 200px;
@@ -19,7 +21,7 @@
 
    .displayName {
         flex: 3;
-        color: $lc-grey;
+        color: rgba($lc-black, .5);
         font-size: 1rem;
    }
 }
