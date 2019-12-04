@@ -1,7 +1,10 @@
-import {FETCH_NAVBAR_GENRES_SUCCEEDED, UPDATE_SEARCH_TERM} from './constants';
+import {
+    FETCH_NAVBAR_GENRES_SUCCEEDED,
+    UPDATE_SEARCH_TERM,
+} from './constants';
 import { Reducer, AnyAction } from 'redux';
 import { shuffle } from 'lodash';
-import { Genre } from '../../components/App/interfaces';
+import { Genre } from 'components/App/interfaces';
 
 export interface NavbarStore {
     searchTerm: string

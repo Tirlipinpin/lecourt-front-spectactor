@@ -2,23 +2,25 @@ import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 import { History } from 'history';
 
-import navbar from './navbar';
+import browseGenres from './browseGenres';
+import genres from './genres';
 import homepage from './homepage';
 import login from './login';
+import navbar from './navbar';
+import profile from './profile';
 import register from './register';
 import search from './search';
 import watch from './watch';
-import browseGenres from './browseGenres';
-import genres from './genres';
 
 export default (history: History) => combineReducers({
-    router: connectRouter(history),
-    navbar,
-    homepage,
-    login,
-    register,
-    search,
-    watch,
     browseGenres,
     genres,
+    homepage,
+    login,
+    navbar,
+    profile,
+    register,
+    router: connectRouter(history),
+    search,
+    watch,
 });

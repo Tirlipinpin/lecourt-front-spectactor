@@ -1,3 +1,4 @@
+import { Reducer, AnyAction } from 'redux';
 import {
     FETCH_TOKEN,
     FETCH_TOKEN_SUCCEEDED,
@@ -5,7 +6,6 @@ import {
     RESTORE_TOKEN,
     LOGOUT
 } from './constants';
-import { Reducer, AnyAction } from 'redux';
 
 export interface ILoginStore {
     loading: boolean

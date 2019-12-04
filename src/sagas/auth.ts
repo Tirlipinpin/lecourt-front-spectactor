@@ -39,7 +39,6 @@ function* fetchToken(action: IFetchTokenAction): IterableIterator<Object | void>
         if (!access_token)
             throw new Error('Network error');
 
-
         yield put({
             type: FETCH_TOKEN_SUCCEEDED,
         });

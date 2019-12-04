@@ -2,13 +2,11 @@ import { put, takeLatest } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
 import axios from 'axios';
 import { notification } from 'antd';
-
 import {
     FETCH_SEARCH_MOVIES_SUCCEEDED,
     FETCH_SEARCH_MOVIES_FAILED,
     FETCH_SEARCH_MOVIES,
-} from '../reducers/search/constants';
-
+} from 'reducers/search/constants';
 
 function* fetchSearchMovies(action: AnyAction): IterableIterator<Object | void> {
     try {

@@ -10,6 +10,7 @@ i18n
       en: {
         translations: {
             WELCOME_TO_LECOURT: 'Welcome to Lecourt!',
+            WELCOME_TO_PROFILE: 'Welcome Home',
             LOOK_AT_OUR_SHORTS: 'Have a look at our shorts, it\'s quick',
             HOMEPAGE_BUTTON: 'Homepage',
             SEARCH_BAR_PLACEHOLDER: 'Search for a short...',
@@ -36,6 +37,7 @@ i18n
       fr: {
         translations: {
             WELCOME_TO_LECOURT: 'Bienvenue sur Lecourt !',
+            WELCOME_TO_PROFILE: 'Bienvenue chez vous',
             LOOK_AT_OUR_SHORTS: 'Jetez un œil à nos courts, c\'est rapide',
             HOMEPAGE_BUTTON: 'Accueil',
             SEARCH_BAR_PLACEHOLDER: 'Recherchez...',

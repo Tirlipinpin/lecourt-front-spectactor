@@ -2,7 +2,6 @@ import { put, takeEvery } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
 import axios from 'axios';
 import { notification } from 'antd';
-
 import {
     FETCH_NAVBAR_GENRES,
     FETCH_NAVBAR_GENRES_FAILED,
@@ -18,7 +17,6 @@ import {
     FETCH_MOVIES_WITH_GENRES_FAILED,
     FETCH_MOVIES_WITH_GENRES_SUCCEEDED,
 } from '../reducers/genres/constants';
-
 
 function* fetchNavbarGenres(action: AnyAction): IterableIterator<Object | void> {
     try {

@@ -11,7 +11,6 @@ import axios from 'axios';
 import MediaQuery from 'react-responsive';
 import { Trans } from 'react-i18next';
 import Cookies from 'js-cookie';
-import { Loader } from 'designSystem';
 import axiosInterceptor from '../../services/axiosInterceptor';
 import { ILoginStore } from '../../reducers/login';
 import { getManagementUrl } from '../../services/requestUrl';
