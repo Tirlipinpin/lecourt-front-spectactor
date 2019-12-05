@@ -39,6 +39,7 @@ export default class Casting extends PureComponent<CastingProps, {}> {
                     }
                     containerClassName={styles.castingCoverContainer}
                     imageClassName={styles.castingCover}
+                    imageLoadingClassName={styles.castingLoadingImage}
                     src={mock_pictures[(Date.now() + key) % mock_pictures.length]}
                 />
                 <Text strong>{person.node.firstName} {person.node.lastName}</Text>

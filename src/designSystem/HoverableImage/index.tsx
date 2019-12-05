@@ -12,6 +12,7 @@ export interface IHoverableImageProps {
     containerClassName?: string
     goTo?: () => void
     imageClassName?: string
+    imageLoadingClassName?: string
     src: string
 }
 
@@ -28,8 +29,9 @@ const HoverableImage: FunctionComponent<IHoverableImageProps> = ({
     alt,
     coverContent,
     containerClassName,
-    imageClassName,
     goTo,
+    imageClassName,
+    imageLoadingClassName,
     src,
 }) => {
     const [ cardHovered, handleCardHovered ] = useState(false);
@@ -37,7 +39,7 @@ const HoverableImage: FunctionComponent<IHoverableImageProps> = ({
     const hideCardHover = () => handleCardHovered(false);
 
     const [ imageLoaded, handleImageLoaded ] = useState(false);
-    const setImageLoaded = () => handleImageLoaded(true);
+    const setImageLoaded = () => handleImageLoaded(false);
 
     return (
         <div
@@ -51,7 +53,7 @@ const HoverableImage: FunctionComponent<IHoverableImageProps> = ({
                 onLoad={setImageLoaded}
                 src={src}
             />
-            {!imageLoaded && <div className={styles.loading} />}
+            {!imageLoaded && <div className={`${styles.loading} ${imageLoadingClassName}`} />}
             {(
                 <Hover
                     className={styles.hover}
