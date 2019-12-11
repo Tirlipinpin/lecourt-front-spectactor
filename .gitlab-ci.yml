@@ -99,6 +99,7 @@ test_unit:
     entrypoint: [""]
   stage: test
   <<: [ *branch-test, *runner-docker ]
-  before_script: []
+  before_script:
+    - cd /app
   script:
     - npm run testci
