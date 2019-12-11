@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { History } from 'history';
 import posed, { PoseGroup } from 'react-pose';
-import { Movie } from '../../interfaces';
+import { Movie } from 'components/App/interfaces';
 import MoviePoster from './components/MoviePoster';
-import Loader from '../Loader';
+import { Loader } from 'designSystem';
 import styles from './index.module.scss';
 
 export interface MoviesGalleryProps {
@@ -16,12 +16,18 @@ const MoviePosterContainer = posed.div({
     enter: {
         x: 0,
         opacity: 1,
+        transition: ({ index }: { index: number }) => ({
+            delay: index * 100,
+            type: 'spring',
+            stiffness: 100,
+        }),
     },
     exit: {
-        x: 50,
+        x: 100,
         opacity: 0,
     },
-})
+    props: { index: 0 },
+});
 
 export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}> {
     goToWatch = (id: number) => {
@@ -34,7 +40,7 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
         const { loading, movies } = this.props;
 
         if (movies.length < 1 && loading)
-            return <Loader />
+            return <Loader size="3vw" />;
         else if (movies.length < 1)
             return (
                 <div className={styles.moviesGalleryContainer}>
@@ -48,10 +54,11 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
                     {
                         movies.map((movie: Movie, index) => (
                             <MoviePosterContainer
+                                className={styles.moviePosterContainer}
                                 initialPose='exit'
                                 pose='enter'
                                 key={index}
-                                className={styles.moviePosterContainer}
+                                index={index}
                             >
                                 <MoviePoster
                                     goToWatch={this.goToWatch}

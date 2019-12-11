@@ -2,7 +2,6 @@ import { put, takeEvery } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
 import axios from 'axios';
 import { notification } from 'antd';
-
 import {
     FETCH_MOVIES_SUCCEEDED,
     FETCH_LATEST_MOVIES_SUCCEEDED,
@@ -11,7 +10,6 @@ import {
     FETCH_LATEST_MOVIES_FAILED,
     FETCH_LATEST_MOVIES,
 } from '../reducers/homepage/constants';
-
 
 function* fetchMovies(action: AnyAction): IterableIterator<Object | void> {
     try {

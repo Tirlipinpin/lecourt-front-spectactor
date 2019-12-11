@@ -10,6 +10,7 @@ i18n
       en: {
         translations: {
             WELCOME_TO_LECOURT: 'Welcome to Lecourt!',
+            WELCOME_TO_PROFILE: 'Welcome Home',
             LOOK_AT_OUR_SHORTS: 'Have a look at our shorts, it\'s quick',
             HOMEPAGE_BUTTON: 'Homepage',
             SEARCH_BAR_PLACEHOLDER: 'Search for a short...',
@@ -21,7 +22,7 @@ i18n
             RESULT_QUALITY: 'Result quality',
             YOU_SEARCHED_FOR: 'You searched for',
             OUR_MOVIES_FOR_THIS_GENRE: 'Our shorts for this genre',
-            FOOTER: 'Lecourt ©2019 Created with love by the best developers ever',
+            FOOTER: 'Lecourt ©2019 Created with ❤ by the best developers ever',
             REGISTER: 'Register',
             LOGIN: 'Sign in',
             RESULT_RELEVANT: 'This result might be relevant for you',
@@ -30,11 +31,13 @@ i18n
             WE_HOPE_YOU_FIND_YOUR_PERFECT_MATCH: 'We hope you\'ll find your perfect match',
             AUTH_NO_ACCOUNT: `Don't have an account yet?`,
             AUTH_REGISTER: `Register!`,
+            WATCH_SHORT: 'Watch short',
         }
       },
       fr: {
         translations: {
             WELCOME_TO_LECOURT: 'Bienvenue sur Lecourt !',
+            WELCOME_TO_PROFILE: 'Bienvenue chez vous',
             LOOK_AT_OUR_SHORTS: 'Jetez un œil à nos courts, c\'est rapide',
             HOMEPAGE_BUTTON: 'Accueil',
             SEARCH_BAR_PLACEHOLDER: 'Recherchez...',
@@ -46,7 +49,7 @@ i18n
             RESULT_QUALITY: 'Qualité du résultat',
             YOU_SEARCHED_FOR: 'Vous avez recherché',
             OUR_MOVIES_FOR_THIS_GENRE: 'Nos courts pour cette catégorie',
-            FOOTER: 'Lecourt ©2019 Créé avec amour par les meilleurs développeurs',
+            FOOTER: 'Lecourt ©2019 Créé avec ❤ par les meilleurs développeurs',
             REGISTER: 'Inscription',
             LOGIN: 'Accéder à Lecourt',
             RESULT_RELEVANT: 'Ce résultat peut correspondre à ce que vous cherchez',
@@ -55,6 +58,7 @@ i18n
             WE_HOPE_YOU_FIND_YOUR_PERFECT_MATCH: 'Nous espérons que vous trouverez la catégorie parfaite pour vous',
             AUTH_NO_ACCOUNT: `Pas encore inscrit ?`,
             AUTH_REGISTER: `Inscrivez-vous !`,
+            WATCH_SHORT: 'Visionner',
         }
       }
     },

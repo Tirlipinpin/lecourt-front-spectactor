@@ -1,6 +1,6 @@
 import { Reducer, AnyAction } from 'redux';
 
-import { Movie } from '../../components/App/interfaces'
+import { Movie } from '../../components/App/interfaces';
 import { FETCH_SEARCH_MOVIES, FETCH_SEARCH_MOVIES_SUCCEEDED, FETCH_SEARCH_MOVIES_FAILED } from './constants';
 
 export interface SearchStore {
@@ -25,13 +25,13 @@ const searchReducer: Reducer<SearchStore, AnyAction> = (state: SearchStore = def
                 ...state,
                 loading: false,
                 movies: action.payload,
-            }
+            };
         case FETCH_SEARCH_MOVIES_FAILED:
             return {
                 ...state,
                 loading: false,
                 movies: [],
-            }
+            };
         default:
             return state;
     };

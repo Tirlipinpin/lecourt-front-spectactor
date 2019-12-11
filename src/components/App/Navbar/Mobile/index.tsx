@@ -8,7 +8,7 @@ import { Trans, WithTranslation, withTranslation } from 'react-i18next';
 import { fetchNavbarGenres } from '../actions';
 import {
     onChangeSearchTerm,
-    logout,
+    navbarLogout,
     redirectToGenre,
     onSearchTerm,
     getActiveKey
@@ -100,7 +100,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                                 </Item>
                             </ItemGroup>
                         </SubMenu>
-                        <Menu.Item className={styles.logoutButton} key="logout" onClick={logout}><Trans i18nKey="LOGOUT" /></Menu.Item>
+                        <Menu.Item className={styles.logoutButton} key="logout" onClick={navbarLogout}><Trans i18nKey="LOGOUT" /></Menu.Item>
                     </Menu>
                 </Drawer>
                 <Header

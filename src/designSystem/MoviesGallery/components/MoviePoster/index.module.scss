@@ -1,0 +1,49 @@
+@import 'styles/colors';
+
+.moviePosterCard {
+    display: flex;
+    flex-flow: column nowrap;
+
+    .watchButton {
+        cursor: pointer;
+        background: transparent;
+        border-radius: 30px;
+        transition: all ease-in-out 300ms;
+        border: 1px solid white;
+        color: white;
+        padding: 4px;
+        height: 10%;
+        width: 50%;
+        font-size: 1rem;
+
+        &:hover {
+            background: white;
+            color: black;
+        }
+    }
+
+    .footer {
+        display: flex;
+        flex-flow: column nowrap;
+        padding: 4px;
+
+        .title {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .genres {
+            font-size: .8rem;
+        }
+
+        .moviePosterQuality {
+            border-left: 4px solid darkgreen;
+            padding-left: 4px;
+
+            &.hide {
+                padding-left: none;
+                border: none;
+            }
+        }
+    }
+}

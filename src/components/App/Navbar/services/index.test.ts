@@ -4,7 +4,7 @@ import {
     onSearchTerm,
     redirectToGenre,
     getActiveKey,
-    logout,
+    navbarLogout,
 } from '.';
 
 jest.mock('../../../../store');
@@ -108,8 +108,8 @@ describe('navbar services', () => {
         });
     });
 
-    test('logout should dispath a LOGOUT action', () => {
-        logout();
+    test('navbarLogout should dispath a LOGOUT action', () => {
+        navbarLogout();
 
         expect(store.dispatch).toHaveBeenCalledWith({
             type: 'LOGOUT',

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Genre } from '../interfaces';
 import { FETCH_GENRES } from '../../../reducers/browseGenres/constants';
 import { RenderPageStructures } from '../services';
-import { Loader } from '../shared/Loader';
+import { Loader } from 'designSystem';
 import styles from './index.module.scss';
 import { GenreCard } from './components/GenreCard';
 
@@ -23,7 +23,7 @@ export default ({ history }: IBrowseGenresProps) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        dispatch({ type: FETCH_GENRES })
+        dispatch({ type: FETCH_GENRES });
     }, []);
 
     if (loading)
@@ -49,5 +49,5 @@ export default ({ history }: IBrowseGenresProps) => {
         Child={genresCards}
         pageContentClass={styles.browseGenresPageContent}
       />
-    )
+    );
 };

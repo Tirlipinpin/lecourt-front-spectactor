@@ -6,11 +6,17 @@ import {
     Icon,
 } from 'antd';
 import { Link } from 'react-router-dom';
-import { RouteComponentProps } from 'react-router'
+import { RouteComponentProps } from 'react-router';
 import { connect } from 'react-redux';
 import {Trans, WithTranslation, withTranslation} from 'react-i18next';
 
-import { getActiveKey, onChangeSearchTerm, redirectToGenre, onSearchTerm, logout } from './services';
+import {
+  getActiveKey,
+  navbarLogout,
+  onChangeSearchTerm,
+  onSearchTerm,
+  redirectToGenre,
+} from './services';
 import { fetchNavbarGenres } from './actions';
 import logo from '../../../assets/Logo.png';
 import { NavbarStore } from '../../../reducers/navbar';
@@ -66,7 +72,7 @@ export class Navbar extends Component<NavbarProps, {}> {
                     <Item
                         key="logout"
                         className={styles.logoutButton}
-                        onClick={logout}
+                        onClick={navbarLogout}
                     ><Trans i18nKey="LOGOUT" /></Item>
                     <SubMenu
                         title={

@@ -38,6 +38,6 @@ const browseGenresReducer: Reducer<IBrowseGenresStore | undefined, AnyAction> = 
         default:
             return state;
     }
-}
+};
 
 export default browseGenresReducer;

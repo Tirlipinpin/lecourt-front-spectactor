@@ -1,9 +1,24 @@
-.moviesCarousel {
-    overflow: hidden;
-    width: 100%;
-    margin: auto;
+@import 'styles/colors';
 
-    h2 {
-        margin-left: 16px;
+.pageContainer {
+    margin-top: 32px;
+
+    .pageHeader {
+        font-size: 1.5rem;
+        font-weight: 500;
+        width: 100%;
+        margin-bottom: 32px;
+        color: rgba($lc-black, .5);
+    }
+
+    .moviesCarousel {
+        overflow: hidden;
+        width: 100%;
+        margin: 0;
+
+        .sectionTitle {
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0, 0, 0, .1);
+        }
     }
 }

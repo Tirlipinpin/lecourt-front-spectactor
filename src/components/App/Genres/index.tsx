@@ -5,8 +5,8 @@ import { Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { fetchMoviesWithGenres } from './actions';
 import { RenderPageStructures } from '../services';
-import MoviesGallery from '../shared/MoviesGallery';
-import Loader from '../shared/Loader';
+import { MoviesGallery } from 'designSystem';
+import { Loader } from 'designSystem';
 
 export type IGenresPropsParams = {
     genreId: string

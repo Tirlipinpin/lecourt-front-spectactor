@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Card } from 'antd';
 
 import { Genre } from '../../../interfaces';
@@ -11,7 +11,7 @@ export interface IGenreCardProps {
     historyPush: (route: string) => void
 }
 
-export const GenreCard = ({ genre, historyPush }: IGenreCardProps) => {
+export const GenreCard: FunctionComponent<IGenreCardProps> = ({ genre, historyPush }) => {
     const redirectToGenre = () => {
         historyPush(`/app/genres/${genre.id}`);
     };
@@ -27,5 +27,5 @@ export const GenreCard = ({ genre, historyPush }: IGenreCardProps) => {
                 title={genre.name}
             />
         </Card>
-    )
+    );
 };

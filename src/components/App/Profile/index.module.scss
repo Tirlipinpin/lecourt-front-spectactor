@@ -1,0 +1,18 @@
+@import 'styles/colors';
+
+.pageContainer {
+    margin-top: 32px;
+
+    .pageHeader {
+        font-size: 1.5rem;
+        font-weight: 500;
+        width: 100%;
+        margin-bottom: 32px;
+        color: rgba($lc-black, .5);
+    }
+
+    .pageContent {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+}

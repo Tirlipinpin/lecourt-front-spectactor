@@ -1,5 +1,4 @@
 import login, { defaultState } from '.';
-import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED, LOGOUT } from './constants';
 
 describe('login reducer', () => {
     test('should return initial state', () => {
@@ -8,7 +7,7 @@ describe('login reducer', () => {
 
     test('should start loading when fetch is triggered', () => {
         const action = {
-            type: FETCH_TOKEN,
+            type: 'FETCH_TOKEN',
         };
 
         expect(login(defaultState, action)).toEqual({
@@ -19,23 +18,17 @@ describe('login reducer', () => {
 
     test('should stop loading when fetch is successful', () => {
         const action = {
-            type: FETCH_TOKEN_SUCCEEDED,
-            payload: {
-                token: 'poney',
-                rememberMe: false,
-            },
+            type: 'FETCH_TOKEN_SUCCEEDED',
         };
 
         expect(login(defaultState, action)).toEqual({
             loading: false,
-            token: 'poney',
-            rememberMe: false,
         });
     });
 
     test('should return an error state when fetch fails', () => {
         const action = {
-            type: FETCH_TOKEN_FAILED,
+            type: 'FETCH_TOKEN_FAILED',
             payload: 'error message',
         };
 
@@ -44,14 +37,26 @@ describe('login reducer', () => {
         });
     });
 
-    test('should logout when LOGOUT action is triggered', () => {
+    test('should set token to null when LOGOUT action is triggered', () => {
         const action = {
-            type: LOGOUT,
+            type: 'LOGOUT',
         };
 
         expect(login(defaultState, action)).toEqual({
             ...defaultState,
             token: null,
+        });
+    });
+
+    test('should set new token with RESTORE_TOKEN', () => {
+        const action = {
+            type: 'RESTORE_TOKEN',
+            payload: 'poney',
+        };
+
+        expect(login(defaultState, action)).toEqual({
+            ...defaultState,
+            token: 'poney',
         });
     });
 });

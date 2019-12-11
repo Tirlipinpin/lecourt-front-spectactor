@@ -4,7 +4,6 @@ import React, {
 import { connect } from 'react-redux';
 import { Form, Icon, Input, Button, Tooltip, Typography, Checkbox } from 'antd';
 import { Trans } from 'react-i18next';
-import { Link } from 'react-router-dom';
 
 import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import styles from '../index.module.scss';
@@ -129,8 +128,6 @@ export class Login extends Component<LoginProps, LoginState> {
                     >
                         <Trans i18nKey="LOGIN" />
                     </Button>
-
-                    <Trans i18nKey="AUTH_NO_ACCOUNT" /> <Link to="/authentication/register"><b><Trans i18nKey="AUTH_REGISTER" /></b></Link>
                 </Form>
             </Fragment>
         );

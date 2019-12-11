@@ -5,4 +5,4 @@ export const fetchMoviesWithGenres = (genreId: string) => ({
     payload: {
         genreId,
     },
-})
+});

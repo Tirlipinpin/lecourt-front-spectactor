@@ -1,76 +1,37 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Layout, Skeleton, Card, Avatar, Anchor } from 'antd';
-import MediaQuery from 'react-responsive';
+import React, { FunctionComponent, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { IProfileStore } from 'reducers/profile';
+import UserIdentity from './components/UserIdentity';
+import { fetchUserProfile } from './actions';
+import styles from './index.module.scss';
 
-import './index.css';
+export interface IProfileProps {}
 
-export class Profile extends Component<{}, {}> {
-    private cardStyle = {
-        marginTop: 86,
-        marginLeft: 36,
-        marginRight: 36,
-    };
+export const Profile: FunctionComponent<IProfileProps> = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchUserProfile());
+    }, []);
 
-    private cardBodyStyle = {
-        minHeight: 300,
-    };
+    const profile: IProfileStore = useSelector((state: any) => state.profile);
 
-    render() {
-        return (
-            <Layout className="page-container profile-page-container">
-                <Layout.Content className="profile-page-content">
-                    <div className="profile-page-header">
-                        <Avatar size={128} icon="user" className="user-profile-picture" />
-                        <h1>John Doe</h1>
-                    </div>
-                    <Layout>
-                        <MediaQuery minDeviceWidth={720}>
-                            <Layout.Sider className="anchor-menu" theme="light">
-                                <Anchor className="anchor" offsetTop={86} bounds={64}>
-                                    <h2 className="anchor-title">Go to</h2>
-                                    <Anchor.Link href="#profile-update" title="Profile update" />
-                                    <Anchor.Link href="#favorites" title="Favorites" />
-                                    <Anchor.Link href="#global-preferences" title="Global preferences" />
-                                    <Anchor.Link href="#privacy-settings" title="Privacy settings" />
-                                </Anchor>
-                            </Layout.Sider>
-                        </MediaQuery>
-                        <Layout.Content className="cards-parameters-container">
-                            <Card
-                                className="card-parameters"
-                                title="Profile update"
-                                style={this.cardStyle}
-                                bodyStyle={this.cardBodyStyle}
-                                id="profile-update"
-                            ><Skeleton active paragraph={{ rows: 8 }} /></Card>
-                            <Card
-                                className="card-parameters"
-                                title="Favorites"
-                                style={this.cardStyle}
-                                bodyStyle={this.cardBodyStyle}
-                                id="favorites"
-                            ><Skeleton active paragraph={{ rows: 3 }} /></Card>
-                            <Card
-                                className="card-parameters"
-                                title="Global preferences"
-                                style={this.cardStyle}
-                                bodyStyle={this.cardBodyStyle}
-                                id="global-preferences"
-                            ><Skeleton active paragraph={{ rows: 8 }} /></Card>
-                            <Card
-                                className="card-parameters"
-                                title="Privacy settings"
-                                style={this.cardStyle}
-                                bodyStyle={this.cardBodyStyle}
-                                id="privacy-settings"
-                            ><Skeleton active paragraph={{ rows: 5 }} /></Card>
-                        </Layout.Content>
-                    </Layout>
-                </Layout.Content>
-            </Layout>
-        );
-    }
-}
+    const { t } = useTranslation();
 
-export default connect()(Profile);
+    return (
+        <div className={styles.pageContainer}>
+            <div className={styles.pageHeader}>
+                {t('WELCOME_TO_PROFILE')}
+            </div>
+            <div className={styles.pageContent}>
+                <UserIdentity
+                    avatarUrl={profile.avatarUrl}
+                    displayName={profile.displayName}
+                    loading={profile.loading}
+                />
+            </div>
+        </div>
+    );
+};
+
+export default Profile;

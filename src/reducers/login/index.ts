@@ -1,18 +1,22 @@
-import { FETCH_TOKEN, FETCH_TOKEN_SUCCEEDED, FETCH_TOKEN_FAILED, LOGOUT } from './constants';
 import { Reducer, AnyAction } from 'redux';
+import {
+    FETCH_TOKEN,
+    FETCH_TOKEN_SUCCEEDED,
+    FETCH_TOKEN_FAILED,
+    RESTORE_TOKEN,
+    LOGOUT
+} from './constants';
 
-export interface LoginStore {
+export interface ILoginStore {
     loading: boolean
     token?: string | null
-    rememberMe: boolean
 };
 
-export const defaultState: LoginStore = {
+export const defaultState: ILoginStore = {
     loading: false,
-    rememberMe: false,
 };
 
-const loginReducer: Reducer<LoginStore, AnyAction> = (state: LoginStore = defaultState, action: AnyAction) => {
+const loginReducer: Reducer<ILoginStore, AnyAction> = (state: ILoginStore = defaultState, action: AnyAction): ILoginStore => {
     switch(action.type) {
         case FETCH_TOKEN:
             return {
@@ -23,22 +27,25 @@ const loginReducer: Reducer<LoginStore, AnyAction> = (state: LoginStore = defaul
             return {
                 ...state,
                 loading: false,
-                token: action.payload.token,
-                rememberMe: action.payload.rememberMe,
-            }
+            };
         case FETCH_TOKEN_FAILED:
             return {
                 ...state,
                 loading: false,
-            }
+            };
+        case RESTORE_TOKEN:
+            return {
+                ...state,
+                token: action.payload,
+            };
         case LOGOUT:
             return {
                 ...state,
                 token: null,
-            }
+            };
         default:
             return state;
     };
-}
+};
 
 export default loginReducer;

@@ -2,7 +2,7 @@ import { Reducer } from "react";
 import { AnyAction } from "redux";
 
 import { Movie } from "../../components/App/interfaces";
-import { FETCH_MOVIES_SUCCEEDED, FETCH_LATEST_MOVIES_SUCCEEDED, FETCH_MOVIES, FETCH_LATEST_MOVIES } from "./constants";
+import { FETCH_MOVIES_SUCCEEDED, FETCH_LATEST_MOVIES_SUCCEEDED, FETCH_MOVIES, FETCH_LATEST_MOVIES } from './constants';
 
 export interface HomepageStore {
     movies: Movie[]
@@ -45,6 +45,6 @@ const homepageReducer: Reducer<HomepageStore | undefined, AnyAction> = (state: H
         default:
             return state;
     }
-}
+};
 
 export default homepageReducer;
