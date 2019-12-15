@@ -5,6 +5,8 @@ import styles from './index.module.scss';
 export interface IUserIdentityProps {
     avatarUrl?: string
     displayName?: string
+    firstName: string
+    lastName: string
     loading: boolean
 }
 
@@ -22,6 +24,8 @@ const Container = posed.div({
 export const UserIdentity: FunctionComponent<IUserIdentityProps> = ({
     avatarUrl,
     displayName,
+    firstName,
+    lastName,
     loading,
 }) => {
     if (loading) {
@@ -41,7 +45,8 @@ export const UserIdentity: FunctionComponent<IUserIdentityProps> = ({
                 src={avatarUrl}
             />
             <div className={styles.displayName}>
-                {displayName}
+                {firstName} {lastName}
+                {displayName && ` (${displayName})`}
             </div>
         </Container>
     );

@@ -27,6 +27,8 @@ export const Profile: FunctionComponent<IProfileProps> = () => {
                 <UserIdentity
                     avatarUrl={profile.avatarUrl}
                     displayName={profile.displayName}
+                    firstName={profile.firstName}
+                    lastName={profile.lastName}
                     loading={profile.loading}
                 />
             </div>
