@@ -5,8 +5,8 @@ import styles from './index.module.scss';
 export interface IUserIdentityProps {
     avatarUrl?: string
     displayName?: string
-    firstName: string
-    lastName: string
+    firstName?: string
+    lastName?: string
     loading: boolean
 }
 
