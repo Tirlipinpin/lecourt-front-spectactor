@@ -32,7 +32,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:staging": "env-cmd -f .env.staging react-scripts start",
-    "build": "react-scripts build",
+    "build": "env-cmd -f .env.staging react-scripts build",
     "test": "react-scripts test",
     "testci": "CI=true react-scripts test --all --ci",
     "eject": "react-scripts eject"
