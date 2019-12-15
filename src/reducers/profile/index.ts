@@ -26,10 +26,10 @@ const loginReducer: Reducer<IProfileStore, AnyAction> = (state: IProfileStore = 
         case FETCH_USER_PROFILE_SUCCEEDED:
             return {
                 loading: false,
-                firstName: action.payload.first_name,
-                lastName: action.payload.last_name,
-                displayName: action.payload.display_name,
-                avatarUrl: action.payload.avatar,
+                firstName: action.payload.profile.first_name,
+                lastName: action.payload.profile.last_name,
+                displayName: action.payload.profile.display_name,
+                avatarUrl: action.payload.profile.avatar,
             };
         case FETCH_USER_PROFILE_FAILED:
             return {
