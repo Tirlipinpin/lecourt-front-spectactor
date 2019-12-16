@@ -45,8 +45,7 @@ export const UserIdentity: FunctionComponent<IUserIdentityProps> = ({
                 src={avatarUrl}
             />
             <div className={styles.displayName}>
-                {firstName} {lastName}
-                {displayName && ` (${displayName})`}
+                {displayName || `${firstName} ${lastName}`}
             </div>
         </Container>
     );
