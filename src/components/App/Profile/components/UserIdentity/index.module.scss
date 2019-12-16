@@ -23,6 +23,8 @@
         flex: 3;
         color: rgba($lc-black, .5);
         font-size: 1rem;
+        display: flex;
+        flex-flow: row nowrap;
    }
 }
 
