@@ -120,11 +120,11 @@ export class Login extends Component<LoginProps, LoginState> {
                         onChange={this.handleRememberMe}
                     >Remember me</Checkbox>
                     <Button
-                        loading={loading}
-                        htmlType="submit"
-                        type="primary"
-                        className={styles.authFormButton}
                         block={true}
+                        className={`${styles.authFormButton} ${loading ? styles.authFormButtonLoading : ''}`}
+                        htmlType="submit"
+                        loading={loading}
+                        type="primary"
                     >
                         <Trans i18nKey="LOGIN" />
                     </Button>

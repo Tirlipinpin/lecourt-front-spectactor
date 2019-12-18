@@ -163,11 +163,11 @@ export class Register extends Component<RegisterProps, RegisterState> {
                         title="Les inscriptions ne sont pas ouvertes !"
                     >
                         <Button
+                            block
                             className={styles.authFormButton}
+                            disabled={true}
                             htmlType="submit"
                             type="primary"
-                            disabled={true}
-                            block
                         >
                             <Trans i18nKey="REGISTER" />
                         </Button>
