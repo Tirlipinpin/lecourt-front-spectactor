@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import posed from 'react-pose';
 import styles from './index.module.scss';
+import defaultAvatar from './assets/avatar.jpg';
 
 export interface IUserIdentityProps {
     avatarUrl?: string
@@ -42,7 +43,7 @@ export const UserIdentity: FunctionComponent<IUserIdentityProps> = ({
             <img
                 alt={`${displayName} avatar`}
                 className={styles.avatar}
-                src={avatarUrl}
+                src={avatarUrl || defaultAvatar}
             />
             <div className={styles.displayName}>
                 {displayName || `${firstName} ${lastName}`}
