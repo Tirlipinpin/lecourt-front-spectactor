@@ -5,7 +5,6 @@
    flex-flow: row nowrap;
    align-items: center;
    justify-content: center;
-   margin-left: auto;
    width: 50%;
    height: 200px;
 
@@ -25,17 +24,17 @@
         font-size: 1rem;
         display: flex;
         flex-flow: row nowrap;
+        padding-left: 10px;
    }
 }
 
 .loadingContainer {
    display: flex; 
    flex-flow: row nowrap;
-   margin-left: auto;
    justify-content: center;
    align-items: center;
    height: 200px;
-   width: 50%;
+   width: 30%;
 
    @keyframes pulse {
         0% {
