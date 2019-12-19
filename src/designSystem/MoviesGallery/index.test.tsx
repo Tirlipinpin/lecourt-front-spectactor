@@ -24,8 +24,8 @@ describe('The MoviesGallery component', () => {
         expect(wrapper.length).toBe(1);
     });
 
-    test('should render a loading icon when there is no movies', () => {
-        expect(wrapper.find('Loader').exists()).toBe(true);
+    test('should render a loading gallery when there is no movies', () => {
+        expect(wrapper.find('MoviePosterLoading')).toHaveLength(5);
     });
 
     test('should render the PoseGroupe containing the carousel when there is movies', () => {

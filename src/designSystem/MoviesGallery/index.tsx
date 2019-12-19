@@ -3,7 +3,7 @@ import { History } from 'history';
 import posed, { PoseGroup } from 'react-pose';
 import { Movie } from 'components/App/interfaces';
 import MoviePoster from './components/MoviePoster';
-import { Loader } from 'designSystem';
+import MoviePosterLoading from './components/MoviePosterLoading';
 import styles from './index.module.scss';
 
 export interface MoviesGalleryProps {
@@ -40,7 +40,11 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
         const { loading, movies } = this.props;
 
         if (movies.length < 1 && loading)
-            return <Loader size="3vw" />;
+            return (
+                <div className={styles.movieLoadingGalleryContainer}>
+                    {[1, 2, 3, 4, 5].map(() => <MoviePosterLoading />)}
+                </div>
+            );
         else if (movies.length < 1)
             return (
                 <div className={styles.moviesGalleryContainer}>
