@@ -42,20 +42,24 @@ export class Search extends Component<SearchProps, {}> {
 
     render() {
         const { history, search } = this.props;
+        const { loading, movies } = search;
 
-        if (search.loading) {
+        if (loading) {
             return <RenderPageStructures
                 Header={(
                     <Loader />
                 )}
                 title={`${this.props.t('YOU_SEARCHED_FOR')} ${this.props.match.params.term}`}
+                Child={(
+                  <MoviesGallery movies={[]} history={history} loading={loading} />
+                )}
                 pageContainerClass="search-page-container"
                 pageHeaderClass="search-page-header"
                 pageContentClass={styles.searchPageContent}
             />;
         }
 
-        if (!search.loading && search.movies.length < 1) {
+        if (!loading && movies.length < 1) {
             return <RenderPageStructures
                 Header={(
                     <React.Fragment>
@@ -75,12 +79,12 @@ export class Search extends Component<SearchProps, {}> {
             Header={(
                 <React.Fragment>
                     <Typography.Paragraph>
-                        Results: {search.movies.length}
+                        Results: {movies.length}
                     </Typography.Paragraph>
                 </React.Fragment>
             )}
             Child={(
-                <MoviesGallery movies={search.movies} history={history} />
+                <MoviesGallery movies={movies} history={history} />
             )}
             title={`${this.props.t('YOU_SEARCHED_FOR')} ${this.props.match.params.term}`}
             pageContainerClass="search-page-container"

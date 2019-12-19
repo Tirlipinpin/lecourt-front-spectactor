@@ -52,7 +52,7 @@ export class Watch extends Component<WatchProps, WatchState> {
 
         const recommandationsRes = await axios.get('movies', {
             params: {
-                limit: 20,
+                limit: 5,
             },
         });
 
@@ -175,7 +175,7 @@ export class Watch extends Component<WatchProps, WatchState> {
 
                 <Layout className={styles.recommendations}>
                     <Title level={4}><Trans i18nKey="YOUR_RECOMMENDATIONS" /></Title>
-                    <MoviesGallery movies={recommandations} history={history} />
+                    <MoviesGallery movies={recommandations} history={history} loading={loading} />
                 </Layout>
 
             </Layout>
