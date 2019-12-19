@@ -1,8 +1,8 @@
-import React, { FunctionComponent, memo, useEffect } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { IProfileStore } from 'reducers/profile';
+import { useDispatch } from 'react-redux';
 import UserIdentity from './components/UserIdentity';
+import UserForm from './components/UserForm';
 import { fetchUserProfile } from './actions';
 import styles from './index.module.scss';
 
@@ -12,9 +12,7 @@ export const Profile: FunctionComponent<IProfileProps> = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchUserProfile());
-    }, []);
-
-    const profile: IProfileStore = useSelector((state: any) => state.profile);
+    }, [dispatch]);
 
     const { t } = useTranslation();
 
@@ -24,16 +22,11 @@ export const Profile: FunctionComponent<IProfileProps> = () => {
                 {t('WELCOME_TO_PROFILE')}
             </div>
             <div className={styles.pageContent}>
-                <UserIdentity
-                    avatarUrl={profile.avatarUrl}
-                    displayName={profile.displayName}
-                    firstName={profile.firstName}
-                    lastName={profile.lastName}
-                    loading={profile.loading}
-                />
+                <UserIdentity />
+                <UserForm />
             </div>
         </div>
     );
 };
 
-export default memo(Profile);
+export default Profile;

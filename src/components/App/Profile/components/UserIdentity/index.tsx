@@ -1,15 +1,11 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, memo } from 'react';
+import { useSelector } from 'react-redux';
 import posed from 'react-pose';
-import styles from './index.module.scss';
+import { IProfileStore } from 'reducers/profile';
 import defaultAvatar from './assets/avatar.jpg';
+import styles from './index.module.scss';
 
-export interface IUserIdentityProps {
-    avatarUrl?: string
-    displayName?: string
-    firstName?: string
-    lastName?: string
-    loading: boolean
-}
+export interface IUserIdentityProps {}
 
 const Container = posed.div({
     enter: {
@@ -22,13 +18,21 @@ const Container = posed.div({
     },
 });
 
-export const UserIdentity: FunctionComponent<IUserIdentityProps> = ({
-    avatarUrl,
-    displayName,
-    firstName,
-    lastName,
-    loading,
-}) => {
+export const UserIdentity: FunctionComponent<IUserIdentityProps> = () => {
+    const {
+      avatarUrl,
+      displayName,
+      firstName,
+      lastName,
+      loading,
+    }: IProfileStore = useSelector((state: any) => ({
+      avatarUrl: state.profile.avatarUrl,
+      displayName: state.profile.displayName,
+      firstName: state.profile.firstName,
+      lastName: state.profile.lastName,
+      loading: state.profile.loading,
+    }));
+
     if (loading) {
         return (
             <Container className={styles.loadingContainer}>
@@ -52,4 +56,4 @@ export const UserIdentity: FunctionComponent<IUserIdentityProps> = ({
     );
 };
 
-export default UserIdentity;
+export default memo(UserIdentity);

@@ -4,7 +4,7 @@ import UserIdentity, { IUserIdentityProps } from '.';
 import defaultAvatar from './assets/avatar.jpg';
 import styles from './index.module.scss';
 
-describe('UserIdentity', () => {
+describe.skip('UserIdentity', () => {
     let wrapper: ShallowWrapper<IUserIdentityProps>;
 
     beforeEach(() => {

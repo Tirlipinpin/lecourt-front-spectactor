@@ -1,0 +1,51 @@
+.loadingFormContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+
+    @keyframes pulse {
+        0% {
+            background-color: rgba(165, 165, 165, 0.1);
+        }
+        50% {
+            background-color: rgba(165, 165, 165, 0.3);
+        }
+        100% {
+            background-color: rgba(165, 165, 165, 0.1);
+        }
+    }
+
+    .randomField {
+        width: 100%;
+        margin: 4px;
+        height: 2rem;
+        animation: pulse 1s infinite ease-in-out;
+        border-radius: 4px;
+    }
+
+    .fullNameContainer {
+        width: 100%;
+        margin: 4px;
+        height: 2rem;
+        border-radius: 4px;
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+
+        .nameField {
+            height: 2rem;
+            width: 45%;
+            animation: pulse 1s infinite ease-in-out;
+            border-radius: 4px;
+        }
+    }
+
+    .password {
+        width: 80%;
+        margin: 4px;
+        height: 2rem;
+        animation: pulse 1s infinite ease-in-out;
+        border-radius: 4px;
+    }
+}

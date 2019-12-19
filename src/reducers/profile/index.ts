@@ -7,6 +7,7 @@ import {
 
 export interface IProfileStore {
     loading: boolean
+    email?: string
     firstName?: string
     lastName?: string
     displayName?: string
@@ -26,6 +27,7 @@ const loginReducer: Reducer<IProfileStore, AnyAction> = (state: IProfileStore = 
         case FETCH_USER_PROFILE_SUCCEEDED:
             return {
                 loading: false,
+                email: action.payload.email,
                 firstName: action.payload.profile.first_name,
                 lastName: action.payload.profile.last_name,
                 displayName: action.payload.profile.display_name,
