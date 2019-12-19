@@ -1,3 +1,5 @@
+@import 'styles/colors';
+
 .ant-card:hover {
     background: #f0f2f5;
 }
@@ -54,13 +56,18 @@
 }
 
 /*    MobileNavbar    */
-.ant-drawer-header {
-    .ant-drawer-close,
-    .ant-drawer-title {
-        color: white;
+.ant-drawer {
+    .ant-drawer-header {
+        .ant-drawer-close,
+        .ant-drawer-title {
+            color: white;
+        }
+    }
+
+    .ant-drawer-content {
+        background-color: $lc-black;
     }
 }
-
 .ant-menu-horizontal {
     border-bottom: none !important;
 }
