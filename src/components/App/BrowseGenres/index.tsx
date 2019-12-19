@@ -1,5 +1,5 @@
+import React, { FunctionComponent, memo, useEffect } from 'react';
 import { Typography } from 'antd';
-import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { useTranslation } from 'react-i18next';
@@ -13,7 +13,7 @@ import { GenreCard } from './components/GenreCard';
 
 export interface IBrowseGenresProps extends RouteComponentProps {}
 
-export default ({ history }: IBrowseGenresProps) => {
+export const BrowseGenres: FunctionComponent<IBrowseGenresProps> = ({ history }) => {
     const { genres, loading } = useSelector((state: any) => ({
         genres: state.browseGenres.genres,
         loading: state.browseGenres.loading,
@@ -51,3 +51,5 @@ export default ({ history }: IBrowseGenresProps) => {
       />
     );
 };
+
+export default memo(BrowseGenres);

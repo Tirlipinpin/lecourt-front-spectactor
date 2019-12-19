@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { IProfileStore } from 'reducers/profile';
@@ -36,4 +36,4 @@ export const Profile: FunctionComponent<IProfileProps> = () => {
     );
 };
 
-export default Profile;
+export default memo(Profile);

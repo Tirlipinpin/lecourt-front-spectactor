@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FunctionComponent, memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Layout, Typography } from 'antd';
 import { RouteComponentProps } from 'react-router';
@@ -9,7 +9,7 @@ import styles from './index.module.scss';
 
 export interface IHomepageProps extends RouteComponentProps {}
 
-export const Homepage = ({ history }: IHomepageProps) => {
+export const Homepage: FunctionComponent<IHomepageProps> = ({ history }) => {
     const dispatch = useDispatch();
     const homepage = useSelector((state: any) => state.homepage);
     const { t } = useTranslation();
@@ -47,4 +47,4 @@ export const Homepage = ({ history }: IHomepageProps) => {
         );
     };
     
-    export default Homepage;
+    export default memo(Homepage);

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FunctionComponent, memo, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography } from 'antd';
@@ -14,7 +14,7 @@ export type IGenresPropsParams = {
 
 export interface IGenresProps extends RouteComponentProps<IGenresPropsParams> {}
 
-export const Genres = ({ match, history }: IGenresProps) => {
+export const Genres: FunctionComponent<IGenresProps> = ({ match, history }) => {
     const { params: { genreId } } = match;
     const dispatch = useDispatch();
     const { movies, loading } = useSelector((state: any) => ({
@@ -74,4 +74,4 @@ export const Genres = ({ match, history }: IGenresProps) => {
 
 };
 
-export default Genres;
+export default memo(Genres);
