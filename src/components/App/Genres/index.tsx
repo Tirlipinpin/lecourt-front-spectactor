@@ -25,7 +25,7 @@ export const Genres: FunctionComponent<IGenresProps> = ({ match, history }) => {
 
     useEffect(() => {
         dispatch(fetchMoviesWithGenres(genreId));
-    }, []);
+    }, [dispatch]);
 
     if (loading) {
         return <RenderPageStructures

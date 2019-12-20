@@ -24,7 +24,7 @@ export const BrowseGenres: FunctionComponent<IBrowseGenresProps> = ({ history })
 
     useEffect(() => {
         dispatch({ type: FETCH_GENRES });
-    }, []);
+    }, [dispatch]);
 
     if (loading)
         return <Loader />;
