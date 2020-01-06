@@ -46,6 +46,8 @@ export class App extends Component<AppProps, {}>{
             });
             window.location.href = process.env.REACT_APP_FRONT_URL!;
         });
+        
+        if (!token) return;
 
         axios.defaults.baseURL = getManagementUrl();
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
