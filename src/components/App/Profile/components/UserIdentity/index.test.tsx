@@ -8,7 +8,7 @@ describe.skip('UserIdentity', () => {
     let wrapper: ShallowWrapper<IUserIdentityProps>;
 
     beforeEach(() => {
-        wrapper = shallow(<UserIdentity loading={false} />)
+        wrapper = shallow(<UserIdentity loading={false} />);
     });
 
     test('should render correctly', () => {

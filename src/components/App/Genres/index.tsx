@@ -17,15 +17,13 @@ export interface IGenresProps extends RouteComponentProps<IGenresPropsParams> {}
 export const Genres: FunctionComponent<IGenresProps> = ({ match, history }) => {
     const { params: { genreId } } = match;
     const dispatch = useDispatch();
-    const { movies, loading } = useSelector((state: any) => ({
-        movies: state.genres.movies,
-        loading: state.genres.loading,
-    }));
+    const movies = useSelector((state: any) => state.genres.movies);
+    const loading = useSelector((state: any) => state.genres.loading);
     const { t } = useTranslation();
 
     useEffect(() => {
         dispatch(fetchMoviesWithGenres(genreId));
-    }, [dispatch]);
+    }, [dispatch, genreId]);
 
     if (loading) {
         return <RenderPageStructures
