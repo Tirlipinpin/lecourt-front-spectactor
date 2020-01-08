@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { History } from 'history';
-import posed, { PoseGroup } from 'react-pose';
 import { Movie } from 'components/App/interfaces';
 import MoviePoster from './components/MoviePoster';
 import MoviePosterLoading from './components/MoviePosterLoading';
@@ -11,23 +10,6 @@ export interface MoviesGalleryProps {
     loading?: boolean
     movies: Movie[]
 };
-
-const MoviePosterContainer = posed.div({
-    enter: {
-        x: 0,
-        opacity: 1,
-        transition: ({ index }: { index: number }) => ({
-            delay: index * 100,
-            type: 'spring',
-            stiffness: 100,
-        }),
-    },
-    exit: {
-        x: 100,
-        opacity: 0,
-    },
-    props: { index: 0 },
-});
 
 export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}> {
     goToWatch = (id: number) => {
@@ -42,7 +24,7 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
         if (movies.length < 1 && loading)
             return (
                 <div className={styles.movieLoadingGalleryContainer}>
-                    {[1, 2, 3, 4, 5].map((value: number) => <MoviePosterLoading key={value} />)}
+                    {[1, 2, 3, 4, 5].map((value: number) => <MoviePosterLoading />)}
                 </div>
             );
         else if (movies.length < 1)
@@ -54,24 +36,19 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
 
         return (
             <div className={styles.moviesGalleryContainer}>
-                <PoseGroup>
-                    {
-                        movies.map((movie: Movie, index) => (
-                            <MoviePosterContainer
-                                className={styles.moviePosterContainer}
-                                initialPose='exit'
-                                pose='enter'
-                                key={index}
-                                index={index}
-                            >
-                                <MoviePoster
-                                    goToWatch={this.goToWatch}
-                                    movie={movie}
-                                />
-                            </MoviePosterContainer>
-                        ))
-                    }
-                </PoseGroup>
+                {
+                    movies.map((movie: Movie) => (
+                        <div
+                            className={styles.moviePosterContainer}
+                            key={movie.id}
+                        >
+                            <MoviePoster
+                                goToWatch={this.goToWatch}
+                                movie={movie}
+                            />
+                        </div>
+                    ))
+                }
             </div>
         );
     }

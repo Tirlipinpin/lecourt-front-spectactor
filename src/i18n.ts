@@ -32,6 +32,9 @@ i18n
             AUTH_NO_ACCOUNT: `Don't have an account yet?`,
             AUTH_REGISTER: `Register!`,
             WATCH_SHORT: 'Watch short',
+            EMAIL_ADDRESS: 'Email address',
+            FIRST_NAME: 'First name',
+            LAST_NAME: 'Last name',
         }
       },
       fr: {
@@ -59,6 +62,9 @@ i18n
             AUTH_NO_ACCOUNT: `Pas encore inscrit ?`,
             AUTH_REGISTER: `Inscrivez-vous !`,
             WATCH_SHORT: 'Visionner',
+            EMAIL_ADDRESS: 'Addresse mail',
+            FIRST_NAME: 'Prénom',
+            LAST_NAME: 'Nom de famille',
         }
       }
     },
