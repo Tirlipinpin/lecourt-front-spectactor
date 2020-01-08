@@ -35,6 +35,8 @@ i18n
             EMAIL_ADDRESS: 'Email address',
             FIRST_NAME: 'First name',
             LAST_NAME: 'Last name',
+            DISPLAY_NAME: 'Display name',
+            SUBMIT: 'submit',
         }
       },
       fr: {
@@ -65,6 +67,8 @@ i18n
             EMAIL_ADDRESS: 'Addresse mail',
             FIRST_NAME: 'Prénom',
             LAST_NAME: 'Nom de famille',
+            DISPLAY_NAME: 'Pseudo',
+            SUBMIT: 'envoyer',
         }
       }
     },

@@ -11,5 +11,5 @@ describe('UserFormLoading', () => {
 
     test('should render correctly', () => {
         expect(wrapper).toHaveLength(1);
-    })
+    });
 });

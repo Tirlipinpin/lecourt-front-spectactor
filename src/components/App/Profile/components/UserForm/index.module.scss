@@ -3,4 +3,18 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+
+    .fullNameContainer {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+
+        .nameField {
+            width: 48%;
+        }
+    }
+
+    .submitButton {
+        margin-left: auto;
+    }
 }

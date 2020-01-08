@@ -17,7 +17,6 @@
 
     .randomField {
         width: 100%;
-        margin: 4px;
         height: 2rem;
         animation: pulse 1s infinite ease-in-out;
         border-radius: 4px;
@@ -25,27 +24,43 @@
 
     .fullNameContainer {
         width: 100%;
-        margin: 4px;
-        height: 2rem;
-        border-radius: 4px;
 
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
 
-        .nameField {
-            height: 2rem;
-            width: 45%;
-            animation: pulse 1s infinite ease-in-out;
-            border-radius: 4px;
+        .fieldContainer {
+            display: flex;
+            flex-flow: column nowrap;
+            width: 48%;
+
+            .nameField {
+              height: 2rem;
+              animation: pulse 1s infinite ease-in-out;
+              border-radius: 4px;
+            }
         }
     }
 
-    .password {
-        width: 80%;
-        margin: 4px;
-        height: 2rem;
+    .fieldContainer {
+      display: flex;
+      flex-flow: column nowrap;
+      margin: 18px;
+
+      .fieldLabel {
+        width: 30%;
+        margin-bottom: 8px;
+        height: 1.3rem;
         animation: pulse 1s infinite ease-in-out;
         border-radius: 4px;
+      }
+    }
+
+    .submitButton {
+      margin: 24px 16px 0 auto;
+      width: 10%;
+      height: 2rem;
+      animation: pulse 1s infinite ease-in-out;
+      border-radius: 4px;
     }
 }
