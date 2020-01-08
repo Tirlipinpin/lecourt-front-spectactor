@@ -3,6 +3,7 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { History } from 'history';
 import { MoviesGallery } from 'designSystem';
 import { Movie } from 'components/App/interfaces';
+import styles from './index.module.scss';
 
 describe('The MoviesGallery component', () => {
     let wrapper: ShallowWrapper;
@@ -28,7 +29,7 @@ describe('The MoviesGallery component', () => {
         expect(wrapper.find('MoviePosterLoading')).toHaveLength(5);
     });
 
-    test('should render the PoseGroupe containing the carousel when there is movies', () => {
+    test('should render the movies fallery containing the carousel when there is movies', () => {
         wrapper.setProps({
             movies: [{
                 id: 42,
@@ -36,6 +37,6 @@ describe('The MoviesGallery component', () => {
             }],
         });
 
-        expect(wrapper.find('PoseGroup').length).toBe(1);
+        expect(wrapper.find(`.${styles.moviesGalleryContainer}`).length).toBe(1);
     });
 });
