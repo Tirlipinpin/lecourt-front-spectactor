@@ -1,4 +1,4 @@
-import React, { FunctionComponent, memo, useState } from 'react';
+import React, { FunctionComponent, memo, useState, FormEvent } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Input } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -25,17 +25,21 @@ export const UserForm: FunctionComponent<IUserFormProps> = () => {
         firstName: state.profile.firstName,
         lastName: state.profile.lastName,
     }), shallowEqual);
-
+    
     const [form, updateForm] = useState({
-        email,
-        displayName,
-        firstName,
-        lastName,
+      email,
+      displayName,
+      firstName,
+      lastName,
     });
+
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
-    const onSubmit = () => dispatch(updateUserProfile(form));
+    const onSubmit = (e: FormEvent) => {
+      e.preventDefault();
+      dispatch(updateUserProfile(form));
+    }
 
     const updateField = (event: any) => {
         const { target } = event;
