@@ -1,4 +1,4 @@
-import React, { FunctionComponent, memo, useState, FormEvent } from 'react';
+import React, { FunctionComponent, memo, useState, FormEvent, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Input } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -19,19 +19,28 @@ export const UserForm: FunctionComponent<IUserFormProps> = () => {
         firstName,
         lastName,
     }: IProfileStore = useSelector((state: any) => ({
-        displayName: state.profile.displayName,
-        email: state.profile.email,
-        loading: state.profile.loading,
-        firstName: state.profile.firstName,
-        lastName: state.profile.lastName,
+          displayName: state.profile.displayName,
+          email: state.profile.email,
+          loading: state.profile.loading,
+          firstName: state.profile.firstName,
+          lastName: state.profile.lastName,
     }), shallowEqual);
     
     const [form, updateForm] = useState({
-      email,
-      displayName,
-      firstName,
-      lastName,
+        displayName,
+        email,
+        firstName,
+        lastName,
     });
+
+    useEffect(() => {
+        updateForm({
+          displayName,
+          email,
+          firstName,
+          lastName,
+        });
+    }, [displayName, email, firstName, lastName]);
 
     const { t } = useTranslation();
     const dispatch = useDispatch();
@@ -39,7 +48,7 @@ export const UserForm: FunctionComponent<IUserFormProps> = () => {
     const onSubmit = (e: FormEvent) => {
       e.preventDefault();
       dispatch(updateUserProfile(form));
-    }
+    };
 
     const updateField = (event: any) => {
         const { target } = event;
@@ -68,13 +77,13 @@ export const UserForm: FunctionComponent<IUserFormProps> = () => {
                     className={styles.nameField}
                     label={t('FIRST_NAME')}
                 >
-                    <Input onChange={updateField} form-field='firstName' />
+                    <Input onChange={updateField} value={form.firstName} form-field='firstName' />
                 </Item>
                 <Item
                     className={styles.nameField}
                     label={t('LAST_NAME')}
                 >
-                    <Input onChange={updateField} form-field='lastName' />
+                    <Input onChange={updateField} value={form.lastName} form-field='lastName' />
                 </Item>
           </div>
           <Button className={styles.submitButton} htmlType="submit" type="primary">{t('SUBMIT')}</Button>
