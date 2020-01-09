@@ -14,15 +14,13 @@ export const UserFormLoading: FunctionComponent<IUserFormLoadingProps> = () => {
                 <div className={styles.fieldLabel} />
                 <div className={styles.randomField} />
             </div>
-            <div className={styles.fullNameContainer}>
-                <div className={styles.fieldContainer}>
-                    <div className={styles.fieldLabel} />
-                    <div className={styles.nameField} />
-                </div>
-                <div className={styles.fieldContainer}>
-                    <div className={styles.fieldLabel} />
-                    <div className={styles.nameField} />
-                </div>
+            <div className={styles.fieldContainer}>
+                <div className={styles.fieldLabel} />
+                <div className={styles.randomField} />
+            </div>
+            <div className={styles.fieldContainer}>
+                <div className={styles.fieldLabel} />
+                <div className={styles.randomField} />
             </div>
             <div className={styles.submitButton} />
         </div>

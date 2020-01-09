@@ -3,16 +3,10 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-
-    .fullNameContainer {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-
-        .nameField {
-            width: 48%;
-        }
-    }
+    background-color: white;
+    box-shadow: 0 1px 5px 1px rgba(134, 134, 136, 0.35);
+    border-radius: 4px;
+    padding: 24px;
 
     .submitButton {
         margin-left: auto;

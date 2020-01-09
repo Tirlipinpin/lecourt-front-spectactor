@@ -1,7 +1,7 @@
 import { IProfileStore } from 'reducers/profile';
 import { UPDATE_USER_PROFILE } from 'reducers/profile/constants';
 
-export const updateUserProfile = (payload: Omit<IProfileStore, 'loading'>) => ({
+export const updateUserProfile = (payload: Omit<IProfileStore, 'loading' | 'updatingUser'>) => ({
     type: UPDATE_USER_PROFILE,
     payload,
 });

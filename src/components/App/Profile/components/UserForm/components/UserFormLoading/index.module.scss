@@ -22,26 +22,6 @@
         border-radius: 4px;
     }
 
-    .fullNameContainer {
-        width: 100%;
-
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-
-        .fieldContainer {
-            display: flex;
-            flex-flow: column nowrap;
-            width: 48%;
-
-            .nameField {
-              height: 2rem;
-              animation: pulse 1s infinite ease-in-out;
-              border-radius: 4px;
-            }
-        }
-    }
-
     .fieldContainer {
       display: flex;
       flex-flow: column nowrap;

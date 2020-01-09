@@ -1,4 +1,4 @@
-import React, { FunctionComponent, memo, useState, FormEvent, useEffect } from 'react';
+import React, { FunctionComponent, memo, useState, FormEvent, useEffect, Fragment } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Input } from 'antd';
 import { useTranslation } from 'react-i18next';
@@ -18,13 +18,15 @@ export const UserForm: FunctionComponent<IUserFormProps> = () => {
         loading,
         firstName,
         lastName,
+        updatingUser,
     }: IProfileStore = useSelector((state: any) => ({
           displayName: state.profile.displayName,
           email: state.profile.email,
           loading: state.profile.loading,
           firstName: state.profile.firstName,
           lastName: state.profile.lastName,
-    }), shallowEqual);
+          updatingUser: state.profile.updatingUser,
+        }), shallowEqual);
     
     const [form, updateForm] = useState({
         displayName,
@@ -61,32 +63,27 @@ export const UserForm: FunctionComponent<IUserFormProps> = () => {
         });
     };
 
-    if (loading)
-        return <UserFormLoading />;
+    const renderForm = () => (
+        <Fragment>
+            <Item colon={false} className={styles.formItem} label={t('EMAIL_ADDRESS')}>
+                <Input className={styles.inputField} disabled={updatingUser} onChange={updateField} value={form.email} form-field='email' />
+            </Item>
+            <Item colon={false} className={styles.formItem} label={t('DISPLAY_NAME')}>
+                <Input className={styles.inputField} disabled={updatingUser} onChange={updateField} value={form.displayName} form-field='displayName' />
+            </Item>
+            <Item colon={false} className={styles.formItem} label={t('FIRST_NAME')}>
+                <Input className={styles.inputField} disabled={updatingUser} onChange={updateField} value={form.firstName} form-field='firstName' />
+            </Item>
+            <Item colon={false} className={styles.formItem} label={t('LAST_NAME')}>
+                <Input className={styles.inputField} disabled={updatingUser} onChange={updateField} value={form.lastName} form-field='lastName' />
+            </Item>
+            <Button className={styles.submitButton} htmlType="submit" loading={updatingUser} type="primary">{t('SUBMIT')}</Button>
+        </Fragment>
+    );
 
     return (
         <Form className={styles.formContainer} onSubmit={onSubmit}>
-            <Item label={t('EMAIL_ADDRESS')}>
-                <Input onChange={updateField} value={form.email} form-field='email' />
-            </Item>
-            <Item label={t('DISPLAY_NAME')}>
-                <Input onChange={updateField} value={form.displayName} form-field='displayName' />
-            </Item>
-          <div className={styles.fullNameContainer}>
-                <Item
-                    className={styles.nameField}
-                    label={t('FIRST_NAME')}
-                >
-                    <Input onChange={updateField} value={form.firstName} form-field='firstName' />
-                </Item>
-                <Item
-                    className={styles.nameField}
-                    label={t('LAST_NAME')}
-                >
-                    <Input onChange={updateField} value={form.lastName} form-field='lastName' />
-                </Item>
-          </div>
-          <Button className={styles.submitButton} htmlType="submit" type="primary">{t('SUBMIT')}</Button>
+            {loading ? <UserFormLoading /> : renderForm()}
         </Form>
     );
 };

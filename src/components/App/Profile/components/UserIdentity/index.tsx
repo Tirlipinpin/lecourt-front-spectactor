@@ -1,4 +1,4 @@
-import React, { FunctionComponent, memo } from 'react';
+import React, { FunctionComponent, memo, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import posed from 'react-pose';
 import { IProfileStore } from 'reducers/profile';
@@ -25,7 +25,7 @@ export const UserIdentity: FunctionComponent<IUserIdentityProps> = () => {
       firstName,
       lastName,
       loading,
-    }: IProfileStore = useSelector((state: any) => ({
+    }: Omit<IProfileStore, 'updatingUser'> = useSelector((state: any) => ({
       avatarUrl: state.profile.avatarUrl,
       displayName: state.profile.displayName,
       firstName: state.profile.firstName,
@@ -33,25 +33,35 @@ export const UserIdentity: FunctionComponent<IUserIdentityProps> = () => {
       loading: state.profile.loading,
     }));
 
-    if (loading) {
-        return (
-            <Container className={styles.loadingContainer}>
-                <div className={styles.loadingAvatar} />
-                <div className={styles.loadingDisplayName} />
-            </Container>
-        );
-    }
-
-    return (
-        <Container className={styles.container}>
+    const renderUserIdentity = () => (
+        <Fragment>
             <img
                 alt={`${displayName} avatar`}
                 className={styles.avatar}
                 src={avatarUrl || defaultAvatar}
             />
-            <div className={styles.displayName}>
-                {displayName || `${firstName} ${lastName}`}
+            <div className={styles.name}>
+                <div className={styles.fullName}>
+                    {firstName} {lastName}
+                </div>
+                <div className={styles.displayName}>
+                    {displayName}
+                </div>
             </div>
+        </Fragment>
+    );
+
+    return (
+        <Container className={styles.container}>
+            {loading
+                ? (
+                <Container className={styles.loadingContainer}>
+                    <div className={styles.loadingAvatar} />
+                    <div className={styles.loadingDisplayName} />
+                </Container>
+                )
+                : renderUserIdentity()
+            }
         </Container>
     );
 };
