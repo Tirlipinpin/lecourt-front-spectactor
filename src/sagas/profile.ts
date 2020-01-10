@@ -77,6 +77,10 @@ function* updateUserProfile(action: IUpdateUserProfileAction): IterableIterator<
         type: UPDATE_USER_PROFILE_SUCCEEDED,
         payload: data,
     });
+
+    yield notification['success']({
+        message: 'Profile information udpated',
+    });
 } catch (e) {
     yield put({
         type: UPDATE_USER_PROFILE_FAILED,
