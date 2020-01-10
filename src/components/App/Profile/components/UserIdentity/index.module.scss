@@ -18,6 +18,11 @@
     }
 
     .name {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+
+
         .fullName {
             color: rgba($lc-black, .7);
             font-size: 1.5rem;

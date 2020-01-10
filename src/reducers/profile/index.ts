@@ -8,12 +8,18 @@ import {
     UPDATE_USER_PROFILE_FAILED,
 } from './constants';
 
+export interface IProfile {
+    avatarUrl: string
+    displayName: string
+    firstName: string
+    lastName: string
+}
+
 export interface IProfileStore {
-    avatarUrl?: string
-    displayName?: string
     email?: string
-    firstName?: string
-    lastName?: string
+    role?: string
+    id?: string
+    profile?: IProfile
     loading: boolean
     updatingUser: boolean
 };
@@ -33,12 +39,16 @@ const loginReducer: Reducer<IProfileStore, AnyAction> = (state: IProfileStore = 
         case FETCH_USER_PROFILE_SUCCEEDED:
             return {
                 ...state,
-                loading: false,
                 email: action.payload.email,
-                firstName: action.payload.profile.first_name,
-                lastName: action.payload.profile.last_name,
-                displayName: action.payload.profile.display_name,
-                avatarUrl: action.payload.profile.avatar,
+                role: action.payload.role,
+                id: action.payload.id,
+                profile: {
+                    firstName: action.payload.profile.first_name,
+                    lastName: action.payload.profile.last_name,
+                    displayName: action.payload.profile.display_name,
+                    avatarUrl: action.payload.profile.avatar,
+                },
+                loading: false,
             };
         case FETCH_USER_PROFILE_FAILED:
             return {
@@ -48,9 +58,24 @@ const loginReducer: Reducer<IProfileStore, AnyAction> = (state: IProfileStore = 
         case UPDATE_USER_PROFILE:
             return {
                 ...state,
+                ...action.payload,
                 updatingUser: true,
             };
         case UPDATE_USER_PROFILE_SUCCEEDED:
+            return {
+                ...state,
+                email: action.payload.email,
+                role: action.payload.role,
+                id: action.payload.id,
+                profile: {
+                    firstName: action.payload.profile.first_name,
+                    lastName: action.payload.profile.last_name,
+                    displayName: action.payload.profile.display_name,
+                    avatarUrl: action.payload.profile.avatar,
+                },
+                loading: false,
+                updatingUser: false,
+            };
         case UPDATE_USER_PROFILE_FAILED:
             return {
                 ...state,

@@ -42,23 +42,30 @@ function* fetchUserProfile(action: IFetchUserProfileAction): IterableIterator<Ob
 
 export interface IUpdateUserProfileAction {
   type: string
-  payload: Omit<IProfileStore, 'loading'>
+  payload: Omit<IProfileStore, 'loading' | 'updatingUser'>
 }
 
 function* updateUserProfile(action: IUpdateUserProfileAction): IterableIterator<Object | void> {
   try {
     const {
       email,
-      displayName,
-      firstName,
-      lastName,
+      role,
+      id,
+      profile,
     } = action.payload;
 
     const res: unknown = yield axios.put(getUserUrl(), {
       email,
-      display_name: displayName,
-      first_name: firstName,
-      last_name: lastName,
+      role,
+      id,
+      profile: {
+        update: {
+          avatar: profile?.avatarUrl,
+          display_name: profile?.displayName,
+          first_name: profile?.firstName,
+          last_name: profile?.lastName,
+        }
+      }
     });
 
     if (!res)

@@ -1,8 +1,8 @@
 import React, { FunctionComponent, memo, useState, FormEvent, useEffect, Fragment } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Input } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { IProfileStore } from 'reducers/profile';
+import { IProfileStore, IProfile } from 'reducers/profile';
 import UserFormLoading from './components/UserFormLoading';
 import { updateUserProfile } from './actions';
 import styles from './index.module.scss';
@@ -11,45 +11,46 @@ const { Item } = Form;
 
 export interface IUserFormProps {}
 
+export interface IUserFormState {
+    displayName?: string
+    email?: string
+    firstName?: string
+    lastName?: string
+}
+
 export const UserForm: FunctionComponent<IUserFormProps> = () => {
-    const {
-        displayName,
-        email,
-        loading,
-        firstName,
-        lastName,
-        updatingUser,
-    }: IProfileStore = useSelector((state: any) => ({
-          displayName: state.profile.displayName,
-          email: state.profile.email,
-          loading: state.profile.loading,
-          firstName: state.profile.firstName,
-          lastName: state.profile.lastName,
-          updatingUser: state.profile.updatingUser,
-        }), shallowEqual);
-    
-    const [form, updateForm] = useState({
-        displayName,
-        email,
-        firstName,
-        lastName,
+    const profileStore: IProfileStore = useSelector((state: any) => state.profile);
+    const [form, updateForm] = useState<IUserFormState>({
+        displayName: '',
+        email: '',
+        firstName: '',
+        lastName: '',
     });
 
     useEffect(() => {
+        const { email, profile } = profileStore;
+
         updateForm({
-          displayName,
+          displayName: profile?.displayName,
           email,
-          firstName,
-          lastName,
+          firstName: profile?.firstName,
+          lastName: profile?.lastName,
         });
-    }, [displayName, email, firstName, lastName]);
+    }, [profileStore]);
 
     const { t } = useTranslation();
     const dispatch = useDispatch();
+    const { loading, updatingUser } = profileStore;
 
     const onSubmit = (e: FormEvent) => {
       e.preventDefault();
-      dispatch(updateUserProfile(form));
+      dispatch(updateUserProfile({
+          ...profileStore,
+          profile: {
+              ...profileStore.profile,
+              ...form,
+          } as IProfile,
+      }));
     };
 
     const updateField = (event: any) => {

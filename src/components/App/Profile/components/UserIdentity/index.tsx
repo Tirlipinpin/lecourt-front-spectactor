@@ -1,7 +1,6 @@
-import React, { FunctionComponent, memo, Fragment } from 'react';
+import React, { FunctionComponent, memo } from 'react';
 import { useSelector } from 'react-redux';
 import posed from 'react-pose';
-import { IProfileStore } from 'reducers/profile';
 import defaultAvatar from './assets/avatar.jpg';
 import styles from './index.module.scss';
 
@@ -19,22 +18,21 @@ const Container = posed.div({
 });
 
 export const UserIdentity: FunctionComponent<IUserIdentityProps> = () => {
-    const {
-      avatarUrl,
-      displayName,
-      firstName,
-      lastName,
-      loading,
-    }: Omit<IProfileStore, 'updatingUser'> = useSelector((state: any) => ({
-      avatarUrl: state.profile.avatarUrl,
-      displayName: state.profile.displayName,
-      firstName: state.profile.firstName,
-      lastName: state.profile.lastName,
-      loading: state.profile.loading,
-    }));
+    const profileStore = useSelector((state: any) => state.profile);
 
-    const renderUserIdentity = () => (
-        <Fragment>
+    if (profileStore.loading) return (
+      <Container className={styles.container}>
+        <div className={styles.loadingContainer}>
+          <div className={styles.loadingAvatar} />
+          <div className={styles.loadingDisplayName} />
+        </div>
+      </Container>
+    );
+
+    const { profile: { avatarUrl, firstName, lastName, displayName } } = profileStore;
+
+    return (
+        <Container className={styles.container}>
             <img
                 alt={`${displayName} avatar`}
                 className={styles.avatar}
@@ -48,20 +46,6 @@ export const UserIdentity: FunctionComponent<IUserIdentityProps> = () => {
                     {displayName}
                 </div>
             </div>
-        </Fragment>
-    );
-
-    return (
-        <Container className={styles.container}>
-            {loading
-                ? (
-                <Container className={styles.loadingContainer}>
-                    <div className={styles.loadingAvatar} />
-                    <div className={styles.loadingDisplayName} />
-                </Container>
-                )
-                : renderUserIdentity()
-            }
         </Container>
     );
 };
