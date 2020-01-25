@@ -17,13 +17,24 @@
     top: 0;
     z-index: 9999;
     width: 100%;
-    padding: 0 8px;
+    padding: 0 10%;
     height: 64px;
     background-color: $lc-black;
     display: flex;
     flex-flow: row nowrap;
+    align-items: center;
     color: white;
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.61);
+
+    .logoContainer {
+        height: 80%;
+
+        .logo {
+            height: 100%;
+            width: auto;
+            cursor: pointer;
+        }
+    }
 
     .dropdown {
         position: absolute;
@@ -31,136 +42,76 @@
         z-index: 9999;
         border-radius: 4px;
         box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.61);
+        min-width: 100px;
 
         .dropdownContent {
             display: flex;
             flex-flow: column nowrap;
             background-color: $lc-black;
             color: white;
-            padding: 8px;
             border-radius: inherit;
+
+            .dropdownTitle {
+                padding: 8px;
+                margin-top: 8px;
+                color: rgba(white, .3);
+                font-size: 1em;
+                border-bottom: 1px solid rgba(white, .1);
+            }
 
             .dropdownElement {
                 color: white;
-                padding: 8px;
+                padding: 8px 16px;
                 cursor: pointer;
-                border-top: 1px solid rgba(white, .2);
+                background-color: inherit;
+                transition: background-color 150ms ease-in-out;
 
                 &:hover {
                     color: $lc-light-red;
+                    background-color: rgba(white, .1);
                 }
 
-                &:first-child {
-                    border-top: none;
+                &:last-child {
+                    margin-bottom: 4px;
                 }
             }
         }
     }
 
-    .leftPart {
-        flex: 2;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
+    .categories {
+        margin-left: 8%;
 
-        .profilePart {
-            height: 70%;
+        .categoryTitle {
+            display: flex;
+            align-items: center;
+            line-height: 16px;
+            flex-flow: row nowrap;
+            color: white;
+            transition: color 150ms ease-in-out;
+            cursor: pointer;
 
-            .userInfo {
-                height: 100%;
-                display: flex;
-                flex-flow: row nowrap;
-                align-items: center;
-                cursor: pointer;
-                filter: none;
-                transition: filter 150ms ease-in-out, color 150ms ease-in-out;
-                padding: 8px;
-
-                .userProfilePicture {
-                    border-radius: 300px;
-                    height: 100%;
-                    width: auto;
-                    background: none;
-                }
-
-                .userProfilePictureLoading {
-                    border-radius: 300px;
-                    height: 100%;
-                    width: 37.8px;
-                    background: none;
-                    filter: none;
-                    transition: filter 150ms ease-in-out;
-                    animation: pulse 1s infinite ease-in-out;
-                }
-
-                .userName {
-                    margin-left: 8px;
-                    font-size: 1.1em;
-                }
+            .categoryIcon {
+                margin-right: 4px;
             }
 
             &:hover {
-                .profileDropdown {
-                    visibility: visible;
-                }
-
-                .userInfo {
-                    filter: grayscale(.2);
-                    color: rgba(white, .3);
-                }
+                color: $lc-light-red;
             }
         }
-    }
 
-    .centerPart {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        max-height: 100%;
-
-        .logo {
-            height: 80%;
-            width: auto;
-            cursor: pointer;
-        }
-    }
-
-    .rightPart {
-        flex: 2;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        padding: 8px;
-
-        .categories {
-            margin-right: auto;
+        &:hover {
+            .categoriesDropdown {
+                visibility: visible;
+            }
 
             .categoryTitle {
-                display: flex;
-                align-items: center;
-                line-height: 16px;
-                flex-flow: row nowrap;
-                color: white;
-                transition: color 150ms ease-in-out;
-                cursor: pointer;
-
-                .categoryIcon {
-                    margin-left: 4px;
-                }
-
-                &:hover {
-                    color: $lc-light-red;
-                }
-            }
-
-            &:hover {
-                .categoriesDropdown {
-                    visibility: visible;
-                }
+                color: rgba(white, .3);
             }
         }
+    }
 
+    .searchBar {
+        margin-left: 8%;
         .searchInput {
             width: 50%;
             max-width: 300px;
@@ -180,6 +131,55 @@
 
         .searchIcon {
             cursor: pointer;
+        }
+    }
+
+    .profilePart {
+        height: 70%;
+        margin-left: auto;
+
+        .userInfo {
+            height: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            cursor: pointer;
+            filter: none;
+            transition: filter 150ms ease-in-out, color 150ms ease-in-out;
+            padding: 8px;
+
+            .userProfilePicture {
+                border-radius: 300px;
+                height: 100%;
+                width: auto;
+                background: none;
+            }
+
+            .userProfilePictureLoading {
+                border-radius: 300px;
+                height: 100%;
+                width: 37.8px;
+                background: none;
+                filter: none;
+                transition: filter 150ms ease-in-out;
+                animation: pulse 1s infinite ease-in-out;
+            }
+
+            .userName {
+                margin-left: 8px;
+                font-size: 1.1em;
+            }
+        }
+
+        &:hover {
+            .profileDropdown {
+                visibility: visible;
+            }
+
+            .userInfo {
+                filter: grayscale(.2);
+                color: rgba(white, .3);
+            }
         }
     }
 }

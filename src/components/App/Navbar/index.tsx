@@ -34,45 +34,24 @@ export const Navbar: FunctionComponent<INavbarProps> = (props) => {
 
     return (
         <nav className={styles.navbar}>
-            <div className={styles.leftPart}>
-                <div className={styles.profilePart}>
-                    <div className={styles.userInfo}>
-                        <img
-                            alt=""
-                            className={styles.userProfilePicture}
-                            onLoad={() => handleIsProfilePictureLoaded(true)}
-                            src={user.avatarUrl}
-                        />
-                        {!isProfilePictureLoaded && <div className={styles.userProfilePictureLoading} />}
-                        <div className={styles.userName}>{user.firstName}</div>
-                    </div>
-                    <div className={`${styles.profileDropdown} ${styles.dropdown}`}>
-                        <div className={styles.dropdownContent}>
-                            <Link to="/app/profile" className={styles.dropdownElement}>
-                                {t('YOUR_ACCOUNT')}
-                            </Link>
-                            <div className={styles.dropdownElement} onClick={navbarLogout}>{t('LOGOUT')}</div>
-                        </div>
+            <Link className={styles.logoContainer} to="/app">
+                <img alt="Lecourt" className={styles.logo} src={logo} />
+            </Link>
+            <div className={styles.categories}>
+                <div className={styles.categoryTitle}>
+                    <Icon className={styles.categoryIcon} type="down" /> {t('GENRES')}
+                </div>
+                <div className={`${styles.dropdown} ${styles.categoriesDropdown}`}>
+                    <div className={styles.dropdownContent}>
+                        <div className={styles.dropdownTitle}>{t('MOST_FREQUENT_GENRES')}</div>
+                        {genres.map((genre: Genre) => (
+                            <Link className={styles.dropdownElement} to={`/app/genres/${genre.id}`}>{genre.name}</Link>
+                        ))}
+                        <Link className={styles.dropdownElement} to='/app/browse_genres'>{t('SEE_MORE')}</Link>
                     </div>
                 </div>
             </div>
-            <Link to="/app" className={styles.centerPart}>
-                <img alt="Lecourt" className={styles.logo} src={logo} />
-            </Link>
-            <div className={styles.rightPart}>
-                <div className={styles.categories}>
-                    <Link className={styles.categoryTitle} to="/app/browse_genres">
-                        {t('GENRES')} <Icon className={styles.categoryIcon} type="down" />
-                    </Link>
-                    <div className={`${styles.dropdown} ${styles.categoriesDropdown}`}>
-                        <div className={styles.dropdownContent}>
-                            {genres.map((genre: Genre) => (
-                                <Link className={styles.dropdownElement} to={`/app/genres/${genre.id}`}>{genre.name}</Link>
-                            ))}
-                            <Link className={styles.dropdownElement} to='/app/browse_genres'>{t('SEE_MORE')}</Link>
-                        </div>
-                    </div>
-                </div>
+            <div className={styles.searchBar}>
                 <input
                     className={styles.searchInput}
                     defaultValue={searchTerm}
@@ -82,6 +61,27 @@ export const Navbar: FunctionComponent<INavbarProps> = (props) => {
                     type="search" />
                 <Icon className={styles.searchIcon} onClick={onSearchTerm} theme="outlined" type="search" />
             </div>
+            <div className={styles.profilePart}>
+                <div className={styles.userInfo}>
+                    <img
+                        alt=""
+                        className={styles.userProfilePicture}
+                        onLoad={() => handleIsProfilePictureLoaded(true)}
+                        src={user.avatarUrl}
+                    />
+                    {!isProfilePictureLoaded && <div className={styles.userProfilePictureLoading} />}
+                    <div className={styles.userName}>{user.firstName}</div>
+                </div>
+                <div className={`${styles.profileDropdown} ${styles.dropdown}`}>
+                    <div className={styles.dropdownContent}>
+                        <Link to="/app/profile" className={styles.dropdownElement}>
+                            {t('YOUR_ACCOUNT')}
+                        </Link>
+                        <div className={styles.dropdownElement} onClick={navbarLogout}>{t('LOGOUT')}</div>
+                    </div>
+                </div>
+            </div>
+
         </nav>
     );
 };
