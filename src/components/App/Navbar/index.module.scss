@@ -56,12 +56,11 @@
                 margin-top: 8px;
                 color: rgba(white, .3);
                 font-size: 1em;
-                border-bottom: 1px solid rgba(white, .1);
             }
 
             .dropdownElement {
                 color: white;
-                padding: 8px 16px;
+                padding: 8px 24px;
                 cursor: pointer;
                 background-color: inherit;
                 transition: background-color 150ms ease-in-out;
@@ -78,8 +77,32 @@
         }
     }
 
+    .searchBar {
+        margin-left: 6%;
+        .searchInput {
+            width: 50%;
+            max-width: 300px;
+            min-width: 100px;
+            background: $lc-black;
+            border: none;
+            transition: border-bottom 250ms ease-in-out;
+            transition: width .3s;
+            display: inline-block;
+
+            &:focus {
+                border: none;
+                outline: none;
+                border-bottom: 1px solid white;
+            }
+        }
+
+        .searchIcon {
+            cursor: pointer;
+        }
+    }
+
     .categories {
-        margin-left: 8%;
+        margin-left: 6%;
 
         .categoryTitle {
             display: flex;
@@ -107,30 +130,6 @@
             .categoryTitle {
                 color: rgba(white, .3);
             }
-        }
-    }
-
-    .searchBar {
-        margin-left: 8%;
-        .searchInput {
-            width: 50%;
-            max-width: 300px;
-            min-width: 100px;
-            background: $lc-black;
-            border: none;
-            transition: border-bottom 250ms ease-in-out;
-            transition: width .3s;
-            display: inline-block;
-
-            &:focus {
-                border: none;
-                outline: none;
-                border-bottom: 1px solid white;
-            }
-        }
-
-        .searchIcon {
-            cursor: pointer;
         }
     }
 

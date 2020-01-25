@@ -37,6 +37,16 @@ export const Navbar: FunctionComponent<INavbarProps> = (props) => {
             <Link className={styles.logoContainer} to="/app">
                 <img alt="Lecourt" className={styles.logo} src={logo} />
             </Link>
+            <div className={styles.searchBar}>
+                <input
+                    className={styles.searchInput}
+                    defaultValue={searchTerm}
+                    onChange={onChangeSearchTerm}
+                    onKeyPress={onKeyPress}
+                    placeholder={t('SEARCH_BAR_PLACEHOLDER')}
+                    type="search" />
+                <Icon className={styles.searchIcon} onClick={onSearchTerm} theme="outlined" type="search" />
+            </div>
             <div className={styles.categories}>
                 <div className={styles.categoryTitle}>
                     <Icon className={styles.categoryIcon} type="down" /> {t('GENRES')}
@@ -50,16 +60,6 @@ export const Navbar: FunctionComponent<INavbarProps> = (props) => {
                         <Link className={styles.dropdownElement} to='/app/browse_genres'>{t('SEE_MORE')}</Link>
                     </div>
                 </div>
-            </div>
-            <div className={styles.searchBar}>
-                <input
-                    className={styles.searchInput}
-                    defaultValue={searchTerm}
-                    onChange={onChangeSearchTerm}
-                    onKeyPress={onKeyPress}
-                    placeholder={t('SEARCH_BAR_PLACEHOLDER')}
-                    type="search" />
-                <Icon className={styles.searchIcon} onClick={onSearchTerm} theme="outlined" type="search" />
             </div>
             <div className={styles.profilePart}>
                 <div className={styles.userInfo}>
