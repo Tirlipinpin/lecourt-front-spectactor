@@ -1,11 +1,10 @@
 import React from 'react';
 import  { shallow, ShallowWrapper } from 'enzyme';
+import { Store } from 'redux';
+import { Provider } from 'react-redux';
 import { match } from 'react-router';
 import { History, Location } from 'history';
-
-import { NavbarStore } from '../../../reducers/navbar';
-import { Navbar } from '.';
-import { WithTranslation } from 'react-i18next';
+import Navbar from '.';
 
 describe('The Navbar component', () => {
     let wrapper: ShallowWrapper<Navbar>;
@@ -19,23 +18,21 @@ describe('The Navbar component', () => {
         const location: Location = {
             pathname: '',
         } as Location;
-        const navbar: NavbarStore = {
-            searchTerm: '',
-            genres: [],
-        };
-        const i18n = {
-            t: jest.fn(),
+        const store = {
+            subscribe: jest.fn(),
+            dispatch: jest.fn(),
+            replaceReducer: jest.fn(),
+            getState: jest.fn(),
         } as unknown;
 
         wrapper = shallow(
-            <Navbar
-                location={location}
-                history={history}
-                match={match}
-                dispatch={dispatch}
-                navbar={navbar}
-                {...i18n as WithTranslation}
-            />
+            <Provider store={ store as Store}>
+                <Navbar
+                    location={location}
+                    history={history}
+                    match={match}
+                />
+            </Provider>
         );
     });
 

@@ -7,6 +7,7 @@ import { History, Location } from 'history';
 import { App } from '.';
 import styles from './index.module.scss';
 import { LoginStore } from '../../reducers/login';
+import {IUserStore} from "../../reducers/rootReducer";
 
 describe('The App component', () => {
     let wrapper: ShallowWrapper;
@@ -21,14 +22,21 @@ describe('The App component', () => {
             loading: false,
             rememberMe: true,
         };
+        const user: IUserStore = {
+            avatarUrl: 'some-url',
+            role: 'some-role',
+            firstName: 'Henri',
+            isReady: true,
+        };
 
         wrapper = shallow(
             <App
+                dispatch={dispatch}
                 match={match}
                 history={history}
                 location={location}
                 login={login}
-                dispatch={dispatch}
+                user={user}
             />
         );
     });

@@ -22,7 +22,7 @@ export interface IProfileStore {
     profile?: IProfile
     loading: boolean
     updatingUser: boolean
-};
+}
 
 export const defaultState: IProfileStore = {
     loading: true,

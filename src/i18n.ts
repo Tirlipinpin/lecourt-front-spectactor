@@ -15,6 +15,7 @@ i18n
             HOMEPAGE_BUTTON: 'Homepage',
             SEARCH_BAR_PLACEHOLDER: 'Search for a short...',
             LOGOUT: 'Logout',
+            YOUR_ACCOUNT: 'Your account',
             YOUR_RECOMMENDATIONS: 'Your recommendations',
             OUR_SELECTION: 'Our selection',
             LATEST_SHORTS: 'Latest shorts',
@@ -37,6 +38,7 @@ i18n
             LAST_NAME: 'Last name',
             DISPLAY_NAME: 'Display name',
             SUBMIT: 'submit',
+            SEE_MORE: 'See more...',
         }
       },
       fr: {
@@ -47,6 +49,7 @@ i18n
             HOMEPAGE_BUTTON: 'Accueil',
             SEARCH_BAR_PLACEHOLDER: 'Recherchez...',
             LOGOUT: 'Déconnexion',
+            YOUR_ACCOUNT: 'Votre profil',
             YOUR_RECOMMENDATIONS: 'Vos recommandations',
             OUR_SELECTION: 'Notre sélection',
             LATEST_SHORTS: 'Les derniers courts métrages',
@@ -69,6 +72,7 @@ i18n
             LAST_NAME: 'Nom de famille',
             DISPLAY_NAME: 'Pseudo',
             SUBMIT: 'envoyer',
+            SEE_MORE: 'Voir plus...',
         }
       }
     },

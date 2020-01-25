@@ -20,7 +20,9 @@ import Navbar from './Navbar';
 import MobileNavbar from './Navbar/Mobile';
 import NotFound from '../NotFound';
 import { lazyRenderer } from 'services/renderer/lazyRenderer';
-import { logout } from './actions';
+import { fetchUserInitApp, logout } from './actions';
+import { IUserStore } from 'reducers/rootReducer';
+import Loader from 'designSystem/Loader';
 
 const Homepage = lazy(() => import('./Homepage'));
 const Profile = lazy(() => import('./Profile'));
@@ -30,8 +32,9 @@ const BrowseGenres = lazy(() => import('./BrowseGenres'));
 const Genres = lazy(() => import('./Genres'));
 
 interface AppProps extends RouteComponentProps {
-    login: ILoginStore
     dispatch: Dispatch<any>
+    login: ILoginStore
+    user: IUserStore
 }
 
 export class App extends Component<AppProps, {}>{
@@ -51,15 +54,21 @@ export class App extends Component<AppProps, {}>{
 
         axios.defaults.baseURL = getManagementUrl();
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+        dispatch(fetchUserInitApp());
     };
 
     render() {
-        const { match, login, location } = this.props;
+        const { match, login, location, user: { isReady } } = this.props;
 
         if (!login.token) {
             return (
                 <Redirect to="/authentication/login" />
             );
+        }
+
+        if (!isReady) {
+            return <Loader />;
         }
 
         return (
@@ -93,6 +102,7 @@ export class App extends Component<AppProps, {}>{
     }
 }
 
-export default connect(({ login }: any) => ({
+export default connect(({ login, user }: any) => ({
     login,
+    user,
 }))(App);

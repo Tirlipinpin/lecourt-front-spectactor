@@ -1,6 +1,6 @@
 import { History } from 'history';
 import { AnyAction } from 'redux';
-import rootReducer from './rootReducer';
+import rootReducer, { IUserStore } from './rootReducer';
 import { IBrowseGenresStore } from './browseGenres';
 import { RouterState } from 'connected-react-router';
 import { IGenresStore } from './genres';
@@ -26,6 +26,7 @@ describe('rootReducer', () => {
             register: {} as RegisterStore,
             router: {} as RouterState,
             search: {} as SearchStore,
+            user: {} as IUserStore,
             watch: {} as WatchStore,
         }, {} as AnyAction);
 
@@ -39,6 +40,7 @@ describe('rootReducer', () => {
             register: {},
             router: {},
             search: {},
+            user: {},
             watch: {},
         });
     })

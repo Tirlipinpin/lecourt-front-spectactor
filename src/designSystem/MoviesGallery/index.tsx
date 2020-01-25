@@ -24,7 +24,7 @@ export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}>
         if (movies.length < 1 && loading)
             return (
                 <div className={styles.movieLoadingGalleryContainer}>
-                    {[1, 2, 3, 4, 5].map((value: number) => <MoviePosterLoading />)}
+                    {[1, 2, 3, 4, 5].map((value: number) => <MoviePosterLoading key={value} />)}
                 </div>
             );
         else if (movies.length < 1)
