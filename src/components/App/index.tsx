@@ -68,7 +68,11 @@ export class App extends Component<AppProps, {}>{
         }
 
         if (!isReady) {
-            return <Loader />;
+            return(
+                <div className={styles.appLoading}>
+                    <Loader className={styles.loader} size="3vw" />
+                </div>
+            );
         }
 
         return (

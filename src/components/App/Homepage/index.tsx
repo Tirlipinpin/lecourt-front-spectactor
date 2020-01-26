@@ -17,7 +17,7 @@ export const Homepage: FunctionComponent<IHomepageProps> = ({ history }) => {
     useEffect(() => {
         dispatch(fetchLatestMovies());
     }, [dispatch]);
-    
+
     return (
         <div className={styles.pageContainer}>
             <div className={styles.pageHeader}>
