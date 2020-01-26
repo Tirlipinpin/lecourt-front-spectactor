@@ -41,7 +41,6 @@
         visibility: hidden;
         z-index: 9999;
         border-radius: 4px;
-        box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.61);
         min-width: 100px;
 
         .dropdownContent {
@@ -50,6 +49,8 @@
             background-color: $lc-black;
             color: white;
             border-radius: inherit;
+            box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.61);
+            margin-top: 16px;
 
             .dropdownTitle {
                 padding: 8px;
@@ -64,7 +65,9 @@
                 cursor: pointer;
                 background-color: inherit;
                 transition: background-color 150ms ease-in-out;
+                border-radius: inherit;
 
+                &Active,
                 &:hover {
                     color: $lc-light-red;
                     background-color: rgba(white, .1);
@@ -79,33 +82,66 @@
 
     .searchBar {
         margin-left: 6%;
-        .searchInput {
-            max-width: 300px;
-            min-width: 100px;
-            background: $lc-black;
-            border: none;
-            transition: border-bottom 250ms ease-in-out;
-            transition: width .3s;
-            display: inline-block;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
 
-            &:focus {
+        .seachInputContainer {
+            display: flex;
+            flex-flow: column nowrap;
+
+            .searchInput {
+                max-width: 300px;
+                min-width: 100px;
+                background: $lc-black;
                 border: none;
-                outline: none;
-                border-bottom: 1px solid white;
+                display: inline-block;
+
+                &:focus {
+                    border: none;
+                    outline: none;
+                }
+            }
+
+            &:after {
+                content: '';
+                bottom: 0;
+                height: 2px;
+                width: 10px;
+                visibility: hidden;
+                background-color: $lc-light-red;
+                transition: all 150ms ease-in-out;
+            }
+
+            &.searchInputContainerFocused {
+                &:after {
+                    visibility: visible;
+                    width: calc(100% + 16px);
+                }
             }
         }
 
         .searchIcon {
             cursor: pointer;
+            transition: color 150ms ease-in-out;
+        }
+
+        &.searchBarFocused {
+            .searchIcon {
+                color: $lc-light-red;
+            }
         }
     }
 
     .categories {
+        height: 70%;
         margin-left: 6%;
 
         .categoryTitle {
             display: flex;
             align-items: center;
+            align-items: center;
+            height: 100%;
             line-height: 16px;
             flex-flow: row nowrap;
             color: white;
@@ -127,7 +163,13 @@
             }
 
             .categoryTitle {
-                color: rgba(white, .3);
+                color: $lc-light-red;
+            }
+        }
+
+        &Active {
+            .categoryTitle{
+                color: $lc-light-red;
             }
         }
     }
@@ -176,7 +218,13 @@
 
             .userInfo {
                 filter: grayscale(.2);
-                color: rgba(white, .3);
+                color: $lc-light-red;
+            }
+        }
+
+        &Active {
+            .userInfo{
+                color: $lc-light-red;
             }
         }
     }

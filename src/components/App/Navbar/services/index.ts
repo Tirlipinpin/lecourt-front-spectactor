@@ -35,6 +35,20 @@ export const getActiveKey = (): string[] => {
     return [currentActive];
 };
 
+export const getActiveKeyCustom = (): string => {
+    const { location } = store.getState().router;
+    const { genres } = store.getState().navbar;
+    const currentActive = location.pathname.split('/')[2];
+
+    if (currentActive === 'genres') {
+        const genreId = location.pathname.split('/')[3];
+        const isGenreIdListed = genres.find(genre => genre.id === genreId);
+        return isGenreIdListed ? `genres:${genreId}` : 'browse_genres';
+    }
+
+    return currentActive || '';
+};
+
 export const navbarLogout = () => {
     dispatch(logout());
 

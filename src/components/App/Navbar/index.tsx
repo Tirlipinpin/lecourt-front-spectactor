@@ -5,10 +5,10 @@ import { RouteComponentProps } from 'react-router';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { fetchNavbarGenres } from './actions';
+import { getActiveKeyCustom, navbarLogout, onChangeSearchTerm, onSearchTerm } from './services';
+import { Genre } from '../interfaces';
 import logo from 'assets/Logo.png';
 import styles from './index.module.scss';
-import { navbarLogout, onChangeSearchTerm, onSearchTerm } from './services';
-import {Genre} from "../interfaces";
 
 interface INavbarProps extends RouteComponentProps {}
 
@@ -32,22 +32,28 @@ export const Navbar: FunctionComponent<INavbarProps> = (props) => {
 
     const [isProfilePictureLoaded, handleIsProfilePictureLoaded] = useState(false);
 
+    const [isSearchBarFocused, handleIsSearchBarFocused] = useState(false);
+
     return (
         <nav className={styles.navbar}>
             <Link className={styles.logoContainer} to="/app">
                 <img alt="Lecourt" className={styles.logo} src={logo} />
             </Link>
-            <div className={styles.searchBar}>
-                <input
-                    className={styles.searchInput}
-                    defaultValue={searchTerm}
-                    onChange={onChangeSearchTerm}
-                    onKeyPress={onKeyPress}
-                    placeholder={t('SEARCH_BAR_PLACEHOLDER')}
-                    type="search" />
+            <div className={`${styles.searchBar} ${isSearchBarFocused ? styles.searchBarFocused : ''}`}>
+                <div className={`${styles.seachInputContainer} ${isSearchBarFocused ? styles.searchInputContainerFocused : ''}`}>
+                    <input
+                        className={styles.searchInput}
+                        defaultValue={searchTerm}
+                        onBlur={() => handleIsSearchBarFocused(false)}
+                        onChange={onChangeSearchTerm}
+                        onFocus={() => handleIsSearchBarFocused(true)}
+                        onKeyPress={onKeyPress}
+                        placeholder={t('SEARCH_BAR_PLACEHOLDER')}
+                        type="search" />
+                </div>
                 <Icon className={styles.searchIcon} onClick={onSearchTerm} theme="outlined" type="search" />
             </div>
-            <div className={styles.categories}>
+            <div className={`${styles.categories} ${getActiveKeyCustom().includes('genres') ? styles.categoriesActive : ''}`}>
                 <div className={styles.categoryTitle}>
                     <Icon className={styles.categoryIcon} type="down" /> {t('GENRES')}
                 </div>
@@ -55,13 +61,16 @@ export const Navbar: FunctionComponent<INavbarProps> = (props) => {
                     <div className={styles.dropdownContent}>
                         <div className={styles.dropdownTitle}>{t('MOST_FREQUENT_GENRES')}</div>
                         {genres.map((genre: Genre) => (
-                            <Link className={styles.dropdownElement} to={`/app/genres/${genre.id}`}>{genre.name}</Link>
+                            <Link
+                                className={`${styles.dropdownElement} ${getActiveKeyCustom().includes(`:${genre.id}`) ? styles.dropdownElementActive : ''}`}
+                                to={`/app/genres/${genre.id}`}
+                            >{genre.name}</Link>
                         ))}
                         <Link className={styles.dropdownElement} to='/app/browse_genres'>{t('SEE_MORE')}</Link>
                     </div>
                 </div>
             </div>
-            <div className={styles.profilePart}>
+            <div className={`${styles.profilePart} ${getActiveKeyCustom() === 'profile' ? styles.profilePartActive : ''}`}>
                 <div className={styles.userInfo}>
                     <img
                         alt=""
@@ -74,9 +83,10 @@ export const Navbar: FunctionComponent<INavbarProps> = (props) => {
                 </div>
                 <div className={`${styles.profileDropdown} ${styles.dropdown}`}>
                     <div className={styles.dropdownContent}>
-                        <Link to="/app/profile" className={styles.dropdownElement}>
-                            {t('YOUR_ACCOUNT')}
-                        </Link>
+                        <Link
+                            className={`${styles.dropdownElement} ${getActiveKeyCustom() === 'profile' ? styles.dropdownElementActive : ''}`}
+                            to="/app/profile"
+                        >{t('YOUR_ACCOUNT')}</Link>
                         <div className={styles.dropdownElement} onClick={navbarLogout}>{t('LOGOUT')}</div>
                     </div>
                 </div>
