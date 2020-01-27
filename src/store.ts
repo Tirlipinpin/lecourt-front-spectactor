@@ -29,6 +29,6 @@ const configureStore = (): ConfigureStore => ({
     store,
 });
 
-setTimeout(() => sagaMiddleware.run(sagas), 0);
+sagaMiddleware.run(sagas);
 
 export default configureStore;
