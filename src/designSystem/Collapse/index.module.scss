@@ -1,0 +1,28 @@
+.collapseContainer {
+  .title {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+
+    .icon {
+      transition: all 150ms ease-in-out;
+      margin-right: 16px;
+
+      &.collapsedIcon {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  .childrenContainer {
+    margin-top: 16px;
+    max-height: 100%;
+    overflow: hidden;
+
+    &.collapsedChildrenContainer {
+      max-height: 0;
+    }
+  }
+}

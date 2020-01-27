@@ -1,18 +1,17 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Button, Row, Col, Typography, Collapse } from 'antd';
-import { HoverableImage } from 'designSystem';
+import { Button, Row, Col, Typography } from 'antd';
+import { Collapse, HoverableImage } from 'designSystem';
 
 import { ActorRelation, DirectorRelation, StaffRelation, Person } from '../../../interfaces';
 import styles from './index.module.scss';
 
 const { Paragraph, Text, Title } = Typography;
-const { Panel } = Collapse;
 
 export interface CastingProps {
     actors: ActorRelation[]
     directors: DirectorRelation[]
     staff: StaffRelation[]
-};
+}
 
 const mock_pictures = [
     'https://s3.r29static.com/bin/entry/9e6/720x864,85/2172764/image.webp',
@@ -61,8 +60,10 @@ export default class Casting extends PureComponent<CastingProps, {}> {
                 >
                     {actors.map((actor, index) => this.renderPerson(index, actor, `Role : ${actor.role}`))}
                 </Row>
-                <Collapse bordered={false} style={{ borderBottom: 'none', width: '100%' }}>
-                    <Panel key="1" header="Afficher le staff complet" style={{ borderBottom: 'none' }}>
+                <Collapse
+                    title="Voir tout le casting"
+                >
+                    <div>
                         <Title level={4}>Réalisateurs</Title>
                         <Row
                             className={styles.movieStaff}
@@ -81,7 +82,7 @@ export default class Casting extends PureComponent<CastingProps, {}> {
                         >
                             {staff.map((person, index) => this.renderPerson(index, person, `Staff : ${person.job}`))}
                         </Row>
-                    </Panel>
+                    </div>
                 </Collapse>
             </Fragment>
         );
