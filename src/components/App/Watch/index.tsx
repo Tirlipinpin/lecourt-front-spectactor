@@ -40,15 +40,9 @@ export class Watch extends Component<WatchProps, WatchState> {
     };
 
     async componentDidMount() {
-        const { match, dispatch } = this.props;
-        const { id } = match.params;
+        const { dispatch } = this.props;
 
-        dispatch({
-            type: FETCH_MOVIE_DETAILS,
-            payload: {
-                id,
-            },
-        });
+        this.dispatchFetchMovieDetails();
 
         const recommandationsRes = await axios.get('movies', {
             params: {
@@ -58,6 +52,25 @@ export class Watch extends Component<WatchProps, WatchState> {
 
         if (recommandationsRes && recommandationsRes.data)
             this.setState({ recommandations: recommandationsRes.data });
+    }
+
+    componentDidUpdate(props: SearchProps) {
+        const { params: { id } } = this.props.match;
+        const { params: { id: nextId } } = props.match;
+
+        if (id !== nextId)
+            this.dispatchFetchMovieDetails();
+    }
+
+    dispatchFetchMovieDetails = () => {
+        const { dispatch: { match: { params: { id } } } } = this.props;
+
+        dispatch({
+            type: FETCH_MOVIE_DETAILS,
+            payload: {
+                id,
+            },
+        });
     }
 
     onLoadPlayer = () => {
