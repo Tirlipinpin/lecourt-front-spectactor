@@ -54,7 +54,7 @@ export class Watch extends Component<WatchProps, WatchState> {
             this.setState({ recommandations: recommandationsRes.data });
     }
 
-    componentDidUpdate(props: SearchProps) {
+    componentDidUpdate(props) {
         const { params: { id } } = this.props.match;
         const { params: { id: nextId } } = props.match;
 
