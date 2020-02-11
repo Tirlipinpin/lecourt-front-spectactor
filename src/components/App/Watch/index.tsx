@@ -63,7 +63,7 @@ export class Watch extends Component<WatchProps, WatchState> {
     }
 
     dispatchFetchMovieDetails = () => {
-        const { dispatch: { match: { params: { id } } } } = this.props;
+        const { dispatch, match: { params: { id } } } = this.props;
 
         dispatch({
             type: FETCH_MOVIE_DETAILS,
