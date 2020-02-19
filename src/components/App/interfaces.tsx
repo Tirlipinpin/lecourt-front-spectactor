@@ -18,6 +18,7 @@ export interface Staff {
 export interface Image {
     id: string
     type: string
+    path: string
 };
 
 export interface Genre {
@@ -26,7 +27,9 @@ export interface Genre {
 }
 
 export interface File {
-    filename: string
+    name: string
+    format: string
+    path: string
 }
 
 // Movie model relations
@@ -42,14 +45,13 @@ export interface DirectorRelation {
     node: Person
 }
 export interface ImageRelation {
-    node: Image
-    type: string
+    file: Image
 }
 export interface GenreRelation {
     node: Genre
 }
 export interface FileRelation {
-    node: File
+    file: File
 }
 
 export interface Movie {
@@ -64,8 +66,8 @@ export interface Movie {
     actors: ActorRelation[]
     directors: DirectorRelation[]
     staff: StaffRelation[]
-    images: ImageRelation[]
+    posters: ImageRelation[]
     genres: GenreRelation[]
-    movieFile: FileRelation,
+    files: FileRelation[],
     result_quality: number
 };
