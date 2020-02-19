@@ -137,7 +137,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                             }}
                           >
                               <ReactPlayer
-                                url={`https://movies.stg.lecourt.tv/${Array.isArray(movie.files) && movie.files.length > 0 ? movie.files[0].file.path : ''}.m3u8`}
+                                url={`https://storage.googleapis.com/lecourt-movies-dev/${Array.isArray(movie.files) && movie.files.length > 0 ? movie.files[0].file.path : ''}.m3u8`}
                                 controls
                                 config={{
                                     file: {
