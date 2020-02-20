@@ -7,14 +7,14 @@ import { Person } from '../../../interfaces';
 describe('The StaffGallery component', () => {
     const person: Person = {
         id: 0,
-        firstName: 'poney',
-        lastName: 'cheval',
-        birthDate: '1958-08-2',
+        first_name: 'poney',
+        last_name: 'cheval',
+        birth_date: '1958-08-2',
     }
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<Casting actors={[ { node: person, role: 'Role' } ]} directors={[ { node: person } ]} staff={[ { node: person, job: 'Cameraman' } ]} />);
+        wrapper = shallow(<Casting actors={[ { person, role: 'Role' } ]} directors={[ { person } ]} staff={[ { person, job: 'Cameraman' } ]} />);
     });
 
     test('should render correctly', () => {

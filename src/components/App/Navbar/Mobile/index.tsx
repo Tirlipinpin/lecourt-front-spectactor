@@ -91,7 +91,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                             <ItemGroup title="Most used genres">
                                 {navbar.genres.map((genre: Genre) => (
                                     <Item key={`genres:${genre.id}`} onClick={() => redirectToGenre(genre.id)}>
-                                        {genre.name}
+                                        {genre.code}
                                     </Item>
                                 )
                                 )}

@@ -65,7 +65,7 @@ export const Navbar: FunctionComponent<INavbarProps> = (props) => {
                                 className={`${styles.dropdownElement} ${getActiveKeyCustom().includes(`:${genre.id}`) ? styles.dropdownElementActive : ''}`}
                                 key={genre.id}
                                 to={`/app/genres/${genre.id}`}
-                            >{genre.name}</Link>
+                            >{genre.code}</Link>
                         ))}
                         <Link className={styles.dropdownElement} to='/app/browse_genres'>{t('SEE_MORE')}</Link>
                     </div>

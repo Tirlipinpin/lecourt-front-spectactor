@@ -16,8 +16,8 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
     const { goToWatch, movie } = props;
     const { t } = useTranslation();
 
-    const posterImage = (movie.images || []).find(i => i && i.node && i.node.id);
-    const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.node.id}` : defaultPoster;
+    const posterImage = movie.posters?.find(i => i && i.file && i.file.id);
+    const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.file.id}` : defaultPoster;
 
     const goToMovieId = () => goToWatch(movie.id);
 
@@ -46,7 +46,7 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
                         </div>
                     </Tooltip>
                     <div className={styles.genres}>
-                        {(movie.genres || []).map(g => g.node.name).join(', ')}
+                        {(movie.genres || []).map(g => g.genre.code).join(', ')}
                     </div>
                 </div>
             </div>
