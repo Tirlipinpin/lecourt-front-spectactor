@@ -24,11 +24,11 @@ const mock_pictures = [
 ];
 
 export default class Casting extends PureComponent<CastingProps, {}> {
-    renderPerson(key: number, person: { node: Person }, role: string) {
+    renderPerson(key: number, person: { person: Person }, role: string) {
         return (
             <Col xl={4} md={8} sm={12} key={key} className={styles.item}>
                 <HoverableImage
-                    alt={person.node.lastName}
+                    alt={person.person.last_name}
                     coverContent={
                         <Button
                             className={styles.button}
@@ -41,7 +41,7 @@ export default class Casting extends PureComponent<CastingProps, {}> {
                     imageLoadingClassName={styles.castingLoadingImage}
                     src={mock_pictures[(Date.now() + key) % mock_pictures.length]}
                 />
-                <Text strong>{person.node.firstName} {person.node.lastName}</Text>
+                <Text strong>{person.person.first_name} {person.person.last_name}</Text>
                 <Paragraph type="secondary">{role}</Paragraph>
             </Col>
         );

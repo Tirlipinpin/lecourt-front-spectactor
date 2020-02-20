@@ -1,17 +1,17 @@
 export interface Person {
     id: number
-    firstName: string
-    lastName: string
-    birthDate: string
+    first_name: string
+    last_name: string
+    birth_date: string
 };
 
 export interface Actor {
-    node: Person
+    person: Person
     role: string
 };
 
 export interface Staff {
-    node: Person
+    person: Person
     job: string
 };
 
@@ -23,7 +23,7 @@ export interface Image {
 
 export interface Genre {
     id: string
-    name: string
+    code: string
 }
 
 export interface File {
@@ -34,21 +34,21 @@ export interface File {
 
 // Movie model relations
 export interface ActorRelation {
-    node: Person
+    person: Person
     role: string
 }
 export interface StaffRelation {
-    node: Person
+    person: Person
     job: string
 }
 export interface DirectorRelation {
-    node: Person
+    person: Person
 }
 export interface ImageRelation {
     file: Image
 }
 export interface GenreRelation {
-    node: Genre
+    genre: Genre
 }
 export interface FileRelation {
     file: File

@@ -24,7 +24,7 @@ export const GenreCard: FunctionComponent<IGenreCardProps> = ({ genre, historyPu
             onClick={redirectToGenre}
         >
             <Meta
-                title={genre.name}
+                title={genre.code}
             />
         </Card>
     );
