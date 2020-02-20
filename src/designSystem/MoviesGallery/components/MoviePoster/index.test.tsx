@@ -1,7 +1,6 @@
 import React from 'react';
 import  { shallow, ShallowWrapper } from 'enzyme';
 import MoviePoster, { MoviePosterProps } from '../MoviePoster';
-import HoverableImageStyles from 'designSystem/HoverableImage/index.module.scss';
 
 describe('The MoviePoster component', () => {
     let wrapper: ShallowWrapper;
@@ -15,7 +14,7 @@ describe('The MoviePoster component', () => {
             movie: {
                 id: uuid,
                 title: 'chapeau',
-                images: [],
+                posters: [],
             },
         } as unknown;
 
