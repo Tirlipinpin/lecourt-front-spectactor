@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { HoverableImage } from 'designSystem';
 import { Movie } from 'components/App/interfaces';
 import styles from './index.module.scss';
+import { getUploadUrl } from 'services/requestUrl';
 
 export interface MoviePosterProps {
     goToWatch: (id: number) => void
@@ -17,7 +18,7 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
     const { t } = useTranslation();
 
     const posterImage = movie.posters?.find(i => i && i.file && i.file.id);
-    const poster = posterImage ? `https://management.stg.lecourt.tv/movies/${movie.id}/images/${posterImage.file.id}` : defaultPoster;
+    const poster = posterImage ? `${getUploadUrl()}/images/${posterImage.file.id}` : defaultPoster;
 
     const goToMovieId = () => goToWatch(movie.id);
 
