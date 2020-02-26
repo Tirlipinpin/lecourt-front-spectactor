@@ -18,7 +18,7 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
     const { t } = useTranslation();
 
     const posterImage = movie.posters?.find(i => i && i.file && i.file.id);
-    const poster = posterImage ? `${getUploadUrl()}/images/${posterImage.file.id}` : defaultPoster;
+    const poster = posterImage ? `${getUploadUrl()}/images/${posterImage.file.path}` : defaultPoster;
 
     const goToMovieId = () => goToWatch(movie.id);
 
