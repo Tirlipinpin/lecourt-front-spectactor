@@ -1,10 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import { Card } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Genre } from '../../../interfaces';
 import styles from './index.module.scss';
-
-const { Meta } = Card;
 
 export interface IGenreCardProps {
     genre: Genre
@@ -19,15 +16,10 @@ export const GenreCard: FunctionComponent<IGenreCardProps> = ({ genre, historyPu
     const { t } = useTranslation();
 
     return (
-        <Card
+        <div
             key={genre.id}
             className={styles.genreCard}
-            hoverable
             onClick={redirectToGenre}
-        >
-            <Meta
-                title={t(genre.code)}
-            />
-        </Card>
+        >{t(genre.code)}</div>
     );
 };

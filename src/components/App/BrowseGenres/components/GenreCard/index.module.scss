@@ -1,5 +1,13 @@
+@import 'styles/colors';
+@import 'styles/theme';
+
 .genreCard {
-    margin: 2%;
-    width: 20%;
+    padding: 16px;
     cursor: pointer;
+    transition: all 150ms ease-in-out;
+    border: 1px solid $lc-grey;
+
+    &:hover {
+        box-shadow: $lc-box-shadow;
+    }
 }

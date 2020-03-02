@@ -1,4 +1,5 @@
 @import 'styles/colors';
+@import 'styles/theme';
 
 @keyframes pulse {
     0% {
@@ -15,7 +16,7 @@
 .navbar {
     position: fixed;
     top: 0;
-    z-index: 9999;
+    z-index: 10;
     width: 100%;
     padding: 0 10%;
     height: 64px;
@@ -24,7 +25,7 @@
     flex-flow: row nowrap;
     align-items: center;
     color: white;
-    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.61);
+    box-shadow: $lc-box-shadow;
 
     .logoContainer {
         height: 80%;
@@ -39,7 +40,7 @@
     .dropdown {
         position: absolute;
         visibility: hidden;
-        z-index: 9999;
+        z-index: 10;
         border-radius: 4px;
         min-width: 100px;
 
@@ -49,7 +50,7 @@
             background-color: $lc-black;
             color: white;
             border-radius: inherit;
-            box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.61);
+            box-shadow: $lc-box-shadow;
             margin-top: 16px;
 
             .dropdownTitle {

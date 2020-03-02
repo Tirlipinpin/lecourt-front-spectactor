@@ -1,9 +1,10 @@
 @import './Antd.replace.scss';
+@import 'styles/theme';
 
 .page-container {
     margin: 64px 0 32px 0;
     padding-bottom: 32px;
-    box-shadow: 0 4px 20px 1px rgba(47, 51, 56, 0.35);
+  box-shadow: $lc-box-shadow;
     background: white;
 }
 
