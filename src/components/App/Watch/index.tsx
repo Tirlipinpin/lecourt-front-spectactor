@@ -96,11 +96,8 @@ export class Watch extends Component<WatchProps, WatchState> {
                 {hlsInstance.levels.map((level, index) => (
                   <Item
                     key={level.height}
-                  >
-                      <button
-                        onClick={() => this.setQuality(index)}
-                      >{ level.height }</button>
-                  </Item>
+                    onClick={() => this.setQuality(index)}
+                  >{level.height}</Item>
                 ))}
             </Menu>
         );
@@ -168,13 +165,13 @@ export class Watch extends Component<WatchProps, WatchState> {
                 </div>
                 <div className={styles.detailsContainer}>
                     <div className={styles.descriptionContainer}>
-                            <Title level={3} className={styles.watchTitle}>{movie.title}</Title>
-                            <Paragraph
-                                className={styles.movieSummary}
-                                ellipsis={{ rows: 2, expandable: true }}
-                            >
-                                {movie.summary}
-                            </Paragraph>
+                        <Title level={3} className={styles.watchTitle}>{movie.title}</Title>
+                        <Paragraph
+                            className={styles.movieSummary}
+                            ellipsis={{ rows: 2, expandable: true }}
+                        >
+                            {movie.summary}
+                        </Paragraph>
                     </div>
                     <div className={styles.castingContainer}>
                         <Title level={4}>Casting</Title>
