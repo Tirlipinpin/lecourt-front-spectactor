@@ -22,17 +22,9 @@
         margin: 32px 10% 0 10%;
     }
   }
-  
 
     .appContent {
         background-color: #f4f4f4;
-    }
-
-    .loader {
-        position: absolute !important;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
     }
 
     .appFooter {
@@ -44,4 +36,11 @@
         color: white;
         width: 100%;
     }
+}
+
+.loader {
+  position: absolute !important;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

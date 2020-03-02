@@ -1,25 +1,13 @@
 .movieLoadingGalleryContainer {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-
-    .moviePosterContainer {
-      margin: 2% 1% 2% 1%;
-      width: 284px;
-      display: table-cell;
-      vertical-align: middle;
-  }
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit, minmax(284px, 284px));
+  column-gap: 2%;
 }
 
 .moviesGalleryContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-
-    .moviePosterContainer {
-        margin: 2% 1% 2% 1%;
-        width: 284px;
-        display: table-cell;
-        vertical-align: middle;
-    }
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit, minmax(284px, 284px));
+  column-gap: 2%;
 }

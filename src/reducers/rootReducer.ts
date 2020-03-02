@@ -11,7 +11,7 @@ import profile from './profile';
 import register from './register';
 import search from './search';
 import watch from './watch';
-import {FETCH_USER_INIT_APP, FETCH_USER_INIT_APP_SUCCEEDED} from "./profile/constants";
+import { FETCH_USER_INIT_APP, FETCH_USER_INIT_APP_SUCCEEDED } from './profile/constants';
 
 export interface IUserStore {
     avatarUrl: string

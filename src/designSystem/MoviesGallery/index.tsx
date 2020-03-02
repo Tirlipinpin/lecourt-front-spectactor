@@ -9,14 +9,14 @@ export interface MoviesGalleryProps {
     history: History
     loading?: boolean
     movies: Movie[]
-};
+}
 
 export default class MoviesGallery extends PureComponent<MoviesGalleryProps, {}> {
     goToWatch = (id: number) => {
         const { history } = this.props;
 
         history.push(`/app/watch/${id}`);
-    }
+    };
 
     render() {
         const { loading, movies } = this.props;

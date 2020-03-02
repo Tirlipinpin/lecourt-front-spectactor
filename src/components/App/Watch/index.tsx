@@ -40,8 +40,6 @@ export class Watch extends Component<WatchProps, WatchState> {
     };
 
     async componentDidMount() {
-        const { dispatch } = this.props;
-
         this.dispatchFetchMovieDetails();
 
         const recommandationsRes = await axios.get('movies', {
