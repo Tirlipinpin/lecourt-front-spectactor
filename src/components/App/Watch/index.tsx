@@ -1,6 +1,6 @@
 import React, { Component, lazy, Suspense, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Icon, Typography, Dropdown, Menu } from 'antd';
+import { Layout, Icon, Dropdown, Menu } from 'antd';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
 import { RouteComponentProps } from 'react-router';
@@ -15,7 +15,6 @@ import { FETCH_MOVIE_DETAILS } from '../../../reducers/watch/constants';
 import styles from './index.module.scss';
 
 const Casting = lazy(() => import('./components/Casting'));
-const { Title, Paragraph } = Typography;
 const { Item } = Menu;
 
 export type WatchPropsParams = {
@@ -165,16 +164,11 @@ export class Watch extends Component<WatchProps, WatchState> {
                 </div>
                 <div className={styles.detailsContainer}>
                     <div className={styles.descriptionContainer}>
-                        <Title level={3} className={styles.watchTitle}>{movie.title}</Title>
-                        <Paragraph
-                            className={styles.movieSummary}
-                            ellipsis={{ rows: 2, expandable: true }}
-                        >
-                            {movie.summary}
-                        </Paragraph>
+                        <h2 className={styles.watchTitle}>{movie.title}</h2>
+                        <p className={styles.movieSummary}>{movie.summary}</p>
                     </div>
                     <div className={styles.castingContainer}>
-                        <Title level={4}>Casting</Title>
+                        <h4>Casting</h4>
                         <Suspense fallback={<Loader/>}>
                             {movie.directors &&
                             <Casting actors={movie.actors} directors={movie.directors} staff={movie.staff}/>}
@@ -182,7 +176,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                     </div>
                 </div>
                 <Layout className={styles.recommendations}>
-                    <Title level={4}><Trans i18nKey="YOUR_RECOMMENDATIONS" /></Title>
+                    <h2><Trans i18nKey="YOUR_RECOMMENDATIONS" /></h2>
                     <MoviesGallery movies={recommendations} history={history} loading={loading} />
                 </Layout>
             </Layout>

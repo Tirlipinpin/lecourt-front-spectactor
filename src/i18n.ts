@@ -44,6 +44,7 @@ i18n
             COMEDY: 'Comedy',
             HORROR: 'Horror',
             DRAMA: 'Drama',
+            NO_CASTING: 'No casting given for this short!',
         }
       },
       fr: {
@@ -83,6 +84,7 @@ i18n
             COMEDY: 'Comédie',
             HORROR: 'Horreur',
             DRAMA: 'Drame',
+            NO_CASTING: 'Pas de casting renseigné pour ce court !',
         }
       }
     },
