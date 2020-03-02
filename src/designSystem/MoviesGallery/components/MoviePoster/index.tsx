@@ -47,7 +47,7 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
                         </div>
                     </Tooltip>
                     <div className={styles.genres}>
-                        {(movie.genres || []).map(g => g.genre.code).join(', ')}
+                        {(movie.genres || []).map(g => t(g.genre.code)).join(', ')}
                     </div>
                 </div>
             </div>

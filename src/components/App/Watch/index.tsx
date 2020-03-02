@@ -28,7 +28,7 @@ export interface WatchProps extends RouteComponentProps<WatchPropsParams> {
 }
 
 export interface WatchState {
-    recommandations: Movie[]
+    recommendations: Movie[]
     hlsInstance?: Hls
 }
 
@@ -36,20 +36,20 @@ export class Watch extends Component<WatchProps, WatchState> {
     PlayerRef = React.createRef<ReactPlayer>();
 
     state: Readonly<WatchState> = {
-        recommandations: [],
+        recommendations: [],
     };
 
     async componentDidMount() {
         this.dispatchFetchMovieDetails();
 
-        const recommandationsRes = await axios.get('movies', {
+        const recommendationsRes = await axios.get('movies', {
             params: {
                 limit: 5,
             },
         });
 
-        if (recommandationsRes && recommandationsRes.data)
-            this.setState({ recommandations: recommandationsRes.data });
+        if (recommendationsRes && recommendationsRes.data)
+            this.setState({ recommendations: recommendationsRes.data });
     }
 
     componentDidUpdate(props: WatchProps) {
@@ -107,7 +107,7 @@ export class Watch extends Component<WatchProps, WatchState> {
     };
 
     render() {
-        const { recommandations, hlsInstance } = this.state;
+        const { recommendations, hlsInstance } = this.state;
         const { history, watch } = this.props;
         const { movie, notFound, loading } = watch;
 
@@ -178,17 +178,16 @@ export class Watch extends Component<WatchProps, WatchState> {
                     </div>
                     <div className={styles.castingContainer}>
                         <Title level={4}>Casting</Title>
-                        <Suspense fallback={<Loader />}>
-                            { movie.directors && <Casting actors={movie.actors} directors={movie.directors} staff={movie.staff} /> }
+                        <Suspense fallback={<Loader/>}>
+                            {movie.directors &&
+                            <Casting actors={movie.actors} directors={movie.directors} staff={movie.staff}/>}
                         </Suspense>
                     </div>
                 </div>
-
                 <Layout className={styles.recommendations}>
                     <Title level={4}><Trans i18nKey="YOUR_RECOMMENDATIONS" /></Title>
-                    <MoviesGallery movies={recommandations} history={history} loading={loading} />
+                    <MoviesGallery movies={recommendations} history={history} loading={loading} />
                 </Layout>
-
             </Layout>
         );
     }

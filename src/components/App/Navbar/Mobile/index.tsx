@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Trans, WithTranslation, withTranslation } from 'react-i18next';
-
 import { fetchNavbarGenres } from '../actions';
 import {
     onChangeSearchTerm,
@@ -39,7 +38,6 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
 
     componentDidMount() {
         const { dispatch } = this.props;
-
         setTimeout(() => dispatch(fetchNavbarGenres()), 0);
     }
 
@@ -91,7 +89,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                             <ItemGroup title="Most used genres">
                                 {navbar.genres.map((genre: Genre) => (
                                     <Item key={`genres:${genre.id}`} onClick={() => redirectToGenre(genre.id)}>
-                                        {genre.code}
+                                        {t(genre.code)}
                                     </Item>
                                 )
                                 )}

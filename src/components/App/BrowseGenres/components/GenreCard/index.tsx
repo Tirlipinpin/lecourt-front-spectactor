@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Card } from 'antd';
-
+import { useTranslation } from 'react-i18next';
 import { Genre } from '../../../interfaces';
 import styles from './index.module.scss';
 
@@ -16,6 +16,8 @@ export const GenreCard: FunctionComponent<IGenreCardProps> = ({ genre, historyPu
         historyPush(`/app/genres/${genre.id}`);
     };
 
+    const { t } = useTranslation();
+
     return (
         <Card
             key={genre.id}
@@ -24,7 +26,7 @@ export const GenreCard: FunctionComponent<IGenreCardProps> = ({ genre, historyPu
             onClick={redirectToGenre}
         >
             <Meta
-                title={genre.code}
+                title={t(genre.code)}
             />
         </Card>
     );

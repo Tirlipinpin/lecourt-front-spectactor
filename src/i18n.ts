@@ -40,6 +40,10 @@ i18n
             DISPLAY_NAME: 'Display name',
             SUBMIT: 'submit',
             SEE_MORE: 'See more...',
+            ANIMATION: 'Animation',
+            COMEDY: 'Comedy',
+            HORROR: 'Horror',
+            DRAMA: 'Drama',
         }
       },
       fr: {
@@ -75,6 +79,10 @@ i18n
             DISPLAY_NAME: 'Pseudo',
             SUBMIT: 'envoyer',
             SEE_MORE: 'Voir plus...',
+            ANIMATION: 'Animation',
+            COMEDY: 'Comédie',
+            HORROR: 'Horreur',
+            DRAMA: 'Drame',
         }
       }
     },
