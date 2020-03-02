@@ -45,6 +45,9 @@ i18n
             HORROR: 'Horror',
             DRAMA: 'Drama',
             NO_CASTING: 'No casting given for this short!',
+            ERROR_OCCURRED: 'Whoops... An error occurred !',
+            NETWORK_ERROR: 'Network error',
+            UNABLE_TO_FETCH_RESOURCES: 'Error while loading resources',
         }
       },
       fr: {
@@ -85,6 +88,9 @@ i18n
             HORROR: 'Horreur',
             DRAMA: 'Drame',
             NO_CASTING: 'Pas de casting renseigné pour ce court !',
+            ERROR_OCCURRED: 'Oups... Nous avons rencontré un problème !',
+            NETWORK_ERROR: 'Problème réseau',
+            UNABLE_TO_FETCH_RESOURCES: 'Problème lors de la récupération d\'informations',
         }
       }
     },

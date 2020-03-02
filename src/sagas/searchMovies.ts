@@ -1,5 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
+import { getI18n } from 'react-i18next';
 import axios from 'axios';
 import { notification } from 'antd';
 import {
@@ -9,6 +10,8 @@ import {
 } from 'reducers/search/constants';
 
 function* fetchSearchMovies(action: AnyAction): IterableIterator<Object | void> {
+    const { t } = getI18n();
+
     try {
         const { term } = action.payload;
 
@@ -34,7 +37,7 @@ function* fetchSearchMovies(action: AnyAction): IterableIterator<Object | void> 
             type: FETCH_SEARCH_MOVIES_FAILED,
         });
         yield notification['error']({
-            message: 'An error occured',
+            message: t('ERROR_OCCURRED'),
             description: e.message,
         });
     }

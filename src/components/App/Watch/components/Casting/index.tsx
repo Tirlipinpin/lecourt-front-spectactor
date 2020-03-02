@@ -1,12 +1,10 @@
 import React, { FunctionComponent, Fragment } from 'react';
-import { Button, Row, Col, Typography } from 'antd';
+import { Row } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { Collapse, HoverableImage } from 'designSystem';
-import { ActorRelation, DirectorRelation, StaffRelation, Person } from '../../../interfaces';
+import { Collapse } from 'designSystem';
+import { ActorRelation, DirectorRelation, StaffRelation } from '../../../interfaces';
 import styles from './index.module.scss';
 import PersonPoster from './components/PersonPoster';
-
-const { Paragraph, Text, Title } = Typography;
 
 export interface CastingProps {
     actors: ActorRelation[]
@@ -20,7 +18,7 @@ export const Casting: FunctionComponent<CastingProps> = (props) => {
     const { staff, actors, directors } = props;
 
     if (![...staff, ...actors, ...directors].length) {
-        return <div>{t('NO_CASTING')}</div>
+        return <div>{t('NO_CASTING')}</div>;
     }
 
     return (
@@ -37,7 +35,7 @@ export const Casting: FunctionComponent<CastingProps> = (props) => {
                 title="Voir tout le casting"
             >
                 <div>
-                    <Title level={4}>Réalisateurs</Title>
+                    <h4>Réalisateurs</h4>
                     <Row
                         className={styles.movieStaff}
                         type="flex"
@@ -46,7 +44,7 @@ export const Casting: FunctionComponent<CastingProps> = (props) => {
                     >
                         {directors.map((person, index) => <PersonPoster person={person.person} role="Réalisateur"/>)}
                     </Row>
-                    <Title level={4}>Staff</Title>
+                    <h4>Staff</h4>
                     <Row
                         className={styles.movieStaff}
                         type="flex"

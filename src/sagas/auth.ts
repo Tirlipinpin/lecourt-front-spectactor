@@ -13,6 +13,7 @@ import {
     REGISTER_USER_SUCCEEDED,
     REGISTER_USER_FAILED,
 } from '../reducers/register/constants';
+import { getI18n } from 'react-i18next';
 
 export interface IFetchTokenAction {
     type: string
@@ -24,20 +25,25 @@ export interface IFetchTokenAction {
 }
 
 function* fetchToken(action: IFetchTokenAction): IterableIterator<Object | void> {
+    const { t } = getI18n();
+
     try {
         const { payload: { email, password, rememberMe } } = action;
 
-        const res: unknown = yield axios.post(getLoginUrl(), {
+        const res: any = yield axios.post(getLoginUrl(), {
             username: email,
             password: password,
         }, {
             withCredentials: true,
         });
 
+        if (!res || !res.data)
+            throw new Error(t('NETWORK_ERROR'));
+
         const { data: { access_token, expires_in } } = res as AxiosResponse;
 
         if (!access_token)
-            throw new Error('Network error');
+            throw new Error(t('NETWORK_ERROR'));
 
         yield put({
             type: FETCH_TOKEN_SUCCEEDED,
@@ -60,7 +66,7 @@ function* fetchToken(action: IFetchTokenAction): IterableIterator<Object | void>
             type: FETCH_TOKEN_FAILED,
         });
         yield notification['error']({
-            message: 'An error occured',
+            message: t('ERROR_OCCURRED'),
             description: e.message,
         });
     }
@@ -77,6 +83,8 @@ export interface IRegisterUserAction {
 }
 
 function* registerUser(action: IRegisterUserAction): IterableIterator<Object | void> {
+    const { t } = getI18n();
+
     try {
         const {
             payload: {
@@ -105,7 +113,7 @@ function* registerUser(action: IRegisterUserAction): IterableIterator<Object | v
             type: REGISTER_USER_FAILED,
         });
         yield notification['error']({
-            message: 'An error occured',
+            message: t('ERROR_OCCURRED'),
             description: e.message,
         });
     }

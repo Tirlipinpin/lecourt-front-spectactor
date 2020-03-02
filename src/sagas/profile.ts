@@ -1,5 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios, { AxiosResponse } from 'axios';
+import { getI18n } from 'react-i18next';
 import { notification } from 'antd';
 import {
     FETCH_USER_PROFILE,
@@ -20,6 +21,8 @@ export interface IFetchUserProfileAction {
 }
 
 function* fetchUserInitApp(action: IFetchUserProfileAction): IterableIterator<Object | void> {
+    const { t } = getI18n();
+
     try {
         const res: unknown = yield axios.get(getUserUrl());
 
@@ -37,13 +40,15 @@ function* fetchUserInitApp(action: IFetchUserProfileAction): IterableIterator<Ob
             type: FETCH_USER_INIT_APP_FAILED,
         });
         yield notification['error']({
-            message: 'An error occured',
+            message: t('ERROR_OCCURRED'),
             description: e.message,
         });
     }
 }
 
 function* fetchUserProfile(action: IFetchUserProfileAction): IterableIterator<Object | void> {
+    const { t } = getI18n();
+
     try {
         const res: unknown = yield axios.get(getUserUrl());
 
@@ -61,7 +66,7 @@ function* fetchUserProfile(action: IFetchUserProfileAction): IterableIterator<Ob
             type: FETCH_USER_PROFILE_FAILED,
         });
         yield notification['error']({
-            message: 'An error occured',
+            message: t('ERROR_OCCURRED'),
             description: e.message,
         });
     }

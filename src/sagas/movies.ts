@@ -1,6 +1,7 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
 import axios from 'axios';
+import { getI18n } from 'react-i18next';
 import { notification } from 'antd';
 import {
     FETCH_MOVIES_SUCCEEDED,
@@ -9,9 +10,11 @@ import {
     FETCH_MOVIES,
     FETCH_LATEST_MOVIES_FAILED,
     FETCH_LATEST_MOVIES,
-} from '../reducers/homepage/constants';
+} from 'reducers/homepage/constants';
 
 function* fetchMovies(action: AnyAction): IterableIterator<Object | void> {
+    const { t } = getI18n();
+
     try {
         const res = yield axios.get('movies', {
             params: {
@@ -20,7 +23,7 @@ function* fetchMovies(action: AnyAction): IterableIterator<Object | void> {
         });
 
         if (!res)
-            throw new Error('Unable to fetch movies');
+            throw new Error(t('UNABLE_TO_FETCH_RESOURCES'));
 
         const { data } = res;
 
@@ -33,13 +36,15 @@ function* fetchMovies(action: AnyAction): IterableIterator<Object | void> {
             type: FETCH_MOVIES_FAILED,
         });
         yield notification['error']({
-            message: 'An error occured',
+            message: t('ERROR_OCCURRED'),
             description: e.message,
         });
     }
 }
 
 function* fetchLatestMovies(action: AnyAction): IterableIterator<Object | void> {
+    const { t } = getI18n();
+
     try {
         const res = yield axios.get('movies/latest', {
             params: {
@@ -48,7 +53,7 @@ function* fetchLatestMovies(action: AnyAction): IterableIterator<Object | void> 
         });
 
         if (!res)
-            throw new Error('Unable to fetch the latest movies');
+            throw new Error(t('UNABLE_TO_FETCH_RESOURCES'));
 
         const { data } = res;
 
@@ -61,7 +66,7 @@ function* fetchLatestMovies(action: AnyAction): IterableIterator<Object | void> 
             type: FETCH_LATEST_MOVIES_FAILED,
         });
         yield notification['error']({
-            message: 'An error occured',
+            message: t('ERROR_OCCURRED'),
             description: e.message,
         });
     }
