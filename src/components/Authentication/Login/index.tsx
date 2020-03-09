@@ -1,8 +1,13 @@
 import React, {
-    Component, Dispatch, Fragment, FormEvent, SyntheticEvent,
+    Component, Dispatch, Fragment, SyntheticEvent,
 } from 'react';
 import { connect } from 'react-redux';
-import { Form, Icon, Input, Button, Tooltip, Typography, Checkbox } from 'antd';
+import {
+    Button, Checkbox, Form, Input, Tooltip, Typography,
+} from 'antd';
+import {
+    InfoCircleOutlined, LockOutlined, MailOutlined,
+} from '@ant-design/icons';
 import { Trans } from 'react-i18next';
 
 import { CheckboxChangeEvent } from 'antd/lib/checkbox';
@@ -13,13 +18,13 @@ const { Item } = Form;
 export interface LoginProps {
     dispatch: Dispatch<any>
     loading: boolean
-};
+}
 
 export interface LoginState {
     email: string
     password: string
     rememberMe: boolean
-};
+}
 
 export class Login extends Component<LoginProps, LoginState> {
     state = {
@@ -34,7 +39,7 @@ export class Login extends Component<LoginProps, LoginState> {
         this.setState({
             email: target.value,
         });
-    }
+    };
 
     handlePassword = (e: SyntheticEvent): void => {
         const target = e.target as HTMLInputElement;
@@ -42,7 +47,7 @@ export class Login extends Component<LoginProps, LoginState> {
         this.setState({
             password: target.value,
         });
-    }
+    };
 
     handleRememberMe = (e: CheckboxChangeEvent) => {
         const { target: { checked } } = e;
@@ -50,13 +55,11 @@ export class Login extends Component<LoginProps, LoginState> {
         this.setState({
             rememberMe: checked,
         });
-    }
+    };
 
-    fetchToken = (e: FormEvent<any>): void => {
+    fetchToken = (): void => {
         const { dispatch } = this.props;
         const { email, password, rememberMe } = this.state;
-
-        e.preventDefault();
 
         dispatch({
             type: 'FETCH_TOKEN',
@@ -66,7 +69,7 @@ export class Login extends Component<LoginProps, LoginState> {
                 rememberMe,
             },
         });
-    }
+    };
 
     render() {
         const { email, password } = this.state;
@@ -77,7 +80,7 @@ export class Login extends Component<LoginProps, LoginState> {
                 <Typography.Title level={3} className={styles.authFormTitle}>
                     <Trans i18nKey='LOGIN' />
                 </Typography.Title>
-                <Form onSubmit={this.fetchToken} className={styles.authFormContainer}>
+                <Form className={styles.authFormContainer} onFinish={this.fetchToken} layout="vertical">
                     <Item
                         label="Email"
                         colon={false}
@@ -86,12 +89,12 @@ export class Login extends Component<LoginProps, LoginState> {
                         <Input
                             allowClear
                             required
-                            prefix={<Icon type="mail" />}
+                            prefix={<MailOutlined />}
                             value={email}
                             onChange={this.handleEmail}
                             suffix={
                                 <Tooltip title="Email address">
-                                    <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
+                                    <InfoCircleOutlined />
                                 </Tooltip>
                             }
                         />
@@ -104,13 +107,13 @@ export class Login extends Component<LoginProps, LoginState> {
                         <Input
                             allowClear
                             required
-                            prefix={<Icon type="lock" />}
+                            prefix={<LockOutlined />}
                             value={password}
                             onChange={this.handlePassword}
                             type="password"
                             suffix={
                                 <Tooltip title="Password">
-                                    <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
+                                    <InfoCircleOutlined />
                                 </Tooltip>
                             }
                         />

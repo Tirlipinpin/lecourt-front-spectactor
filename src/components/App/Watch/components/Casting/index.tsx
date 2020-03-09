@@ -1,10 +1,13 @@
 import React, { FunctionComponent, Fragment } from 'react';
 import { Row } from 'antd';
+import { CaretRightOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
-import { Collapse } from 'designSystem';
+import { Collapse } from 'antd';
 import { ActorRelation, DirectorRelation, StaffRelation } from '../../../interfaces';
-import styles from './index.module.scss';
 import PersonPoster from './components/PersonPoster';
+import styles from './index.module.scss';
+
+const { Panel } = Collapse;
 
 export interface CastingProps {
     actors: ActorRelation[]
@@ -25,35 +28,36 @@ export const Casting: FunctionComponent<CastingProps> = (props) => {
         <Fragment>
             <Row
                 className={styles.movieStaff}
-                type="flex"
                 justify="start"
                 gutter={[16, 16]}
             >
                 {actors.map((actor, index) => <PersonPoster person={actor.person} role={`Role : ${actor.role}`}/>)}
             </Row>
             <Collapse
-                title="Voir tout le casting"
+                accordion
+                bordered={false}
+                className={styles.CastingCollapse}
+                expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+                expandIconPosition="right"
             >
-                <div>
-                    <h4>Réalisateurs</h4>
+                <Panel className={styles.castingCollapsePanel} header="Réalisateurs" key="realisators">
                     <Row
-                        className={styles.movieStaff}
-                        type="flex"
                         justify="start"
                         gutter={[16, 16]}
                     >
                         {directors.map((person, index) => <PersonPoster person={person.person} role="Réalisateur"/>)}
                     </Row>
-                    <h4>Staff</h4>
-                    <Row
-                        className={styles.movieStaff}
-                        type="flex"
-                        justify="start"
-                        gutter={[16, 16]}
-                    >
-                        {staff.map((person, index) => <PersonPoster person={person.person} role={`Staff : ${person.job}`}/>)}
-                    </Row>
-                </div>
+                </Panel>
+                {staff.length && (
+                    <Panel className={styles.castingCollapsePanel} header="Staff" key="staff">
+                        <Row
+                            justify="start"
+                            gutter={[16, 16]}
+                        >
+                            {staff.map((person, index) => <PersonPoster person={person.person} role={`Staff : ${person.job}`}/>)}
+                        </Row>
+                    </Panel>
+                )}
             </Collapse>
         </Fragment>
     );

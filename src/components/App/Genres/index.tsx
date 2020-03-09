@@ -7,6 +7,7 @@ import { fetchMoviesWithGenres } from './actions';
 import { RenderPageStructures } from '../services';
 import { MoviesGallery } from 'designSystem';
 import { Loader } from 'designSystem';
+import styles from './index.module.scss';
 
 export type IGenresPropsParams = {
     genreId: string
@@ -31,9 +32,9 @@ export const Genres: FunctionComponent<IGenresProps> = ({ match, history }) => {
                 <Loader />
             )}
             title={`${t('OUR_MOVIES_FOR_THIS_GENRE')}`}
-            pageContainerClass="genres-page-container"
-            pageHeaderClass="genres-page-header"
-            pageContentClass="genres-page-content"
+            pageContainerClass={styles.genresPageContainer}
+            pageHeaderClass={styles.genresPageHeader}
+            pageContentClass={styles.genresPageContent}
         />;
     }
 
@@ -47,9 +48,9 @@ export const Genres: FunctionComponent<IGenresProps> = ({ match, history }) => {
                 </React.Fragment>
             )}
             title={`${t('OUR_MOVIES_FOR_THIS_GENRE')}`}
-            pageContainerClass="genres-page-container"
-            pageHeaderClass="genres-page-header"
-            pageContentClass="genres-page-content"
+            pageContainerClass={styles.genresPageContainer}
+            pageHeaderClass={styles.genresPageHeader}
+            pageContentClass={styles.genresPageContent}
         />;
     }
 
@@ -65,9 +66,9 @@ export const Genres: FunctionComponent<IGenresProps> = ({ match, history }) => {
             <MoviesGallery movies={movies} history={history} />
         )}
         title={`${t('OUR_MOVIES_FOR_THIS_GENRE')}`}
-        pageContainerClass="genres-page-container"
-        pageHeaderClass="genres-page-header"
-        pageContentClass="genres-page-content"
+        pageContainerClass={styles.genresPageContainer}
+        pageHeaderClass={styles.genresPageHeader}
+        pageContentClass={styles.genresPageContent}
     />;
 
 };

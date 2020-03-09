@@ -1,0 +1,26 @@
+.item {
+  width: 200px;
+  height: 300px;
+  display: flex;
+  flex-flow: column nowrap;
+
+  .castingCover {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .castingLoadingImage {
+    height: 100%;
+  }
+
+  .personName {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .personRole {
+    font-size: .9rem;
+  }
+}

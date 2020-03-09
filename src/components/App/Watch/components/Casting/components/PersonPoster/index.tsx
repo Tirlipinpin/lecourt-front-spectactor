@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { Person } from 'components/App/interfaces';
 import { Button, Col } from 'antd';
-import styles from '../../index.module.scss';
-import { HoverableImage } from '../../../../../../../designSystem';
+import { SearchOutlined } from '@ant-design/icons';
+import { HoverableImage } from 'designSystem';
+import styles from './index.module.scss';
 
 export interface IPersonProps {
     person: Person
@@ -25,9 +26,8 @@ export const PersonPoster: FunctionComponent<IPersonProps> = ({ person, role }) 
             alt={person.last_name}
             coverContent={
                 <Button
-                    className={styles.button}
                     shape="round"
-                    icon="search"
+                    icon={<SearchOutlined />}
                 >Details</Button>
             }
             containerClassName={styles.castingCoverContainer}
@@ -35,8 +35,8 @@ export const PersonPoster: FunctionComponent<IPersonProps> = ({ person, role }) 
             imageLoadingClassName={styles.castingLoadingImage}
             src={mock_pictures[(Date.now()) % mock_pictures.length]}
         />
-        <p>{person.first_name} {person.last_name}</p>
-        <p>{role}</p>
+        <p className={styles.personName}>{person.first_name} {person.last_name}</p>
+        <p className={styles.personRole}>{role}</p>
     </Col>
 );
 

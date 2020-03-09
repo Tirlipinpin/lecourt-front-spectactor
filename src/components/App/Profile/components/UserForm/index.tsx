@@ -42,8 +42,7 @@ export const UserForm: FunctionComponent<IUserFormProps> = () => {
     const dispatch = useDispatch();
     const { loading, updatingUser } = profileStore;
 
-    const onSubmit = (e: FormEvent) => {
-      e.preventDefault();
+    const onFinish = () => {
       dispatch(updateUserProfile({
           ...profileStore,
           profile: {
@@ -83,7 +82,7 @@ export const UserForm: FunctionComponent<IUserFormProps> = () => {
     );
 
     return (
-        <Form className={styles.formContainer} onSubmit={onSubmit}>
+        <Form className={styles.formContainer} onFinish={onFinish} layout="vertical">
             {loading ? <UserFormLoading /> : renderForm()}
         </Form>
     );

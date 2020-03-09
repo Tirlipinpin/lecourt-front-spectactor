@@ -1,5 +1,5 @@
 import React, {FunctionComponent, KeyboardEvent, useEffect, useState} from 'react';
-import { Icon } from 'antd';
+import { DownOutlined, SearchOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
@@ -51,11 +51,11 @@ export const Navbar: FunctionComponent<INavbarProps> = (props) => {
                         placeholder={t('SEARCH_BAR_PLACEHOLDER')}
                         type="search" />
                 </div>
-                <Icon className={styles.searchIcon} onClick={onSearchTerm} theme="outlined" type="search" />
+                <SearchOutlined className={styles.searchIcon} onClick={onSearchTerm} />
             </div>
             <div className={`${styles.categories} ${getActiveKeyCustom().includes('genres') ? styles.categoriesActive : ''}`}>
                 <div className={styles.categoryTitle}>
-                    <Icon className={styles.categoryIcon} type="down" /> {t('GENRES')}
+                    <DownOutlined className={styles.categoryIcon} /> {t('GENRES')}
                 </div>
                 <div className={`${styles.dropdown} ${styles.categoriesDropdown}`}>
                     <div className={styles.dropdownContent}>

@@ -10,10 +10,10 @@ import {
     RouteComponentProps,
 } from 'react-router';
 import { connect } from 'react-redux';
-import { Avatar, Divider, Icon } from 'antd';
+import { Avatar, Divider } from 'antd';
+import { FacebookOutlined, GoogleOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { Trans } from 'react-i18next';
-
+import { getI18n, Trans } from 'react-i18next';
 import { getFacebookLoginUrl, getGoogleLoginUrl } from 'services/requestUrl';
 import { lazyRenderer } from 'services/renderer/lazyRenderer';
 import { ILoginStore } from '../../reducers/login';
@@ -29,6 +29,8 @@ export interface AuthenticationProps extends RouteComponentProps {
 }
 
 export class Authentication extends Component<AuthenticationProps, {}> {
+    i18n = getI18n();
+
     renderSwitchLink = (): ReactNode => {
         const { location: { pathname } } = this.props;
 
@@ -58,15 +60,11 @@ export class Authentication extends Component<AuthenticationProps, {}> {
                 <a
                     className={styles.socialLoginLink}
                     href={getFacebookLoginUrl()}
-                >
-                    <Icon type="facebook" />
-                </a>
+                ><FacebookOutlined /></a>
                 <a
                     className={styles.socialLoginLink}
                     href={getGoogleLoginUrl()}
-                >
-                    <Icon type="google" />
-                </a>
+                ><GoogleOutlined /></a>
             </div>
             <Divider
                 className={styles.divider}

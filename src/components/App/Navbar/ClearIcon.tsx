@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import posed from 'react-pose';
-
-import { Icon } from 'antd';
+import { CloseCircleFilled } from '@ant-design/icons';
 
 export interface ClearIconProps {
     termLength: Number
@@ -29,14 +28,12 @@ export default class ClearIcon extends PureComponent<ClearIconProps> {
 
         return (
             <Box pose={ termLength > 0 ? 'visible': 'hidden' } >
-                <Icon
-                    type="close-circle"
+                <CloseCircleFilled
                     onClick={() => onChangeSearchTerm({
                         target: {
                             value: '',
                         },
                     })}
-                    theme="filled"
                     style={{
                         color: 'rgba(0,0,0,.25)',
                         fontSize: 12,

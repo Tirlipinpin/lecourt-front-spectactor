@@ -1,9 +1,11 @@
+@import 'styles/colors';
+
 .watchPageContainer {
     min-height: 100vh;
     padding-bottom: 0;
 
     .detailsContainer {
-        background: white;
+        background: $lc-primary-background;
 
         .descriptionContainer {
             flex: 1;
@@ -12,7 +14,6 @@
 
         .castingContainer {
             flex: 1;
-            margin-bottom: 2rem;
         }
 
         .movie-summary {
@@ -22,7 +23,7 @@
 
     .recommendations {
         padding: 16px;
-        background: white;
+        background: $lc-primary-background;
         width: 100%;
         color: black;
     }
@@ -52,11 +53,11 @@
 @media screen and (max-width: 900px) {
     .watchPageContainer {
         .detailsContainer {
-            padding: 16px 4px;
+            padding: 16px 4px 0;
         }
 
         .recommendations {
-            padding: 16px 4px;
+            padding: 0 4px;
         }
     }
 }
@@ -64,7 +65,7 @@
 @media screen and (min-width: 900px) {
     .watchPageContainer {
         .detailsContainer {
-            padding: 16px;
+            padding: 16px 16px 0;
         }
     }
 }

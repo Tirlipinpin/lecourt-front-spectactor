@@ -1,5 +1,8 @@
 import React, { Component, Dispatch, Fragment } from 'react';
-import { Layout, Menu, Drawer, Icon, Input } from 'antd';
+import { Drawer, Input, Layout, Menu } from 'antd';
+import {
+    MenuUnfoldOutlined,
+} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
@@ -117,7 +120,7 @@ export class MobileNavbar extends Component<MobileNavbarProps, MobileNavbarState
                         <Menu.Item className={styles.topMobileNavbarLogo}>
                             <img alt="LC-logo" src={logo} className={styles.navbarLogo} onClick={() => history.push(url)} />
                         </Menu.Item>
-                        <Menu.Item className={styles.topMobileNavbarButton} onClick={this.toggleMenu}><Icon type="menu-unfold" /></Menu.Item>
+                        <Menu.Item className={styles.topMobileNavbarButton} onClick={this.toggleMenu}><MenuUnfoldOutlined /></Menu.Item>
                     </Menu>
                 </Header>
             </Fragment>

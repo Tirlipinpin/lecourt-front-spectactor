@@ -1,6 +1,7 @@
 import React, { Component, lazy, Suspense, Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { Layout, Icon, Dropdown, Menu } from 'antd';
+import { Layout, Dropdown, Menu } from 'antd';
+import { SettingFilled } from '@ant-design/icons';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
 import { RouteComponentProps } from 'react-router';
@@ -88,7 +89,7 @@ export class Watch extends Component<WatchProps, WatchState> {
 
     renderQualityMenu = () => {
         const { hlsInstance } = this.state;
-        if (!hlsInstance) return;
+        if (!hlsInstance) return <Menu />;
 
         return (
             <Menu selectable>
@@ -151,10 +152,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                                     disabled={!hlsInstance}
                                     trigger={['click']}
                                   >
-                                      <Icon
-                                        type="setting"
-                                        theme="filled"
-                                      />
+                                      <SettingFilled />
                                   </Dropdown>
                               </div>
                           </div>
@@ -168,7 +166,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                         <p className={styles.movieSummary}>{movie.summary}</p>
                     </div>
                     <div className={styles.castingContainer}>
-                        <h4>Casting</h4>
+                        <h2>Casting</h2>
                         <Suspense fallback={<Loader/>}>
                             {movie.directors &&
                             <Casting actors={movie.actors} directors={movie.directors} staff={movie.staff}/>}

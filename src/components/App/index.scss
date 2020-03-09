@@ -1,11 +1,12 @@
 @import './Antd.replace.scss';
 @import 'styles/theme';
+@import 'styles/colors';
 
 .page-container {
-    margin: 64px 0 32px 0;
-    padding-bottom: 32px;
+  margin: 64px 0 32px 0;
+  padding-bottom: 32px;
   box-shadow: $lc-box-shadow;
-    background: white;
+  background: $lc-primary-background;
 }
 
 .page-container .ant-page-header {

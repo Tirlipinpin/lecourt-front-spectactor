@@ -1,22 +1,15 @@
 @import 'styles/colors';
 
-.movieStaff {
-    .item {
-        text-align: center;
-        width: 192px;
+.CastingCollapse {
+    background: $lc-primary-background;
+    padding-left: 0;
 
-        .castingCoverContainer {
-            height: 200px;
-
-            .castingCover {
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
-        }
-
-        .castingLoadingImage {
-            height: 100%;
-        }
+    .castingCollapsePanel {
+        background: $lc-primary-background;
+        font-size: 1.1rem;
+        border-radius: 2px;
+        margin-bottom: 24px;
+        border: 0;
+        overflow: hidden;
     }
 }

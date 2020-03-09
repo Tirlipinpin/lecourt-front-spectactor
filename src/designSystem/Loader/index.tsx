@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { Spin, Icon } from 'antd';
+import { Spin} from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 
 export interface ILoaderProps {
   size?: number | string
@@ -10,8 +11,7 @@ export const Loader: FunctionComponent<ILoaderProps> = ({ size, className }): Re
   <Spin
     className={className}
     indicator={
-        <Icon
-            type="loading"
+        <LoadingOutlined
             style={{ fontSize: size, color: '#FF5242' }}
         />
     }

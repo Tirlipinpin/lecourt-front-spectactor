@@ -1,6 +1,11 @@
 import React, { Component, Dispatch, Fragment, FormEvent, SyntheticEvent } from 'react';
 import { connect } from 'react-redux';
-import { Form, Icon, Input, Button, Typography, Tooltip } from 'antd';
+import {
+    Button, Form, Input, Tooltip, Typography,
+} from 'antd';
+import {
+    InfoCircleOutlined, LockOutlined, MailOutlined, UserOutlined,
+} from '@ant-design/icons';
 import { Trans } from 'react-i18next';
 
 import { RegisterStore } from '../../../reducers/register';
@@ -13,12 +18,12 @@ export interface RegisterState {
     email: string
     password: string
     passwordConfirm: string
-};
+}
 
 export interface RegisterProps {
     dispatch: Dispatch<any>
     register: RegisterStore
-};
+}
 
 export class Register extends Component<RegisterProps, RegisterState> {
     state = {
@@ -28,11 +33,9 @@ export class Register extends Component<RegisterProps, RegisterState> {
         passwordConfirm: '',
     };
 
-    registerUser = (e: FormEvent<any>): void => {
+    registerUser = (): void => {
         const { displayName, email, password, passwordConfirm } = this.state;
         const { dispatch } = this.props;
-
-        e.preventDefault();
 
         dispatch({
             type: 'REGISTER_USER',
@@ -43,14 +46,14 @@ export class Register extends Component<RegisterProps, RegisterState> {
                 passwordConfirm,
             }
         });
-    }
+    };
 
     handleDisplayName = (e: SyntheticEvent): void => {
         const target = e.target as HTMLInputElement;
         this.setState({
             displayName: target.value,
         });
-    }
+    };
 
     handleEmail = (e: SyntheticEvent): void => {
         const target = e.target as HTMLInputElement;
@@ -58,7 +61,7 @@ export class Register extends Component<RegisterProps, RegisterState> {
         this.setState({
             email: target.value,
         });
-    }
+    };
 
     handlePassword = (e: SyntheticEvent): void => {
         const target = e.target as HTMLInputElement;
@@ -66,7 +69,7 @@ export class Register extends Component<RegisterProps, RegisterState> {
         this.setState({
             password: target.value,
         });
-    }
+    };
 
     handlePasswordConfirm = (e: SyntheticEvent): void => {
         const target = e.target as HTMLInputElement;
@@ -74,7 +77,7 @@ export class Register extends Component<RegisterProps, RegisterState> {
         this.setState({
             passwordConfirm: target.value,
         });
-    }
+    };
 
     render() {
         const { displayName, email, password, passwordConfirm } = this.state;
@@ -84,7 +87,7 @@ export class Register extends Component<RegisterProps, RegisterState> {
                 <Typography.Title level={3} className={styles.authFormTitle}>
                     <Trans i18nKey="REGISTER" />
                 </Typography.Title>
-                <Form onSubmit={this.registerUser} className={styles.authFormContainer}>
+                <Form className={styles.authFormContainer} onFinish={this.registerUser} layout="vertical">
                     <Item
                         className={styles.authFormItem}
                         label="Display name"
@@ -93,12 +96,12 @@ export class Register extends Component<RegisterProps, RegisterState> {
                         <Input
                             allowClear
                             required
-                            prefix={<Icon type="user" />}
+                            prefix={<UserOutlined />}
                             value={displayName}
                             onChange={this.handleDisplayName}
                             suffix={
                                 <Tooltip title="Display name">
-                                    <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
+                                    <InfoCircleOutlined />
                                 </Tooltip>
                             }
                         />
@@ -111,12 +114,12 @@ export class Register extends Component<RegisterProps, RegisterState> {
                         <Input
                             allowClear
                             required
-                            prefix={<Icon type="mail" />}
+                            prefix={<MailOutlined />}
                             value={email}
                             onChange={this.handleEmail}
                             suffix={
                                 <Tooltip title="Email address">
-                                    <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
+                                    <InfoCircleOutlined />
                                 </Tooltip>
                             }
                         />
@@ -129,13 +132,13 @@ export class Register extends Component<RegisterProps, RegisterState> {
                         <Input
                             allowClear
                             required
-                            prefix={<Icon type="lock" />}
+                            prefix={<LockOutlined />}
                             value={password}
                             onChange={this.handlePassword}
                             type='password'
                             suffix={
                                 <Tooltip title="Password">
-                                    <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
+                                    <InfoCircleOutlined />
                                 </Tooltip>
                             }
                         />
@@ -148,13 +151,13 @@ export class Register extends Component<RegisterProps, RegisterState> {
                         <Input
                             allowClear
                             required
-                            prefix={<Icon type="lock" />}
+                            prefix={<LockOutlined />}
                             value={passwordConfirm}
                             onChange={this.handlePasswordConfirm}
                             type='password'
                             suffix={
                                 <Tooltip title="Password (confirmation), the same as the previous password">
-                                    <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
+                                    <InfoCircleOutlined />
                                 </Tooltip>
                             }
                         />
