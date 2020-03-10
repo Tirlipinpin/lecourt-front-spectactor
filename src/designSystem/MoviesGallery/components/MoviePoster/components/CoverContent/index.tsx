@@ -17,7 +17,7 @@ export const CoverContent: FunctionComponent<ICoverContentProps> = (props) => {
         <div className={styles.coverContent}>
             <div className={styles.topContent}>
                 <div className={styles.infoTooltip}>
-                    <Tooltip title={movie.summary} trigger="hover">
+                    <Tooltip placement="leftTop" title={movie.summary} trigger="hover">
                         <InfoCircleOutlined />
                     </Tooltip>
                 </div>
