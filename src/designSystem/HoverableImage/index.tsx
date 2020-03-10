@@ -34,9 +34,9 @@ const HoverableImage: FunctionComponent<IHoverableImageProps> = ({
     imageLoadingClassName,
     src,
 }) => {
-    const [ cardHovered, handleCardHovered ] = useState(false);
+    const [ cardHovered, handleCardHovered ] = useState(true);
     const showCardHover = () => handleCardHovered(true);
-    const hideCardHover = () => handleCardHovered(false);
+    const hideCardHover = () => handleCardHovered(true);
 
     const [ imageLoaded, handleImageLoaded ] = useState(false);
     const setImageLoaded = () => handleImageLoaded(true);

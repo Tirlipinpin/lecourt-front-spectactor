@@ -17,16 +17,20 @@
     justify-content: space-between;
 
     .infoTooltip {
-      margin: 4px 8px;
+      margin: 0 8px;
       font-size: 20px;
     }
 
     .durationContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-top-right-radius: 4px;
       border-bottom-left-radius: 4px;
       background-color: $lc-black;
       font-size: 16px;
       padding: 4px 8px;
+      height: 32px;
     }
   }
 
