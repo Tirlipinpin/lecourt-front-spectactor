@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { Tooltip } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { HoverableImage } from 'designSystem';
 import { Movie } from 'components/App/interfaces';
 import { getUploadUrl } from 'services/requestUrl';
 import styles from './index.module.scss';
+import CoverContent from './components/CoverContent';
 
 export interface MoviePosterProps {
     goToWatch: (id: number) => void
@@ -27,13 +27,7 @@ export const MoviePoster: FunctionComponent<MoviePosterProps> = (props) => {
         <div className={styles.moviePosterCard}>
             <HoverableImage
                 alt={movie.title}
-                coverContent={
-                    <button
-                        className={styles.watchButton}
-                    >
-                        <SearchOutlined /> {t('WATCH_SHORT')}
-                    </button>
-                }
+                coverContent={<CoverContent movie={movie} />}
                 goTo={goToMovieId}
                 src={poster}
             />

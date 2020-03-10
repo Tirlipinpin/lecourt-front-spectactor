@@ -1,4 +1,4 @@
-import React, { Component, Dispatch, Fragment, FormEvent, SyntheticEvent } from 'react';
+import React, { Component, Dispatch, Fragment, SyntheticEvent } from 'react';
 import { connect } from 'react-redux';
 import {
     Button, Form, Input, Tooltip, Typography,
@@ -81,7 +81,7 @@ export class Register extends Component<RegisterProps, RegisterState> {
 
     render() {
         const { displayName, email, password, passwordConfirm } = this.state;
-    
+
         return (
             <Fragment>
                 <Typography.Title level={3} className={styles.authFormTitle}>
