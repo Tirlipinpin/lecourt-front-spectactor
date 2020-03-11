@@ -2,6 +2,7 @@ import React, { Component, lazy, Suspense, Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { Layout, Dropdown, Menu } from 'antd';
 import { SettingFilled } from '@ant-design/icons';
+import screenfull from 'screenfull';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
 import { RouteComponentProps } from 'react-router';
@@ -14,6 +15,7 @@ import NotFound from '../../NotFound';
 import { MoviesGallery } from 'designSystem';
 import { FETCH_MOVIE_DETAILS } from '../../../reducers/watch/constants';
 import styles from './index.module.scss';
+import { findDOMNode } from 'react-dom';
 
 const Casting = lazy(() => import('./components/Casting'));
 const { Item } = Menu;
@@ -33,6 +35,7 @@ export interface WatchState {
 }
 
 export class Watch extends Component<WatchProps, WatchState> {
+    PlayerContainerRef = React.createRef<HTMLDivElement>();
     PlayerRef = React.createRef<ReactPlayer>();
 
     state: Readonly<WatchState> = {
@@ -103,6 +106,12 @@ export class Watch extends Component<WatchProps, WatchState> {
         );
     };
 
+    onClickFullScreen = () => {
+        if (screenfull.isEnabled) {
+            screenfull.request(findDOMNode(this.PlayerContainerRef.current) as Element);
+        }
+    };
+
     render() {
         const { recommendations, hlsInstance } = this.state;
         const { history, watch } = this.props;
@@ -125,6 +134,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                     {movie.id
                       ? (
                           <div
+                            ref={this.PlayerContainerRef}
                             style={{
                                 width: '100%',
                                 height: '70vh',
@@ -155,6 +165,7 @@ export class Watch extends Component<WatchProps, WatchState> {
                                       <SettingFilled />
                                   </Dropdown>
                               </div>
+                              <button onClick={this.onClickFullScreen}>FullScreen</button>
                           </div>
                       )
                         : <Loader />
